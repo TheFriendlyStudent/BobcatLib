@@ -1,7 +1,7 @@
 {
     "fileName": "BobcatLib.json",
     "name": "BobcatLib",
-    "version": "2024.0.0.1",
+    "version": "2024.0.1",
     "frcYear": "2024",
     "uuid": "499565da-de48-4a71-86fd-5c85f26f14c2",
     "mavenUrls": [
@@ -12,7 +12,7 @@
         {
             "groupId": "BobcatLib",
             "artifactId": "BobcatLib-java",
-            "version": "2024.0.0.1"
+            "version": "2024.0.1"
         }
     ],
     "jniDependencies": [],
