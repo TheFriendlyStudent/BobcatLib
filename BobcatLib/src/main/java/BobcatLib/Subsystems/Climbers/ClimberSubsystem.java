@@ -1,7 +1,7 @@
 package BobcatLib.Subsystems.Climbers;
 
 import BobcatLib.Subsystems.Climbers.Modules.ClimberIO;
-import BobcatLib.Subsystems.Climbers.Modules.ClimberIO.ClimberIOInputs;
+import BobcatLib.Subsystems.Climbers.Modules.ClimberIOInputsAutoLogged;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import org.littletonrobotics.junction.Logger;
 
@@ -12,7 +12,7 @@ import org.littletonrobotics.junction.Logger;
 public class ClimberSubsystem extends SubsystemBase {
 
   /** The logged inputs for the climber, used for telemetry and diagnostics. */
-  private final ClimberIOInputs inputs = new ClimberIOInputs();
+  private final ClimberIOInputsAutoLogged inputs = new ClimberIOInputsAutoLogged();
 
   /** The climber's input-output interface for hardware interaction. */
   private ClimberIO io;
@@ -47,6 +47,7 @@ public class ClimberSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     io.updateInputs(inputs);
+    Logger.processInputs(name, inputs);
     if (percent == 0) {
       io.holdPos(holdingPos);
     } else {

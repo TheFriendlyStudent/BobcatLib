@@ -57,7 +57,7 @@ public class CanCoderWrapper implements EncoderIO {
    * @return Absolute position in rotation (-0.5 to 0.999999 )
    */
   public double getAbsolutePosition() {
-    return encoder.getAbsolutePosition().getValueAsDouble();
+    return encoder.getAbsolutePosition().getValue();
   }
 
   /** Reset the encoder to factory defaults. */

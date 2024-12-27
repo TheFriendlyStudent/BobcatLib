@@ -1,12 +1,15 @@
 package BobcatLib.Hardware.Gyros;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.AutoLog;
 
 /** Represents an interface for interacting with a gyro sensor. */
 public interface GyroIO {
   /** Represents the inputs for the gyro sensor. */
-  public class GyroIOInputs {
+  @AutoLog
+  public static class GyroIOInputs {
     /** Indicates if the gyro is connected. */
     public boolean connected = false;
     /** The current yaw position of the gyro. */
@@ -50,6 +53,8 @@ public interface GyroIO {
   public default void setRoll(double roll) {}
 
   public default void periodic(Pigeon2 imu) {}
+
+  public default void periodic(AHRS imu) {}
 
   public default void periodic() {}
 }

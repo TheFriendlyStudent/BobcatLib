@@ -1,11 +1,13 @@
 package BobcatLib.Subsystems.Swerve.SimpleSwerve;
 
+import static edu.wpi.first.units.Units.Volts;
+
 import BobcatLib.Hardware.Gyros.BaseGyro;
 import BobcatLib.Hardware.Gyros.GyroSim;
 import BobcatLib.Hardware.Gyros.Pigeon2Gyro;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModule;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModuleReal;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModuleSim;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.PoseLib;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleLimitsJson;
@@ -22,6 +24,7 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math.GeometryUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.path.PathConstraints;
+import com.pathplanner.lib.util.PIDConstants;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -32,7 +35,7 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.Measure;
-import edu.wpi.first.units.VoltageUnit;
+import edu.wpi.first.units.Voltage;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.Timer;
@@ -98,7 +101,13 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
     if (isSim) {
       gyro = new BaseGyro("Swerve-Gyro", new GyroSim());
 
-      mSwerveMods = new SwerveModule[] {};
+      mSwerveMods =
+          new SwerveModule[] {
+            new SwerveModule(new SwerveModuleSim(0, jsonSwerve.moduleSpeedLimits), 0),
+            new SwerveModule(new SwerveModuleSim(1, jsonSwerve.moduleSpeedLimits), 1),
+            new SwerveModule(new SwerveModuleSim(2, jsonSwerve.moduleSpeedLimits), 2),
+            new SwerveModule(new SwerveModuleSim(3, jsonSwerve.moduleSpeedLimits), 3)
+          };
     } else {
       gyro = new BaseGyro("Swerve-Gyro", new Pigeon2Gyro());
       mSwerveMods =
@@ -446,9 +455,9 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
 
   /** set all modules to supplied voltage */
   @Override
-  public void sysidVoltage(Measure<VoltageUnit> volts) {
+  public void sysidVoltage(Measure<Voltage> volts) {
     for (SwerveModule mod : mSwerveMods) {
-      mod.runCharachterization(volts.magnitude());
+      mod.runCharachterization(volts.in(Volts));
     }
   }
 

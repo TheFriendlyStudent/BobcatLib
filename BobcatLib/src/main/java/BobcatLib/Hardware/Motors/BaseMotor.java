@@ -1,7 +1,7 @@
 package BobcatLib.Hardware.Motors;
 
-import BobcatLib.Hardware.Motors.MotorIO.MotorIOInputs;
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.Logger;
 
 /**
  * The BaseMotor class serves as a wrapper for motor functionality, providing methods for
@@ -11,7 +11,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 public class BaseMotor {
 
   private final MotorIO io;
-  private final MotorIOInputs inputs = new MotorIOInputs();
+  private final MotorIOInputsAutoLogged inputs = new MotorIOInputsAutoLogged();
 
   /**
    * Constructs a new BaseMotor instance.
@@ -25,6 +25,7 @@ public class BaseMotor {
   /** Periodically updates the motor inputs and processes them using the Logger. */
   public void periodic() {
     io.updateInputs(inputs);
+    Logger.processInputs("motor", inputs);
   }
 
   /**

@@ -1,11 +1,11 @@
 package BobcatLib.Hardware.Gyros;
 
-import BobcatLib.Hardware.Gyros.GyroIO.GyroIOInputs;
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.Logger;
 
 public class BaseGyro {
   private final GyroIO io;
-  private final GyroIOInputs inputs = new GyroIOInputs();
+  private final GyroIOInputsAutoLogged inputs = new GyroIOInputsAutoLogged();
   private final String name;
 
   public BaseGyro(String name, GyroIO io) {
@@ -15,6 +15,7 @@ public class BaseGyro {
 
   public void periodic() {
     io.updateInputs(inputs);
+    Logger.processInputs(name, inputs);
   }
 
   public void setYaw(double yaw) {

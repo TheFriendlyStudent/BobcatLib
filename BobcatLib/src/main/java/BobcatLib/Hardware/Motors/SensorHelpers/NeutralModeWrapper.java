@@ -1,7 +1,7 @@
 package BobcatLib.Hardware.Motors.SensorHelpers;
 
 import com.ctre.phoenix6.signals.NeutralModeValue;
-import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.CANSparkBase.IdleMode;
 
 /** The state of the motor controller bridge when output is neutral or disabled. */
 public class NeutralModeWrapper {

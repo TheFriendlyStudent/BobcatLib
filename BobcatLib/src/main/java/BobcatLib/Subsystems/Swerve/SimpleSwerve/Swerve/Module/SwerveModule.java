@@ -1,13 +1,13 @@
 package BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module;
 
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModuleIO.SwerveModuleIOInputs;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleJson;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import org.littletonrobotics.junction.Logger;
 
 public class SwerveModule {
   private final SwerveModuleIO io;
-  private final SwerveModuleIOInputs inputs = new SwerveModuleIOInputs();
+  private final SwerveModuleIOInputsAutoLogged inputs = new SwerveModuleIOInputsAutoLogged();
   public final int index;
 
   public SwerveModule(SwerveModuleIO io, int index) {
@@ -17,6 +17,7 @@ public class SwerveModule {
 
   public void periodic() {
     io.updateInputs(inputs);
+    Logger.processInputs("Swerve/Module" + Integer.toString(index), inputs);
   }
 
   /**

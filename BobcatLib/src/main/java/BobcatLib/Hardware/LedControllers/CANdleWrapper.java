@@ -7,6 +7,7 @@ import BobcatLib.Utilities.CANDeviceDetails;
 import com.ctre.phoenix.led.CANdle;
 import com.ctre.phoenix.led.StrobeAnimation;
 import edu.wpi.first.wpilibj.Timer;
+import org.littletonrobotics.junction.AutoLog;
 
 /** CANdle Wrapper */
 public class CANdleWrapper implements LedControllerIO {
@@ -22,6 +23,7 @@ public class CANdleWrapper implements LedControllerIO {
   }
 
   /** CANdleIO Inputs */
+  @AutoLog
   public static class CANdleIOInputs {
     /** State for CANdle. */
     public CANdleState state = CANdleState.OFF;

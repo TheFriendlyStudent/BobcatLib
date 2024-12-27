@@ -1,10 +1,10 @@
 package BobcatLib.Hardware.LedControllers;
 
-import BobcatLib.Hardware.LedControllers.LedControllerIO.LedControllerIOInputs;
+import org.littletonrobotics.junction.Logger;
 
 public class BaseLedController {
   private final LedControllerIO io;
-  private final LedControllerIOInputs inputs = new LedControllerIOInputs();
+  private final LedControllerIOInputsAutoLogged inputs = new LedControllerIOInputsAutoLogged();
   private final String name;
 
   public BaseLedController(String name, LedControllerIO io) {
@@ -14,6 +14,7 @@ public class BaseLedController {
 
   public void periodic() {
     io.updateInputs(inputs);
+    Logger.processInputs(name, inputs);
   }
 
   public void checkForFaults() {

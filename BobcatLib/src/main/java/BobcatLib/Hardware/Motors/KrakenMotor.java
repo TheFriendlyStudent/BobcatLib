@@ -81,6 +81,8 @@ public class KrakenMotor implements MotorIO {
     motorConfig.CurrentLimits.withSupplyCurrentLimitEnable(
         cfg.optionalCtre.SupplyCurrentLimitEnable);
     motorConfig.CurrentLimits.withSupplyCurrentLimit(cfg.optionalCtre.SupplyCurrentLimit);
+    motorConfig.CurrentLimits.withSupplyCurrentThreshold(cfg.optionalCtre.SupplyCurrentThreshold);
+    motorConfig.CurrentLimits.withSupplyTimeThreshold(cfg.optionalCtre.SupplyTimeThreshold);
     motorConfig.OpenLoopRamps.withDutyCycleOpenLoopRampPeriod(
         cfg.optionalCtre.openLoop.getDutyCycleRampPeriod());
     motorConfig.OpenLoopRamps.withTorqueOpenLoopRampPeriod(

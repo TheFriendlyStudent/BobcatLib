@@ -2,9 +2,7 @@ apply plugin: 'maven-publish'
 
 ext.licenseFile = files("$rootDir/LICENSE.txt")
 
-def pubVersion = System.getenv("releaseVersion") ?: "2025.0.3"
-
-def releasesRepoUrl = "BobcatLib/repos/"
+def pubVersion = '2024.12.27.0'
 
 def outputsFolder = file("$buildDir/outputs")
 
@@ -112,23 +110,6 @@ task outputJavadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
-// Apply template variables from the vendordep file.
-// Replaces ${VARIABLE} with VARIABLE: value in expand()
-task vendordepJson() {
-    description = 'Builds the vendordep json file.'
-    group = 'Build'
-    outputs.file("BobcatLib/BobcatLib.json")
-
-    copy {
-        from "BobcatLib.json"
-        into "BobcatLib/"
-        expand(version: pubVersion,
-        groupId: artifactGroupId,
-        artifactId: baseArtifactId)
-    }
-}
-
-
 artifacts {
     archives sourcesJar
     archives javadocJar
@@ -147,6 +128,7 @@ build.dependsOn outputJar
 
 libraryBuild.dependsOn build
 
+def releasesRepoUrl = "$buildDir/repos/releases"
 
 publishing {
     repositories {
@@ -156,6 +138,12 @@ publishing {
         }
     }
 }
+
+task cleanReleaseRepo(type: Delete) {
+    delete releasesRepoUrl
+}
+
+tasks.matching {it != cleanReleaseRepo}.all {it.dependsOn cleanReleaseRepo}
 
 model {
     publishing {

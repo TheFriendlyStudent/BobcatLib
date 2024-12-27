@@ -4,8 +4,10 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleJson;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import org.littletonrobotics.junction.AutoLog;
 
 public interface SwerveModuleIO {
+  @AutoLog
   public static class SwerveModuleIOInputs {
     public Rotation2d offset = Rotation2d.fromDegrees(0);
     public double velocity = 0.00;

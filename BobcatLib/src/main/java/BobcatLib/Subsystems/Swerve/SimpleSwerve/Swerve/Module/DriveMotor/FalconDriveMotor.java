@@ -79,6 +79,12 @@ public class FalconDriveMotor implements DriveWrapper {
 
     swerveDriveFXConfig.CurrentLimits.SupplyCurrentLimit = chosenModule.json.driveCurrentLimit;
 
+    swerveDriveFXConfig.CurrentLimits.SupplyCurrentThreshold =
+        chosenModule.json.driveCurrentThreshold;
+
+    swerveDriveFXConfig.CurrentLimits.SupplyTimeThreshold =
+        chosenModule.json.driveCurrentThresholdTime;
+
     /* PID Config */
     swerveDriveFXConfig.Slot0.kP = chosenModule.drivePID.kP;
     swerveDriveFXConfig.Slot0.kI = chosenModule.drivePID.kI;
@@ -120,7 +126,7 @@ public class FalconDriveMotor implements DriveWrapper {
    * @return position
    */
   public double getPosition() {
-    return mDriveMotor.getPosition().getValueAsDouble();
+    return mDriveMotor.getPosition().getValue();
   }
 
   /**
@@ -129,7 +135,7 @@ public class FalconDriveMotor implements DriveWrapper {
    * @return velocity
    */
   public double getVelocity() {
-    return mDriveMotor.getVelocity().getValueAsDouble();
+    return mDriveMotor.getVelocity().getValue();
   }
 
   /**
@@ -149,7 +155,7 @@ public class FalconDriveMotor implements DriveWrapper {
    * @return motor Voltage
    */
   public double getMotorVoltage() {
-    return mDriveMotor.getMotorVoltage().getValueAsDouble();
+    return mDriveMotor.getMotorVoltage().getValue();
   }
 
   /** Stops the motors properly. */

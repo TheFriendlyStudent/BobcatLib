@@ -7,6 +7,7 @@ import BobcatLib.Hardware.Motors.SensorHelpers.SensorDirectionWrapper;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleJson;
 import BobcatLib.Subsystems.Swerve.Utility.CotsModuleSwerveConstants;
 import com.ctre.phoenix6.signals.NeutralModeValue;
+import com.pathplanner.lib.util.PIDConstants;
 
 /** Module Constants used for converting the json configs to the COTS SwerveConstants */
 public class ModuleConstants {

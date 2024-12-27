@@ -3,22 +3,19 @@ package BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.DriveMotor;
 import BobcatLib.Logging.Alert;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.ModuleConstants;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleLimitsJson;
+import com.revrobotics.CANSparkBase.ControlType;
+import com.revrobotics.CANSparkBase.FaultID;
+import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkFlex;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.spark.SparkBase.ControlType;
-import com.revrobotics.spark.SparkBase.PersistMode;
-import com.revrobotics.spark.SparkBase.ResetMode;
-import com.revrobotics.spark.SparkClosedLoopController;
-import com.revrobotics.spark.SparkFlex;
-import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.config.ClosedLoopConfig.ClosedLoopSlot;
-import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
-import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-import com.revrobotics.spark.config.SparkFlexConfig;
+import com.revrobotics.SparkPIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.DriverStation;
 
 public class VortexDriveMotor implements DriveWrapper {
-  private SparkFlex motor;
+  private CANSparkFlex motor;
   private RelativeEncoder encoder;
   /* Feed Forward Setup */
   private final SimpleMotorFeedforward driveFeedForward;
@@ -31,9 +28,6 @@ public class VortexDriveMotor implements DriveWrapper {
 
   public ModuleConstants chosenModule;
   public ModuleLimitsJson limits;
-  private SparkFlexConfig motorConfig;
-
-  private SparkClosedLoopController closedLoopController;
 
   public VortexDriveMotor(int id, ModuleConstants chosenModule, ModuleLimitsJson limits) {
     if (id >= 40) {
@@ -46,51 +40,41 @@ public class VortexDriveMotor implements DriveWrapper {
     double driveKA = 0.0;
     driveFeedForward = new SimpleMotorFeedforward(driveKS, driveKV, driveKA);
     /* Drive Motor Config */
-    motor = new SparkFlex(id, MotorType.kBrushless);
+    motor = new CANSparkFlex(id, MotorType.kBrushless);
     encoder = motor.getEncoder();
     configDriveMotor();
-    motor.configure(null, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    motor.burnFlash();
     encoder.setPosition(0.0);
   }
 
   public void configDriveMotor() {
-    /*
-     * Create a new SPARK MAX configuration object. This will store the
-     * configuration parameters for the SPARK MAX that we will set below.
-     */
-    motorConfig = new SparkFlexConfig();
+    /** Swerve Drive Motor Configuration */
+    motor.restoreFactoryDefaults();
     /* Motor Inverts and Neutral Mode */
-    motorConfig.encoder.inverted(chosenModule.driveMotorInvert.asREV());
-
-    /*
-     * Configure the encoder. For this specific example, we are using the
-     * integrated encoder of the NEO, and we don't need to configure it. If
-     * needed, we can adjust values like the position or velocity conversion
-     * factors.
-     */
-    motorConfig
-        .encoder
-        .positionConversionFactor(chosenModule.driveConversionPositionFactor)
-        .velocityConversionFactor(chosenModule.driveConversionVelocityFactor);
-
+    motor.setInverted(chosenModule.driveMotorInvert.asREV());
     IdleMode motorMode = chosenModule.driveNeutralMode.asIdleMode();
-    motorConfig.idleMode(motorMode);
+    motor.setIdleMode(motorMode);
+
+    /* Gear Ratio Config */
+    encoder.setVelocityConversionFactor(chosenModule.driveConversionVelocityFactor);
+    encoder.setPositionConversionFactor(chosenModule.driveConversionPositionFactor);
 
     /* Current Limiting */
-    motorConfig.smartCurrentLimit(chosenModule.json.driveCurrentLimit);
+    motor.setSmartCurrentLimit(chosenModule.json.driveCurrentLimit);
 
     /* PID Config */
-    motorConfig
-        .closedLoop
-        .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-        .p(chosenModule.drivePID.kP, ClosedLoopSlot.kSlot1)
-        .i(chosenModule.drivePID.kI, ClosedLoopSlot.kSlot1)
-        .d(chosenModule.drivePID.kD, ClosedLoopSlot.kSlot1)
-        .velocityFF(0);
+    SparkPIDController controller = motor.getPIDController();
+    controller.setP(chosenModule.drivePID.kP);
+    controller.setI(chosenModule.drivePID.kI);
+    controller.setD(chosenModule.drivePID.kD);
+    controller.setFF(0);
 
     /* Open and Closed Loop Ramping */
-    motorConfig.closedLoopRampRate(chosenModule.json.closedLoopRamp);
-    motorConfig.openLoopRampRate(chosenModule.json.openLoopRamp);
+    motor.setClosedLoopRampRate(chosenModule.json.closedLoopRamp);
+    motor.setOpenLoopRampRate(chosenModule.json.openLoopRamp);
+
+    /* Misc. Configs */
+    motor.enableVoltageCompensation(12);
   }
 
   /**
@@ -109,9 +93,12 @@ public class VortexDriveMotor implements DriveWrapper {
     } else {
       double velocity = desiredState.speedMetersPerSecond;
       double output = driveFeedForward.calculate(velocity);
-      closedLoopController.setReference(output, ControlType.kVelocity, 0);
+      SparkPIDController controller = motor.getPIDController();
+      controller.setReference(output, ControlType.kVelocity, 0);
     }
-    // check for faults here !;
+    if (motor.getFault(FaultID.kSensorFault)) {
+      DriverStation.reportWarning("Sensor Fault on Intake Motor ID:" + motor.getDeviceId(), false);
+    }
   }
 
   /**

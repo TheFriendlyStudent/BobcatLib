@@ -1,8 +1,10 @@
 package BobcatLib.Hardware.LedControllers;
 
 import BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState;
+import org.littletonrobotics.junction.AutoLog;
 
 public interface LedControllerIO {
+  @AutoLog
   public class LedControllerIOInputs {
     public CANdleState currState = CANdleState.OFF;
   }

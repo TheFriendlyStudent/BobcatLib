@@ -4,6 +4,12 @@
 
 package frc.robot;
 
+import java.util.function.DoubleSupplier;
+
+import BobcatLib.Hardware.Controllers.OI;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -29,7 +35,6 @@ public class RobotContainer {
         /* Subsystems */
         public final OI s_Controls = new OI();
         public final SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(),Robot.alliance);
-        private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine");
 
         /**
          * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -41,14 +46,6 @@ public class RobotContainer {
 
                 initComand();
 
-                // Auto controls
-                /*
-                 * Auto Chooser
-                 * 
-                 * Names must match what is in PathPlanner
-                 * Please give descriptive names
-                 */
-                autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 // autoChooser.addOption("name", new PathPlannerAuto("nameinpathplanner"));
                 // Configure the button bindings
                 configureButtonBindings();
@@ -70,36 +67,6 @@ public class RobotContainer {
                                                 () -> s_Controls.getRotationValue(),
                                                 () -> s_Controls.robotCentric.getAsBoolean(), s_Controls.controllerJson));
 
-        }
-
-        public boolean autoChooserInitialized() {
-                return autoChooser.get() != null;
-        }
-
-        /**
-         * this should only be called once DS and FMS are attached
-         */
-        public void configureAutos() {
-
-                /*
-                 * Auto Events
-                 * 
-                 * Names must match what is in PathPlanner
-                 * Please give descriptive names
-                 */
-                NamedCommands.registerCommand("PathfindingCommand", s_Swerve.driveToPose(new Pose2d()));
-
-                /*
-                 * Auto Chooser
-                 * 
-                 * Names must match what is in PathPlanner
-                 * Please give descriptive names
-                 */
-                autoChooser.addDefaultOption("Do Nothing", Commands.none());
-                autoChooser.addOption("DriveToOne-One",
-                                new ParallelDeadlineGroup(new WaitCommand(10), new RunCommand(
-                                                () -> s_Swerve.drive(new Translation2d(1, 1), 0, false, false, s_Swerve.getHeading(), s_Swerve.getPose()),
-                                                s_Swerve)));
         }
 
         /**
@@ -132,7 +99,9 @@ public class RobotContainer {
          * @return the command to run in autonomous
          */
         public Command getAutonomousCommand() {
-                return autoChooser.get();
+                return new Command() {
+                        
+                };
         }
 
         /**

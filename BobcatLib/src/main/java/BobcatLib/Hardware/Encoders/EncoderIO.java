@@ -1,9 +1,11 @@
 package BobcatLib.Hardware.Encoders;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.AutoLog;
 
 public interface EncoderIO {
   /** Represents the inputs for the gyro sensor. */
+  @AutoLog
   public static class EncoderIOInputs {
     /** The current position of the encoder. */
     public Rotation2d getEncoderPosition = new Rotation2d();
@@ -19,6 +21,10 @@ public interface EncoderIO {
   public default void updateInputs(EncoderIOInputs inputs) {}
 
   public default void periodic(CanCoderWrapper encoder) {}
+
+  public default void periodic(RevAbsoluteEncoder encoder) {}
+
+  public default void periodic(SparkEncoder encoder) {}
 
   public default void periodic(ThriftyAbsoluteEncoder encoder) {}
 

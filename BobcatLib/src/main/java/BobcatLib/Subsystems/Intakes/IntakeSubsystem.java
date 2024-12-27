@@ -1,13 +1,14 @@
 package BobcatLib.Subsystems.Intakes;
 
+import BobcatLib.Subsystems.Intakes.Modules.IntakeIOInputsAutoLogged;
 import BobcatLib.Subsystems.Intakes.Modules.IntakeModuleIO;
-import BobcatLib.Subsystems.Intakes.Modules.IntakeModuleIO.IntakeIOInputs;
 import BobcatLib.Subsystems.Intakes.Parser.IntakeJson;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import java.io.File;
 import java.io.IOException;
+import org.littletonrobotics.junction.Logger;
 
 /**
  * Represents the Intake Subsystem in the robot. It interacts with the intake module to control the
@@ -15,7 +16,7 @@ import java.io.IOException;
  */
 public class IntakeSubsystem extends SubsystemBase {
   private IntakeModuleIO io;
-  private final IntakeIOInputs inputs = new IntakeIOInputs();
+  private final IntakeIOInputsAutoLogged inputs = new IntakeIOInputsAutoLogged();
   private String name = "";
   private IntakeJson intakeJson;
 
@@ -63,6 +64,7 @@ public class IntakeSubsystem extends SubsystemBase {
    */
   public void periodic() {
     io.updateInputs(inputs); // Update the intake subsystem inputs
+    Logger.processInputs(name, inputs); // Log the current inputs for debugging and analysis
   }
 
   /** Stops the intake subsystem by halting the IO operations. */

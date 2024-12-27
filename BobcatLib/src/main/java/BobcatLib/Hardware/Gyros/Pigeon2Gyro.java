@@ -11,7 +11,6 @@ import com.ctre.phoenix6.hardware.Pigeon2;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.networktables.StringSubscriber;
-import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.wpilibj.Filesystem;
 import java.io.File;
 import java.io.IOException;
@@ -83,8 +82,8 @@ public class Pigeon2Gyro implements GyroIO {
   }
 
   private double getYaw() {
-    StatusSignal<Angle> raw_yaw = gyro.getYaw();
-    return raw_yaw.getValueAsDouble();
+    StatusSignal<Double> raw_yaw = gyro.getYaw();
+    return raw_yaw.getValue();
   }
   /**
    * Sets the roll value of the gyro sensor.
@@ -94,8 +93,8 @@ public class Pigeon2Gyro implements GyroIO {
   public void setRoll(double roll) {}
 
   private double getRoll() {
-    StatusSignal<Angle> raw_roll = gyro.getRoll();
-    return raw_roll.getValueAsDouble();
+    StatusSignal<Double> raw_roll = gyro.getRoll();
+    return raw_roll.getValue();
   }
 
   /**
@@ -106,8 +105,8 @@ public class Pigeon2Gyro implements GyroIO {
   public void setPitch(double pitch) {}
 
   private double getPitch() {
-    StatusSignal<Angle> raw_pitch = gyro.getPitch();
-    return raw_pitch.getValueAsDouble();
+    StatusSignal<Double> raw_pitch = gyro.getPitch();
+    return raw_pitch.getValue();
   }
 
   public double getTimeDiff() {

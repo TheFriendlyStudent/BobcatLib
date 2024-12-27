@@ -1,12 +1,12 @@
 package BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.interfaces;
 
 import edu.wpi.first.units.Measure;
-import edu.wpi.first.units.VoltageUnit;
+import edu.wpi.first.units.Voltage;
 
 public interface SysidCompatibleSwerve {
   // TODO: better documentation
   /** set all modules to supplied voltage */
-  public default void sysidVoltage(Measure<VoltageUnit> volts) {}
+  public default void sysidVoltage(Measure<Voltage> volts) {}
 
   /** volts */
   public default double getModuleVoltage(int moduleNumber) {

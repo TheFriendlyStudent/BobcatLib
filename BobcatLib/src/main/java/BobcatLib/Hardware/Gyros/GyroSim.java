@@ -1,7 +1,7 @@
 package BobcatLib.Hardware.Gyros;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
-import com.studica.frc.*;
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -62,7 +62,7 @@ public class GyroSim implements GyroIO {
 
   public void periodic(Pigeon2 imu) {}
 
-  public void periodic(com.studica.frc.AHRS imu) {}
+  public void periodic(AHRS imu) {}
 
   public void periodic() {}
 

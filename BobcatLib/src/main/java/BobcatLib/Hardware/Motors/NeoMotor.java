@@ -4,17 +4,11 @@ import BobcatLib.Hardware.Motors.SensorHelpers.InvertedWrapper;
 import BobcatLib.Hardware.Motors.SensorHelpers.NeutralModeWrapper;
 import BobcatLib.Logging.FaultsAndErrors.SparkMaxFaults;
 import BobcatLib.Utilities.CANDeviceDetails;
+import com.revrobotics.CANSparkBase.ControlType;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.spark.SparkBase.ControlType;
-import com.revrobotics.spark.SparkBase.PersistMode;
-import com.revrobotics.spark.SparkBase.ResetMode;
-import com.revrobotics.spark.SparkClosedLoopController;
-import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.SparkMax;
-import com.revrobotics.spark.config.ClosedLoopConfig.ClosedLoopSlot;
-import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
-import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.SparkPIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 
@@ -26,13 +20,11 @@ import edu.wpi.first.math.geometry.Rotation2d;
 public class NeoMotor implements MotorIO {
   private int motorCanId = 0;
   private final SimpleMotorFeedforward motorFeedFordward;
-  private SparkMax mMotor;
+  private CANSparkMax mMotor;
   private RelativeEncoder encoder;
   private String busName = "";
   private SparkMaxFaults faults;
-  private SparkMaxConfig motorConfig;
 
-  private SparkClosedLoopController closedLoopController;
   private CANDeviceDetails details;
 
   /**
@@ -52,10 +44,10 @@ public class NeoMotor implements MotorIO {
     double motorKA = 0.00;
     motorFeedFordward = new SimpleMotorFeedforward(motorKS, motorKV, motorKA);
     /* Drive Motor Config */
-    mMotor = new SparkMax(id, MotorType.kBrushless);
+    mMotor = new CANSparkMax(id, MotorType.kBrushless);
     encoder = mMotor.getEncoder();
     configMotor(config);
-    mMotor.configure(motorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    mMotor.burnFlash();
     encoder.setPosition(0.0);
     faults = new SparkMaxFaults(motorCanId);
   }
@@ -66,44 +58,33 @@ public class NeoMotor implements MotorIO {
    * @param cfg The MotorConfigs object containing configuration parameters.
    */
   public void configMotor(MotorConfigs cfg) {
+    /** Motor Configuration */
+    mMotor.restoreFactoryDefaults();
 
-    /*
-     * Create a new SPARK MAX configuration object. This will store the
-     * configuration parameters for the SPARK MAX that we will set below.
-     */
-    motorConfig = new SparkMaxConfig();
     /* Motor Inverts and Neutral Mode */
-    motorConfig.encoder.inverted(new InvertedWrapper(cfg.isInverted).asREV());
+    mMotor.setInverted(new InvertedWrapper(cfg.isInverted).asREV());
+    mMotor.setIdleMode(new NeutralModeWrapper(cfg.mode).asIdleMode());
 
-    /*
-     * Configure the encoder. For this specific example, we are using the
-     * integrated encoder of the NEO, and we don't need to configure it. If
-     * needed, we can adjust values like the position or velocity conversion
-     * factors.
-     */
-    motorConfig
-        .encoder
-        .positionConversionFactor(cfg.optionalRev.driveConversionVelocityFactor)
-        .velocityConversionFactor(cfg.optionalRev.driveConversionPositionFactor);
-
-    IdleMode motorMode = new NeutralModeWrapper(cfg.mode).asIdleMode();
-    motorConfig.idleMode(motorMode);
+    /* Gear Ratio Config */
+    encoder.setVelocityConversionFactor(cfg.optionalRev.driveConversionVelocityFactor);
+    encoder.setPositionConversionFactor(cfg.optionalRev.driveConversionPositionFactor);
 
     /* Current Limiting */
-    motorConfig.smartCurrentLimit(cfg.optionalRev.SupplyCurrentLimit);
+    mMotor.setSmartCurrentLimit(cfg.optionalRev.SupplyCurrentLimit);
 
     /* PID Config */
-    motorConfig
-        .closedLoop
-        .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-        .p(cfg.kP, ClosedLoopSlot.kSlot1)
-        .i(cfg.kI, ClosedLoopSlot.kSlot1)
-        .d(cfg.kD, ClosedLoopSlot.kSlot1)
-        .velocityFF(0);
+    SparkPIDController controller = mMotor.getPIDController();
+    controller.setP(cfg.kP);
+    controller.setI(cfg.kI);
+    controller.setD(cfg.kD);
+    controller.setFF(0);
 
     /* Open and Closed Loop Ramping */
-    motorConfig.closedLoopRampRate(cfg.optionalRev.closedLoopRamp);
-    motorConfig.openLoopRampRate(cfg.optionalRev.openLoopRamp);
+    mMotor.setClosedLoopRampRate(cfg.optionalRev.closedLoopRamp);
+    mMotor.setOpenLoopRampRate(cfg.optionalRev.openLoopRamp);
+
+    /* Misc. Configs */
+    mMotor.enableVoltageCompensation(12);
   }
 
   /**
@@ -142,7 +123,8 @@ public class NeoMotor implements MotorIO {
    */
   public void setSpeed(double speedInMPS) {
     double output = motorFeedFordward.calculate(speedInMPS);
-    closedLoopController.setReference(output, ControlType.kVelocity, 0);
+    SparkPIDController controller = mMotor.getPIDController();
+    controller.setReference(output, ControlType.kVelocity, 0);
   }
 
   /**
@@ -154,7 +136,8 @@ public class NeoMotor implements MotorIO {
   public void setSpeed(double speedInMPS, double mechanismCircumference) {
     double velocity = speedInMPS / mechanismCircumference;
     double output = motorFeedFordward.calculate(velocity);
-    closedLoopController.setReference(output, ControlType.kVelocity, 0);
+    SparkPIDController controller = mMotor.getPIDController();
+    controller.setReference(output, ControlType.kVelocity, 0);
   }
 
   /**
@@ -163,7 +146,8 @@ public class NeoMotor implements MotorIO {
    * @param angleInRotations The desired angle in rotations.
    */
   public void setAngle(double angleInRotations) {
-    closedLoopController.setReference(angleInRotations, ControlType.kPosition, 0);
+    SparkPIDController controller = mMotor.getPIDController();
+    controller.setReference(angleInRotations, ControlType.kPosition, 0);
   }
 
   /**
@@ -190,11 +174,11 @@ public class NeoMotor implements MotorIO {
   }
 
   /**
-   * Retrieves the SparkMax motor instance.
+   * Retrieves the CANSparkMax motor instance.
    *
-   * @return The SparkMax instance representing the motor.
+   * @return The CANSparkMax instance representing the motor.
    */
-  public SparkMax getMotor() {
+  public CANSparkMax getMotor() {
     return mMotor;
   }
 

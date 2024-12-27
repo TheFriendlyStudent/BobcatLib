@@ -50,6 +50,10 @@ public class FalconSteerMotor implements SteerWrapper {
     swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimitEnable =
         chosenModule.json.angleEnableCurrentLimit;
     swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimit = chosenModule.json.angleCurrentLimit;
+    swerveAngleFXConfig.CurrentLimits.SupplyCurrentThreshold =
+        chosenModule.json.angleCurrentThreshold;
+    swerveAngleFXConfig.CurrentLimits.SupplyTimeThreshold =
+        chosenModule.json.angleCurrentThresholdTime;
 
     /* PID Config */
     swerveAngleFXConfig.Slot0.kP = chosenModule.anglePID.kP;
@@ -77,7 +81,7 @@ public class FalconSteerMotor implements SteerWrapper {
    * @return position of the steer motor in rotations.
    */
   public double getPosition() {
-    return mAngleMotor.getPosition().getValueAsDouble();
+    return mAngleMotor.getPosition().getValue();
   }
 
   /**

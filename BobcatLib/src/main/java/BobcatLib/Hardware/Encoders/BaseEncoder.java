@@ -1,10 +1,10 @@
 package BobcatLib.Hardware.Encoders;
 
-import BobcatLib.Hardware.Encoders.EncoderIO.EncoderIOInputs;
+import org.littletonrobotics.junction.Logger;
 
 public class BaseEncoder {
   private final EncoderIO io;
-  private final EncoderIOInputs inputs = new EncoderIOInputs();
+  private final EncoderIOInputsAutoLogged inputs = new EncoderIOInputsAutoLogged();
 
   public BaseEncoder(EncoderIO io) {
     this.io = io;
@@ -12,6 +12,7 @@ public class BaseEncoder {
 
   public void periodic() {
     io.updateInputs(inputs);
+    Logger.processInputs("encoder", inputs);
   }
 
   /** Configs the absolute encoder sensor position , determining invertion. */
