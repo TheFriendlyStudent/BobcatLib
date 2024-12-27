@@ -124,6 +124,7 @@
 '/Users/ao/Documents/GitHub/BobcatRobotics/BobcatLib/BobcatLib/src/main/java/BobcatLib/Subsystems/Climbers/Modules/ClimberIO.java'
 '/Users/ao/Documents/GitHub/BobcatRobotics/BobcatLib/BobcatLib/src/main/java/BobcatLib/Subsystems/Climbers/Modules/ClimberReal.java'
 '/Users/ao/Documents/GitHub/BobcatRobotics/BobcatLib/BobcatLib/src/main/java/BobcatLib/Subsystems/Climbers/package-info.java'
+'/Users/ao/Documents/GitHub/BobcatRobotics/BobcatLib/BobcatLib/src/main/java/BobcatLib/Subsystems/Arms/package-info.java'
 '/Users/ao/Documents/GitHub/BobcatRobotics/BobcatLib/BobcatLib/src/main/java/BobcatLib/Subsystems/package-info.java'
 '/Users/ao/Documents/GitHub/BobcatRobotics/BobcatLib/BobcatLib/src/main/java/BobcatLib/Logging/Alert.java'
 '/Users/ao/Documents/GitHub/BobcatRobotics/BobcatLib/BobcatLib/src/main/java/BobcatLib/Logging/FaultsAndErrors/TalonFXFaults.java'
