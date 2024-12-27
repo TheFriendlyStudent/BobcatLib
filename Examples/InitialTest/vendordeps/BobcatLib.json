@@ -5,9 +5,9 @@
     "frcYear": "2025",
     "uuid": "69eb6caf-545f-44e6-b7f7-ccc646b5586e",
     "mavenUrls": [
-        "https://bobcatrobotics.github.io/BobcatLib/BobcatLib/repos"
+        "https://bobcatlib.nyc3.digitaloceanspaces.com/repos"
     ],
-    "jsonUrl": "https://bobcatrobotics.github.io/BobcatLib/BobcatLib/BobcatLib.json",
+    "jsonUrl": "https://bobcatlib.nyc3.digitaloceanspaces.com/BobcatLib.json",
     "javaDependencies": [
         {
             "groupId": "BobcatLib",
