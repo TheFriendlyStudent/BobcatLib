@@ -1,0 +1,160 @@
+plugins {
+    id 'cpp'
+    id 'java'
+    id 'google-test'
+    id 'edu.wpi.first.wpilib.repositories.WPILibRepositoriesPlugin' version '2020.2'
+    id 'edu.wpi.first.NativeUtils' version '2025.1.0'
+    id 'edu.wpi.first.GradleJni' version '1.1.0'
+    id 'edu.wpi.first.GradleVsCode' version '2.1.0'
+    id "edu.wpi.first.GradleRIO" version "2024.3.2"
+    id "com.diffplug.spotless" version "6.11.0"
+}
+
+repositories {
+    mavenCentral()
+}
+if (project.hasProperty('releaseMode')) {
+    wpilibRepositories.addAllReleaseRepositories(project)
+} else {
+    wpilibRepositories.addAllDevelopmentRepositories(project)
+}
+
+// Apply C++ configuration
+apply from: 'config.gradle'
+
+// Apply Java configuration
+dependencies {
+    implementation wpi.java.deps.wpilib()
+    implementation wpi.java.vendor.java()
+
+    implementation 'edu.wpi.first.cscore:cscore-java:2024.+'
+    implementation 'edu.wpi.first.cameraserver:cameraserver-java:2024.+'
+    implementation 'edu.wpi.first.ntcore:ntcore-java:2024.+'
+    implementation 'edu.wpi.first.wpilibj:wpilibj-java:2024.+'
+    implementation 'edu.wpi.first.wpiutil:wpiutil-java:2024.+'
+    implementation 'edu.wpi.first.wpimath:wpimath-java:2024.+'
+    implementation 'edu.wpi.first.wpiunits:wpiunits-java:2024.+'
+    implementation 'edu.wpi.first.hal:hal-java:2024.+'
+    implementation "org.ejml:ejml-simple:0.43.1"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:2.12.4"
+    implementation "com.fasterxml.jackson.core:jackson-core:2.12.4"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.12.4"
+    implementation 'edu.wpi.first.thirdparty.frc2024.opencv:opencv-java:4.8.0-2'
+
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.46'
+    implementation 'com.alibaba:fastjson:2.0.28'
+    //AdvantageKit Stuff*****
+    def akitJson = new groovy.json.JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
+    annotationProcessor "org.littletonrobotics.akit.junction:junction-autolog:$akitJson.version"
+}
+
+// Set up exports properly
+nativeUtils {
+    exportsConfigs {
+        // Main library is just default empty. This will export everything
+        YourLibTemplate {
+        }
+    }
+}
+
+model {
+    components {
+        YourLibTemplate(NativeLibrarySpec) {
+            sources {
+                cpp {
+                    source {
+                        srcDirs 'src/main/native/cpp'
+                        include '**/*.cpp'
+                    }
+                    exportedHeaders {
+                        srcDirs 'src/main/native/include'
+                    }
+                }
+            }
+            nativeUtils.useRequiredLibrary(it, 'wpilib_shared')
+        }
+    }
+    testSuites {
+        YourLibTemplateTest {
+            sources.cpp {
+                source {
+                    srcDir 'src/test/native/cpp'
+                    include '**/*.cpp'
+                }
+            }
+
+            nativeUtils.useRequiredLibrary(it, "wpilib_executable_shared", "googletest_static")
+        }
+
+    }
+}
+
+spotless {
+    java {
+        target fileTree('.') {
+            include '**/*.java'
+            exclude '**/build/**', '**/build-*/**'
+        }
+        toggleOffOn()
+        googleJavaFormat()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    cpp {
+        target fileTree('.') {
+            include '**/*.cpp', '**/*.h'
+            exclude '**/build/**', '**/build-*/**'
+        }
+        eclipseCdt()
+    }
+    groovyGradle {
+        target fileTree('.') {
+            include '**/*.gradle'
+            exclude '**/build/**', '**/build-*/**'
+        }
+        greclipse()
+        indentWithSpaces(4)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    format 'misc', {
+        target fileTree('.') {
+            include '**/*.md', '**/.gitignore'
+            exclude '**/build/**', '**/build-*/**'
+        }
+        trimTrailingWhitespace()
+        indentWithSpaces(4)
+        endWithNewline()
+    }
+}
+
+apply from: 'publish.gradle'
+
+wrapper {
+    gradleVersion '8.4'
+}
+
+
+//AdvantageKit Stuff****
+
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/Mechanical-Advantage/AdvantageKit")
+        credentials {
+            username = "Mechanical-Advantage-Bot"
+            password = "\u0067\u0068\u0070\u005f\u006e\u0056\u0051\u006a\u0055\u004f\u004c\u0061\u0079\u0066\u006e\u0078\u006e\u0037\u0051\u0049\u0054\u0042\u0032\u004c\u004a\u006d\u0055\u0070\u0073\u0031\u006d\u0037\u004c\u005a\u0030\u0076\u0062\u0070\u0063\u0051"
+        }
+    }
+    mavenLocal()
+}
+
+configurations.all {
+    exclude group: "edu.wpi.first.wpilibj"
+}
+
+task(checkAkitInstall, dependsOn: "classes", type: JavaExec) {
+    mainClass = "org.littletonrobotics.junction.CheckInstall"
+    classpath = sourceSets.main.runtimeClasspath
+}
+compileJava.finalizedBy checkAkitInstall
