@@ -52,14 +52,14 @@ dependencies {
 nativeUtils {
     exportsConfigs {
         // Main library is just default empty. This will export everything
-        YourLibTemplate {
+        BobcatLib {
         }
     }
 }
 
 model {
     components {
-        YourLibTemplate(NativeLibrarySpec) {
+        BobcatLib(NativeLibrarySpec) {
             sources {
                 cpp {
                     source {
@@ -75,7 +75,7 @@ model {
         }
     }
     testSuites {
-        YourLibTemplateTest {
+        BobcatLibTest {
             sources.cpp {
                 source {
                     srcDir 'src/test/native/cpp'
