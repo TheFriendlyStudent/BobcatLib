@@ -6,7 +6,6 @@ package frc.robot;
 
 import java.util.Optional;
 
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
