@@ -6,8 +6,7 @@ import BobcatLib.Hardware.Gyros.Pigeon2Gyro;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModule;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModuleReal;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.PoseLib;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.BobcatSwerveDrivePoseEstimator;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleLimitsJson;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser.BaseJson;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser.SwerveIndicatorJson;
@@ -22,6 +21,9 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math.GeometryUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.path.PathConstraints;
+
+import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -30,6 +32,8 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.Measure;
 import edu.wpi.first.units.VoltageUnit;
@@ -63,8 +67,10 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
   public PIDConstants pidTranslation;
   public PIDConstants pidRotation;
   static final Lock odometryLock = new ReentrantLock();
-  public final PoseLib swerveDrivePoseEstimator;
+  public final BobcatSwerveDrivePoseEstimator swerveDrivePoseEstimator;
   private Alliance team;
+  Matrix<N3,N1> visionStdDevs;
+  Matrix<N3,N1> stateStdDevs;
 
   /*
    * Swerve Kinematics
@@ -73,9 +79,12 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
    */
   public static SwerveDriveKinematics swerveKinematics;
 
-  public SwerveDrive(boolean isSim, Alliance team) {
+  public SwerveDrive(boolean isSim, Alliance team, Matrix<N3,N1> visionStdDevs, Matrix<N3,N1> stateStdDevs) {
     this.team = team;
     this.isSim = isSim;
+    this.visionStdDevs  = visionStdDevs;
+    this.stateStdDevs = stateStdDevs;
+    
     /* Drivetrain Constants */
     loadConfigurationFromFile();
     trackWidth = Units.inchesToMeters(jsonSwerve.base.trackWidth);
@@ -113,14 +122,14 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
     resetModulesToAbsolute();
 
     swerveDrivePoseEstimator =
-        new WpiPoseEstimator(
-            swerveKinematics,
-            getGyroYaw(),
-            getModulePositions(),
-            new Pose2d(
-                new Translation2d(0, 0),
-                Rotation2d.fromDegrees(
-                    0))); // x,y,heading in radians; Vision measurement std dev, higher=less weight
+        new BobcatSwerveDrivePoseEstimator(
+           swerveKinematics,
+           gyro.getYaw(),
+           getModulePositions(),
+           new Pose2d(),
+           stateStdDevs,
+           visionStdDevs
+        ); // x,y,heading in radians; Vision measurement std dev, higher=less weight
 
     pidTranslation =
         new PIDConstants(
@@ -391,6 +400,9 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
     for (SwerveModule mod : mSwerveMods) {
       mod.periodic();
     }
+    //swerveDrivePoseEstimator.setStateStdDevs(new state std devs here);
+    swerveDrivePoseEstimator.updateWithTime(Timer.getFPGATimestamp(), getGyroYaw(), getModulePositions());
+    //swerveDrivePoseEstimator.addVisionMeasurement();
   }
 
   /** Checks if in sim. */
@@ -512,7 +524,7 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
         ChassisSpeeds.fromFieldRelativeSpeeds(0, 0, 0, getGyroYaw()));
   }
 
-  /** Zeres the heading of the swerve based on the gyro */
+  /** Zeros the heading of the swerve based on the gyro */
   public void zeroHeading() {
     odometryLock.lock();
     swerveDrivePoseEstimator.resetPosition(getGyroYaw(), getModulePositions(), getPose());

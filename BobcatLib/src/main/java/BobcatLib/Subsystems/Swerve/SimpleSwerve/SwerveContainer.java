@@ -3,6 +3,7 @@ package BobcatLib.Subsystems.Swerve.SimpleSwerve;
 import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Constants.SwerveConstants;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
 import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -32,7 +33,7 @@ public class SwerveContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public SwerveContainer(boolean isSimulation, DriverStation.Alliance ally) {
     alliance = new Alliance(ally);
-    s_Swerve = new SwerveDrive(isSimulation, alliance);
+    s_Swerve = new SwerveDrive(isSimulation, alliance, SwerveConstants.visionStdDevs, SwerveConstants.stateStdDevs);
     initComand();
     // Auto controls
     /*

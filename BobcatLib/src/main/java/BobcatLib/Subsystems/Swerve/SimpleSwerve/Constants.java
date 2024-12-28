@@ -1,8 +1,12 @@
 package BobcatLib.Subsystems.Swerve.SimpleSwerve;
 
+import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.RobotBase;
 
@@ -43,11 +47,15 @@ public class Constants {
         new Pose2d(
             new Translation2d(fieldLength - Units.inchesToMeters(72.455), fieldWidth),
             Rotation2d.fromDegrees(-90));
+
   }
 
   /** Swerve Constants */
   public static final class SwerveConstants {
     public static final boolean firstOrderDriving = true;
     public static final String canivorename = "Practice";
+    public static final Matrix<N3,N1> visionStdDevs = VecBuilder.fill(0.1, 0.1, Units.degreesToRadians(10)); 
+    public static final Matrix<N3,N1> stateStdDevs = VecBuilder.fill(01, 0.01, Units.degreesToRadians(1)); 
+
   }
 }
