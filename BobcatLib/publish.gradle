@@ -2,7 +2,7 @@ apply plugin: 'maven-publish'
 
 ext.licenseFile = files("$rootDir/LICENSE.txt")
 
-def pubVersion = System.getenv("releaseVersion") ?: "test"
+def pubVersion = System.getenv("releaseVersion") ?: "2025.0.1"
 
 def releasesRepoUrl = "BobcatLib/repos/"
 
@@ -117,11 +117,11 @@ task outputJavadocJar(type: Jar, dependsOn: javadoc) {
 task vendordepJson() {
     description = 'Builds the vendordep json file.'
     group = 'Build'
-    outputs.file("BobcatLib/BobcatLib.json")
+    outputs.file("yagsl/yagsl.json")
 
     copy {
-        from "BobcatLib.json"
-        into "BobcatLib/"
+        from "yagsl.json"
+        into "yagsl/"
         expand(version: pubVersion,
         groupId: artifactGroupId,
         artifactId: baseArtifactId)

@@ -1,4 +1,4 @@
-# WPILib Vendor Template (BobcatLib)
+# WPILib Vendor Template (YAGSLg)
 
 This is the base WPILib vendor template for 2023.
 
