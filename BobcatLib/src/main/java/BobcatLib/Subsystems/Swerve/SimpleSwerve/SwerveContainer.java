@@ -48,7 +48,7 @@ public class SwerveContainer {
   }
 
   public void initComand() {
-    DoubleSupplier translation = () -> s_Controls.getTranslationValue();
+    DoubleSupplier translation = () -> s_Controls.getTranslationValue(); //TODO change if 2025 field isn't mirrored
     DoubleSupplier strafe = () -> s_Controls.getStrafeValue();
     if (!alliance.isBlueAlliance()) {
       translation = () -> -s_Controls.getTranslationValue();

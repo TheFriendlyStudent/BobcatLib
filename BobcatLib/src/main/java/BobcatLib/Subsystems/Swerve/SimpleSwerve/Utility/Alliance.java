@@ -24,4 +24,13 @@ public class Alliance {
   public DriverStation.Alliance get() {
     return alliance;
   }
+
+  /**
+   * If FMS isnt attached, Driverstation.getAlliance() returns null, this defaults to blue instead
+   * 
+   * @return blue if FMS isnt attached, actual alliance otherwise
+   */
+  public DriverStation.Alliance getNullSafe(){
+    return DriverStation.getAlliance().isEmpty() ? DriverStation.Alliance.Blue : DriverStation.getAlliance().get();
+  }
 }
