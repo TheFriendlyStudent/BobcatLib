@@ -6,6 +6,8 @@ package frc.robot;
 
 import java.util.function.DoubleSupplier;
 
+import com.pathplanner.lib.auto.NamedCommands;
+
 import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
@@ -35,7 +37,7 @@ public class RobotContainer {
         /* Subsystems */
         public final OI s_Controls = new OI();
         public final SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance);
-        private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine");
+        //private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine");
 
         /**
          * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -54,7 +56,7 @@ public class RobotContainer {
                  * Names must match what is in PathPlanner
                  * Please give descriptive names
                  */
-                autoChooser.addDefaultOption("Do Nothing", Commands.none());
+                //autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 // autoChooser.addOption("name", new PathPlannerAuto("nameinpathplanner"));
                 // Configure the button bindings
                 configureButtonBindings();
@@ -78,9 +80,9 @@ public class RobotContainer {
 
         }
 
-        public boolean autoChooserInitialized() {
-                return autoChooser.get() != null;
-        }
+        //public boolean autoChooserInitialized() {
+        //        return autoChooser.get() != null;
+        //}
 
         /**
          * this should only be called once DS and FMS are attached
@@ -101,11 +103,11 @@ public class RobotContainer {
                  * Names must match what is in PathPlanner
                  * Please give descriptive names
                  */
-                autoChooser.addDefaultOption("Do Nothing", Commands.none());
-                autoChooser.addOption("DriveToOne-One",
-                                new ParallelDeadlineGroup(new WaitCommand(10), new RunCommand(
-                                                () -> s_Swerve.drive(new Translation2d(1, 1), 0, false, false, s_Swerve.getHeading(), s_Swerve.getPose()),
-                                                s_Swerve)));
+                //autoChooser.addDefaultOption("Do Nothing", Commands.none());
+                //autoChooser.addOption("DriveToOne-One",
+                //                new ParallelDeadlineGroup(new WaitCommand(10), new RunCommand(
+                //                                () -> s_Swerve.drive(new Translation2d(1, 1), 0, false, false, s_Swerve.getHeading(), s_Swerve.getPose()),
+                //                                s_Swerve)));
         }
 
         /**
@@ -137,9 +139,9 @@ public class RobotContainer {
          *
          * @return the command to run in autonomous
          */
-        public Command getAutonomousCommand() {
-                return autoChooser.get();
-        }
+        //public Command getAutonomousCommand() {
+        //        return autoChooser.get();
+        //}
 
         /**
          * Use this to pass the test command to the main {@link Robot} class.
