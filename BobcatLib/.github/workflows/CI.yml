@@ -1,4 +1,4 @@
-name: BobcatLib-build
+name: CI
 
 on: [push, pull_request]
 
