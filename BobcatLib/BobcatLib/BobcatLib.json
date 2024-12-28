@@ -1,22 +1,22 @@
 {
-  "fileName": "BaseSwerveLib.json",
-  "name": "BaseSwerveLib",
-  "version": "2024.12.27.0",
-  "frcYear": "2024",
-  "uuid": "e0dd3f7b-2ed9-412a-8719-f48ff6213f07",
-  "mavenUrls": [
-    "https://aopalka.github.io/BaseSwerveLib/repos"
-  ],
-  "jsonUrl": "https://aopalka.github.io/BaseSwerveLib/BaseSwerveLib.json",
-  "javaDependencies": [
-    {
-      "groupId": "BaseSwerveLib",
-      "artifactId": "BaseSwerveLib-java",
-      "version": "2024.12.27.0"
-    }
-  ],
-  "jniDependencies": [
-  ],
-  "cppDependencies": [
-  ]
+"fileName": "BobcatLib.json",
+"name": "BobcatLib",
+"version": "2024.12.28.1",
+"frcYear": "2024",
+"uuid": "69eb6caf-545f-44e6-b7f7-ccc646b5586e",
+"mavenUrls": [
+  "https://bobcatrobotics.github.io/BobcatLib/BobcatLib/repos"
+],
+"jsonUrl": "https://bobcatrobotics.github.io/BobcatLib/BobcatLib/BobcatLib.json",
+"javaDependencies": [
+  {
+    "groupId": "BobcatLib",
+    "artifactId": "BobcatLib-java",
+    "version": "2024.12.28.1"
+  }
+],
+"jniDependencies": [
+],
+"cppDependencies": [
+]
 }
