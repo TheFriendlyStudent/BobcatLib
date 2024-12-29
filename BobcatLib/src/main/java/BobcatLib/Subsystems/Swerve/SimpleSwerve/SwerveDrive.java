@@ -7,6 +7,8 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModule;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModuleReal;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.BobcatSwerveDrivePoseEstimator;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.PoseLib;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleLimitsJson;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser.BaseJson;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser.SwerveIndicatorJson;
@@ -56,7 +58,6 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
   private Translation2d aimAssistTranslation = new Translation2d();
   public boolean isSim = false;
   private final PathConstraints pathfindingConstraints;
-
   /* Drivetrain Constants */
   public double trackWidth;
   public double wheelBase;
@@ -65,7 +66,7 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
   public PIDConstants pidTranslation;
   public PIDConstants pidRotation;
   static final Lock odometryLock = new ReentrantLock();
-  public final BobcatSwerveDrivePoseEstimator swerveDrivePoseEstimator;
+  public PoseLib swerveDrivePoseEstimator;
   private Alliance team;
   Matrix<N3, N1> visionStdDevs;
   Matrix<N3, N1> stateStdDevs;
@@ -119,6 +120,78 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
     }
     Timer.delay(1);
     resetModulesToAbsolute();
+
+    swerveDrivePoseEstimator =
+        new WpiPoseEstimator(
+            swerveKinematics,
+            gyro.getYaw(),
+            getModulePositions(),
+            new Pose2d()); // x,y,heading in radians; Vision measurement std dev, higher=less
+    // weight
+
+    pidTranslation =
+        new PIDConstants(
+            jsonSwerve.translationPID.driveKP,
+            jsonSwerve.translationPID.driveKI,
+            jsonSwerve.translationPID.driveKD); // Translation
+    pidRotation =
+        new PIDConstants(
+            jsonSwerve.rotationPID.driveKP,
+            jsonSwerve.rotationPID.driveKI,
+            jsonSwerve.rotationPID.driveKD); // Rotation
+  }
+
+  public SwerveDrive(boolean isSim, Alliance team) {
+    this.team = team;
+    this.isSim = isSim;
+    this.visionStdDevs = null;
+    this.stateStdDevs = null;
+
+    /* Drivetrain Constants */
+    loadConfigurationFromFile();
+    trackWidth = Units.inchesToMeters(jsonSwerve.base.trackWidth);
+    wheelBase = Units.inchesToMeters(jsonSwerve.base.wheelBase);
+    double maxAngularAccel = jsonSwerve.moduleSpeedLimits.maxAngularAcceleration;
+    double maxAngularVelocity = jsonSwerve.moduleSpeedLimits.maxAngularVelocity;
+    pathfindingConstraints =
+        new PathConstraints(
+            jsonSwerve.moduleSpeedLimits.maxSpeed,
+            jsonSwerve.moduleSpeedLimits.maxAccel,
+            maxAngularVelocity,
+            maxAngularAccel);
+    swerveKinematics =
+        new SwerveDriveKinematics(
+            new Translation2d(wheelBase / 2.0, trackWidth / 2.0),
+            new Translation2d(wheelBase / 2.0, -trackWidth / 2.0),
+            new Translation2d(-wheelBase / 2.0, trackWidth / 2.0),
+            new Translation2d(-wheelBase / 2.0, -trackWidth / 2.0));
+    /* Setup Modules */
+    if (isSim) {
+      gyro = new BaseGyro("Swerve-Gyro", new GyroSim());
+
+      mSwerveMods = new SwerveModule[] {};
+    } else {
+      gyro = new BaseGyro("Swerve-Gyro", new Pigeon2Gyro());
+      mSwerveMods =
+          new SwerveModule[] {
+            new SwerveModule(new SwerveModuleReal(0, jsonSwerve.moduleSpeedLimits), 0),
+            new SwerveModule(new SwerveModuleReal(1, jsonSwerve.moduleSpeedLimits), 1),
+            new SwerveModule(new SwerveModuleReal(2, jsonSwerve.moduleSpeedLimits), 2),
+            new SwerveModule(new SwerveModuleReal(3, jsonSwerve.moduleSpeedLimits), 3)
+          };
+    }
+    Timer.delay(1);
+    resetModulesToAbsolute();
+
+    swerveDrivePoseEstimator =
+        new WpiPoseEstimator(
+            swerveKinematics,
+            getGyroYaw(),
+            getModulePositions(),
+            new Pose2d(
+                new Translation2d(0, 0),
+                Rotation2d.fromDegrees(
+                    0))); // x,y,heading in radians; Vision measurement std dev, higher=less weight
 
     swerveDrivePoseEstimator =
         new BobcatSwerveDrivePoseEstimator(

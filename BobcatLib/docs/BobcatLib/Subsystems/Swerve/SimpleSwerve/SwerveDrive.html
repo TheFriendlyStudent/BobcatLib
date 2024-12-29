@@ -111,7 +111,7 @@ implements <a href="Swerve/interfaces/SysidCompatibleSwerve.html" title="interfa
 <div class="col-first even-row-color"><code><a href="Swerve/Module/Utility/PIDConstants.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility">PIDConstants</a></code></div>
 <div class="col-second even-row-color"><code><a href="#pidTranslation" class="member-name-link">pidTranslation</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>final <a href="Swerve/Module/Utility/Pose/BobcatSwerveDrivePoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">BobcatSwerveDrivePoseEstimator</a></code></div>
+<div class="col-first odd-row-color"><code><a href="Swerve/Module/Utility/Pose/PoseLib.html" title="interface in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">PoseLib</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#swerveDrivePoseEstimator" class="member-name-link">swerveDrivePoseEstimator</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code>static <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveDriveKinematics.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveDriveKinematics</a></code></div>
@@ -134,11 +134,14 @@ implements <a href="Swerve/interfaces/SysidCompatibleSwerve.html" title="interfa
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(boolean,BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix)" class="member-name-link">SwerveDrive</a><wbr>(boolean&nbsp;isSim,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(boolean,BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance)" class="member-name-link">SwerveDrive</a><wbr>(boolean&nbsp;isSim,
+ <a href="Utility/Alliance.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility">Alliance</a>&nbsp;team)</code></div>
+<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(boolean,BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix)" class="member-name-link">SwerveDrive</a><wbr>(boolean&nbsp;isSim,
  <a href="Utility/Alliance.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility">Alliance</a>&nbsp;team,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;visionStdDevs,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;stateStdDevs)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
 </li>
@@ -361,7 +364,7 @@ implements <a href="Swerve/interfaces/SysidCompatibleSwerve.html" title="interfa
 <li>
 <section class="detail" id="swerveDrivePoseEstimator">
 <h3>swerveDrivePoseEstimator</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="Swerve/Module/Utility/Pose/BobcatSwerveDrivePoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">BobcatSwerveDrivePoseEstimator</a></span>&nbsp;<span class="element-name">swerveDrivePoseEstimator</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Swerve/Module/Utility/Pose/PoseLib.html" title="interface in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">PoseLib</a></span>&nbsp;<span class="element-name">swerveDrivePoseEstimator</span></div>
 </section>
 </li>
 <li>
@@ -385,6 +388,13 @@ implements <a href="Swerve/interfaces/SysidCompatibleSwerve.html" title="interfa
  <a href="Utility/Alliance.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility">Alliance</a>&nbsp;team,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;visionStdDevs,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;stateStdDevs)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(boolean,BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance)">
+<h3>SwerveDrive</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SwerveDrive</span><wbr><span class="parameters">(boolean&nbsp;isSim,
+ <a href="Utility/Alliance.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility">Alliance</a>&nbsp;team)</span></div>
 </section>
 </li>
 </ul>

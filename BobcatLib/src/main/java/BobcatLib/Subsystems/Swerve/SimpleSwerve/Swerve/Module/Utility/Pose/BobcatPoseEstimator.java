@@ -32,7 +32,7 @@ import java.util.TreeMap;
  *
  * @param <T> Wheel positions type.
  */
-public class BobcatPoseEstimator<T> {
+public class BobcatPoseEstimator<T> implements PoseLib {
   private final Odometry<T> m_odometry;
   private final Matrix<N3, N1> m_q = new Matrix<>(Nat.N3(), Nat.N1());
   private final Matrix<N3, N3> m_visionK = new Matrix<>(Nat.N3(), Nat.N3());
