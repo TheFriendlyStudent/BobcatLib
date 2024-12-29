@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import BobcatLib.Utilities.GarbageHandler;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -14,6 +15,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * this project, you must also update the Main.java file in the project.
  */
 public class Robot extends TimedRobot {
+  
+  private GarbageHandler gh = new  GarbageHandler(5);
   private Command m_autonomousCommand;
 
   private final RobotContainer m_robotContainer;
@@ -42,6 +45,7 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
