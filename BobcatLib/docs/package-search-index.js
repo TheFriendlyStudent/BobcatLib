@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"BobcatLib.Logging"},{"l":"BobcatLib.Utilities"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"BobcatLib.Logging"},{"l":"BobcatLib.Logging.FaultsAndErrors"},{"l":"BobcatLib.Utilities"}];updateSearchResults();
