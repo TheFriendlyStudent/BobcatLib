@@ -6,7 +6,6 @@ import BobcatLib.Hardware.Gyros.Pigeon2Gyro;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModule;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SwerveModuleReal;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.BobcatSwerveDrivePoseEstimator;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.PoseLib;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleLimitsJson;
@@ -192,16 +191,6 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
                 new Translation2d(0, 0),
                 Rotation2d.fromDegrees(
                     0))); // x,y,heading in radians; Vision measurement std dev, higher=less weight
-
-    swerveDrivePoseEstimator =
-        new BobcatSwerveDrivePoseEstimator(
-            swerveKinematics,
-            gyro.getYaw(),
-            getModulePositions(),
-            new Pose2d(),
-            stateStdDevs,
-            visionStdDevs); // x,y,heading in radians; Vision measurement std dev, higher=less
-    // weight
 
     pidTranslation =
         new PIDConstants(
