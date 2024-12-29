@@ -31,6 +31,12 @@ public class CanCoderFaults implements FaultsWrapper {
 
     bootDuringEnableAlert =
         new Alert("Encoders", "CanAndCoder " + id + " recently rebooted.", level);
+
+    outOfTemperatureRangeAlert =
+        new Alert("Encoders", "CanAndCoder " + id + " is too high or low", level);
+
+    magnetOutOfRangeAlert =
+        new Alert("Encoders", "CanAndCoder " + id + " magnet is out of range", level);
   }
 
   public void activateAlert(Alert alert) {

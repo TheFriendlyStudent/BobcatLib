@@ -91,22 +91,22 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default edu.wpi.first.math.geometry.Pose2d</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getEstimatedPosition()" class="member-name-link">getEstimatedPosition</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
 <div class="block">Gets the estimated robot pose.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#resetPosition(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition%5B%5D,edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">resetPosition</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;modulePositions,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;poseMeters)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#resetPosition(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition%5B%5D,edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">resetPosition</a><wbr>(edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
+ edu.wpi.first.math.kinematics.SwerveModulePosition[]&nbsp;modulePositions,
+ edu.wpi.first.math.geometry.Pose2d&nbsp;poseMeters)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
 <div class="block">Resets the robot's position on the field.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default edu.wpi.first.math.geometry.Pose2d</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updateWithTime(double,edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition%5B%5D)" class="member-name-link">updateWithTime</a><wbr>(double&nbsp;currentTimeSeconds,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;wheelPositions)</code></div>
+ edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
+ edu.wpi.first.math.kinematics.SwerveModulePosition[]&nbsp;wheelPositions)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
 </div>
 </div>
@@ -125,7 +125,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getEstimatedPosition()">
 <h3>getEstimatedPosition</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></span>&nbsp;<span class="element-name">getEstimatedPosition</span>()</div>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose2d</span>&nbsp;<span class="element-name">getEstimatedPosition</span>()</div>
 <div class="block">Gets the estimated robot pose.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -136,9 +136,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="resetPosition(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition[],edu.wpi.first.math.geometry.Pose2d)">
 <h3>resetPosition</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetPosition</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;modulePositions,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;poseMeters)</span></div>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetPosition</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
+ edu.wpi.first.math.kinematics.SwerveModulePosition[]&nbsp;modulePositions,
+ edu.wpi.first.math.geometry.Pose2d&nbsp;poseMeters)</span></div>
 <div class="block">Resets the robot's position on the field.
 
  <p>The gyroscope angle does not need to be reset in the user's robot code. The library
@@ -154,9 +154,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="updateWithTime(double,edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition[])">
 <h3>updateWithTime</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></span>&nbsp;<span class="element-name">updateWithTime</span><wbr><span class="parameters">(double&nbsp;currentTimeSeconds,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;wheelPositions)</span></div>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose2d</span>&nbsp;<span class="element-name">updateWithTime</span><wbr><span class="parameters">(double&nbsp;currentTimeSeconds,
+ edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
+ edu.wpi.first.math.kinematics.SwerveModulePosition[]&nbsp;wheelPositions)</span></div>
 </section>
 </li>
 </ul>
