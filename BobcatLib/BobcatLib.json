@@ -17,6 +17,12 @@
   ],
   "requires": [
     {
+      "uuid": "d820cc26-74e3-11ec-90d6-0242ac120003",
+      "errorMessage": "AdvantageKit is Required!",
+      "offlineFileName": "AdvantageKit.json",
+      "onlineUrl": "https://github.com/Mechanical-Advantage/AdvantageKit/releases/latest/download/AdvantageKit.json"
+    },
+    {
       "uuid": "3f48eb8c-50fe-43a6-9cb7-44c86353c4cb",
       "errorMessage": "REVLib is required!",
       "offlineFileName": "REVLib.json",

@@ -1,7 +1,7 @@
 {
   "fileName": "BobcatLib.json",
   "name": "BobcatLib",
-  "version": "2025.0.2",
+  "version": "2025.0.3",
   "frcYear": "2025",
   "uuid": "69eb6caf-545f-44e6-b7f7-ccc646b5586e",
   "mavenUrls": [
@@ -12,10 +12,16 @@
     {
       "groupId": "BobcatLib",
       "artifactId": "BobcatLib-java",
-      "version": "2025.0.2"
+      "version": "2025.0.3"
     }
   ],
   "requires": [
+    {
+      "uuid": "d820cc26-74e3-11ec-90d6-0242ac120003",
+      "errorMessage": "AdvantageKit is Required!",
+      "offlineFileName": "AdvantageKit.json",
+      "onlineUrl": "https://github.com/Mechanical-Advantage/AdvantageKit/releases/latest/download/AdvantageKit.json"
+    },
     {
       "uuid": "3f48eb8c-50fe-43a6-9cb7-44c86353c4cb",
       "errorMessage": "REVLib is required!",
