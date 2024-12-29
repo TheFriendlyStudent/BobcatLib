@@ -1,3 +1,12 @@
+BobcatLib.Hardware.Controllers
+BobcatLib.Hardware.Controllers.parser
+BobcatLib.Hardware.Encoders
+BobcatLib.Hardware.Gyros
+BobcatLib.Hardware.Gyros.parser
+BobcatLib.Hardware.LedControllers
+BobcatLib.Hardware.Motors
+BobcatLib.Hardware.Motors.SensorHelpers
+BobcatLib.Hardware.Motors.Utility.CTRE
 BobcatLib.Logging
 BobcatLib.Logging.FaultsAndErrors
 BobcatLib.Utilities
