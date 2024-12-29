@@ -1,0 +1,28 @@
+{
+  "drive": {
+    "motor_type": "falcon",
+    "idle_type": "Coast",
+    "id": 1,
+    "canbus": "rio",
+    "inverted": false
+  },
+  "angle": {
+    "motor_type": "falcon",
+    "idle_type": "Brake",
+    "id": 2,
+    "canbus": "rio",
+    "inverted": false
+  },
+  "encoder": {
+    "type": "cancoder",
+    "id": 2,
+    "canbus": "rio",
+    "offset": 0.4841667,
+    "inverted": false
+  },
+  "type": "sds_mk4",
+  "level": "sds_mk4i_L2",
+  "wheelCircumference": {
+    "offset": 4
+  }
+}

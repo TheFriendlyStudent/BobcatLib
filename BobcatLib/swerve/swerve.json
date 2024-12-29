@@ -1,0 +1,29 @@
+{
+  "base": {
+    "trackWidth": 20.51,
+    "wheelBase": 20.51
+  },
+  "moduleSpeedLimits": {
+    "maxSpeed": 3,
+    "maxAccel": 3,
+    "maxVelocity": 3,
+    "maxAcceleration": 3
+  },
+  "chassisSpeedLimits": {
+    "maxSpeed": 3,
+    "maxAccel": 3,
+    "maxVelocity": 3,
+    "maxAcceleration": null
+  },
+  "driveCharacteristics": {
+    "driveKS": 0.0201066667,
+    "driveKV": 0.165666667,
+    "driveKA": 0.087075
+  },
+  "indicator": {
+    "type": "CANdle",
+    "id": 0,
+    "canbus": null,
+    "ledcount": null
+  }
+}

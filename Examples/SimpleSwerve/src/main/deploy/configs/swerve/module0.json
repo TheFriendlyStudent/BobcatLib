@@ -1,19 +1,19 @@
 {
   "drive": {
     "motor_type": "kraken",
-    "id": 10,
-    "canbus": "Practice"
+    "id": 1,
+    "canbus": "CANt_open_file"
   },
   "angle": {
     "motor_type": "kraken",
-    "id": 11,
-    "canbus": "Practice",
+    "id": 2,
+    "canbus": "CANt_open_file",
     "inverted": false
   },
   "encoder": {
     "type": "cancoder",
-    "id": 12,
-    "canbus": "Practice",
+    "id": 1,
+    "canbus": "CANt_open_file",
     "offset": 0.319,
     "inverted": false
   },
