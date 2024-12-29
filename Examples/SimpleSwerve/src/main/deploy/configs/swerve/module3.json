@@ -1,11 +1,11 @@
 {
   "drive": {
-    "motor_type": "kraken",
+    "motor_type": "falcon",
     "id": 7,
     "canbus": "CANt_open_file"
   },
   "angle": {
-    "motor_type": "kraken",
+    "motor_type": "falcon",
     "id": 8,
     "canbus": "CANt_open_file"
   },

@@ -59,7 +59,6 @@ public class RobotContainer {
                  * Please give descriptive names
                  */
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
-                autoChooser.addOption("name", new PathPlannerAuto("nameinpathplanner"));
                 // Configure the button bindings
                 configureButtonBindings();
 
@@ -90,15 +89,6 @@ public class RobotContainer {
          * this should only be called once DS and FMS are attached
          */
         public void configureAutos() {
-
-                /*
-                 * Auto Events
-                 * 
-                 * Names must match what is in PathPlanner
-                 * Please give descriptive names
-                 */
-                NamedCommands.registerCommand("PathfindingCommand", s_Swerve.driveToPose(new Pose2d()));
-
                 /*
                  * Auto Chooser
                  * 
@@ -106,10 +96,6 @@ public class RobotContainer {
                  * Please give descriptive names
                  */
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
-                autoChooser.addOption("DriveToOne-One",
-                                new ParallelDeadlineGroup(new WaitCommand(10), new RunCommand(
-                                                () -> s_Swerve.drive(new Translation2d(1, 1), 0, false, false, s_Swerve.getHeading(), s_Swerve.getPose()),
-                                                s_Swerve)));
         }
 
         /**

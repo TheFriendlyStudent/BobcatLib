@@ -1,11 +1,11 @@
 {
   "drive": {
-    "motor_type": "kraken",
+    "motor_type": "falcon",
     "id": 5,
     "canbus": "CANt_open_file"
   },
   "angle": {
-    "motor_type": "kraken",
+    "motor_type": "falcon",
     "id": 6,
     "canbus": "CANt_open_file"
   },
@@ -13,7 +13,7 @@
     "type": "cancoder",
     "id": 3,
     "canbus": "CANt_open_file",
-    "offset": 0.335,
+    "offset": 0.331,
     "inverted": false
   },
   "type": "sds_mk4i",
