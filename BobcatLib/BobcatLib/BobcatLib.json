@@ -1,7 +1,7 @@
 {
   "fileName": "BobcatLib.json",
   "name": "BobcatLib",
-  "version": "2025.0.6",
+  "version": "2025.0.7",
   "frcYear": "2025",
   "uuid": "69eb6caf-545f-44e6-b7f7-ccc646b5586e",
   "mavenUrls": [
@@ -12,7 +12,7 @@
     {
       "groupId": "BobcatLib",
       "artifactId": "BobcatLib-java",
-      "version": "2025.0.6"
+      "version": "2025.0.7"
     }
   ],
   "requires": [
@@ -57,6 +57,12 @@
       "errorMessage": "MapleSim is requires for simulation",
       "offlineFileName": "maple-sim.json",
       "onlineUrl": "https://shenzhen-robotics-alliance.github.io/maple-sim/vendordep/maple-sim.json"
+    },
+    {
+      "uuid": "1b42324f-17c6-4875-8e77-1c312bc8c786",
+      "errorMessage": "PathPlanner is required!",
+      "offlineFileName": "PathplannerLib-beta.json",
+      "onlineUrl": "https://3015rangerrobotics.github.io/pathplannerlib/PathplannerLib-beta.json"
     }
   ],
   "jniDependencies": [],
