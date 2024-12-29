@@ -1,0 +1,8 @@
+{
+  "imu": {
+    "type": "pigeon2",
+    "id": 35,
+    "canbus": "Practice",
+    "inverted": false
+  }
+}

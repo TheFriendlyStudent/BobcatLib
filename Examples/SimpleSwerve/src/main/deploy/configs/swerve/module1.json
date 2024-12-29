@@ -1,0 +1,32 @@
+{
+  "drive": {
+    "motor_type": "kraken",
+    "id": 13,
+    "canbus": "Practice"
+  },
+  "angle": {
+    "motor_type": "kraken",
+    "id": 14,
+    "canbus": "Practice"
+  },
+  "encoder": {
+    "type": "cancoder",
+    "id": 15,
+    "canbus": "Practice",
+    "offset": -0.024,
+    "inverted": false
+  },
+  "type": "sds_mk4i",
+  "level": "sds_mk4i_L2",
+  "wheelCircumference": 4.00,
+  "angleCurrentLimit": 35,
+  "angleCurrentThreshold": 60,
+  "angleCurrentThresholdTime": 0.1,
+  "angleEnableCurrentLimit": true,
+  "driveCurrentLimit": 35,
+  "driveCurrentThreshold": 60,
+  "driveCurrentThresholdTime": 0.1,
+  "driveEnableCurrentLimit": true,
+  "openLoopRamp":0.25,
+  "closedLoopRamp":0.0
+}
