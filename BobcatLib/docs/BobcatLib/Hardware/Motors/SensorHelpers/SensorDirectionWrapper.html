@@ -77,7 +77,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SensorDirectionWrapper</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Sensor Direction Wrapper</div>
+<div class="block">A wrapper class for managing the direction of a sensor. This class handles the inversion of
+ sensor direction and allows conversion between boolean and `SensorDirectionValue`
+ representations.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -93,7 +95,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>boolean</code></div>
 <div class="col-second even-row-color"><code><a href="#isInverted" class="member-name-link">isInverted</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">internal state</div>
+<div class="block">Internal state representing whether the sensor is inverted.</div>
 </div>
 </div>
 </section>
@@ -108,11 +110,11 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(boolean)" class="member-name-link">SensorDirectionWrapper</a><wbr>(boolean&nbsp;mode)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Constructor</div>
+<div class="block">Constructor to initialize the sensor direction wrapper with a boolean mode.</div>
 </div>
 <div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(com.ctre.phoenix6.signals.SensorDirectionValue)" class="member-name-link">SensorDirectionWrapper</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/SensorDirectionValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">SensorDirectionValue</a>&nbsp;mode)</code></div>
 <div class="col-last odd-row-color">
-<div class="block">Contructor</div>
+<div class="block">Constructor to initialize the sensor direction wrapper with a `SensorDirectionValue` mode.</div>
 </div>
 </div>
 </section>
@@ -131,12 +133,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#asBoolean()" class="member-name-link">asBoolean</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">gets sensor direction result as a boolean.</div>
+<div class="block">Returns the sensor direction as a boolean value.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/SensorDirectionValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">SensorDirectionValue</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#asSensorDirectionValue()" class="member-name-link">asSensorDirectionValue</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns sensor direction.</div>
+<div class="block">Returns the sensor direction as a `SensorDirectionValue`.</div>
 </div>
 </div>
 </div>
@@ -159,7 +161,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isInverted">
 <h3>isInverted</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isInverted</span></div>
-<div class="block">internal state</div>
+<div class="block">Internal state representing whether the sensor is inverted.</div>
 </section>
 </li>
 </ul>
@@ -174,10 +176,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(boolean)">
 <h3>SensorDirectionWrapper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SensorDirectionWrapper</span><wbr><span class="parameters">(boolean&nbsp;mode)</span></div>
-<div class="block">Constructor</div>
+<div class="block">Constructor to initialize the sensor direction wrapper with a boolean mode.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>mode</code> - </dd>
+<dd><code>mode</code> - A boolean value representing the inversion state of the sensor. `true` means the
+     sensor is inverted, `false` means it is not.</dd>
 </dl>
 </section>
 </li>
@@ -185,10 +188,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(com.ctre.phoenix6.signals.SensorDirectionValue)">
 <h3>SensorDirectionWrapper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SensorDirectionWrapper</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/SensorDirectionValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">SensorDirectionValue</a>&nbsp;mode)</span></div>
-<div class="block">Contructor</div>
+<div class="block">Constructor to initialize the sensor direction wrapper with a `SensorDirectionValue` mode.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>mode</code> - SensorDirectionValue</dd>
+<dd><code>mode</code> - A `SensorDirectionValue` representing the sensor direction. If the mode is
+     `Clockwise_Positive`, the sensor will be considered inverted.</dd>
 </dl>
 </section>
 </li>
@@ -204,10 +208,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="asSensorDirectionValue()">
 <h3>asSensorDirectionValue</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/SensorDirectionValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">SensorDirectionValue</a></span>&nbsp;<span class="element-name">asSensorDirectionValue</span>()</div>
-<div class="block">Returns sensor direction.</div>
+<div class="block">Returns the sensor direction as a `SensorDirectionValue`.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>SensorDirectionValue</dd>
+<dd>A `SensorDirectionValue` that represents the sensor direction. Returns
+     `Clockwise_Positive` if inverted, `CounterClockwise_Positive` otherwise.</dd>
 </dl>
 </section>
 </li>
@@ -215,10 +220,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="asBoolean()">
 <h3>asBoolean</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">asBoolean</span>()</div>
-<div class="block">gets sensor direction result as a boolean.</div>
+<div class="block">Returns the sensor direction as a boolean value.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>boolean</dd>
+<dd>`true` if the sensor is inverted, `false` otherwise.</dd>
 </dl>
 </section>
 </li>

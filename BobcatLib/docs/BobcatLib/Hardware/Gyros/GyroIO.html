@@ -77,7 +77,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">GyroIO</span></div>
-<div class="block">Represents an interface for interacting with a gyro sensor.</div>
+<div class="block">Represents an interface for interacting with a gyro sensor. This interface defines methods for
+ updating sensor inputs, setting and retrieving gyro data, and performing periodic updates.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -111,13 +112,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getTimeDiff()" class="member-name-link">getTimeDiff</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Gets the time difference between the last and current sensor update.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Periodically updates the gyro sensor's data.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#periodic(com.ctre.phoenix6.hardware.Pigeon2)" class="member-name-link">periodic</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a>&nbsp;imu)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Periodically updates the gyro sensor's data for a Pigeon2 device.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#setPitch(double)" class="member-name-link">setPitch</a><wbr>(double&nbsp;pitch)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
@@ -156,10 +163,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="updateInputs(BobcatLib.Hardware.Gyros.GyroIO.GyroIOInputs)">
 <h3>updateInputs</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros">GyroIO.GyroIOInputs</a>&nbsp;inputs)</span></div>
-<div class="block">Updates the gyro inputs based on external sources.</div>
+<div class="block">Updates the gyro inputs based on external sources. This method is called to refresh the gyro's
+ internal data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>inputs</code> - The inputs to update.</dd>
+<dd><code>inputs</code> - The object that stores the updated gyro inputs.</dd>
 </dl>
 </section>
 </li>
@@ -167,6 +175,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTimeDiff()">
 <h3>getTimeDiff</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getTimeDiff</span>()</div>
+<div class="block">Gets the time difference between the last and current sensor update. This can be used to track
+ the time between periodic updates.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The time difference between the last and current update in seconds.</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -206,12 +220,20 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="periodic(com.ctre.phoenix6.hardware.Pigeon2)">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a>&nbsp;imu)</span></div>
+<div class="block">Periodically updates the gyro sensor's data for a Pigeon2 device. This method should be called
+ regularly to update the gyro's state.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>imu</code> - The Pigeon2 IMU sensor instance to update.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
+<div class="block">Periodically updates the gyro sensor's data. This method should be called regularly to update
+ the gyro's state.</div>
 </section>
 </li>
 </ul>

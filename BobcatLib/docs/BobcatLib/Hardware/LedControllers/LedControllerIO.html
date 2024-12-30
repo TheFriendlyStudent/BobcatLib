@@ -77,6 +77,9 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">LedControllerIO</span></div>
+<div class="block">Interface representing the I/O layer for controlling LED controllers. This interface defines the
+ necessary methods for updating LED states, handling animations, and checking for faults in LED
+ hardware.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,7 +94,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="LedControllerIO.LedControllerIOInputs.html" class="type-name-link" title="class in BobcatLib.Hardware.LedControllers">LedControllerIO.LedControllerIOInputs</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Represents the I/O inputs for the LED controller, including the current state of the LEDs.</div>
+</div>
 </div>
 </section>
 </li>
@@ -108,25 +113,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#checkForFaults()" class="member-name-link">checkForFaults</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Checks for faults in the LED hardware.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Periodic for CANdle hardware</div>
+<div class="block">Periodically called method to handle periodic updates for the LED controller.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#setLEDs(BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState)" class="member-name-link">setLEDs</a><wbr>(<a href="CANdleWrapper.CANdleState.html" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a>&nbsp;state)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">THIS WILL NOT AUTOMATICALLY TURN OFF, it will persist untill you set it again</div>
+<div class="block">Sets the LED controller to the specified animation state.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#setLEDs(BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState,double)" class="member-name-link">setLEDs</a><wbr>(<a href="CANdleWrapper.CANdleState.html" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a>&nbsp;state,
  double&nbsp;seconds)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Sets the LED controller to the specified animation state and duration.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updateInputs(BobcatLib.Hardware.LedControllers.LedControllerIO.LedControllerIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="LedControllerIO.LedControllerIOInputs.html" title="class in BobcatLib.Hardware.LedControllers">LedControllerIO.LedControllerIOInputs</a>&nbsp;inputs)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">update the inputs for IO layer</div>
+<div class="block">Updates the inputs for the LED controller I/O layer.</div>
 </div>
 </div>
 </div>
@@ -146,10 +155,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="updateInputs(BobcatLib.Hardware.LedControllers.LedControllerIO.LedControllerIOInputs)">
 <h3>updateInputs</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="LedControllerIO.LedControllerIOInputs.html" title="class in BobcatLib.Hardware.LedControllers">LedControllerIO.LedControllerIOInputs</a>&nbsp;inputs)</span></div>
-<div class="block">update the inputs for IO layer</div>
+<div class="block">Updates the inputs for the LED controller I/O layer. This method should be used to update the
+ current state of the LED controller.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>inputs</code> - CANdleIOInputs</dd>
+<dd><code>inputs</code> - The `LedControllerIOInputs` object that will be updated with the current state.</dd>
 </dl>
 </section>
 </li>
@@ -157,10 +167,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setLEDs(BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState)">
 <h3>setLEDs</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLEDs</span><wbr><span class="parameters">(<a href="CANdleWrapper.CANdleState.html" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a>&nbsp;state)</span></div>
-<div class="block">THIS WILL NOT AUTOMATICALLY TURN OFF, it will persist untill you set it again</div>
+<div class="block">Sets the LED controller to the specified animation state. This method will persist the
+ animation state until explicitly set to another state. It does not automatically turn off the
+ LEDs.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>state</code> - the animation to play</dd>
+<dd><code>state</code> - The animation state to set for the LEDs.</dd>
 </dl>
 </section>
 </li>
@@ -169,10 +181,12 @@ loadScripts(document, 'script');</script>
 <h3>setLEDs</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLEDs</span><wbr><span class="parameters">(<a href="CANdleWrapper.CANdleState.html" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a>&nbsp;state,
  double&nbsp;seconds)</span></div>
+<div class="block">Sets the LED controller to the specified animation state and duration. The animation will play
+ for the specified duration before either stopping or transitioning to another state.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>state</code> - the animation to play</dd>
-<dd><code>seconds</code> - duration to play</dd>
+<dd><code>state</code> - The animation state to set for the LEDs.</dd>
+<dd><code>seconds</code> - The duration in seconds for which the animation will play.</dd>
 </dl>
 </section>
 </li>
@@ -180,13 +194,16 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
-<div class="block">Periodic for CANdle hardware</div>
+<div class="block">Periodically called method to handle periodic updates for the LED controller. This method
+ should be called in the robot's periodic loop to maintain the LED behavior.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="checkForFaults()">
 <h3>checkForFaults</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">checkForFaults</span>()</div>
+<div class="block">Checks for faults in the LED hardware. This method should be used to detect any issues or
+ errors with the LED controller.</div>
 </section>
 </li>
 </ul>

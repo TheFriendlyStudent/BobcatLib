@@ -11,38 +11,45 @@ import java.util.List;
 import java.util.Map;
 import org.littletonrobotics.junction.Logger;
 
-/** Class for managing persistent alerts to be sent over NetworkTables. */
+/**
+ * Class for managing persistent alerts to be sent over NetworkTables. Alerts can be categorized by
+ * groups and urgency levels and displayed on the dashboard.
+ */
 public class Alert {
 
-  /** Group of the alert. */
-  private static Map<String, SendableAlerts> groups = new HashMap<String, SendableAlerts>();
-  /** Type of the Alert to raise. */
+  /** Map of alert groups to their corresponding `SendableAlerts` instance. */
+  private static Map<String, SendableAlerts> groups = new HashMap<>();
+
+  /** The type or urgency level of the alert. */
   private AlertType type;
-  /** Activation state of alert. */
+
+  /** Indicates whether the alert is currently active. */
   private boolean active = false;
-  /** When the alert was raised. */
+
+  /** The timestamp when the alert was activated. */
   private double activeStartTime = 0.0;
-  /** Text of the alert. */
+
+  /** The message text of the alert. */
   private String text;
 
   /**
-   * Creates a new Alert in the default group - "Alerts". If this is the first to be instantiated,
-   * the appropriate entries will be added to NetworkTables.
+   * Creates a new alert in the default group "Alerts". If this is the first alert in the group, its
+   * entries will be added to NetworkTables.
    *
-   * @param text Text to be displayed when the alert is active.
-   * @param type Alert level specifying urgency.
+   * @param text The message text of the alert.
+   * @param type The urgency level of the alert.
    */
   public Alert(String text, AlertType type) {
     this("Alerts", text, type);
   }
 
   /**
-   * Creates a new Alert. If this is the first to be instantiated in its group, the appropriate
+   * Creates a new alert in the specified group. If this is the first alert in the group, its
    * entries will be added to NetworkTables.
    *
-   * @param group Group identifier, also used as NetworkTables title
-   * @param text Text to be displayed when the alert is active.
-   * @param type Alert level specifying urgency.
+   * @param group The group identifier for the alert, also used as the NetworkTables title.
+   * @param text The message text of the alert.
+   * @param type The urgency level of the alert.
    */
   public Alert(String group, String text, AlertType type) {
     if (!groups.containsKey(group)) {
@@ -56,10 +63,9 @@ public class Alert {
   }
 
   /**
-   * Sets whether the alert should currently be displayed. When activated, the alert text will also
-   * be sent to the console.
+   * Activates or deactivates the alert. If activated, the alert text is also sent to the console.
    *
-   * @param active Set the alert as active and report it to the driver station.
+   * @param active True to activate the alert, false to deactivate it.
    */
   public void set(boolean active) {
     if (active && !this.active) {
@@ -70,9 +76,9 @@ public class Alert {
   }
 
   /**
-   * Updates current alert text.
+   * Updates the text of the alert.
    *
-   * @param text The text for the alert.
+   * @param text The new text for the alert.
    */
   public void setText(String text) {
     if (active && !text.equals(this.text)) {
@@ -82,18 +88,18 @@ public class Alert {
   }
 
   /**
-   * Updates current alert type ( level ).
+   * Updates the urgency level of the alert.
    *
-   * @param level The type for the alert.
+   * @param level The new urgency level for the alert.
    */
   public void setLevel(AlertType level) {
     this.type = level;
   }
 
   /**
-   * Print the alert message.
+   * Prints the alert message to the console or DriverStation log based on its urgency level.
    *
-   * @param text Text to print.
+   * @param text The message text to print.
    */
   private void printAlert(String text) {
     switch (type) {
@@ -117,68 +123,63 @@ public class Alert {
 
   /** Represents an alert's level of urgency. */
   public static enum AlertType {
-    /**
-     * High priority alert - displayed first on the dashboard with a red "X" symbol. Use this type
-     * for problems which will seriously affect the robot's functionality and thus require immediate
-     * attention.
-     */
+    /** High priority alert for serious issues requiring immediate attention (red "X"). */
     ERROR,
-    /**
-     * High priority alert - displayed first on the dashboard with a red "X" symbol. Use this type
-     * for problems which will seriously affect the robot's functionality and thus require immediate
-     * attention. Trace printed to driver station console.
-     */
+    /** High priority alert with trace information (red "X"). */
     ERROR_TRACE,
-
-    /**
-     * Medium priority alert - displayed second on the dashboard with a yellow "!" symbol. Use this
-     * type for problems which could affect the robot's functionality but do not necessarily require
-     * immediate attention.
-     */
+    /** Medium priority alert for warnings (yellow "!"). */
     WARNING,
-    /**
-     * Medium priority alert - displayed second on the dashboard with a yellow "!" symbol. Use this
-     * type for problems which could affect the robot's functionality but do not necessarily require
-     * immediate attention. Trace printed to driver station console.
-     */
+    /** Medium priority alert with trace information (yellow "!"). */
     WARNING_TRACE,
-    /**
-     * Low priority alert - displayed last on the dashboard with a green "i" symbol. Use this type
-     * for problems which are unlikely to affect the robot's functionality, or any other alerts
-     * which do not fall under "ERROR" or "WARNING".
-     */
+    /** Low priority alert for informational messages (green "i"). */
     INFO
   }
 
-  /** Sendable alert for advantage scope. */
+  /**
+   * Logs metadata for the alert using the Logger.
+   *
+   * @param name The name of the metadata entry.
+   */
+  public void logAlert(String name) {
+    Logger.recordMetadata(name, text);
+  }
+
+  /**
+   * Retrieves the timestamp when the alert was activated.
+   *
+   * @return The activation timestamp.
+   */
+  public double getActivationTimestamp() {
+    return activeStartTime;
+  }
+
+  /** A helper class for managing alerts in a group as a Sendable object. */
   private static class SendableAlerts implements Sendable {
 
-    /** Alert list for sendable. */
+    /** List of alerts in this group. */
     public final List<Alert> alerts = new ArrayList<>();
 
     /**
-     * Get alerts based off of type.
+     * Retrieves the active alert strings for a given alert type.
      *
-     * @param type Type of alert to fetch.
-     * @return Active alert strings.
+     * @param type The alert type to filter.
+     * @return An array of active alert strings.
      */
     public String[] getStrings(AlertType type) {
       List<String> alertStrings = new ArrayList<>();
       for (Alert alert : alerts) {
         alertStrings = getStrings(type, alert, alertStrings);
       }
-      // alertStrings.sort((a1, a2) -> (int) (a2.activeStartTime -
-      // a1.activeStartTime));
-      return alertStrings.toArray(new String[alertStrings.size()]);
+      return alertStrings.toArray(new String[0]);
     }
 
     /**
-     * Get Strings
+     * Adds the text of active alerts of the specified type to the list.
      *
-     * @param type type
-     * @param alert alert
-     * @param alertStrings alertStrings
-     * @return alertStrings
+     * @param type The alert type to check.
+     * @param alert The alert to evaluate.
+     * @param alertStrings The list of alert strings.
+     * @return The updated list of alert strings.
      */
     private List<String> getStrings(AlertType type, Alert alert, List<String> alertStrings) {
       if (alert.type == type && alert.active) {
@@ -187,32 +188,32 @@ public class Alert {
       return alertStrings;
     }
 
+    /**
+     * Initializes the sendable properties for displaying alerts on the SmartDashboard. This method
+     * defines string array properties corresponding to different alert types (errors, warnings, and
+     * informational messages).
+     *
+     * @param builder The {@link SendableBuilder} used to define the properties for this sendable.
+     */
     @Override
     public void initSendable(SendableBuilder builder) {
+      // Set the SmartDashboard type to "Alerts"
       builder.setSmartDashboardType("Alerts");
+
+      // Add a property for error alerts
       builder.addStringArrayProperty("errors", () -> getStrings(AlertType.ERROR), null);
+
+      // Add a property for error alerts with trace information
       builder.addStringArrayProperty("errors", () -> getStrings(AlertType.ERROR_TRACE), null);
+
+      // Add a property for warning alerts
       builder.addStringArrayProperty("warnings", () -> getStrings(AlertType.WARNING), null);
+
+      // Add a property for warning alerts with trace information
       builder.addStringArrayProperty("warnings", () -> getStrings(AlertType.WARNING_TRACE), null);
+
+      // Add a property for informational alerts
       builder.addStringArrayProperty("infos", () -> getStrings(AlertType.INFO), null);
     }
-  }
-
-  /**
-   * Get Activation Timestamp
-   *
-   * @return active Start Time
-   */
-  public double getActivationTimestamp() {
-    return activeStartTime;
-  }
-
-  /**
-   * Logs the Alert
-   *
-   * @param name name
-   */
-  public void logAlert(String name) {
-    Logger.recordMetadata(name, text);
   }
 }

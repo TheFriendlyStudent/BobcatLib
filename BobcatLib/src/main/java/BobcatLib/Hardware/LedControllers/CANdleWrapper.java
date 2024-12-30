@@ -1,4 +1,5 @@
 package BobcatLib.Hardware.LedControllers;
+
 import BobcatLib.Logging.Alert;
 import BobcatLib.Logging.Alert.AlertType;
 import BobcatLib.Logging.FaultsAndErrors.CANdleFaultsWrapper;
@@ -8,8 +9,8 @@ import com.ctre.phoenix.led.StrobeAnimation;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
- * A wrapper class for interacting with a CANdle LED controller.
- * This class allows controlling LED animations, checking for faults, and updating LED states.
+ * A wrapper class for interacting with a CANdle LED controller. This class allows controlling LED
+ * animations, checking for faults, and updating LED states.
  */
 public class CANdleWrapper implements LedControllerIO {
 
@@ -60,8 +61,8 @@ public class CANdleWrapper implements LedControllerIO {
   private CANDeviceDetails details;
 
   /**
-   * Constructor for the CANdleWrapper, initializing the CANdle hardware with the specified
-   * device details, LED count, and CAN bus.
+   * Constructor for the CANdleWrapper, initializing the CANdle hardware with the specified device
+   * details, LED count, and CAN bus.
    *
    * @param details The device details for the CANdle.
    * @param ledCount The number of LEDs to control.
@@ -95,8 +96,8 @@ public class CANdleWrapper implements LedControllerIO {
   }
 
   /**
-   * Sets the LED state to the specified CANdle state. This method will not automatically turn
-   * off the LEDs; it will persist until explicitly set to a different state.
+   * Sets the LED state to the specified CANdle state. This method will not automatically turn off
+   * the LEDs; it will persist until explicitly set to a different state.
    *
    * @param state The animation state to set on the LEDs.
    */
@@ -132,8 +133,8 @@ public class CANdleWrapper implements LedControllerIO {
   }
 
   /**
-   * Sets the LED state to the specified CANdle state and duration.
-   * This method allows specifying how long the animation should play.
+   * Sets the LED state to the specified CANdle state and duration. This method allows specifying
+   * how long the animation should play.
    *
    * @param state The animation state to set on the LEDs.
    * @param seconds The duration in seconds for the animation.
@@ -145,9 +146,9 @@ public class CANdleWrapper implements LedControllerIO {
     timer.start();
   }
 
-  /** 
-   * Periodically checks the timer and updates the LED state.
-   * This method is typically called in the robot's periodic function.
+  /**
+   * Periodically checks the timer and updates the LED state. This method is typically called in the
+   * robot's periodic function.
    */
   public void periodic() {
     if (timer.hasElapsed(seconds)) {
@@ -161,8 +162,8 @@ public class CANdleWrapper implements LedControllerIO {
   }
 
   /**
-   * Checks for any faults that may have occurred in the CANdle hardware.
-   * If any faults are detected, they are logged or alerted.
+   * Checks for any faults that may have occurred in the CANdle hardware. If any faults are
+   * detected, they are logged or alerted.
    */
   public void checkForFaults() {
     faults.hasFaultOccured();

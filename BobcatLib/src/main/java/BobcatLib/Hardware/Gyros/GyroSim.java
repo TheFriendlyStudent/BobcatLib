@@ -2,15 +2,13 @@ package BobcatLib.Hardware.Gyros;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.studica.frc.AHRS;
-
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
- * Simulates a gyro sensor for testing or development purposes.
- * This class mimics the behavior of a gyro sensor by maintaining simulated yaw, pitch, and roll values
- * and updating them periodically. It uses a timer to track the passage of time and simulate the changes 
- * in orientation over time.
+ * Simulates a gyro sensor for testing or development purposes. This class mimics the behavior of a
+ * gyro sensor by maintaining simulated yaw, pitch, and roll values and updating them periodically.
+ * It uses a timer to track the passage of time and simulate the changes in orientation over time.
  */
 public class GyroSim implements GyroIO {
 
@@ -29,9 +27,7 @@ public class GyroSim implements GyroIO {
   /** Roll angle of the robot. */
   private double rollAngle;
 
-  /**
-   * Initializes the GyroSim with a timer and sets up the initial angles.
-   */
+  /** Initializes the GyroSim with a timer and sets up the initial angles. */
   public GyroSim() {
     timer = new Timer();
     timer.start();
@@ -40,14 +36,15 @@ public class GyroSim implements GyroIO {
   }
 
   /**
-   * Configures the gyro simulation. Currently does nothing but can be extended for future configuration.
+   * Configures the gyro simulation. Currently does nothing but can be extended for future
+   * configuration.
    */
   public void configGyro() {}
 
   /**
-   * Updates the gyro inputs based on the simulated gyro data.
-   * The simulated yaw, pitch, and roll values are converted to {@link Rotation2d} objects 
-   * and stored in the provided {@link GyroIOInputs}.
+   * Updates the gyro inputs based on the simulated gyro data. The simulated yaw, pitch, and roll
+   * values are converted to {@link Rotation2d} objects and stored in the provided {@link
+   * GyroIOInputs}.
    *
    * @param inputs The inputs to update with the simulated gyro data.
    */
@@ -85,24 +82,24 @@ public class GyroSim implements GyroIO {
   }
 
   /**
-   * Periodic update method for the Pigeon2 IMU sensor.
-   * Currently does nothing but can be extended for specific periodic updates for Pigeon2.
+   * Periodic update method for the Pigeon2 IMU sensor. Currently does nothing but can be extended
+   * for specific periodic updates for Pigeon2.
    *
    * @param imu The Pigeon2 IMU instance.
    */
   public void periodic(Pigeon2 imu) {}
 
   /**
-   * Periodic update method for the AHRS IMU sensor.
-   * Currently does nothing but can be extended for specific periodic updates for AHRS.
+   * Periodic update method for the AHRS IMU sensor. Currently does nothing but can be extended for
+   * specific periodic updates for AHRS.
    *
    * @param imu The AHRS IMU instance.
    */
   public void periodic(AHRS imu) {}
 
   /**
-   * Periodic update method for the simulated gyro.
-   * This method is called periodically to update the simulated gyro sensor's state.
+   * Periodic update method for the simulated gyro. This method is called periodically to update the
+   * simulated gyro sensor's state.
    */
   public void periodic() {}
 
@@ -134,8 +131,8 @@ public class GyroSim implements GyroIO {
   }
 
   /**
-   * Gets the time difference between the last and current gyro update.
-   * This is used to simulate the passage of time in the gyro's state.
+   * Gets the time difference between the last and current gyro update. This is used to simulate the
+   * passage of time in the gyro's state.
    *
    * @return The time difference (in seconds) since the last update.
    */

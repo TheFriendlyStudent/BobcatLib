@@ -82,7 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CANdleWrapper</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware.LedControllers">LedControllerIO</a></span></div>
-<div class="block">CANdle Wrapper</div>
+<div class="block">A wrapper class for interacting with a CANdle LED controller. This class allows controlling LED
+ animations, checking for faults, and updating LED states.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -97,16 +98,18 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static enum&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="CANdleWrapper.BuiltInAnimations.html" class="type-name-link" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.BuiltInAnimations</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Enum representing the built-in LED animation types.</div>
+</div>
 <div class="col-first odd-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second odd-row-color"><code><a href="CANdleWrapper.CANdleIOInputs.html" class="type-name-link" title="class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleIOInputs</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">CANdleIO Inputs</div>
+<div class="block">CANdle I/O inputs, representing the current state of the CANdle.</div>
 </div>
 <div class="col-first even-row-color"><code>static enum&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="CANdleWrapper.CANdleState.html" class="type-name-link" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">desired behavior, untested:</div>
+<div class="block">Enum representing the various states of the CANdle.</div>
 </div>
 </div>
 <div class="inherited-list">
@@ -126,12 +129,12 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <div class="col-first even-row-color"><code>boolean</code></div>
 <div class="col-second even-row-color"><code><a href="#isEnabled" class="member-name-link">isEnabled</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Is the CANdle enabled.</div>
+<div class="block">Boolean flag to determine if the CANdle is enabled.</div>
 </div>
 <div class="col-first odd-row-color"><code><a href="../../Logging/Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#sensorAlert" class="member-name-link">sensorAlert</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Alert for Sensors.</div>
+<div class="block">Alert for detecting sensor issues with CANdle.</div>
 </div>
 </div>
 </section>
@@ -147,7 +150,10 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Utilities.CANDeviceDetails,int,java.lang.String)" class="member-name-link">CANdleWrapper</a><wbr>(<a href="../../Utilities/CANDeviceDetails.html" title="class in BobcatLib.Utilities">CANDeviceDetails</a>&nbsp;details,
  int&nbsp;ledCount,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;canbus)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor for the CANdleWrapper, initializing the CANdle hardware with the specified device
+ details, LED count, and CAN bus.</div>
+</div>
 </div>
 </section>
 </li>
@@ -164,25 +170,29 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkForFaults()" class="member-name-link">checkForFaults</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks for any faults that may have occurred in the CANdle hardware.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Periodic for CANdle hardware</div>
+<div class="block">Periodically checks the timer and updates the LED state.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLEDs(BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState)" class="member-name-link">setLEDs</a><wbr>(<a href="CANdleWrapper.CANdleState.html" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a>&nbsp;state)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">THIS WILL NOT AUTOMATICALLY TURN OFF, it will persist untill you set it again</div>
+<div class="block">Sets the LED state to the specified CANdle state.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLEDs(BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState,double)" class="member-name-link">setLEDs</a><wbr>(<a href="CANdleWrapper.CANdleState.html" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a>&nbsp;state,
  double&nbsp;seconds)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the LED state to the specified CANdle state and duration.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateInputs(BobcatLib.Hardware.LedControllers.LedControllerIO.LedControllerIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="LedControllerIO.LedControllerIOInputs.html" title="class in BobcatLib.Hardware.LedControllers">LedControllerIO.LedControllerIOInputs</a>&nbsp;inputs)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">update the inputs for IO layer</div>
+<div class="block">Updates the inputs for the LED controller I/O layer with the current CANdle state.</div>
 </div>
 </div>
 </div>
@@ -205,14 +215,14 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <section class="detail" id="isEnabled">
 <h3>isEnabled</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isEnabled</span></div>
-<div class="block">Is the CANdle enabled.</div>
+<div class="block">Boolean flag to determine if the CANdle is enabled.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="sensorAlert">
 <h3>sensorAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../Logging/Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">sensorAlert</span></div>
-<div class="block">Alert for Sensors.</div>
+<div class="block">Alert for detecting sensor issues with CANdle.</div>
 </section>
 </li>
 </ul>
@@ -229,6 +239,14 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CANdleWrapper</span><wbr><span class="parameters">(<a href="../../Utilities/CANDeviceDetails.html" title="class in BobcatLib.Utilities">CANDeviceDetails</a>&nbsp;details,
  int&nbsp;ledCount,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;canbus)</span></div>
+<div class="block">Constructor for the CANdleWrapper, initializing the CANdle hardware with the specified device
+ details, LED count, and CAN bus.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>details</code> - The device details for the CANdle.</dd>
+<dd><code>ledCount</code> - The number of LEDs to control.</dd>
+<dd><code>canbus</code> - The CAN bus to use for communication with the device.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -243,12 +261,12 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <section class="detail" id="updateInputs(BobcatLib.Hardware.LedControllers.LedControllerIO.LedControllerIOInputs)">
 <h3>updateInputs</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="LedControllerIO.LedControllerIOInputs.html" title="class in BobcatLib.Hardware.LedControllers">LedControllerIO.LedControllerIOInputs</a>&nbsp;inputs)</span></div>
-<div class="block">update the inputs for IO layer</div>
+<div class="block">Updates the inputs for the LED controller I/O layer with the current CANdle state.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="LedControllerIO.html#updateInputs(BobcatLib.Hardware.LedControllers.LedControllerIO.LedControllerIOInputs)">updateInputs</a></code>&nbsp;in interface&nbsp;<code><a href="LedControllerIO.html" title="interface in BobcatLib.Hardware.LedControllers">LedControllerIO</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>inputs</code> - CANdleIOInputs</dd>
+<dd><code>inputs</code> - The CANdleIOInputs object to update.</dd>
 </dl>
 </section>
 </li>
@@ -256,12 +274,13 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <section class="detail" id="setLEDs(BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState)">
 <h3>setLEDs</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLEDs</span><wbr><span class="parameters">(<a href="CANdleWrapper.CANdleState.html" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a>&nbsp;state)</span></div>
-<div class="block">THIS WILL NOT AUTOMATICALLY TURN OFF, it will persist untill you set it again</div>
+<div class="block">Sets the LED state to the specified CANdle state. This method will not automatically turn off
+ the LEDs; it will persist until explicitly set to a different state.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="LedControllerIO.html#setLEDs(BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState)">setLEDs</a></code>&nbsp;in interface&nbsp;<code><a href="LedControllerIO.html" title="interface in BobcatLib.Hardware.LedControllers">LedControllerIO</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>state</code> - the animation to play</dd>
+<dd><code>state</code> - The animation state to set on the LEDs.</dd>
 </dl>
 </section>
 </li>
@@ -270,12 +289,14 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <h3>setLEDs</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLEDs</span><wbr><span class="parameters">(<a href="CANdleWrapper.CANdleState.html" title="enum class in BobcatLib.Hardware.LedControllers">CANdleWrapper.CANdleState</a>&nbsp;state,
  double&nbsp;seconds)</span></div>
+<div class="block">Sets the LED state to the specified CANdle state and duration. This method allows specifying
+ how long the animation should play.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="LedControllerIO.html#setLEDs(BobcatLib.Hardware.LedControllers.CANdleWrapper.CANdleState,double)">setLEDs</a></code>&nbsp;in interface&nbsp;<code><a href="LedControllerIO.html" title="interface in BobcatLib.Hardware.LedControllers">LedControllerIO</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>state</code> - the animation to play</dd>
-<dd><code>seconds</code> - duration to play</dd>
+<dd><code>state</code> - The animation state to set on the LEDs.</dd>
+<dd><code>seconds</code> - The duration in seconds for the animation.</dd>
 </dl>
 </section>
 </li>
@@ -283,7 +304,8 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
-<div class="block">Periodic for CANdle hardware</div>
+<div class="block">Periodically checks the timer and updates the LED state. This method is typically called in the
+ robot's periodic function.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="LedControllerIO.html#periodic()">periodic</a></code>&nbsp;in interface&nbsp;<code><a href="LedControllerIO.html" title="interface in BobcatLib.Hardware.LedControllers">LedControllerIO</a></code></dd>
@@ -294,6 +316,8 @@ implements <a href="LedControllerIO.html" title="interface in BobcatLib.Hardware
 <section class="detail" id="checkForFaults()">
 <h3>checkForFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">checkForFaults</span>()</div>
+<div class="block">Checks for any faults that may have occurred in the CANdle hardware. If any faults are
+ detected, they are logged or alerted.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="LedControllerIO.html#checkForFaults()">checkForFaults</a></code>&nbsp;in interface&nbsp;<code><a href="LedControllerIO.html" title="interface in BobcatLib.Hardware.LedControllers">LedControllerIO</a></code></dd>

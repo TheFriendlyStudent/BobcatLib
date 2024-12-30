@@ -1,15 +1,16 @@
 package BobcatLib.Hardware.Motors;
+
 import BobcatLib.Hardware.Motors.SensorHelpers.NeutralModeWrapper;
 import BobcatLib.Hardware.Motors.SensorHelpers.SensorDirectionWrapper;
 import BobcatLib.Utilities.CANDeviceDetails;
 
 /**
- * A configuration class for motor settings.
- * This class holds the various parameters and settings that define the motor configuration,
- * including control gains, sensor direction, motor state, and other optional configurations.
+ * A configuration class for motor settings. This class holds the various parameters and settings
+ * that define the motor configuration, including control gains, sensor direction, motor state, and
+ * other optional configurations.
  */
 public class MotorConfigs {
-  
+
   /** The gear ratio between the motor and the connected gear. */
   public double motorToGearRatio;
 
