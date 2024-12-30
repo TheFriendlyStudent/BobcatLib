@@ -6,7 +6,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 public class Geometry {
   /**
    * @param rad
-   * @return
+   * @return ange between 0 and 2pi
    */
   public static double get0to2Pi(double rad) {
     rad = rad % (2 * Math.PI);
@@ -18,7 +18,7 @@ public class Geometry {
 
   /**
    * @param rot
-   * @return
+   * @return angle in 0 to 2pi
    */
   public static double get0to2Pi(Rotation2d rot) {
     return get0to2Pi(rot.getRadians());

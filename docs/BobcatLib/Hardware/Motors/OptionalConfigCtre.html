@@ -102,31 +102,52 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="OptionalConfigCtre.RampAndLoopConfiguration.html" title="class in BobcatLib.Hardware.Motors">OptionalConfigCtre.RampAndLoopConfiguration</a></code></div>
 <div class="col-second even-row-color"><code><a href="#closedLoop" class="member-name-link">closedLoop</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Configuration for closed-loop motor control, which uses feedback (e.g., from a sensor) to
+ maintain a set speed or position.</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="OptionalConfigCtre.RampAndLoopConfiguration.html" title="class in BobcatLib.Hardware.Motors">OptionalConfigCtre.RampAndLoopConfiguration</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#openLoop" class="member-name-link">openLoop</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Configuration for open-loop motor control, which refers to motor control without feedback,
+ typically used for speed control or simpler applications.</div>
+</div>
 <div class="col-first even-row-color"><code>boolean</code></div>
 <div class="col-second even-row-color"><code><a href="#StatorSupplyCurrentEnable" class="member-name-link">StatorSupplyCurrentEnable</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Flag to enable or disable stator supply current monitoring for the motor.</div>
+</div>
 <div class="col-first odd-row-color"><code>double</code></div>
 <div class="col-second odd-row-color"><code><a href="#StatorSupplyCurrentLimit" class="member-name-link">StatorSupplyCurrentLimit</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The limit on the stator supply current (in Amps) to protect the motor from overcurrent
+ situations.</div>
+</div>
 <div class="col-first even-row-color"><code>double</code></div>
 <div class="col-second even-row-color"><code><a href="#SupplyCurrentLimit" class="member-name-link">SupplyCurrentLimit</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The maximum supply current limit (in Amps) for the motor.</div>
+</div>
 <div class="col-first odd-row-color"><code>boolean</code></div>
 <div class="col-second odd-row-color"><code><a href="#SupplyCurrentLimitEnable" class="member-name-link">SupplyCurrentLimitEnable</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Flag to enable or disable the supply current limit for the motor.</div>
+</div>
 <div class="col-first even-row-color"><code>double</code></div>
 <div class="col-second even-row-color"><code><a href="#SupplyCurrentThreshold" class="member-name-link">SupplyCurrentThreshold</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The threshold (in Amps) for detecting supply current spikes.</div>
+</div>
 <div class="col-first odd-row-color"><code>double</code></div>
 <div class="col-second odd-row-color"><code><a href="#SupplyTimeThreshold" class="member-name-link">SupplyTimeThreshold</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The time threshold (in seconds) for supply current spikes.</div>
+</div>
 <div class="col-first even-row-color"><code>boolean</code></div>
 <div class="col-second even-row-color"><code><a href="#useFOC" class="member-name-link">useFOC</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Flag to indicate whether Field-Oriented Control (FOC) is enabled for the motor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -165,54 +186,76 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="useFOC">
 <h3>useFOC</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">useFOC</span></div>
+<div class="block">Flag to indicate whether Field-Oriented Control (FOC) is enabled for the motor. FOC allows more
+ efficient control of the motor, particularly in situations requiring precision or dynamic
+ performance.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="StatorSupplyCurrentEnable">
 <h3>StatorSupplyCurrentEnable</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">StatorSupplyCurrentEnable</span></div>
+<div class="block">Flag to enable or disable stator supply current monitoring for the motor. When enabled, it
+ allows monitoring of the stator current, which can be useful for diagnostics and safety
+ purposes.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="StatorSupplyCurrentLimit">
 <h3>StatorSupplyCurrentLimit</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">StatorSupplyCurrentLimit</span></div>
+<div class="block">The limit on the stator supply current (in Amps) to protect the motor from overcurrent
+ situations. This limit is applied when stator current monitoring is enabled.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="SupplyCurrentLimitEnable">
 <h3>SupplyCurrentLimitEnable</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">SupplyCurrentLimitEnable</span></div>
+<div class="block">Flag to enable or disable the supply current limit for the motor. When enabled, it imposes a
+ limit on the amount of current supplied to the motor to prevent damage or overuse.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="SupplyCurrentLimit">
 <h3>SupplyCurrentLimit</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">SupplyCurrentLimit</span></div>
+<div class="block">The maximum supply current limit (in Amps) for the motor. This is the threshold beyond which
+ current is limited to protect the motor from excessive current draw.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="SupplyCurrentThreshold">
 <h3>SupplyCurrentThreshold</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">SupplyCurrentThreshold</span></div>
+<div class="block">The threshold (in Amps) for detecting supply current spikes. This is used in combination with
+ the supply current limit to trigger actions when current exceeds the threshold.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="SupplyTimeThreshold">
 <h3>SupplyTimeThreshold</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">SupplyTimeThreshold</span></div>
+<div class="block">The time threshold (in seconds) for supply current spikes. If the supply current exceeds the
+ threshold for a period longer than this value, a protective action might be taken.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="openLoop">
 <h3>openLoop</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="OptionalConfigCtre.RampAndLoopConfiguration.html" title="class in BobcatLib.Hardware.Motors">OptionalConfigCtre.RampAndLoopConfiguration</a></span>&nbsp;<span class="element-name">openLoop</span></div>
+<div class="block">Configuration for open-loop motor control, which refers to motor control without feedback,
+ typically used for speed control or simpler applications. This configuration includes ramping
+ and looping parameters specific to open-loop control.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="closedLoop">
 <h3>closedLoop</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="OptionalConfigCtre.RampAndLoopConfiguration.html" title="class in BobcatLib.Hardware.Motors">OptionalConfigCtre.RampAndLoopConfiguration</a></span>&nbsp;<span class="element-name">closedLoop</span></div>
+<div class="block">Configuration for closed-loop motor control, which uses feedback (e.g., from a sensor) to
+ maintain a set speed or position. This configuration includes ramping and looping parameters
+ specific to closed-loop control.</div>
 </section>
 </li>
 </ul>

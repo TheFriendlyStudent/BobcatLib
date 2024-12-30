@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">TalonFXFaults</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></span></div>
+<div class="block">Manages fault detection and alerting for TalonFX motor controllers. Provides methods for
+ creating, activating, and deactivating alerts for various fault conditions.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,7 +98,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static enum&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="TalonFXFaults.faults.html" class="type-name-link" title="enum class in BobcatLib.Logging.FaultsAndErrors">TalonFXFaults.faults</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Enumeration of possible faults that can occur in the TalonFX motor controller.</div>
+</div>
 </div>
 </section>
 </li>
@@ -111,31 +115,49 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#bootDuringEnableAlert" class="member-name-link">bootDuringEnableAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for boot events during enable signal detection.</div>
+</div>
 <div class="col-first odd-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#deviceTempAlert" class="member-name-link">deviceTempAlert</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Alert for device temperature exceeding safe limits.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#hardwareAlert" class="member-name-link">hardwareAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for hardware faults.</div>
+</div>
 <div class="col-first odd-row-color"><code>int</code></div>
 <div class="col-second odd-row-color"><code><a href="#id" class="member-name-link">id</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Unique identifier for the TalonFX motor controller.</div>
+</div>
 <div class="col-first even-row-color"><code><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/TalonFX.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">TalonFX</a></code></div>
 <div class="col-second even-row-color"><code><a href="#motor" class="member-name-link">motor</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">TalonFX motor controller instance.</div>
+</div>
 <div class="col-first odd-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#procTempAlert" class="member-name-link">procTempAlert</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Alert for processor temperature exceeding safe limits.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#underVoltageAlert" class="member-name-link">underVoltageAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for undervoltage conditions near brownout levels.</div>
+</div>
 <div class="col-first odd-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#unlicensedFeatureInUseAlert" class="member-name-link">unlicensedFeatureInUseAlert</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Alert for using unlicensed features.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#unstableSupplyVAlert" class="member-name-link">unstableSupplyVAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for unstable supply voltage.</div>
+</div>
 </div>
 </section>
 </li>
@@ -149,7 +171,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.ctre.phoenix6.hardware.TalonFX,int)" class="member-name-link">TalonFXFaults</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/TalonFX.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">TalonFX</a>&nbsp;motor,
  int&nbsp;id)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a new instance of `TalonFXFaults` for a given motor controller.</div>
+</div>
 </div>
 </section>
 </li>
@@ -166,22 +190,32 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates an alert, marking it as triggered and logs the alert with the associated TalonFX ID.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates an alert with a specific severity level.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detect_fault(boolean,BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">detect_fault</a><wbr>(boolean&nbsp;faultTest,
  <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;alertType)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Detects a fault condition and returns whether the fault was detected.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#disableAlert(BobcatLib.Logging.Alert)" class="member-name-link">disableAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Deactivates an alert, marking it as resolved.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasFaultOccured()" class="member-name-link">hasFaultOccured</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks for any faults in the TalonFX motor controller and activates corresponding alerts.</div>
+</div>
 </div>
 </div>
 </div>
@@ -203,54 +237,63 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="hardwareAlert">
 <h3>hardwareAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">hardwareAlert</span></div>
+<div class="block">Alert for hardware faults.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="procTempAlert">
 <h3>procTempAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">procTempAlert</span></div>
+<div class="block">Alert for processor temperature exceeding safe limits.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="deviceTempAlert">
 <h3>deviceTempAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">deviceTempAlert</span></div>
+<div class="block">Alert for device temperature exceeding safe limits.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="underVoltageAlert">
 <h3>underVoltageAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">underVoltageAlert</span></div>
+<div class="block">Alert for undervoltage conditions near brownout levels.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="bootDuringEnableAlert">
 <h3>bootDuringEnableAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">bootDuringEnableAlert</span></div>
+<div class="block">Alert for boot events during enable signal detection.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="unlicensedFeatureInUseAlert">
 <h3>unlicensedFeatureInUseAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">unlicensedFeatureInUseAlert</span></div>
+<div class="block">Alert for using unlicensed features.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="unstableSupplyVAlert">
 <h3>unstableSupplyVAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">unstableSupplyVAlert</span></div>
+<div class="block">Alert for unstable supply voltage.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="id">
 <h3>id</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">id</span></div>
+<div class="block">Unique identifier for the TalonFX motor controller.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="motor">
 <h3>motor</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/TalonFX.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">TalonFX</a></span>&nbsp;<span class="element-name">motor</span></div>
+<div class="block">TalonFX motor controller instance.</div>
 </section>
 </li>
 </ul>
@@ -266,6 +309,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>TalonFXFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">TalonFXFaults</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/TalonFX.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">TalonFX</a>&nbsp;motor,
  int&nbsp;id)</span></div>
+<div class="block">Constructs a new instance of `TalonFXFaults` for a given motor controller.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>motor</code> - The TalonFX motor controller instance.</dd>
+<dd><code>id</code> - The unique identifier of the TalonFX motor controller.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -280,9 +329,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="activateAlert(BobcatLib.Logging.Alert)">
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Activates an alert, marking it as triggered and logs the alert with the associated TalonFX ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
 </dl>
 </section>
 </li>
@@ -291,9 +343,13 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
+<div class="block">Activates an alert with a specific severity level.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
+<dd><code>type</code> - The severity level to set for the alert.</dd>
 </dl>
 </section>
 </li>
@@ -301,9 +357,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="disableAlert(BobcatLib.Logging.Alert)">
 <h3>disableAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">disableAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Deactivates an alert, marking it as resolved.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#disableAlert(BobcatLib.Logging.Alert)">disableAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to deactivate.</dd>
 </dl>
 </section>
 </li>
@@ -313,16 +372,27 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">detect_fault</span><wbr><span class="parameters">(boolean&nbsp;faultTest,
  <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;alertType)</span></div>
+<div class="block">Detects a fault condition and returns whether the fault was detected.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>faultTest</code> - A boolean indicating if the fault condition is true.</dd>
+<dd><code>alert</code> - The alert to trigger if the fault is detected.</dd>
+<dd><code>alertType</code> - The severity level of the fault.</dd>
+<dt>Returns:</dt>
+<dd>True if the fault condition is true; otherwise, false.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="hasFaultOccured()">
 <h3>hasFaultOccured</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hasFaultOccured</span>()</div>
+<div class="block">Checks for any faults in the TalonFX motor controller and activates corresponding alerts.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#hasFaultOccured()">hasFaultOccured</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
 <dt>Returns:</dt>
+<dd>True if any fault conditions are detected; otherwise, false.</dd>
 </dl>
 </section>
 </li>

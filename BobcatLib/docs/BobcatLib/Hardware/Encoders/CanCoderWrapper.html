@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CanCoderWrapper</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></span></div>
+<div class="block">A wrapper class for managing a CANcoder device, implementing the <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders"><code>EncoderIO</code></a> interface.
+ This class handles configuration, fault checking, and interaction with the encoder.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -106,22 +108,29 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <div class="col-first even-row-color"><code>static final <a href="../../Logging/Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#canIdWarning" class="member-name-link">canIdWarning</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">An <a href="../../Logging/Alert.html" title="class in BobcatLib.Logging"><code>Alert</code></a> for if the CAN ID is greater than 40.</div>
+<div class="block">An <a href="../../Logging/Alert.html" title="class in BobcatLib.Logging"><code>Alert</code></a> for notifying if the CAN ID is greater than 40, which can cause undefined
+ behavior.</div>
 </div>
 <div class="col-first odd-row-color"><code><a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#chosenModule" class="member-name-link">chosenModule</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The encoder constants for the chosen module.</div>
+</div>
 <div class="col-first even-row-color"><code>boolean</code></div>
 <div class="col-second even-row-color"><code><a href="#isInverted" class="member-name-link">isInverted</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Indicates whether the encoder's direction is inverted.</div>
+</div>
 <div class="col-first odd-row-color"><code>boolean</code></div>
 <div class="col-second odd-row-color"><code><a href="#readingError" class="member-name-link">readingError</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">Last angle reading was faulty.</div>
+<div class="block">Indicates whether the last angle reading was faulty.</div>
 </div>
 <div class="col-first even-row-color"><code><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/configs/CANcoderConfiguration.html" title="class or interface in com.ctre.phoenix6.configs" class="external-link">CANcoderConfiguration</a></code></div>
 <div class="col-second even-row-color"><code><a href="#swerveCANcoderConfig" class="member-name-link">swerveCANcoderConfig</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Configuration for the CANcoder device.</div>
+</div>
 </div>
 </section>
 </li>
@@ -136,7 +145,9 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Utilities.CANDeviceDetails,BobcatLib.Hardware.Encoders.EncoderConstants,java.lang.String)" class="member-name-link">CanCoderWrapper</a><wbr>(<a href="../../Utilities/CANDeviceDetails.html" title="class in BobcatLib.Utilities">CANDeviceDetails</a>&nbsp;details,
  <a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a>&nbsp;chosenModule,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;canivorename)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a <code>CanCoderWrapper</code> instance.</div>
+</div>
 </div>
 </section>
 </li>
@@ -153,26 +164,28 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkForFaults()" class="member-name-link">checkForFaults</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks for faults in the encoder.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#clearStickyFaults()" class="member-name-link">clearStickyFaults</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Clear sticky faults on the encoder.</div>
+<div class="block">Clears sticky faults on the encoder.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#configAbsEncoder()" class="member-name-link">configAbsEncoder</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Configs the absolute encoder sensor position , determining invertion.</div>
+<div class="block">Configures the absolute encoder's sensor position and determines its inversion state.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#factoryDefault()" class="member-name-link">factoryDefault</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Reset the encoder to factory defaults.</div>
+<div class="block">Resets the encoder to its factory default configuration.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAbsolutePosition()" class="member-name-link">getAbsolutePosition</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get the absolute position of the encoder.</div>
+<div class="block">Retrieves the absolute position of the encoder.</div>
 </div>
 </div>
 </div>
@@ -198,32 +211,36 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="swerveCANcoderConfig">
 <h3>swerveCANcoderConfig</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/configs/CANcoderConfiguration.html" title="class or interface in com.ctre.phoenix6.configs" class="external-link">CANcoderConfiguration</a></span>&nbsp;<span class="element-name">swerveCANcoderConfig</span></div>
+<div class="block">Configuration for the CANcoder device.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="readingError">
 <h3>readingError</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">readingError</span></div>
-<div class="block">Last angle reading was faulty.</div>
+<div class="block">Indicates whether the last angle reading was faulty.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="isInverted">
 <h3>isInverted</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isInverted</span></div>
+<div class="block">Indicates whether the encoder's direction is inverted.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="canIdWarning">
 <h3>canIdWarning</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="../../Logging/Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">canIdWarning</span></div>
-<div class="block">An <a href="../../Logging/Alert.html" title="class in BobcatLib.Logging"><code>Alert</code></a> for if the CAN ID is greater than 40.</div>
+<div class="block">An <a href="../../Logging/Alert.html" title="class in BobcatLib.Logging"><code>Alert</code></a> for notifying if the CAN ID is greater than 40, which can cause undefined
+ behavior.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="chosenModule">
 <h3>chosenModule</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a></span>&nbsp;<span class="element-name">chosenModule</span></div>
+<div class="block">The encoder constants for the chosen module.</div>
 </section>
 </li>
 </ul>
@@ -240,6 +257,13 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CanCoderWrapper</span><wbr><span class="parameters">(<a href="../../Utilities/CANDeviceDetails.html" title="class in BobcatLib.Utilities">CANDeviceDetails</a>&nbsp;details,
  <a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a>&nbsp;chosenModule,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;canivorename)</span></div>
+<div class="block">Constructs a <code>CanCoderWrapper</code> instance.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>details</code> - Details of the CAN device, including its ID and name.</dd>
+<dd><code>chosenModule</code> - The encoder constants for the chosen module.</dd>
+<dd><code>canivorename</code> - The CANivore name to use for the device.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -254,7 +278,8 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="configAbsEncoder()">
 <h3>configAbsEncoder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">configAbsEncoder</span>()</div>
-<div class="block">Configs the absolute encoder sensor position , determining invertion.</div>
+<div class="block">Configures the absolute encoder's sensor position and determines its inversion state. This
+ method initializes the encoder based on the chosen module's configuration.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#configAbsEncoder()">configAbsEncoder</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>
@@ -265,12 +290,13 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="getAbsolutePosition()">
 <h3>getAbsolutePosition</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getAbsolutePosition</span>()</div>
-<div class="block">Get the absolute position of the encoder.</div>
+<div class="block">Retrieves the absolute position of the encoder.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#getAbsolutePosition()">getAbsolutePosition</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>
 <dt>Returns:</dt>
-<dd>Absolute position in rotation (-0.5 to 0.999999 )</dd>
+<dd>The absolute position of the encoder, as a rotation value in the range (-0.5 to
+     0.999999).</dd>
 </dl>
 </section>
 </li>
@@ -278,7 +304,7 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="factoryDefault()">
 <h3>factoryDefault</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">factoryDefault</span>()</div>
-<div class="block">Reset the encoder to factory defaults.</div>
+<div class="block">Resets the encoder to its factory default configuration.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#factoryDefault()">factoryDefault</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>
@@ -289,7 +315,8 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="clearStickyFaults()">
 <h3>clearStickyFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearStickyFaults</span>()</div>
-<div class="block">Clear sticky faults on the encoder.</div>
+<div class="block">Clears sticky faults on the encoder. Sticky faults are persistent errors that must be manually
+ cleared.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#clearStickyFaults()">clearStickyFaults</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>
@@ -300,6 +327,7 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="checkForFaults()">
 <h3>checkForFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">checkForFaults</span>()</div>
+<div class="block">Checks for faults in the encoder. This method delegates fault checking to the <a href="../../Logging/FaultsAndErrors/CanCoderFaults.html" title="class in BobcatLib.Logging.FaultsAndErrors"><code>CanCoderFaults</code></a> instance.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#checkForFaults()">checkForFaults</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>

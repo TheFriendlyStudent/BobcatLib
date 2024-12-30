@@ -77,6 +77,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">BaseGyro</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">The BaseGyro class provides an abstraction for interacting with a gyro sensor. It communicates
+ with the underlying GyroIO interface to retrieve and set orientation data (yaw, pitch, and roll)
+ and periodically updates sensor inputs.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -90,7 +93,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,BobcatLib.Hardware.Gyros.GyroIO)" class="member-name-link">BaseGyro</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a>&nbsp;io)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor to initialize a BaseGyro instance.</div>
+</div>
 </div>
 </section>
 </li>
@@ -107,28 +112,44 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPitch()" class="member-name-link">getPitch</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the current pitch position of the gyro as a Rotation2d object.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRoll()" class="member-name-link">getRoll</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the current roll position of the gyro as a Rotation2d object.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTimeDiff()" class="member-name-link">getTimeDiff</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves the time difference between the last and current sensor update.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getYaw()" class="member-name-link">getYaw</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the current yaw position of the gyro as a Rotation2d object.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Periodically updates the sensor inputs from the GyroIO interface.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPitch(double)" class="member-name-link">setPitch</a><wbr>(double&nbsp;pitch)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the pitch value of the gyro sensor.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setRoll(double)" class="member-name-link">setRoll</a><wbr>(double&nbsp;roll)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the roll value of the gyro sensor.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setYaw(double)" class="member-name-link">setYaw</a><wbr>(double&nbsp;yaw)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the yaw value of the gyro sensor.</div>
+</div>
 </div>
 </div>
 </div>
@@ -151,6 +172,12 @@ loadScripts(document, 'script');</script>
 <h3>BaseGyro</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">BaseGyro</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a>&nbsp;io)</span></div>
+<div class="block">Constructor to initialize a BaseGyro instance.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>name</code> - The name of the gyro sensor for identification.</dd>
+<dd><code>io</code> - The GyroIO interface used to interact with the gyro hardware.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -165,48 +192,86 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
+<div class="block">Periodically updates the sensor inputs from the GyroIO interface. This should be called
+ regularly to refresh the gyro's data.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="setYaw(double)">
 <h3>setYaw</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setYaw</span><wbr><span class="parameters">(double&nbsp;yaw)</span></div>
+<div class="block">Sets the yaw value of the gyro sensor.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>yaw</code> - The desired yaw value to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setRoll(double)">
 <h3>setRoll</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setRoll</span><wbr><span class="parameters">(double&nbsp;roll)</span></div>
+<div class="block">Sets the roll value of the gyro sensor.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>roll</code> - The desired roll value to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setPitch(double)">
 <h3>setPitch</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPitch</span><wbr><span class="parameters">(double&nbsp;pitch)</span></div>
+<div class="block">Sets the pitch value of the gyro sensor.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pitch</code> - The desired pitch value to set.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getYaw()">
 <h3>getYaw</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></span>&nbsp;<span class="element-name">getYaw</span>()</div>
+<div class="block">Gets the current yaw position of the gyro as a Rotation2d object.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The yaw position of the gyro.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPitch()">
 <h3>getPitch</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></span>&nbsp;<span class="element-name">getPitch</span>()</div>
+<div class="block">Gets the current pitch position of the gyro as a Rotation2d object.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The pitch position of the gyro.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getRoll()">
 <h3>getRoll</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></span>&nbsp;<span class="element-name">getRoll</span>()</div>
+<div class="block">Gets the current roll position of the gyro as a Rotation2d object.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The roll position of the gyro.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getTimeDiff()">
 <h3>getTimeDiff</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getTimeDiff</span>()</div>
+<div class="block">Retrieves the time difference between the last and current sensor update. This can be useful
+ for determining how much time has passed between updates.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The time difference between the last and current update in seconds.</dd>
+</dl>
 </section>
 </li>
 </ul>

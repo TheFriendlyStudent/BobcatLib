@@ -182,7 +182,6 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
     Timer.delay(1);
     resetModulesToAbsolute();
 
-    
     swerveDrivePoseEstimator =
         new WpiPoseEstimator(
             swerveKinematics,

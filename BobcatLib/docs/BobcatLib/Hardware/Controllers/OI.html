@@ -77,7 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">OI</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Represents the Operator Interface (OI) for controlling the robot.</div>
+<div class="block">The Operator Interface (OI) class manages the controller inputs and button mappings for the
+ robot's driver. It supports various controller types and their configurations.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,16 +96,24 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#dpadBackBtn" class="member-name-link">dpadBackBtn</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Trigger for the D-Pad backward button.</div>
+</div>
 <div class="col-first even-row-color"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color"><code><a href="#dpadForwardBtn" class="member-name-link">dpadForwardBtn</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Trigger for the D-Pad forward button.</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#dpadLeftBtn" class="member-name-link">dpadLeftBtn</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Trigger for the D-Pad left button.</div>
+</div>
 <div class="col-first even-row-color"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color"><code><a href="#dpadRightBtn" class="member-name-link">dpadRightBtn</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Trigger for the D-Pad right button.</div>
+</div>
 <div class="col-first odd-row-color"><code>final <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Joystick.html" title="class or interface in edu.wpi.first.wpilibj" class="external-link">Joystick</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#driver" class="member-name-link">driver</a></code></div>
 <div class="col-last odd-row-color">
@@ -112,7 +121,9 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-first even-row-color"><code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></div>
 <div class="col-second even-row-color"><code><a href="#driver_controller" class="member-name-link">driver_controller</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The wrapper for the driver controller, supporting different controller types.</div>
+</div>
 <div class="col-first odd-row-color"><code>final <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#robotCentric" class="member-name-link">robotCentric</a></code></div>
 <div class="col-last odd-row-color">
@@ -141,7 +152,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">OI</a>()</code></div>
 <div class="col-last even-row-color">
-<div class="block">Constructs the Operator Interface (OI) with the specified driver port.</div>
+<div class="block">Constructs the Operator Interface (OI) with the specified driver port and configuration.</div>
 </div>
 </div>
 </section>
@@ -236,30 +247,35 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="driver_controller">
 <h3>driver_controller</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></span>&nbsp;<span class="element-name">driver_controller</span></div>
+<div class="block">The wrapper for the driver controller, supporting different controller types.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="dpadForwardBtn">
 <h3>dpadForwardBtn</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">dpadForwardBtn</span></div>
+<div class="block">Trigger for the D-Pad forward button.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="dpadBackBtn">
 <h3>dpadBackBtn</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">dpadBackBtn</span></div>
+<div class="block">Trigger for the D-Pad backward button.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="dpadLeftBtn">
 <h3>dpadLeftBtn</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">dpadLeftBtn</span></div>
+<div class="block">Trigger for the D-Pad left button.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="dpadRightBtn">
 <h3>dpadRightBtn</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">dpadRightBtn</span></div>
+<div class="block">Trigger for the D-Pad right button.</div>
 </section>
 </li>
 </ul>
@@ -274,7 +290,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>OI</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">OI</span>()</div>
-<div class="block">Constructs the Operator Interface (OI) with the specified driver port.</div>
+<div class="block">Constructs the Operator Interface (OI) with the specified driver port and configuration.
+ Initializes controller inputs and button mappings.</div>
 </section>
 </li>
 </ul>

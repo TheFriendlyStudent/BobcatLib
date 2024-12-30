@@ -77,6 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">BaseEncoder</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">A base class for interacting with an encoder using the <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders"><code>EncoderIO</code></a> interface. This class
+ provides methods for configuring the encoder, retrieving its position, and managing faults.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -89,7 +91,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Hardware.Encoders.EncoderIO)" class="member-name-link">BaseEncoder</a><wbr>(<a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a>&nbsp;io)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a new <code>BaseEncoder</code> instance with the specified encoder IO interface.</div>
+</div>
 </div>
 </section>
 </li>
@@ -106,30 +110,34 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkForFaults()" class="member-name-link">checkForFaults</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks the encoder for faults and handles them as necessary.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#clearStickyFaults()" class="member-name-link">clearStickyFaults</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Clear sticky faults on the encoder.</div>
+<div class="block">Clears any sticky faults on the encoder.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#configAbsEncoder()" class="member-name-link">configAbsEncoder</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Configs the absolute encoder sensor position , determining invertion.</div>
+<div class="block">Configures the absolute encoder's sensor position and determines its inversion state.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#factoryDefault()" class="member-name-link">factoryDefault</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Reset the encoder to factory defaults.</div>
+<div class="block">Resets the encoder to its factory default settings.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAbsolutePosition()" class="member-name-link">getAbsolutePosition</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get the absolute position of the encoder.</div>
+<div class="block">Retrieves the absolute position of the encoder.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Periodically updates the encoder's inputs.</div>
+</div>
 </div>
 </div>
 </div>
@@ -151,6 +159,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(BobcatLib.Hardware.Encoders.EncoderIO)">
 <h3>BaseEncoder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">BaseEncoder</span><wbr><span class="parameters">(<a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a>&nbsp;io)</span></div>
+<div class="block">Constructs a new <code>BaseEncoder</code> instance with the specified encoder IO interface.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>io</code> - the <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders"><code>EncoderIO</code></a> interface used to communicate with the encoder.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -165,23 +178,27 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
+<div class="block">Periodically updates the encoder's inputs. This method should be called regularly to ensure
+ accurate data.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="configAbsEncoder()">
 <h3>configAbsEncoder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">configAbsEncoder</span>()</div>
-<div class="block">Configs the absolute encoder sensor position , determining invertion.</div>
+<div class="block">Configures the absolute encoder's sensor position and determines its inversion state. This
+ method ensures the encoder is properly initialized for absolute position tracking.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="getAbsolutePosition()">
 <h3>getAbsolutePosition</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getAbsolutePosition</span>()</div>
-<div class="block">Get the absolute position of the encoder.</div>
+<div class="block">Retrieves the absolute position of the encoder.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>Absolute position in rotation (-1 to 0 ) or (0 to 1)</dd>
+<dd>the absolute position in rotations, represented as a value in the range (-1 to 0) or (0
+     to 1).</dd>
 </dl>
 </section>
 </li>
@@ -189,22 +206,25 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="factoryDefault()">
 <h3>factoryDefault</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">factoryDefault</span>()</div>
-<div class="block">Reset the encoder to factory defaults.
+<div class="block">Resets the encoder to its factory default settings.
 
- <p>This will not clear the stored zero offset.</div>
+ <p>Note: This method does not clear the stored zero offset of the encoder.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="clearStickyFaults()">
 <h3>clearStickyFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearStickyFaults</span>()</div>
-<div class="block">Clear sticky faults on the encoder.</div>
+<div class="block">Clears any sticky faults on the encoder. Sticky faults are errors that persist until explicitly
+ cleared.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="checkForFaults()">
 <h3>checkForFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">checkForFaults</span>()</div>
+<div class="block">Checks the encoder for faults and handles them as necessary. This method is called internally
+ after critical operations.</div>
 </section>
 </li>
 </ul>

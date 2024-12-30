@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CANdleFaultsWrapper</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></span></div>
+<div class="block">Wrapper class for monitoring and handling faults in a CANdle device. Provides functionality to
+ check for faults and activate or deactivate corresponding alerts.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,19 +98,29 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#hardwareAlert" class="member-name-link">hardwareAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for hardware faults.</div>
+</div>
 <div class="col-first odd-row-color"><code>int</code></div>
 <div class="col-second odd-row-color"><code><a href="#id" class="member-name-link">id</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">ID of the CANdle device.</div>
+</div>
 <div class="col-first even-row-color"><code><a href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/led/CANdle.html" title="class or interface in com.ctre.phoenix.led" class="external-link">CANdle</a></code></div>
 <div class="col-second even-row-color"><code><a href="#leds" class="member-name-link">leds</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">CANdle hardware instance being monitored for faults.</div>
+</div>
 <div class="col-first odd-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#overVoltagedAlert" class="member-name-link">overVoltagedAlert</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Alert for over-voltage faults.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#underVoltagedAlert" class="member-name-link">underVoltagedAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for under-voltage faults.</div>
+</div>
 </div>
 </section>
 </li>
@@ -122,7 +134,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.ctre.phoenix.led.CANdle,int)" class="member-name-link">CANdleFaultsWrapper</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/led/CANdle.html" title="class or interface in com.ctre.phoenix.led" class="external-link">CANdle</a>&nbsp;leds,
  int&nbsp;id)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor for initializing the fault manager for a CANdle device.</div>
+</div>
 </div>
 </section>
 </li>
@@ -139,17 +153,25 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates a specific alert and logs it with a message.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates a specific alert and sets its severity level.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#disableAlert(BobcatLib.Logging.Alert)" class="member-name-link">disableAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Disables a specific alert, indicating that the fault condition no longer exists.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasFaultOccured()" class="member-name-link">hasFaultOccured</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if any faults have occurred in the CANdle device and activates the corresponding alerts.</div>
+</div>
 </div>
 </div>
 </div>
@@ -171,30 +193,35 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="id">
 <h3>id</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">id</span></div>
+<div class="block">ID of the CANdle device.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="leds">
 <h3>leds</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/led/CANdle.html" title="class or interface in com.ctre.phoenix.led" class="external-link">CANdle</a></span>&nbsp;<span class="element-name">leds</span></div>
+<div class="block">CANdle hardware instance being monitored for faults.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="hardwareAlert">
 <h3>hardwareAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">hardwareAlert</span></div>
+<div class="block">Alert for hardware faults.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="underVoltagedAlert">
 <h3>underVoltagedAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">underVoltagedAlert</span></div>
+<div class="block">Alert for under-voltage faults.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="overVoltagedAlert">
 <h3>overVoltagedAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">overVoltagedAlert</span></div>
+<div class="block">Alert for over-voltage faults.</div>
 </section>
 </li>
 </ul>
@@ -210,6 +237,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>CANdleFaultsWrapper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CANdleFaultsWrapper</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/led/CANdle.html" title="class or interface in com.ctre.phoenix.led" class="external-link">CANdle</a>&nbsp;leds,
  int&nbsp;id)</span></div>
+<div class="block">Constructor for initializing the fault manager for a CANdle device.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>leds</code> - The CANdle instance to monitor.</dd>
+<dd><code>id</code> - The ID of the CANdle device.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -224,9 +257,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="activateAlert(BobcatLib.Logging.Alert)">
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Activates a specific alert and logs it with a message.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
 </dl>
 </section>
 </li>
@@ -235,9 +271,13 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
+<div class="block">Activates a specific alert and sets its severity level.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
+<dd><code>type</code> - The severity level of the alert.</dd>
 </dl>
 </section>
 </li>
@@ -245,9 +285,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="disableAlert(BobcatLib.Logging.Alert)">
 <h3>disableAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">disableAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Disables a specific alert, indicating that the fault condition no longer exists.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#disableAlert(BobcatLib.Logging.Alert)">disableAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to disable.</dd>
 </dl>
 </section>
 </li>
@@ -255,10 +298,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="hasFaultOccured()">
 <h3>hasFaultOccured</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hasFaultOccured</span>()</div>
+<div class="block">Checks if any faults have occurred in the CANdle device and activates the corresponding alerts.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#hasFaultOccured()">hasFaultOccured</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
 <dt>Returns:</dt>
+<dd>True if at least one fault is detected; otherwise, false.</dd>
 </dl>
 </section>
 </li>

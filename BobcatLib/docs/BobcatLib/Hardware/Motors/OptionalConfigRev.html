@@ -87,19 +87,31 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>double</code></div>
 <div class="col-second even-row-color"><code><a href="#closedLoopRamp" class="member-name-link">closedLoopRamp</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Ramp rate for closed-loop motor control, which dictates how quickly the motor ramps up or down
+ its speed in a closed-loop system.</div>
+</div>
 <div class="col-first odd-row-color"><code>double</code></div>
 <div class="col-second odd-row-color"><code><a href="#driveConversionPositionFactor" class="member-name-link">driveConversionPositionFactor</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Conversion factor for position used in drive control.</div>
+</div>
 <div class="col-first even-row-color"><code>double</code></div>
 <div class="col-second even-row-color"><code><a href="#driveConversionVelocityFactor" class="member-name-link">driveConversionVelocityFactor</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Conversion factor for velocity used in drive control.</div>
+</div>
 <div class="col-first odd-row-color"><code>double</code></div>
 <div class="col-second odd-row-color"><code><a href="#openLoopRamp" class="member-name-link">openLoopRamp</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Ramp rate for open-loop motor control, which dictates how quickly the motor ramps up or down
+ its speed in an open-loop system.</div>
+</div>
 <div class="col-first even-row-color"><code>int</code></div>
 <div class="col-second even-row-color"><code><a href="#SupplyCurrentLimit" class="member-name-link">SupplyCurrentLimit</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The maximum current limit (in Amps) for the motor's supply.</div>
+</div>
 </div>
 </section>
 </li>
@@ -138,30 +150,45 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="SupplyCurrentLimit">
 <h3>SupplyCurrentLimit</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">SupplyCurrentLimit</span></div>
+<div class="block">The maximum current limit (in Amps) for the motor's supply. This value ensures that the motor
+ does not draw more current than the specified limit, helping to prevent motor damage. A value
+ of 0 means no current limit is applied.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="driveConversionVelocityFactor">
 <h3>driveConversionVelocityFactor</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">driveConversionVelocityFactor</span></div>
+<div class="block">Conversion factor for velocity used in drive control. This factor is applied to convert a
+ measured velocity (e.g., from a sensor) into a usable value for motor control. It helps scale
+ the velocity to match the motor's performance and system requirements.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="driveConversionPositionFactor">
 <h3>driveConversionPositionFactor</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">driveConversionPositionFactor</span></div>
+<div class="block">Conversion factor for position used in drive control. This factor is applied to convert a
+ measured position (e.g., from an encoder) into a usable value for motor control. It helps scale
+ the position to match the motor's performance and system requirements.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="openLoopRamp">
 <h3>openLoopRamp</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">openLoopRamp</span></div>
+<div class="block">Ramp rate for open-loop motor control, which dictates how quickly the motor ramps up or down
+ its speed in an open-loop system. A higher value results in faster ramping, while a lower value
+ provides smoother, slower ramping.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="closedLoopRamp">
 <h3>closedLoopRamp</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">closedLoopRamp</span></div>
+<div class="block">Ramp rate for closed-loop motor control, which dictates how quickly the motor ramps up or down
+ its speed in a closed-loop system. A higher value results in faster ramping, while a lower
+ value provides smoother, slower ramping.</div>
 </section>
 </li>
 </ul>

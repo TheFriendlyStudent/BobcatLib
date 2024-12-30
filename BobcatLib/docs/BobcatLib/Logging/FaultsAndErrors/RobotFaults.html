@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">RobotFaults</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></span></div>
+<div class="block">Manages faults and alerts for the robot. This class is responsible for creating, activating, and
+ deactivating alerts related to robot faults.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,7 +98,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#alerts" class="member-name-link">alerts</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">A list of alerts triggered for faults in the robot.</div>
+</div>
 </div>
 </section>
 </li>
@@ -109,7 +113,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">RobotFaults</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a new RobotFaults instance.</div>
+</div>
 </div>
 </section>
 </li>
@@ -126,18 +132,27 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates an alert, marking it as triggered, and logs the alert for the robot.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates an alert with a specific severity level.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createAlert(java.lang.String,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">createAlert</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;msg,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;level)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a new alert with a specified message and severity level, and adds it to the list of
+ alerts.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#disableAlert(BobcatLib.Logging.Alert)" class="member-name-link">disableAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Deactivates an alert, marking it as resolved.</div>
+</div>
 </div>
 </div>
 </div>
@@ -162,6 +177,7 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="alerts">
 <h3>alerts</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&gt;</span>&nbsp;<span class="element-name">alerts</span></div>
+<div class="block">A list of alerts triggered for faults in the robot.</div>
 </section>
 </li>
 </ul>
@@ -176,6 +192,7 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="&lt;init&gt;()">
 <h3>RobotFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">RobotFaults</span>()</div>
+<div class="block">Constructs a new RobotFaults instance.</div>
 </section>
 </li>
 </ul>
@@ -191,15 +208,25 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>createAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">createAlert</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;msg,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;level)</span></div>
+<div class="block">Creates a new alert with a specified message and severity level, and adds it to the list of
+ alerts.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>msg</code> - The message describing the fault.</dd>
+<dd><code>level</code> - The severity level of the alert.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="activateAlert(BobcatLib.Logging.Alert)">
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Activates an alert, marking it as triggered, and logs the alert for the robot.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
 </dl>
 </section>
 </li>
@@ -208,9 +235,13 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
+<div class="block">Activates an alert with a specific severity level.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
+<dd><code>type</code> - The severity level to set for the alert.</dd>
 </dl>
 </section>
 </li>
@@ -218,9 +249,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="disableAlert(BobcatLib.Logging.Alert)">
 <h3>disableAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">disableAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Deactivates an alert, marking it as resolved.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#disableAlert(BobcatLib.Logging.Alert)">disableAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to deactivate.</dd>
 </dl>
 </section>
 </li>

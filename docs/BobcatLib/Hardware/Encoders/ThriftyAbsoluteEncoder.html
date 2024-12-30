@@ -82,6 +82,10 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ThriftyAbsoluteEncoder</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></span></div>
+<div class="block">The ThriftyAbsoluteEncoder class implements the EncoderIO interface and provides methods for
+ working with an absolute encoder connected via analog input. It supports configuring the
+ encoder's inversion, getting its absolute position, and managing faults (though no actual faults
+ management is implemented for this encoder type).</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -105,10 +109,14 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a></code></div>
 <div class="col-second even-row-color"><code><a href="#chosenModule" class="member-name-link">chosenModule</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The encoder configuration constants specific to this module.</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/AnalogInput.html" title="class or interface in edu.wpi.first.wpilibj" class="external-link">AnalogInput</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#encoder" class="member-name-link">encoder</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The analog input object used to read the encoder's voltage.</div>
+</div>
 </div>
 </section>
 </li>
@@ -122,7 +130,9 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Utilities.CANDeviceDetails,BobcatLib.Hardware.Encoders.EncoderConstants)" class="member-name-link">ThriftyAbsoluteEncoder</a><wbr>(<a href="../../Utilities/CANDeviceDetails.html" title="class in BobcatLib.Utilities">CANDeviceDetails</a>&nbsp;details,
  <a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a>&nbsp;chosenModule)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor for creating a ThriftyAbsoluteEncoder instance.</div>
+</div>
 </div>
 </section>
 </li>
@@ -139,26 +149,28 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkForFaults()" class="member-name-link">checkForFaults</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks for any faults in the encoder.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#clearStickyFaults()" class="member-name-link">clearStickyFaults</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Clear sticky faults on the encoder.</div>
+<div class="block">Clears sticky faults on the encoder.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#configAbsEncoder()" class="member-name-link">configAbsEncoder</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Configs the absolute encoder sensor position , determining invertion.</div>
+<div class="block">Configures the absolute encoder sensor, including setting its inversion.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#factoryDefault()" class="member-name-link">factoryDefault</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Reset the encoder to factory defaults.</div>
+<div class="block">Resets the encoder to its factory defaults.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAbsolutePosition()" class="member-name-link">getAbsolutePosition</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get the absolute position of the encoder.</div>
+<div class="block">Gets the absolute position of the encoder.</div>
 </div>
 </div>
 </div>
@@ -184,12 +196,14 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="encoder">
 <h3>encoder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/AnalogInput.html" title="class or interface in edu.wpi.first.wpilibj" class="external-link">AnalogInput</a></span>&nbsp;<span class="element-name">encoder</span></div>
+<div class="block">The analog input object used to read the encoder's voltage.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="chosenModule">
 <h3>chosenModule</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a></span>&nbsp;<span class="element-name">chosenModule</span></div>
+<div class="block">The encoder configuration constants specific to this module.</div>
 </section>
 </li>
 </ul>
@@ -205,6 +219,13 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <h3>ThriftyAbsoluteEncoder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ThriftyAbsoluteEncoder</span><wbr><span class="parameters">(<a href="../../Utilities/CANDeviceDetails.html" title="class in BobcatLib.Utilities">CANDeviceDetails</a>&nbsp;details,
  <a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a>&nbsp;chosenModule)</span></div>
+<div class="block">Constructor for creating a ThriftyAbsoluteEncoder instance. This method sets up the encoder
+ based on the provided device details and configuration.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>details</code> - The CAN device details (e.g., CAN ID).</dd>
+<dd><code>chosenModule</code> - The encoder configuration constants (e.g., inversion settings).</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -219,7 +240,8 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="configAbsEncoder()">
 <h3>configAbsEncoder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">configAbsEncoder</span>()</div>
-<div class="block">Configs the absolute encoder sensor position , determining invertion.</div>
+<div class="block">Configures the absolute encoder sensor, including setting its inversion. This method uses the
+ configuration settings to apply the correct inversion logic.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#configAbsEncoder()">configAbsEncoder</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>
@@ -230,12 +252,14 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="getAbsolutePosition()">
 <h3>getAbsolutePosition</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getAbsolutePosition</span>()</div>
-<div class="block">Get the absolute position of the encoder.</div>
+<div class="block">Gets the absolute position of the encoder. The position is returned as a normalized rotation
+ value between -1.0 and 1.0, with the sign of the value adjusted based on the encoder's
+ inversion setting.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#getAbsolutePosition()">getAbsolutePosition</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>
 <dt>Returns:</dt>
-<dd>Absolute position in rotation (-1 to 0 ) or (0 to 1)</dd>
+<dd>The absolute position of the encoder in the range (-1 to 1).</dd>
 </dl>
 </section>
 </li>
@@ -243,7 +267,8 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="factoryDefault()">
 <h3>factoryDefault</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">factoryDefault</span>()</div>
-<div class="block">Reset the encoder to factory defaults.</div>
+<div class="block">Resets the encoder to its factory defaults. For this encoder type, this method does nothing as
+ there are no configurable settings to reset.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#factoryDefault()">factoryDefault</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>
@@ -254,7 +279,8 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="clearStickyFaults()">
 <h3>clearStickyFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearStickyFaults</span>()</div>
-<div class="block">Clear sticky faults on the encoder.</div>
+<div class="block">Clears sticky faults on the encoder. For this encoder type, this method does nothing as no
+ sticky faults are managed.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#clearStickyFaults()">clearStickyFaults</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>
@@ -265,6 +291,8 @@ implements <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encod
 <section class="detail" id="checkForFaults()">
 <h3>checkForFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">checkForFaults</span>()</div>
+<div class="block">Checks for any faults in the encoder. For this encoder type, this method does nothing as no
+ faults are managed.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EncoderIO.html#checkForFaults()">checkForFaults</a></code>&nbsp;in interface&nbsp;<code><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></code></dd>

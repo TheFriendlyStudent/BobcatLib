@@ -8,7 +8,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import java.io.File;
 import java.io.IOException;
 
-/** Represents the Operator Interface (OI) for controlling the robot. */
+/**
+ * The Operator Interface (OI) class manages the controller inputs and button mappings for the
+ * robot's driver. It supports various controller types and their configurations.
+ */
 public class OI {
   /** The driver joystick. */
   public final Joystick driver;
@@ -25,14 +28,25 @@ public class OI {
   /* controller configuration */
   public ControllerJson controllerJson;
 
+  /** The wrapper for the driver controller, supporting different controller types. */
   public ControllerWrapper driver_controller;
 
+  /** Trigger for the D-Pad forward button. */
   public Trigger dpadForwardBtn;
+
+  /** Trigger for the D-Pad backward button. */
   public Trigger dpadBackBtn;
+
+  /** Trigger for the D-Pad left button. */
   public Trigger dpadLeftBtn;
+
+  /** Trigger for the D-Pad right button. */
   public Trigger dpadRightBtn;
 
-  /** Constructs the Operator Interface (OI) with the specified driver port. */
+  /**
+   * Constructs the Operator Interface (OI) with the specified driver port and configuration.
+   * Initializes controller inputs and button mappings.
+   */
   public OI() {
     loadConfigurationFromFile();
     int driverPort = controllerJson.driver.id;

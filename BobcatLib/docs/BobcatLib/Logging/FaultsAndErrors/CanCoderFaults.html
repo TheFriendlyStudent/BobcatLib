@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CanCoderFaults</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></span></div>
+<div class="block">Wrapper class for managing and detecting faults in a CANcoder device. Provides functionality to
+ monitor and alert on various fault conditions.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,28 +98,44 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#bootDuringEnableAlert" class="member-name-link">bootDuringEnableAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for reboot during enable state.</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/CANcoder.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">CANcoder</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#encoder" class="member-name-link">encoder</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">CANcoder hardware instance being monitored for faults.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#HardwareAlert" class="member-name-link">HardwareAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for hardware fault.</div>
+</div>
 <div class="col-first odd-row-color"><code>int</code></div>
 <div class="col-second odd-row-color"><code><a href="#id" class="member-name-link">id</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">ID of the CANcoder device.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#magnetOutOfRangeAlert" class="member-name-link">magnetOutOfRangeAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for magnet being out of range.</div>
+</div>
 <div class="col-first odd-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#outOfTemperatureRangeAlert" class="member-name-link">outOfTemperatureRangeAlert</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Alert for temperature being out of the acceptable range.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#underVoltAlert" class="member-name-link">underVoltAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for under-voltage fault.</div>
+</div>
 <div class="col-first odd-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#UnlicensedFeatureInUseAlert" class="member-name-link">UnlicensedFeatureInUseAlert</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Alert for unlicensed feature usage.</div>
+</div>
 </div>
 </section>
 </li>
@@ -131,7 +149,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.ctre.phoenix6.hardware.CANcoder,int)" class="member-name-link">CanCoderFaults</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/CANcoder.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">CANcoder</a>&nbsp;enc,
  int&nbsp;id)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor for initializing the fault manager for a CANcoder device.</div>
+</div>
 </div>
 </section>
 </li>
@@ -148,17 +168,26 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates a specific alert and logs it with a message.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates a specific alert and sets its severity level.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#disableAlert(BobcatLib.Logging.Alert)" class="member-name-link">disableAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Disables a specific alert, indicating that the fault condition no longer exists.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasFaultOccured()" class="member-name-link">hasFaultOccured</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if any faults have occurred in the CANcoder device and activates the corresponding
+ alerts.</div>
+</div>
 </div>
 </div>
 </div>
@@ -180,48 +209,56 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="id">
 <h3>id</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">id</span></div>
+<div class="block">ID of the CANcoder device.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="encoder">
 <h3>encoder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/CANcoder.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">CANcoder</a></span>&nbsp;<span class="element-name">encoder</span></div>
+<div class="block">CANcoder hardware instance being monitored for faults.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="underVoltAlert">
 <h3>underVoltAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">underVoltAlert</span></div>
+<div class="block">Alert for under-voltage fault.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="magnetOutOfRangeAlert">
 <h3>magnetOutOfRangeAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">magnetOutOfRangeAlert</span></div>
+<div class="block">Alert for magnet being out of range.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="outOfTemperatureRangeAlert">
 <h3>outOfTemperatureRangeAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">outOfTemperatureRangeAlert</span></div>
+<div class="block">Alert for temperature being out of the acceptable range.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="HardwareAlert">
 <h3>HardwareAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">HardwareAlert</span></div>
+<div class="block">Alert for hardware fault.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="UnlicensedFeatureInUseAlert">
 <h3>UnlicensedFeatureInUseAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">UnlicensedFeatureInUseAlert</span></div>
+<div class="block">Alert for unlicensed feature usage.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="bootDuringEnableAlert">
 <h3>bootDuringEnableAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">bootDuringEnableAlert</span></div>
+<div class="block">Alert for reboot during enable state.</div>
 </section>
 </li>
 </ul>
@@ -237,6 +274,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>CanCoderFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CanCoderFaults</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/CANcoder.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">CANcoder</a>&nbsp;enc,
  int&nbsp;id)</span></div>
+<div class="block">Constructor for initializing the fault manager for a CANcoder device.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>enc</code> - The CANcoder instance to monitor.</dd>
+<dd><code>id</code> - The ID of the CANcoder device.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -251,9 +294,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="activateAlert(BobcatLib.Logging.Alert)">
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Activates a specific alert and logs it with a message.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
 </dl>
 </section>
 </li>
@@ -262,9 +308,13 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
+<div class="block">Activates a specific alert and sets its severity level.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
+<dd><code>type</code> - The severity level of the alert.</dd>
 </dl>
 </section>
 </li>
@@ -272,9 +322,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="disableAlert(BobcatLib.Logging.Alert)">
 <h3>disableAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">disableAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Disables a specific alert, indicating that the fault condition no longer exists.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#disableAlert(BobcatLib.Logging.Alert)">disableAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to disable.</dd>
 </dl>
 </section>
 </li>
@@ -282,10 +335,13 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="hasFaultOccured()">
 <h3>hasFaultOccured</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hasFaultOccured</span>()</div>
+<div class="block">Checks if any faults have occurred in the CANcoder device and activates the corresponding
+ alerts.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#hasFaultOccured()">hasFaultOccured</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
 <dt>Returns:</dt>
+<dd>True if at least one fault is detected; otherwise, false.</dd>
 </dl>
 </section>
 </li>

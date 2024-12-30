@@ -6,26 +6,49 @@ import BobcatLib.Utilities.CANDeviceDetails;
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.hardware.CANcoder;
 
+/**
+ * A wrapper class for managing a CANcoder device, implementing the {@link EncoderIO} interface.
+ * This class handles configuration, fault checking, and interaction with the encoder.
+ */
 public class CanCoderWrapper implements EncoderIO {
+  /** Configuration for the CANcoder device. */
   public CANcoderConfiguration swerveCANcoderConfig = new CANcoderConfiguration();
+
+  /** The CANcoder hardware instance. */
   private CANcoder encoder;
-  /** Last angle reading was faulty. */
+
+  /** Indicates whether the last angle reading was faulty. */
   public boolean readingError = false;
 
+  /** Indicates whether the encoder's direction is inverted. */
   public boolean isInverted = false;
-  /** An {@link Alert} for if the CAN ID is greater than 40. */
+
+  /**
+   * An {@link Alert} for notifying if the CAN ID is greater than 40, which can cause undefined
+   * behavior.
+   */
   public static final Alert canIdWarning =
       new Alert(
           "JSON",
           "CAN IDs greater than 40 can cause undefined behaviour, please use a CAN ID below 40!",
           Alert.AlertType.WARNING);
 
+  /** The encoder constants for the chosen module. */
   public EncoderConstants chosenModule;
 
+  /** Fault handler for the CANcoder device. */
   private CanCoderFaults faults;
 
+  /** Details of the CAN device. */
   private CANDeviceDetails details;
 
+  /**
+   * Constructs a {@code CanCoderWrapper} instance.
+   *
+   * @param details Details of the CAN device, including its ID and name.
+   * @param chosenModule The encoder constants for the chosen module.
+   * @param canivorename The CANivore name to use for the device.
+   */
   public CanCoderWrapper(
       CANDeviceDetails details, EncoderConstants chosenModule, String canivorename) {
     this.details = details;
@@ -43,7 +66,10 @@ public class CanCoderWrapper implements EncoderIO {
     faults = new CanCoderFaults(encoder, id);
   }
 
-  /** Configs the absolute encoder sensor position , determining invertion. */
+  /**
+   * Configures the absolute encoder's sensor position and determines its inversion state. This
+   * method initializes the encoder based on the chosen module's configuration.
+   */
   public void configAbsEncoder() {
     /** Swerve CANCoder Configuration */
     swerveCANcoderConfig.MagnetSensor.SensorDirection =
@@ -52,24 +78,32 @@ public class CanCoderWrapper implements EncoderIO {
   }
 
   /**
-   * Get the absolute position of the encoder.
+   * Retrieves the absolute position of the encoder.
    *
-   * @return Absolute position in rotation (-0.5 to 0.999999 )
+   * @return The absolute position of the encoder, as a rotation value in the range (-0.5 to
+   *     0.999999).
    */
   public double getAbsolutePosition() {
     return encoder.getAbsolutePosition().getValueAsDouble();
   }
 
-  /** Reset the encoder to factory defaults. */
+  /** Resets the encoder to its factory default configuration. */
   public void factoryDefault() {
     encoder.getConfigurator().apply(new CANcoderConfiguration());
   }
 
-  /** Clear sticky faults on the encoder. */
+  /**
+   * Clears sticky faults on the encoder. Sticky faults are persistent errors that must be manually
+   * cleared.
+   */
   public void clearStickyFaults() {
     encoder.clearStickyFaults();
   }
 
+  /**
+   * Checks for faults in the encoder. This method delegates fault checking to the {@link
+   * CanCoderFaults} instance.
+   */
   public void checkForFaults() {
     faults.hasFaultOccured();
   }

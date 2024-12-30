@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SparkMaxFaults</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></span></div>
+<div class="block">Handles fault management for SparkMax motor controllers. Provides functionality for creating and
+ managing alerts for various fault conditions.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,7 +98,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static enum&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="SparkMaxFaults.faults.html" class="type-name-link" title="enum class in BobcatLib.Logging.FaultsAndErrors">SparkMaxFaults.faults</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Enumeration of possible faults that can occur in the SparkMax motor controller.</div>
+</div>
 </div>
 </section>
 </li>
@@ -111,25 +115,39 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#BrownoutAlert" class="member-name-link">BrownoutAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for a Brownout fault.</div>
+</div>
 <div class="col-first odd-row-color"><code>int</code></div>
 <div class="col-second odd-row-color"><code><a href="#id" class="member-name-link">id</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">ID of the SparkMax motor controller associated with these faults.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#kHasResetAlert" class="member-name-link">kHasResetAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for a controller reset (kHasReset).</div>
+</div>
 <div class="col-first odd-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#MotorFaultAlert" class="member-name-link">MotorFaultAlert</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Alert for a Motor fault.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#OvercurrentAlert" class="member-name-link">OvercurrentAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for an Overcurrent fault.</div>
+</div>
 <div class="col-first odd-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#SensorFaultAlert" class="member-name-link">SensorFaultAlert</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Alert for a Sensor fault.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#StallAlert" class="member-name-link">StallAlert</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Alert for a Stall fault.</div>
+</div>
 </div>
 </section>
 </li>
@@ -142,7 +160,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int)" class="member-name-link">SparkMaxFaults</a><wbr>(int&nbsp;id)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a new instance of `SparkMaxFaults` for a given motor controller.</div>
+</div>
 </div>
 </section>
 </li>
@@ -159,14 +179,20 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates an alert, marking it as triggered and logs the alert with the associated SparkMax ID.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates an alert with a specific severity level.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#disableAlert(BobcatLib.Logging.Alert)" class="member-name-link">disableAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Deactivates an alert, marking it as resolved.</div>
+</div>
 </div>
 </div>
 </div>
@@ -191,42 +217,49 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="BrownoutAlert">
 <h3>BrownoutAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">BrownoutAlert</span></div>
+<div class="block">Alert for a Brownout fault.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="OvercurrentAlert">
 <h3>OvercurrentAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">OvercurrentAlert</span></div>
+<div class="block">Alert for an Overcurrent fault.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="MotorFaultAlert">
 <h3>MotorFaultAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">MotorFaultAlert</span></div>
+<div class="block">Alert for a Motor fault.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="SensorFaultAlert">
 <h3>SensorFaultAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">SensorFaultAlert</span></div>
+<div class="block">Alert for a Sensor fault.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="StallAlert">
 <h3>StallAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">StallAlert</span></div>
+<div class="block">Alert for a Stall fault.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="kHasResetAlert">
 <h3>kHasResetAlert</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></span>&nbsp;<span class="element-name">kHasResetAlert</span></div>
+<div class="block">Alert for a controller reset (kHasReset).</div>
 </section>
 </li>
 <li>
 <section class="detail" id="id">
 <h3>id</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">id</span></div>
+<div class="block">ID of the SparkMax motor controller associated with these faults.</div>
 </section>
 </li>
 </ul>
@@ -241,6 +274,11 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="&lt;init&gt;(int)">
 <h3>SparkMaxFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SparkMaxFaults</span><wbr><span class="parameters">(int&nbsp;id)</span></div>
+<div class="block">Constructs a new instance of `SparkMaxFaults` for a given motor controller.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - The unique identifier of the SparkMax motor controller.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -255,9 +293,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="activateAlert(BobcatLib.Logging.Alert)">
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Activates an alert, marking it as triggered and logs the alert with the associated SparkMax ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
 </dl>
 </section>
 </li>
@@ -266,9 +307,13 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
+<div class="block">Activates an alert with a specific severity level.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
+<dd><code>type</code> - The severity level to set for the alert.</dd>
 </dl>
 </section>
 </li>
@@ -276,9 +321,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="disableAlert(BobcatLib.Logging.Alert)">
 <h3>disableAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">disableAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Deactivates an alert, marking it as resolved.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#disableAlert(BobcatLib.Logging.Alert)">disableAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to deactivate.</dd>
 </dl>
 </section>
 </li>

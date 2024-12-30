@@ -77,6 +77,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">EncoderIO</span></div>
+<div class="block">Interface representing the interface to encoder hardware, providing methods for configuring,
+ reading, and managing encoder values and faults.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -92,7 +94,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="EncoderIO.EncoderIOInputs.html" class="type-name-link" title="class in BobcatLib.Hardware.Encoders">EncoderIO.EncoderIOInputs</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Represents the inputs for the gyro sensor.</div>
+<div class="block">Represents the inputs for the gyro sensor used in the encoder system.</div>
 </div>
 </div>
 </section>
@@ -110,36 +112,44 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#checkForFaults()" class="member-name-link">checkForFaults</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Checks for any faults in the encoder system.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#clearStickyFaults()" class="member-name-link">clearStickyFaults</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Clear sticky faults on the encoder.</div>
+<div class="block">Clears any sticky faults on the encoder.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#configAbsEncoder()" class="member-name-link">configAbsEncoder</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Configs the absolute encoder sensor position , determining invertion.</div>
+<div class="block">Configures the absolute encoder sensor position, including determining the inversion state.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#factoryDefault()" class="member-name-link">factoryDefault</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Reset the encoder to factory defaults.</div>
+<div class="block">Resets the encoder to its factory defaults.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getAbsolutePosition()" class="member-name-link">getAbsolutePosition</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Get the absolute position of the encoder.</div>
+<div class="block">Gets the absolute position of the encoder.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Periodic method that performs any required updates for the encoder.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#periodic(BobcatLib.Hardware.Encoders.CanCoderWrapper)" class="member-name-link">periodic</a><wbr>(<a href="CanCoderWrapper.html" title="class in BobcatLib.Hardware.Encoders">CanCoderWrapper</a>&nbsp;encoder)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Periodic method that is called to process updates for a <a href="CanCoderWrapper.html" title="class in BobcatLib.Hardware.Encoders"><code>CanCoderWrapper</code></a>.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#periodic(BobcatLib.Hardware.Encoders.ThriftyAbsoluteEncoder)" class="member-name-link">periodic</a><wbr>(<a href="ThriftyAbsoluteEncoder.html" title="class in BobcatLib.Hardware.Encoders">ThriftyAbsoluteEncoder</a>&nbsp;encoder)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Periodic method that is called to process updates for a <a href="ThriftyAbsoluteEncoder.html" title="class in BobcatLib.Hardware.Encoders"><code>ThriftyAbsoluteEncoder</code></a>.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updateInputs(BobcatLib.Hardware.Encoders.EncoderIO.EncoderIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="EncoderIO.EncoderIOInputs.html" title="class in BobcatLib.Hardware.Encoders">EncoderIO.EncoderIOInputs</a>&nbsp;inputs)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
@@ -163,10 +173,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="updateInputs(BobcatLib.Hardware.Encoders.EncoderIO.EncoderIOInputs)">
 <h3>updateInputs</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="EncoderIO.EncoderIOInputs.html" title="class in BobcatLib.Hardware.Encoders">EncoderIO.EncoderIOInputs</a>&nbsp;inputs)</span></div>
-<div class="block">Updates the encoder inputs based on external sources.</div>
+<div class="block">Updates the encoder inputs based on external sources. This method is typically called to fetch
+ the latest encoder data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>inputs</code> - The inputs to update.</dd>
+<dd><code>inputs</code> - The encoder inputs to update.</dd>
 </dl>
 </section>
 </li>
@@ -174,35 +185,53 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="periodic(BobcatLib.Hardware.Encoders.CanCoderWrapper)">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span><wbr><span class="parameters">(<a href="CanCoderWrapper.html" title="class in BobcatLib.Hardware.Encoders">CanCoderWrapper</a>&nbsp;encoder)</span></div>
+<div class="block">Periodic method that is called to process updates for a <a href="CanCoderWrapper.html" title="class in BobcatLib.Hardware.Encoders"><code>CanCoderWrapper</code></a>. This is an
+ additional method for custom periodic updates based on the encoder type.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>encoder</code> - The CanCoderWrapper instance to process.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="periodic(BobcatLib.Hardware.Encoders.ThriftyAbsoluteEncoder)">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span><wbr><span class="parameters">(<a href="ThriftyAbsoluteEncoder.html" title="class in BobcatLib.Hardware.Encoders">ThriftyAbsoluteEncoder</a>&nbsp;encoder)</span></div>
+<div class="block">Periodic method that is called to process updates for a <a href="ThriftyAbsoluteEncoder.html" title="class in BobcatLib.Hardware.Encoders"><code>ThriftyAbsoluteEncoder</code></a>. This
+ method provides periodic updates for this encoder type.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>encoder</code> - The ThriftyAbsoluteEncoder instance to process.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
+<div class="block">Periodic method that performs any required updates for the encoder. Typically called at regular
+ intervals during the robot's operation.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="configAbsEncoder()">
 <h3>configAbsEncoder</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">configAbsEncoder</span>()</div>
-<div class="block">Configs the absolute encoder sensor position , determining invertion.</div>
+<div class="block">Configures the absolute encoder sensor position, including determining the inversion state.
+ This method ensures that the encoder's setup is correctly applied, including handling
+ inversion.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="getAbsolutePosition()">
 <h3>getAbsolutePosition</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getAbsolutePosition</span>()</div>
-<div class="block">Get the absolute position of the encoder.</div>
+<div class="block">Gets the absolute position of the encoder. The absolute position is typically represented in a
+ normalized rotation range.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>Absolute position in rotation (-1 to 0 ) or (0 to 1)</dd>
+<dd>The absolute position of the encoder, typically in a rotation range of (-1 to 0) or (0
+     to 1).</dd>
 </dl>
 </section>
 </li>
@@ -210,22 +239,24 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="factoryDefault()">
 <h3>factoryDefault</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">factoryDefault</span>()</div>
-<div class="block">Reset the encoder to factory defaults.
-
- <p>This will not clear the stored zero offset.</div>
+<div class="block">Resets the encoder to its factory defaults. This will reset all encoder settings but will not
+ clear the stored zero offset.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="clearStickyFaults()">
 <h3>clearStickyFaults</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearStickyFaults</span>()</div>
-<div class="block">Clear sticky faults on the encoder.</div>
+<div class="block">Clears any sticky faults on the encoder. Sticky faults may occur due to hardware issues and
+ should be cleared as part of the normal maintenance.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="checkForFaults()">
 <h3>checkForFaults</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">checkForFaults</span>()</div>
+<div class="block">Checks for any faults in the encoder system. This method should be called periodically to
+ ensure the encoder is functioning properly.</div>
 </section>
 </li>
 </ul>
