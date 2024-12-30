@@ -82,6 +82,9 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GyroSim</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></span></div>
+<div class="block">Simulates a gyro sensor for testing or development purposes. This class mimics the behavior of a
+ gyro sensor by maintaining simulated yaw, pitch, and roll values and updating them periodically.
+ It uses a timer to track the passage of time and simulate the changes in orientation over time.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -103,7 +106,9 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">GyroSim</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Initializes the GyroSim with a timer and sets up the initial angles.</div>
+</div>
 </div>
 </section>
 </li>
@@ -120,38 +125,48 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#configGyro()" class="member-name-link">configGyro</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Configures the gyro simulation.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTimeDiff()" class="member-name-link">getTimeDiff</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the time difference between the last and current gyro update.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Periodic update method for the simulated gyro.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic(com.ctre.phoenix6.hardware.Pigeon2)" class="member-name-link">periodic</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a>&nbsp;imu)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Periodic update method for the Pigeon2 IMU sensor.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic(com.studica.frc.AHRS)" class="member-name-link">periodic</a><wbr>(com.studica.frc.AHRS&nbsp;imu)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Periodic update method for the AHRS IMU sensor.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPitch(double)" class="member-name-link">setPitch</a><wbr>(double&nbsp;pitch)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the Pitch value of the gyro sensor.</div>
+<div class="block">Sets the pitch value of the simulated gyro.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setRoll(double)" class="member-name-link">setRoll</a><wbr>(double&nbsp;roll)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the roll value of the gyro sensor.</div>
+<div class="block">Sets the roll value of the simulated gyro.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setYaw(double)" class="member-name-link">setYaw</a><wbr>(double&nbsp;yaw)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the yaw value of the gyro sensor.</div>
+<div class="block">Sets the yaw value of the simulated gyro.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateInputs(BobcatLib.Hardware.Gyros.GyroIO.GyroIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros">GyroIO.GyroIOInputs</a>&nbsp;inputs)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Updates the gyro inputs based on external sources.</div>
+<div class="block">Updates the gyro inputs based on the simulated gyro data.</div>
 </div>
 </div>
 </div>
@@ -174,6 +189,7 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <section class="detail" id="&lt;init&gt;()">
 <h3>GyroSim</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GyroSim</span>()</div>
+<div class="block">Initializes the GyroSim with a timer and sets up the initial angles.</div>
 </section>
 </li>
 </ul>
@@ -188,18 +204,21 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <section class="detail" id="configGyro()">
 <h3>configGyro</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">configGyro</span>()</div>
+<div class="block">Configures the gyro simulation. Currently does nothing but can be extended for future
+ configuration.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="updateInputs(BobcatLib.Hardware.Gyros.GyroIO.GyroIOInputs)">
 <h3>updateInputs</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros">GyroIO.GyroIOInputs</a>&nbsp;inputs)</span></div>
-<div class="block">Updates the gyro inputs based on external sources.</div>
+<div class="block">Updates the gyro inputs based on the simulated gyro data. The simulated yaw, pitch, and roll
+ values are converted to <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link"><code>Rotation2d</code></a> objects and stored in the provided <a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros"><code>GyroIO.GyroIOInputs</code></a>.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GyroIO.html#updateInputs(BobcatLib.Hardware.Gyros.GyroIO.GyroIOInputs)">updateInputs</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>inputs</code> - The inputs to update.</dd>
+<dd><code>inputs</code> - The inputs to update with the simulated gyro data.</dd>
 </dl>
 </section>
 </li>
@@ -207,7 +226,7 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <section class="detail" id="setYaw(double)">
 <h3>setYaw</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setYaw</span><wbr><span class="parameters">(double&nbsp;yaw)</span></div>
-<div class="block">Sets the yaw value of the gyro sensor.</div>
+<div class="block">Sets the yaw value of the simulated gyro.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GyroIO.html#setYaw(double)">setYaw</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
@@ -220,7 +239,7 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <section class="detail" id="setPitch(double)">
 <h3>setPitch</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPitch</span><wbr><span class="parameters">(double&nbsp;pitch)</span></div>
-<div class="block">Sets the Pitch value of the gyro sensor.</div>
+<div class="block">Sets the pitch value of the simulated gyro.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GyroIO.html#setPitch(double)">setPitch</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
@@ -233,7 +252,7 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <section class="detail" id="setRoll(double)">
 <h3>setRoll</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setRoll</span><wbr><span class="parameters">(double&nbsp;roll)</span></div>
-<div class="block">Sets the roll value of the gyro sensor.</div>
+<div class="block">Sets the roll value of the simulated gyro.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GyroIO.html#setRoll(double)">setRoll</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
@@ -246,9 +265,13 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <section class="detail" id="periodic(com.ctre.phoenix6.hardware.Pigeon2)">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a>&nbsp;imu)</span></div>
+<div class="block">Periodic update method for the Pigeon2 IMU sensor. Currently does nothing but can be extended
+ for specific periodic updates for Pigeon2.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GyroIO.html#periodic(com.ctre.phoenix6.hardware.Pigeon2)">periodic</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>imu</code> - The Pigeon2 IMU instance.</dd>
 </dl>
 </section>
 </li>
@@ -256,12 +279,20 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <section class="detail" id="periodic(com.studica.frc.AHRS)">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span><wbr><span class="parameters">(com.studica.frc.AHRS&nbsp;imu)</span></div>
+<div class="block">Periodic update method for the AHRS IMU sensor. Currently does nothing but can be extended for
+ specific periodic updates for AHRS.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>imu</code> - The AHRS IMU instance.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
+<div class="block">Periodic update method for the simulated gyro. This method is called periodically to update the
+ simulated gyro sensor's state.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GyroIO.html#periodic()">periodic</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
@@ -272,9 +303,13 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <section class="detail" id="getTimeDiff()">
 <h3>getTimeDiff</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getTimeDiff</span>()</div>
+<div class="block">Gets the time difference between the last and current gyro update. This is used to simulate the
+ passage of time in the gyro's state.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GyroIO.html#getTimeDiff()">getTimeDiff</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
+<dt>Returns:</dt>
+<dd>The time difference (in seconds) since the last update.</dd>
 </dl>
 </section>
 </li>

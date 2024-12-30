@@ -77,7 +77,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">FaultsWrapper</span></div>
-<div class="block">Faults Wrapper</div>
+<div class="block">Interface for managing hardware fault alerts. Provides methods to activate, deactivate, and check
+ for faults in the system.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -94,17 +95,25 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#activateAlert(BobcatLib.Logging.Alert)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Activates a specific alert, indicating that a fault condition has been detected.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Activates a specific alert with a defined severity level.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#disableAlert(BobcatLib.Logging.Alert)" class="member-name-link">disableAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Deactivates a specific alert, indicating that the fault condition no longer exists.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#hasFaultOccured()" class="member-name-link">hasFaultOccured</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Checks if any fault conditions have been detected.</div>
+</div>
 </div>
 </div>
 </div>
@@ -123,9 +132,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="activateAlert(BobcatLib.Logging.Alert)">
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Activates a specific alert, indicating that a fault condition has been detected.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>alert</code> - </dd>
+<dd><code>alert</code> - The alert to activate.</dd>
 </dl>
 </section>
 </li>
@@ -134,10 +144,11 @@ loadScripts(document, 'script');</script>
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
+<div class="block">Activates a specific alert with a defined severity level.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>alert</code> - </dd>
-<dd><code>type</code> - </dd>
+<dd><code>alert</code> - The alert to activate.</dd>
+<dd><code>type</code> - The severity level of the alert.</dd>
 </dl>
 </section>
 </li>
@@ -145,9 +156,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="disableAlert(BobcatLib.Logging.Alert)">
 <h3>disableAlert</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">disableAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Deactivates a specific alert, indicating that the fault condition no longer exists.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>alert</code> - </dd>
+<dd><code>alert</code> - The alert to deactivate.</dd>
 </dl>
 </section>
 </li>
@@ -155,8 +167,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="hasFaultOccured()">
 <h3>hasFaultOccured</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hasFaultOccured</span>()</div>
+<div class="block">Checks if any fault conditions have been detected.</div>
 <dl class="notes">
 <dt>Returns:</dt>
+<dd><code>true</code> if at least one fault is detected; otherwise, <code>false</code>.</dd>
 </dl>
 </section>
 </li>

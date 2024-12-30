@@ -77,7 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Alert</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Class for managing persistent alerts to be sent over NetworkTables.</div>
+<div class="block">Class for managing persistent alerts to be sent over NetworkTables. Alerts can be categorized by
+ groups and urgency levels and displayed on the dashboard.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -109,13 +110,13 @@ loadScripts(document, 'script');</script>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">Alert</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  <a href="Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Creates a new Alert in the default group - "Alerts".</div>
+<div class="block">Creates a new alert in the default group "Alerts".</div>
 </div>
 <div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(java.lang.String,java.lang.String,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">Alert</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;group,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  <a href="Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
 <div class="col-last odd-row-color">
-<div class="block">Creates a new Alert.</div>
+<div class="block">Creates a new alert in the specified group.</div>
 </div>
 </div>
 </section>
@@ -134,27 +135,27 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getActivationTimestamp()" class="member-name-link">getActivationTimestamp</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get Activation Timestamp</div>
+<div class="block">Retrieves the timestamp when the alert was activated.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#logAlert(java.lang.String)" class="member-name-link">logAlert</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Logs the Alert</div>
+<div class="block">Logs metadata for the alert using the Logger.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#set(boolean)" class="member-name-link">set</a><wbr>(boolean&nbsp;active)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets whether the alert should currently be displayed.</div>
+<div class="block">Activates or deactivates the alert.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLevel(BobcatLib.Logging.Alert.AlertType)" class="member-name-link">setLevel</a><wbr>(<a href="Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;level)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Updates current alert type ( level ).</div>
+<div class="block">Updates the urgency level of the alert.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setText(java.lang.String)" class="member-name-link">setText</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Updates current alert text.</div>
+<div class="block">Updates the text of the alert.</div>
 </div>
 </div>
 </div>
@@ -178,12 +179,12 @@ loadScripts(document, 'script');</script>
 <h3>Alert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Alert</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  <a href="Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
-<div class="block">Creates a new Alert in the default group - "Alerts". If this is the first to be instantiated,
- the appropriate entries will be added to NetworkTables.</div>
+<div class="block">Creates a new alert in the default group "Alerts". If this is the first alert in the group, its
+ entries will be added to NetworkTables.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>text</code> - Text to be displayed when the alert is active.</dd>
-<dd><code>type</code> - Alert level specifying urgency.</dd>
+<dd><code>text</code> - The message text of the alert.</dd>
+<dd><code>type</code> - The urgency level of the alert.</dd>
 </dl>
 </section>
 </li>
@@ -193,13 +194,13 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Alert</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;group,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  <a href="Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
-<div class="block">Creates a new Alert. If this is the first to be instantiated in its group, the appropriate
+<div class="block">Creates a new alert in the specified group. If this is the first alert in the group, its
  entries will be added to NetworkTables.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>group</code> - Group identifier, also used as NetworkTables title</dd>
-<dd><code>text</code> - Text to be displayed when the alert is active.</dd>
-<dd><code>type</code> - Alert level specifying urgency.</dd>
+<dd><code>group</code> - The group identifier for the alert, also used as the NetworkTables title.</dd>
+<dd><code>text</code> - The message text of the alert.</dd>
+<dd><code>type</code> - The urgency level of the alert.</dd>
 </dl>
 </section>
 </li>
@@ -215,11 +216,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="set(boolean)">
 <h3>set</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">set</span><wbr><span class="parameters">(boolean&nbsp;active)</span></div>
-<div class="block">Sets whether the alert should currently be displayed. When activated, the alert text will also
- be sent to the console.</div>
+<div class="block">Activates or deactivates the alert. If activated, the alert text is also sent to the console.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>active</code> - Set the alert as active and report it to the driver station.</dd>
+<dd><code>active</code> - True to activate the alert, false to deactivate it.</dd>
 </dl>
 </section>
 </li>
@@ -227,10 +227,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setText(java.lang.String)">
 <h3>setText</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setText</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</span></div>
-<div class="block">Updates current alert text.</div>
+<div class="block">Updates the text of the alert.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>text</code> - The text for the alert.</dd>
+<dd><code>text</code> - The new text for the alert.</dd>
 </dl>
 </section>
 </li>
@@ -238,21 +238,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setLevel(BobcatLib.Logging.Alert.AlertType)">
 <h3>setLevel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setLevel</span><wbr><span class="parameters">(<a href="Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;level)</span></div>
-<div class="block">Updates current alert type ( level ).</div>
+<div class="block">Updates the urgency level of the alert.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>level</code> - The type for the alert.</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getActivationTimestamp()">
-<h3>getActivationTimestamp</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getActivationTimestamp</span>()</div>
-<div class="block">Get Activation Timestamp</div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd>active Start Time</dd>
+<dd><code>level</code> - The new urgency level for the alert.</dd>
 </dl>
 </section>
 </li>
@@ -260,10 +249,21 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="logAlert(java.lang.String)">
 <h3>logAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">logAlert</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</span></div>
-<div class="block">Logs the Alert</div>
+<div class="block">Logs metadata for the alert using the Logger.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>name</code> - name</dd>
+<dd><code>name</code> - The name of the metadata entry.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getActivationTimestamp()">
+<h3>getActivationTimestamp</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getActivationTimestamp</span>()</div>
+<div class="block">Retrieves the timestamp when the alert was activated.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The activation timestamp.</dd>
 </dl>
 </section>
 </li>
