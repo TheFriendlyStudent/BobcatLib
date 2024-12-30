@@ -2,24 +2,30 @@ package BobcatLib.Hardware.Motors.SensorHelpers;
 
 import com.ctre.phoenix6.signals.SensorDirectionValue;
 
-/** Sensor Direction Wrapper */
+/**
+ * A wrapper class for managing the direction of a sensor.
+ * This class handles the inversion of sensor direction and allows conversion 
+ * between boolean and `SensorDirectionValue` representations.
+ */
 public class SensorDirectionWrapper {
-  /** internal state */
+  /** Internal state representing whether the sensor is inverted. */
   public boolean isInverted = false;
 
   /**
-   * Constructor
-   *
-   * @param mode
+   * Constructor to initialize the sensor direction wrapper with a boolean mode.
+   * 
+   * @param mode A boolean value representing the inversion state of the sensor.
+   *             `true` means the sensor is inverted, `false` means it is not.
    */
   public SensorDirectionWrapper(boolean mode) {
     isInverted = mode;
   }
 
   /**
-   * Contructor
-   *
-   * @param mode SensorDirectionValue
+   * Constructor to initialize the sensor direction wrapper with a `SensorDirectionValue` mode.
+   * 
+   * @param mode A `SensorDirectionValue` representing the sensor direction.
+   *             If the mode is `Clockwise_Positive`, the sensor will be considered inverted.
    */
   public SensorDirectionWrapper(SensorDirectionValue mode) {
     isInverted = false;
@@ -29,9 +35,10 @@ public class SensorDirectionWrapper {
   }
 
   /**
-   * Returns sensor direction.
-   *
-   * @return SensorDirectionValue
+   * Returns the sensor direction as a `SensorDirectionValue`.
+   * 
+   * @return A `SensorDirectionValue` that represents the sensor direction. 
+   *         Returns `Clockwise_Positive` if inverted, `CounterClockwise_Positive` otherwise.
    */
   public SensorDirectionValue asSensorDirectionValue() {
     if (isInverted) {
@@ -41,9 +48,9 @@ public class SensorDirectionWrapper {
   }
 
   /**
-   * gets sensor direction result as a boolean.
-   *
-   * @return boolean
+   * Returns the sensor direction as a boolean value.
+   * 
+   * @return `true` if the sensor is inverted, `false` otherwise.
    */
   public boolean asBoolean() {
     return isInverted;
