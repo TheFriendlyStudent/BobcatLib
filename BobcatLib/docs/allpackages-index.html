@@ -62,15 +62,23 @@ loadScripts(document, 'script');</script>
 <div class="block">Used in the controller config parsing from the deploy folder.</div>
 </div>
 <div class="col-first even-row-color"><a href="BobcatLib/Hardware/Encoders/package-summary.html">BobcatLib.Hardware.Encoders</a></div>
-<div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><a href="BobcatLib/Hardware/Gyros/package-summary.html">BobcatLib.Hardware.Gyros</a></div>
-<div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><a href="BobcatLib/Hardware/Gyros/parser/package-summary.html">BobcatLib.Hardware.Gyros.parser</a></div>
 <div class="col-last even-row-color">
-<div class="block">Swerve Lib Gyros Parser</div>
+<div class="block">Generic encoder implementation , currently includes Thrifty and CanCoders , would need to
+ integrate more like the CanAndCoder , once wpilib2025 supports them</div>
+</div>
+<div class="col-first odd-row-color"><a href="BobcatLib/Hardware/Gyros/package-summary.html">BobcatLib.Hardware.Gyros</a></div>
+<div class="col-last odd-row-color">
+<div class="block">Generic IMU ( Gyro ) api supports Sim , and Pigeon2Gyro.</div>
+</div>
+<div class="col-first even-row-color"><a href="BobcatLib/Hardware/Gyros/Parser/package-summary.html">BobcatLib.Hardware.Gyros.Parser</a></div>
+<div class="col-last even-row-color">
+<div class="block">Generic Gyro ConfigUtility Support, json implementation</div>
 </div>
 <div class="col-first odd-row-color"><a href="BobcatLib/Hardware/LedControllers/package-summary.html">BobcatLib.Hardware.LedControllers</a></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Led Controllers API that supports the CANdle, and any other led controllers that we would want to
+ add.</div>
+</div>
 <div class="col-first even-row-color"><a href="BobcatLib/Hardware/Motors/package-summary.html">BobcatLib.Hardware.Motors</a></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><a href="BobcatLib/Hardware/Motors/SensorHelpers/package-summary.html">BobcatLib.Hardware.Motors.SensorHelpers</a></div>
@@ -81,7 +89,8 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><a href="BobcatLib/Logging/package-summary.html">BobcatLib.Logging</a></div>
 <div class="col-last odd-row-color">
-<div class="block">Logging and Fault Handling</div>
+<div class="block">Logging and Fault Handling supports fault reporting for CANcoders, CANdle , Pigeon2 , SparkMax,
+ and TalonFX</div>
 </div>
 <div class="col-first even-row-color"><a href="BobcatLib/Logging/FaultsAndErrors/package-summary.html">BobcatLib.Logging.FaultsAndErrors</a></div>
 <div class="col-last even-row-color">&nbsp;</div>

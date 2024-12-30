@@ -37,9 +37,9 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
  */
 public class RobotContainer {
         /* Subsystems */
-        public final OI s_Controls = new OI();
-        public final SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance);
-        private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine");
+        public final OI s_Controls = new OI(); // Interfaces with popular controllers and input devices
+        public final SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve Library implementation.
+        private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose an Auto!
 
         /**
          * The container for the robot. Contains subsystems, OI devices, and commands.

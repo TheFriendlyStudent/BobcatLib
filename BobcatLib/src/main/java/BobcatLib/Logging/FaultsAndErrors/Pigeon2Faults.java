@@ -8,9 +8,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BooleanSupplier;
 
+/**
+ * Manages and monitors faults for the Pigeon2 IMU device. This class provides alerts for various
+ * fault conditions that can occur during the operation of the Pigeon2 IMU.
+ */
 public class Pigeon2Faults implements FaultsWrapper {
+
+  /** The unique identifier for the Pigeon2 device. */
   public int id;
+
+  /** The Pigeon2 IMU instance being monitored. */
   public Pigeon2 imu;
+
+  // Static alert definitions for various fault types
   public static Alert BootDuringEnableAlert;
   public static Alert SaturatedAccelerometerAlert;
   public static Alert SaturatedMagnetometerAlert;
@@ -23,10 +33,17 @@ public class Pigeon2Faults implements FaultsWrapper {
   public static Alert UndervoltageFaultAlert;
   public static Alert HardwareAlert;
 
+  /**
+   * Constructs a new Pigeon2Faults instance with a given Pigeon2 IMU and ID.
+   *
+   * @param imu The Pigeon2 IMU to monitor.
+   * @param id The unique identifier for the Pigeon2 device.
+   */
   public Pigeon2Faults(Pigeon2 imu, int id) {
     this.id = id;
     this.imu = imu;
     AlertType level = AlertType.INFO;
+
     BootDuringEnableAlert =
         new Alert("Gyro", "Pigeon2 " + id + " boot while detecting the enable signal", level);
     SaturatedAccelerometerAlert =
@@ -55,20 +72,44 @@ public class Pigeon2Faults implements FaultsWrapper {
     HardwareAlert = new Alert("Gyro", "Pigeon2 " + id + " Hardware fault occurred", level);
   }
 
+  /**
+   * Activates an alert, marking it as triggered.
+   *
+   * @param alert The alert to activate.
+   */
   public void activateAlert(Alert alert) {
     alert.set(true);
     alert.logAlert("Pigeon2 " + id);
   }
 
+  /**
+   * Activates an alert with a specific severity level.
+   *
+   * @param alert The alert to activate.
+   * @param type The severity level to set for the alert.
+   */
   public void activateAlert(Alert alert, AlertType type) {
     alert.setLevel(type);
     alert.set(true);
   }
 
+  /**
+   * Deactivates an alert, marking it as resolved.
+   *
+   * @param alert The alert to deactivate.
+   */
   public void disableAlert(Alert alert) {
     alert.set(false);
   }
 
+  /**
+   * Checks if a specific fault condition is true and triggers an alert if so.
+   *
+   * @param faultTest The fault condition to evaluate.
+   * @param alert The alert to activate if the fault condition is true.
+   * @param alertType The severity level for the alert.
+   * @return {@code true} if the fault condition is true; otherwise, {@code false}.
+   */
   public boolean detect_fault(boolean faultTest, Alert alert, AlertType alertType) {
     boolean fault = false;
     if (faultTest) {
@@ -77,6 +118,12 @@ public class Pigeon2Faults implements FaultsWrapper {
     return fault;
   }
 
+  /**
+   * Checks if any fault has occurred for the Pigeon2 IMU. If faults are detected, corresponding
+   * alerts are activated.
+   *
+   * @return {@code true} if at least one fault is detected; otherwise, {@code false}.
+   */
   public boolean hasFaultOccured() {
     List<Alert> foundFaults = new ArrayList<>();
     Map<BooleanSupplier, Alert> faultChecks =

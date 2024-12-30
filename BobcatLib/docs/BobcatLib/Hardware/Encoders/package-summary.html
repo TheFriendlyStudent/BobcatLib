@@ -43,7 +43,7 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="sub-nav-list">
 <li>Package:&nbsp;</li>
-<li>Description&nbsp;|&nbsp;</li>
+<li><a href="#package-description">Description</a>&nbsp;|&nbsp;</li>
 <li>Related Packages&nbsp;|&nbsp;</li>
 <li><a href="#class-summary">Classes and Interfaces</a></li>
 </ul>
@@ -63,6 +63,10 @@ loadScripts(document, 'script');</script>
 </div>
 <hr>
 <div class="package-signature">package <span class="element-name">BobcatLib.Hardware.Encoders</span></div>
+<section class="package-description" id="package-description">
+<div class="block">Generic encoder implementation , currently includes Thrifty and CanCoders , would need to
+ integrate more like the CanAndCoder , once wpilib2025 supports them</div>
+</section>
 <section class="summary">
 <ul class="summary-list">
 <li>
@@ -73,19 +77,31 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="BaseEncoder.html" title="class in BobcatLib.Hardware.Encoders">BaseEncoder</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">A base class for interacting with an encoder using the <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders"><code>EncoderIO</code></a> interface.</div>
+</div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="CanCoderWrapper.html" title="class in BobcatLib.Hardware.Encoders">CanCoderWrapper</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">A wrapper class for managing a CANcoder device, implementing the <a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders"><code>EncoderIO</code></a> interface.</div>
+</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Holds constants related to the configuration of an encoder.</div>
+</div>
 <div class="col-first odd-row-color class-summary class-summary-tab1"><a href="EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders">EncoderIO</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab1">&nbsp;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab1">
+<div class="block">Interface representing the interface to encoder hardware, providing methods for configuring,
+ reading, and managing encoder values and faults.</div>
+</div>
 <div class="col-first even-row-color class-summary class-summary-tab2"><a href="EncoderIO.EncoderIOInputs.html" title="class in BobcatLib.Hardware.Encoders">EncoderIO.EncoderIOInputs</a></div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
-<div class="block">Represents the inputs for the gyro sensor.</div>
+<div class="block">Represents the inputs for the gyro sensor used in the encoder system.</div>
 </div>
 <div class="col-first odd-row-color class-summary class-summary-tab2"><a href="ThriftyAbsoluteEncoder.html" title="class in BobcatLib.Hardware.Encoders">ThriftyAbsoluteEncoder</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">&nbsp;</div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">The ThriftyAbsoluteEncoder class implements the EncoderIO interface and provides methods for
+ working with an absolute encoder connected via analog input.</div>
+</div>
 </div>
 </div>
 </div>

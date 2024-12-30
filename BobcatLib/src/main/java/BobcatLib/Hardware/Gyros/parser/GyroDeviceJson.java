@@ -1,4 +1,4 @@
-package BobcatLib.Hardware.Gyros.parser;
+package BobcatLib.Hardware.Gyros.Parser;
 
 /**
  * Represents the configuration of a gyroscopic device in JSON format.

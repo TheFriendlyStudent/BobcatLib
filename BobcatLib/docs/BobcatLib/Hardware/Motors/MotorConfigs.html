@@ -73,6 +73,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">MotorConfigs</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">A configuration class for motor settings. This class holds the various parameters and settings
+ that define the motor configuration, including control gains, sensor direction, motor state, and
+ other optional configurations.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -87,34 +90,54 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code><a href="../../Utilities/CANDeviceDetails.html" title="class in BobcatLib.Utilities">CANDeviceDetails</a></code></div>
 <div class="col-second even-row-color"><code><a href="#canDevice" class="member-name-link">canDevice</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The CAN device details, including device number and bus.</div>
+</div>
 <div class="col-first odd-row-color"><code>boolean</code></div>
 <div class="col-second odd-row-color"><code><a href="#isInverted" class="member-name-link">isInverted</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Indicates whether the motor is inverted or not.</div>
+</div>
 <div class="col-first even-row-color"><code>double</code></div>
 <div class="col-second even-row-color"><code><a href="#kD" class="member-name-link">kD</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The derivative gain (kD) for motor control.</div>
+</div>
 <div class="col-first odd-row-color"><code>double</code></div>
 <div class="col-second odd-row-color"><code><a href="#kI" class="member-name-link">kI</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The integral gain (kI) for motor control.</div>
+</div>
 <div class="col-first even-row-color"><code>double</code></div>
 <div class="col-second even-row-color"><code><a href="#kP" class="member-name-link">kP</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The proportional gain (kP) for motor control.</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="SensorHelpers/NeutralModeWrapper.disabledMode.html" title="enum class in BobcatLib.Hardware.Motors.SensorHelpers">NeutralModeWrapper.disabledMode</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#mode" class="member-name-link">mode</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The neutral mode of the motor, determining the behavior when the motor is disabled.</div>
+</div>
 <div class="col-first even-row-color"><code>double</code></div>
 <div class="col-second even-row-color"><code><a href="#motorToGearRatio" class="member-name-link">motorToGearRatio</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The gear ratio between the motor and the connected gear.</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="OptionalConfigCtre.html" title="class in BobcatLib.Hardware.Motors">OptionalConfigCtre</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#optionalCtre" class="member-name-link">optionalCtre</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Optional configuration for the CTRE motor controller.</div>
+</div>
 <div class="col-first even-row-color"><code><a href="OptionalConfigRev.html" title="class in BobcatLib.Hardware.Motors">OptionalConfigRev</a></code></div>
 <div class="col-second even-row-color"><code><a href="#optionalRev" class="member-name-link">optionalRev</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Optional configuration for the REV motor controller.</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="SensorHelpers/SensorDirectionWrapper.html" title="class in BobcatLib.Hardware.Motors.SensorHelpers">SensorDirectionWrapper</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#sensorDirection" class="member-name-link">sensorDirection</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The direction of the motor sensor (inverted or not).</div>
+</div>
 </div>
 </section>
 </li>
@@ -153,60 +176,70 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="motorToGearRatio">
 <h3>motorToGearRatio</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">motorToGearRatio</span></div>
+<div class="block">The gear ratio between the motor and the connected gear.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="mode">
 <h3>mode</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="SensorHelpers/NeutralModeWrapper.disabledMode.html" title="enum class in BobcatLib.Hardware.Motors.SensorHelpers">NeutralModeWrapper.disabledMode</a></span>&nbsp;<span class="element-name">mode</span></div>
+<div class="block">The neutral mode of the motor, determining the behavior when the motor is disabled.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="sensorDirection">
 <h3>sensorDirection</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="SensorHelpers/SensorDirectionWrapper.html" title="class in BobcatLib.Hardware.Motors.SensorHelpers">SensorDirectionWrapper</a></span>&nbsp;<span class="element-name">sensorDirection</span></div>
+<div class="block">The direction of the motor sensor (inverted or not).</div>
 </section>
 </li>
 <li>
 <section class="detail" id="isInverted">
 <h3>isInverted</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isInverted</span></div>
+<div class="block">Indicates whether the motor is inverted or not.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="kP">
 <h3>kP</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">kP</span></div>
+<div class="block">The proportional gain (kP) for motor control.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="kI">
 <h3>kI</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">kI</span></div>
+<div class="block">The integral gain (kI) for motor control.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="kD">
 <h3>kD</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">kD</span></div>
+<div class="block">The derivative gain (kD) for motor control.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="optionalCtre">
 <h3>optionalCtre</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="OptionalConfigCtre.html" title="class in BobcatLib.Hardware.Motors">OptionalConfigCtre</a></span>&nbsp;<span class="element-name">optionalCtre</span></div>
+<div class="block">Optional configuration for the CTRE motor controller.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="optionalRev">
 <h3>optionalRev</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="OptionalConfigRev.html" title="class in BobcatLib.Hardware.Motors">OptionalConfigRev</a></span>&nbsp;<span class="element-name">optionalRev</span></div>
+<div class="block">Optional configuration for the REV motor controller.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="canDevice">
 <h3>canDevice</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../Utilities/CANDeviceDetails.html" title="class in BobcatLib.Utilities">CANDeviceDetails</a></span>&nbsp;<span class="element-name">canDevice</span></div>
+<div class="block">The CAN device details, including device number and bus.</div>
 </section>
 </li>
 </ul>

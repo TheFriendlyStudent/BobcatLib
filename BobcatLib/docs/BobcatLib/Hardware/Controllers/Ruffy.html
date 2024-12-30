@@ -82,6 +82,9 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Ruffy</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></span></div>
+<div class="block">A wrapper class for the Ruffy joystick controller that implements the <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers"><code>ControllerWrapper</code></a>
+ interface. This class provides standardized access to joystick axes and button triggers for the
+ Ruffy controller.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,14 +99,18 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>final int</code></div>
 <div class="col-second even-row-color"><code><a href="#rotationAxis" class="member-name-link">rotationAxis</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Axis index for rotation control.</div>
+</div>
 <div class="col-first odd-row-color"><code>final int</code></div>
 <div class="col-second odd-row-color"><code><a href="#strafeAxis" class="member-name-link">strafeAxis</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Axis index for side-to-side strafing.</div>
+</div>
 <div class="col-first even-row-color"><code>final int</code></div>
 <div class="col-second even-row-color"><code><a href="#translationAxis" class="member-name-link">translationAxis</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">Controller Axis Mappings</div>
+<div class="block">Axis index for forward/backward translation.</div>
 </div>
 </div>
 </section>
@@ -118,7 +125,7 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int)" class="member-name-link">Ruffy</a><wbr>(int&nbsp;port)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Contains Left Joystick , Right Joystick , POV , triangle, circle, cross, square buttons.</div>
+<div class="block">Constructs a Ruffy joystick controller wrapper for the specified port.</div>
 </div>
 </div>
 </section>
@@ -137,52 +144,52 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAorCross()" class="member-name-link">getAorCross</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get A Or Cross</div>
+<div class="block">Gets the trigger for the Cross button.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBorCircle()" class="member-name-link">getBorCircle</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">getBorCircle</div>
+<div class="block">Gets the trigger for the Circle button.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDPadTriggerDown()" class="member-name-link">getDPadTriggerDown</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">getDPadTriggerDown</div>
+<div class="block">Gets the trigger for the D-Pad down direction.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDPadTriggerLeft()" class="member-name-link">getDPadTriggerLeft</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">getDPadTriggerLeft</div>
+<div class="block">Gets the trigger for the D-Pad left direction.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDPadTriggerRight()" class="member-name-link">getDPadTriggerRight</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">getDPadTriggerRight</div>
+<div class="block">Gets the trigger for the D-Pad right direction.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDPadTriggerUp()" class="member-name-link">getDPadTriggerUp</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">getDPadTriggerUp</div>
+<div class="block">Gets the trigger for the D-Pad up direction.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLeftBumper()" class="member-name-link">getLeftBumper</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get Left Bumper</div>
+<div class="block">Gets the trigger for the left bumper button.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLeftTrigger()" class="member-name-link">getLeftTrigger</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get Left Trigger</div>
+<div class="block">Gets the trigger for the left trigger button.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRightBumper()" class="member-name-link">getRightBumper</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get RightBumper</div>
+<div class="block">Gets the trigger for the right bumper button.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRightTrigger()" class="member-name-link">getRightTrigger</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get Right Trigger</div>
+<div class="block">Gets the trigger for the right trigger button.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRotationAxis()" class="member-name-link">getRotationAxis</a>()</code></div>
@@ -202,12 +209,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getXorSquare()" class="member-name-link">getXorSquare</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">getXorSquare</div>
+<div class="block">Gets the trigger for the Square button.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getYorTriangle()" class="member-name-link">getYorTriangle</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get YorTriangle</div>
+<div class="block">Gets the trigger for the Triangle button.</div>
 </div>
 </div>
 </div>
@@ -230,7 +237,7 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="translationAxis">
 <h3>translationAxis</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">translationAxis</span></div>
-<div class="block">Controller Axis Mappings</div>
+<div class="block">Axis index for forward/backward translation.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -245,6 +252,7 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="strafeAxis">
 <h3>strafeAxis</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">strafeAxis</span></div>
+<div class="block">Axis index for side-to-side strafing.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -259,6 +267,7 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="rotationAxis">
 <h3>rotationAxis</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">rotationAxis</span></div>
+<div class="block">Axis index for rotation control.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -281,10 +290,10 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="&lt;init&gt;(int)">
 <h3>Ruffy</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Ruffy</span><wbr><span class="parameters">(int&nbsp;port)</span></div>
-<div class="block">Contains Left Joystick , Right Joystick , POV , triangle, circle, cross, square buttons.</div>
+<div class="block">Constructs a Ruffy joystick controller wrapper for the specified port.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>port</code> - </dd>
+<dd><code>port</code> - the port the Ruffy joystick is connected to.</dd>
 </dl>
 </section>
 </li>
@@ -305,7 +314,7 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getTranslationAxis()">getTranslationAxis</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>The axis value for translation control.</dd>
+<dd>the axis value for translation control.</dd>
 </dl>
 </section>
 </li>
@@ -318,7 +327,7 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getStrafeAxis()">getStrafeAxis</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>The axis value for strafing control.</dd>
+<dd>the axis value for strafing control.</dd>
 </dl>
 </section>
 </li>
@@ -331,7 +340,7 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getRotationAxis()">getRotationAxis</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>The axis value for rotation control.</dd>
+<dd>the axis value for rotation control.</dd>
 </dl>
 </section>
 </li>
@@ -339,13 +348,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getLeftTrigger()">
 <h3>getLeftTrigger</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getLeftTrigger</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getLeftTrigger()">ControllerWrapper</a></code></span></div>
-<div class="block">Get Left Trigger</div>
+<div class="block">Gets the trigger for the left trigger button.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getLeftTrigger()">getLeftTrigger</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the left trigger button.</dd>
 </dl>
 </section>
 </li>
@@ -353,13 +361,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getRightTrigger()">
 <h3>getRightTrigger</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getRightTrigger</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getRightTrigger()">ControllerWrapper</a></code></span></div>
-<div class="block">Get Right Trigger</div>
+<div class="block">Gets the trigger for the right trigger button.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getRightTrigger()">getRightTrigger</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the right trigger button.</dd>
 </dl>
 </section>
 </li>
@@ -367,13 +374,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getLeftBumper()">
 <h3>getLeftBumper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getLeftBumper</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getLeftBumper()">ControllerWrapper</a></code></span></div>
-<div class="block">Get Left Bumper</div>
+<div class="block">Gets the trigger for the left bumper button.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getLeftBumper()">getLeftBumper</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the left bumper button.</dd>
 </dl>
 </section>
 </li>
@@ -381,13 +387,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getRightBumper()">
 <h3>getRightBumper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getRightBumper</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getRightBumper()">ControllerWrapper</a></code></span></div>
-<div class="block">Get RightBumper</div>
+<div class="block">Gets the trigger for the right bumper button.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getRightBumper()">getRightBumper</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the right bumper button.</dd>
 </dl>
 </section>
 </li>
@@ -395,13 +400,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getYorTriangle()">
 <h3>getYorTriangle</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getYorTriangle</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getYorTriangle()">ControllerWrapper</a></code></span></div>
-<div class="block">Get YorTriangle</div>
+<div class="block">Gets the trigger for the Triangle button.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getYorTriangle()">getYorTriangle</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the Triangle button.</dd>
 </dl>
 </section>
 </li>
@@ -409,13 +413,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getBorCircle()">
 <h3>getBorCircle</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getBorCircle</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getBorCircle()">ControllerWrapper</a></code></span></div>
-<div class="block">getBorCircle</div>
+<div class="block">Gets the trigger for the Circle button.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getBorCircle()">getBorCircle</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the Circle button.</dd>
 </dl>
 </section>
 </li>
@@ -423,13 +426,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getAorCross()">
 <h3>getAorCross</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getAorCross</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getAorCross()">ControllerWrapper</a></code></span></div>
-<div class="block">Get A Or Cross</div>
+<div class="block">Gets the trigger for the Cross button.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getAorCross()">getAorCross</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the Cross button.</dd>
 </dl>
 </section>
 </li>
@@ -437,13 +439,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getXorSquare()">
 <h3>getXorSquare</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getXorSquare</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getXorSquare()">ControllerWrapper</a></code></span></div>
-<div class="block">getXorSquare</div>
+<div class="block">Gets the trigger for the Square button.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getXorSquare()">getXorSquare</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the Square button.</dd>
 </dl>
 </section>
 </li>
@@ -451,13 +452,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getDPadTriggerUp()">
 <h3>getDPadTriggerUp</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getDPadTriggerUp</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getDPadTriggerUp()">ControllerWrapper</a></code></span></div>
-<div class="block">getDPadTriggerUp</div>
+<div class="block">Gets the trigger for the D-Pad up direction.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getDPadTriggerUp()">getDPadTriggerUp</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the D-Pad up direction.</dd>
 </dl>
 </section>
 </li>
@@ -465,13 +465,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getDPadTriggerDown()">
 <h3>getDPadTriggerDown</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getDPadTriggerDown</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getDPadTriggerDown()">ControllerWrapper</a></code></span></div>
-<div class="block">getDPadTriggerDown</div>
+<div class="block">Gets the trigger for the D-Pad down direction.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getDPadTriggerDown()">getDPadTriggerDown</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the D-Pad down direction.</dd>
 </dl>
 </section>
 </li>
@@ -479,13 +478,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getDPadTriggerLeft()">
 <h3>getDPadTriggerLeft</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getDPadTriggerLeft</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getDPadTriggerLeft()">ControllerWrapper</a></code></span></div>
-<div class="block">getDPadTriggerLeft</div>
+<div class="block">Gets the trigger for the D-Pad left direction.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getDPadTriggerLeft()">getDPadTriggerLeft</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the D-Pad left direction.</dd>
 </dl>
 </section>
 </li>
@@ -493,13 +491,12 @@ implements <a href="ControllerWrapper.html" title="interface in BobcatLib.Hardwa
 <section class="detail" id="getDPadTriggerRight()">
 <h3>getDPadTriggerRight</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></span>&nbsp;<span class="element-name">getDPadTriggerRight</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="ControllerWrapper.html#getDPadTriggerRight()">ControllerWrapper</a></code></span></div>
-<div class="block">getDPadTriggerRight</div>
+<div class="block">Gets the trigger for the D-Pad right direction.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ControllerWrapper.html#getDPadTriggerRight()">getDPadTriggerRight</a></code>&nbsp;in interface&nbsp;<code><a href="ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers">ControllerWrapper</a></code></dd>
 <dt>Returns:</dt>
-<dd>Trigger</dd>
+<dd>a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link"><code>Trigger</code></a> object for the D-Pad right direction.</dd>
 </dl>
 </section>
 </li>

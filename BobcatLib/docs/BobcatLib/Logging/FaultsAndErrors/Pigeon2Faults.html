@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Pigeon2Faults</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></span></div>
+<div class="block">Manages and monitors faults for the Pigeon2 IMU device. This class provides alerts for various
+ fault conditions that can occur during the operation of the Pigeon2 IMU.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -114,10 +116,14 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code>int</code></div>
 <div class="col-second even-row-color"><code><a href="#id" class="member-name-link">id</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The unique identifier for the Pigeon2 device.</div>
+</div>
 <div class="col-first odd-row-color"><code><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#imu" class="member-name-link">imu</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The Pigeon2 IMU instance being monitored.</div>
+</div>
 <div class="col-first even-row-color"><code>static <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a></code></div>
 <div class="col-second even-row-color"><code><a href="#LoopTimeSlowFaultAlert" class="member-name-link">LoopTimeSlowFaultAlert</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
@@ -146,7 +152,9 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.ctre.phoenix6.hardware.Pigeon2,int)" class="member-name-link">Pigeon2Faults</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a>&nbsp;imu,
  int&nbsp;id)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a new Pigeon2Faults instance with a given Pigeon2 IMU and ID.</div>
+</div>
 </div>
 </section>
 </li>
@@ -163,22 +171,32 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates an alert, marking it as triggered.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">activateAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Activates an alert with a specific severity level.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#detect_fault(boolean,BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)" class="member-name-link">detect_fault</a><wbr>(boolean&nbsp;faultTest,
  <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;alertType)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if a specific fault condition is true and triggers an alert if so.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#disableAlert(BobcatLib.Logging.Alert)" class="member-name-link">disableAlert</a><wbr>(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Deactivates an alert, marking it as resolved.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasFaultOccured()" class="member-name-link">hasFaultOccured</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if any fault has occurred for the Pigeon2 IMU.</div>
+</div>
 </div>
 </div>
 </div>
@@ -200,12 +218,14 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="id">
 <h3>id</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">id</span></div>
+<div class="block">The unique identifier for the Pigeon2 device.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="imu">
 <h3>imu</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a></span>&nbsp;<span class="element-name">imu</span></div>
+<div class="block">The Pigeon2 IMU instance being monitored.</div>
 </section>
 </li>
 <li>
@@ -287,6 +307,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>Pigeon2Faults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Pigeon2Faults</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a>&nbsp;imu,
  int&nbsp;id)</span></div>
+<div class="block">Constructs a new Pigeon2Faults instance with a given Pigeon2 IMU and ID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>imu</code> - The Pigeon2 IMU to monitor.</dd>
+<dd><code>id</code> - The unique identifier for the Pigeon2 device.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -301,9 +327,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="activateAlert(BobcatLib.Logging.Alert)">
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Activates an alert, marking it as triggered.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
 </dl>
 </section>
 </li>
@@ -312,9 +341,13 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <h3>activateAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">activateAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;type)</span></div>
+<div class="block">Activates an alert with a specific severity level.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#activateAlert(BobcatLib.Logging.Alert,BobcatLib.Logging.Alert.AlertType)">activateAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to activate.</dd>
+<dd><code>type</code> - The severity level to set for the alert.</dd>
 </dl>
 </section>
 </li>
@@ -322,9 +355,12 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <section class="detail" id="disableAlert(BobcatLib.Logging.Alert)">
 <h3>disableAlert</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">disableAlert</span><wbr><span class="parameters">(<a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert)</span></div>
+<div class="block">Deactivates an alert, marking it as resolved.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#disableAlert(BobcatLib.Logging.Alert)">disableAlert</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>alert</code> - The alert to deactivate.</dd>
 </dl>
 </section>
 </li>
@@ -334,16 +370,28 @@ implements <a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.Fa
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">detect_fault</span><wbr><span class="parameters">(boolean&nbsp;faultTest,
  <a href="../Alert.html" title="class in BobcatLib.Logging">Alert</a>&nbsp;alert,
  <a href="../Alert.AlertType.html" title="enum class in BobcatLib.Logging">Alert.AlertType</a>&nbsp;alertType)</span></div>
+<div class="block">Checks if a specific fault condition is true and triggers an alert if so.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>faultTest</code> - The fault condition to evaluate.</dd>
+<dd><code>alert</code> - The alert to activate if the fault condition is true.</dd>
+<dd><code>alertType</code> - The severity level for the alert.</dd>
+<dt>Returns:</dt>
+<dd><code>true</code> if the fault condition is true; otherwise, <code>false</code>.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="hasFaultOccured()">
 <h3>hasFaultOccured</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hasFaultOccured</span>()</div>
+<div class="block">Checks if any fault has occurred for the Pigeon2 IMU. If faults are detected, corresponding
+ alerts are activated.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="FaultsWrapper.html#hasFaultOccured()">hasFaultOccured</a></code>&nbsp;in interface&nbsp;<code><a href="FaultsWrapper.html" title="interface in BobcatLib.Logging.FaultsAndErrors">FaultsWrapper</a></code></dd>
 <dt>Returns:</dt>
+<dd><code>true</code> if at least one fault is detected; otherwise, <code>false</code>.</dd>
 </dl>
 </section>
 </li>

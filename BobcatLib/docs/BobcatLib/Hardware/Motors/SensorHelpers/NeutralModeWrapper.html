@@ -77,7 +77,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">NeutralModeWrapper</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The state of the motor controller bridge when output is neutral or disabled.</div>
+<div class="block">A wrapper class for managing the neutral or disabled state of a motor controller bridge. This
+ class provides a way to represent and convert motor controller states between different enums,
+ such as `NeutralModeValue` and `IdleMode`.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -92,7 +94,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static enum&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="NeutralModeWrapper.disabledMode.html" class="type-name-link" title="enum class in BobcatLib.Hardware.Motors.SensorHelpers">NeutralModeWrapper.disabledMode</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Enum representing the possible disabled or neutral states of the motor controller.</div>
+</div>
 </div>
 </section>
 </li>
@@ -106,15 +110,16 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Hardware.Motors.SensorHelpers.NeutralModeWrapper.disabledMode)" class="member-name-link">NeutralModeWrapper</a><wbr>(<a href="NeutralModeWrapper.disabledMode.html" title="enum class in BobcatLib.Hardware.Motors.SensorHelpers">NeutralModeWrapper.disabledMode</a>&nbsp;value)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Constructor</div>
+<div class="block">Constructor to initialize the neutral mode directly using a `disabledMode` enum value.</div>
 </div>
 <div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(com.ctre.phoenix6.signals.NeutralModeValue)" class="member-name-link">NeutralModeWrapper</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/NeutralModeValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">NeutralModeValue</a>&nbsp;mode2)</code></div>
 <div class="col-last odd-row-color">
-<div class="block">Constructor</div>
+<div class="block">Constructor to initialize the neutral mode using a `NeutralModeValue`.</div>
 </div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.revrobotics.spark.config.SparkBaseConfig.IdleMode)" class="member-name-link">NeutralModeWrapper</a><wbr>(<a href="https://codedocs.revrobotics.com/java/com/revrobotics/spark/config/SparkBaseConfig.IdleMode.html" title="class or interface in com.revrobotics.spark.config" class="external-link">SparkBaseConfig.IdleMode</a>&nbsp;value)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Constructor</div>
+<div class="block">Constructor to initialize the neutral mode using an `IdleMode` value from the Spark motor
+ controller.</div>
 </div>
 </div>
 </section>
@@ -132,11 +137,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://codedocs.revrobotics.com/java/com/revrobotics/spark/config/SparkBaseConfig.IdleMode.html" title="class or interface in com.revrobotics.spark.config" class="external-link">SparkBaseConfig.IdleMode</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#asIdleMode()" class="member-name-link">asIdleMode</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Converts the current state of the motor controller to the corresponding `IdleMode` for Spark
+ motor controllers.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/NeutralModeValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">NeutralModeValue</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#asNeutralModeValue()" class="member-name-link">asNeutralModeValue</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">As neutralMode Value</div>
+<div class="block">Converts the current state of the motor controller to the corresponding `NeutralModeValue`.</div>
 </div>
 </div>
 </div>
@@ -159,10 +167,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(com.ctre.phoenix6.signals.NeutralModeValue)">
 <h3>NeutralModeWrapper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">NeutralModeWrapper</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/NeutralModeValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">NeutralModeValue</a>&nbsp;mode2)</span></div>
-<div class="block">Constructor</div>
+<div class="block">Constructor to initialize the neutral mode using a `NeutralModeValue`.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>mode2</code> - value as neutralMode</dd>
+<dd><code>mode2</code> - The neutral mode value to set the motor controller to. It can be either
+     `NeutralModeValue.Brake` or `NeutralModeValue.Coast`.</dd>
 </dl>
 </section>
 </li>
@@ -170,10 +179,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(com.revrobotics.spark.config.SparkBaseConfig.IdleMode)">
 <h3>NeutralModeWrapper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">NeutralModeWrapper</span><wbr><span class="parameters">(<a href="https://codedocs.revrobotics.com/java/com/revrobotics/spark/config/SparkBaseConfig.IdleMode.html" title="class or interface in com.revrobotics.spark.config" class="external-link">SparkBaseConfig.IdleMode</a>&nbsp;value)</span></div>
-<div class="block">Constructor</div>
+<div class="block">Constructor to initialize the neutral mode using an `IdleMode` value from the Spark motor
+ controller.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>value</code> - value as IdleMode</dd>
+<dd><code>value</code> - The idle mode value to set the motor controller to. It can be either
+     `IdleMode.kBrake` or `IdleMode.kCoast`.</dd>
 </dl>
 </section>
 </li>
@@ -181,10 +192,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(BobcatLib.Hardware.Motors.SensorHelpers.NeutralModeWrapper.disabledMode)">
 <h3>NeutralModeWrapper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">NeutralModeWrapper</span><wbr><span class="parameters">(<a href="NeutralModeWrapper.disabledMode.html" title="enum class in BobcatLib.Hardware.Motors.SensorHelpers">NeutralModeWrapper.disabledMode</a>&nbsp;value)</span></div>
-<div class="block">Constructor</div>
+<div class="block">Constructor to initialize the neutral mode directly using a `disabledMode` enum value.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>value</code> - value as IdleMode</dd>
+<dd><code>value</code> - The `disabledMode` value to set the motor controller to. It can be `Coast`,
+     `Brake`, or `None`.</dd>
 </dl>
 </section>
 </li>
@@ -200,8 +212,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="asIdleMode()">
 <h3>asIdleMode</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://codedocs.revrobotics.com/java/com/revrobotics/spark/config/SparkBaseConfig.IdleMode.html" title="class or interface in com.revrobotics.spark.config" class="external-link">SparkBaseConfig.IdleMode</a></span>&nbsp;<span class="element-name">asIdleMode</span>()</div>
+<div class="block">Converts the current state of the motor controller to the corresponding `IdleMode` for Spark
+ motor controllers.</div>
 <dl class="notes">
 <dt>Returns:</dt>
+<dd>The `IdleMode` representing the current neutral or disabled state of the motor
+     controller. Returns `IdleMode.kBrake` if the state is `Brake`, otherwise returns
+     `IdleMode.kCoast`.</dd>
 </dl>
 </section>
 </li>
@@ -209,10 +226,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="asNeutralModeValue()">
 <h3>asNeutralModeValue</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/NeutralModeValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">NeutralModeValue</a></span>&nbsp;<span class="element-name">asNeutralModeValue</span>()</div>
-<div class="block">As neutralMode Value</div>
+<div class="block">Converts the current state of the motor controller to the corresponding `NeutralModeValue`.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>NeutralModeValue</dd>
+<dd>The `NeutralModeValue` representing the current neutral or disabled state of the motor
+     controller. Returns `NeutralModeValue.Brake` if the state is `Brake`, otherwise returns
+     `NeutralModeValue.Coast`.</dd>
 </dl>
 </section>
 </li>
