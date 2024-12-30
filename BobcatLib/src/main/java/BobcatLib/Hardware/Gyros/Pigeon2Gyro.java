@@ -1,7 +1,6 @@
 package BobcatLib.Hardware.Gyros;
-
-import BobcatLib.Hardware.Gyros.parser.GyroDeviceJson;
-import BobcatLib.Hardware.Gyros.parser.GyroJson;
+import BobcatLib.Hardware.Gyros.Parser.GyroDeviceJson;
+import BobcatLib.Hardware.Gyros.Parser.GyroJson;
 import BobcatLib.Logging.FaultsAndErrors.FaultsWrapper;
 import BobcatLib.Logging.FaultsAndErrors.Pigeon2Faults;
 import BobcatLib.Utilities.CANDeviceDetails;
@@ -16,27 +15,42 @@ import edu.wpi.first.wpilibj.Filesystem;
 import java.io.File;
 import java.io.IOException;
 
-/** Represents an interface for interacting with a gyro sensor. */
+/**
+ * Represents a Pigeon2 gyro sensor, providing methods to interact with the gyro hardware.
+ * It can load its configuration from a file, apply settings, and handle faults.
+ */
 public class Pigeon2Gyro implements GyroIO {
   private FaultsWrapper gyroFaults;
   private Pigeon2 gyro;
 
-  // Subscribed too the
+  // Subscribed to the configuration changes
   public StringSubscriber configSubscriber;
   public String lastConfig = "{}";
   public GyroJson jsonGyro = new GyroJson();
 
+  /**
+   * Constructs a Pigeon2Gyro instance with the specified CAN device details and enables the gyro.
+   * 
+   * @param details The details of the CAN device, including the device number and CAN bus.
+   * @param enableGyro Whether to enable the gyro functionality.
+   */
   public Pigeon2Gyro(CANDeviceDetails details, boolean enableGyro) {
     jsonGyro.imu = new GyroDeviceJson(details.getDeviceNumber(), details.getBus());
     jsonGyro.enable = enableGyro;
     configGyro();
   }
 
+  /**
+   * Default constructor that loads the gyro configuration from a file and applies the configuration.
+   */
   public Pigeon2Gyro() {
     loadConfigurationFromFile();
     configGyro();
   }
 
+  /**
+   * Configures the gyro sensor by applying a Pigeon2 configuration, resetting it, and setting the yaw to zero.
+   */
   public void configGyro() {
     gyro = new Pigeon2(jsonGyro.imu.getId(), jsonGyro.imu.getCanbus());
     gyro.getConfigurator().apply(new Pigeon2Configuration());
@@ -45,6 +59,11 @@ public class Pigeon2Gyro implements GyroIO {
     gyroFaults = new Pigeon2Faults(gyro, gyro.getDeviceID());
   }
 
+  /**
+   * Loads the gyro configuration from a JSON file stored in the robot's deploy directory.
+   *
+   * @return The loaded GyroJson object containing the gyro configuration.
+   */
   public GyroJson loadConfigurationFromFile() {
     File deployDirectory = Filesystem.getDeployDirectory();
     assert deployDirectory.exists();
@@ -61,12 +80,15 @@ public class Pigeon2Gyro implements GyroIO {
     return jsonGyro;
   }
 
+  /**
+   * Periodic method to be called during each cycle, can be extended to implement periodic updates.
+   */
   public void periodic() {}
 
   /**
-   * Updates the gyro inputs based on external sources.
-   *
-   * @param inputs The inputs to update.
+   * Updates the gyro inputs based on the current gyro data.
+   * 
+   * @param inputs The inputs to be updated with the current yaw and fault status.
    */
   public void updateInputs(GyroIOInputs inputs) {
     inputs.yawPosition = Rotation2d.fromDegrees(getYaw());
@@ -75,24 +97,36 @@ public class Pigeon2Gyro implements GyroIO {
 
   /**
    * Sets the yaw value of the gyro sensor.
-   *
-   * @param yaw The yaw value to set (in degrees).
+   * 
+   * @param yaw The yaw value to set, in degrees.
    */
   public void setYaw(double yaw) {
     gyro.setYaw(yaw);
   }
 
+  /**
+   * Gets the current yaw value of the gyro sensor.
+   * 
+   * @return The current yaw value, in degrees.
+   */
   private double getYaw() {
     StatusSignal<Angle> raw_yaw = gyro.getYaw();
     return raw_yaw.getValueAsDouble();
   }
+
   /**
    * Sets the roll value of the gyro sensor.
-   *
-   * @param roll The roll value to set (in degrees).
+   * Currently, this method is a placeholder and does not modify the roll value.
+   * 
+   * @param roll The roll value to set, in degrees.
    */
   public void setRoll(double roll) {}
 
+  /**
+   * Gets the current roll value of the gyro sensor.
+   * 
+   * @return The current roll value, in degrees.
+   */
   private double getRoll() {
     StatusSignal<Angle> raw_roll = gyro.getRoll();
     return raw_roll.getValueAsDouble();
@@ -100,16 +134,27 @@ public class Pigeon2Gyro implements GyroIO {
 
   /**
    * Sets the pitch value of the gyro sensor.
-   *
-   * @param pitch The pitch value to set (in degrees).
+   * Currently, this method is a placeholder and does not modify the pitch value.
+   * 
+   * @param pitch The pitch value to set, in degrees.
    */
   public void setPitch(double pitch) {}
 
+  /**
+   * Gets the current pitch value of the gyro sensor.
+   * 
+   * @return The current pitch value, in degrees.
+   */
   private double getPitch() {
     StatusSignal<Angle> raw_pitch = gyro.getPitch();
     return raw_pitch.getValueAsDouble();
   }
 
+  /**
+   * Gets the time difference since the last update.
+   * 
+   * @return The time difference, currently returning a fixed value of 1.0 second.
+   */
   public double getTimeDiff() {
     return 1.0;
   }

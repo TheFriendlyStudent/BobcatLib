@@ -1,4 +1,4 @@
-package BobcatLib.Hardware.Gyros.parser;
+package BobcatLib.Hardware.Gyros.Parser;
 
 public class GyroJson {
   public GyroDeviceJson imu;
