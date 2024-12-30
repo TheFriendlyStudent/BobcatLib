@@ -1,8 +1,0 @@
-{
-  "imu": {
-    "type": "pigeon2",
-    "id": 1,
-    "canbus": "CANt_open_file",
-    "inverted": false
-  }
-}
