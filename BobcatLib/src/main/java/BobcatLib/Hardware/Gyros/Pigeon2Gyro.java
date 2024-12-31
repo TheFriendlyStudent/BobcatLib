@@ -1,7 +1,7 @@
 package BobcatLib.Hardware.Gyros;
 
-import BobcatLib.Hardware.Gyros.Parser.GyroDeviceJson;
-import BobcatLib.Hardware.Gyros.Parser.GyroJson;
+import BobcatLib.Hardware.Gyros.parser.GyroDeviceJson;
+import BobcatLib.Hardware.Gyros.parser.GyroJson;
 import BobcatLib.Logging.FaultsAndErrors.FaultsWrapper;
 import BobcatLib.Logging.FaultsAndErrors.Pigeon2Faults;
 import BobcatLib.Utilities.CANDeviceDetails;
@@ -96,6 +96,8 @@ public class Pigeon2Gyro implements GyroIO {
   public void updateInputs(GyroIOInputs inputs) {
     inputs.yawPosition = Rotation2d.fromDegrees(getYaw());
     inputs.faulted = gyroFaults.hasFaultOccured();
+    inputs.rollPosition = Rotation2d.fromDegrees(getRoll());
+    inputs.pitchPosition = Rotation2d.fromDegrees(getPitch());
   }
 
   /**

@@ -1,2 +1,2 @@
 /** Generic Gyro ConfigUtility Support, json implementation */
-package BobcatLib.Hardware.Gyros.Parser;
+package BobcatLib.Hardware.Gyros.parser;
