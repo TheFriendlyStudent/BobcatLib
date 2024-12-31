@@ -1,8 +1,11 @@
 package BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose;
 
+import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
 
 public interface PoseLib {
   /**
@@ -34,4 +37,22 @@ public interface PoseLib {
       double currentTimeSeconds, Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions) {
     return new Pose2d();
   }
+
+  public default Pose2d updateWithTime(
+    double currentTimeSeconds, Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions, Matrix<N3,N1> deviations) {
+  return new Pose2d();
+}
+
+public default Pose2d update( Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions) {
+  return new Pose2d();
+}
+
+public default Pose2d update(
+    Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions,
+    Matrix<N3, N1> deviations) {
+  return new Pose2d();
+}
+
+public default void addVisionMeasurement(Pose2d botPoseMG2, double poseTimestampMG2, Matrix<N3,N1> stdDev) {
+}
 }
