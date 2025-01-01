@@ -107,10 +107,10 @@ function downloadText(name) {
 function zipDownload() {
   const zip = new JSZip();
   let swf = zip.folder("Elevator")
-  let Elevtor = swf.file("elevator.json", getText("elevator"));
+  let elevator = swf.file("elevator.json", getText("elevator"));
 
   zip.generateAsync({ type: "blob" }).then(function (blob) { saveAs(blob, "Elevator Config.zip") });
-  console.log("Downloaded Basic Elevator Config zip");
+  console.log("Downloaded Basic Swerve Config zip");
 }
 
 $(function () {

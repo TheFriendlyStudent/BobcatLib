@@ -6,6 +6,7 @@ BobcatLib.Hardware.Gyros.Parser
 BobcatLib.Hardware.LedControllers
 BobcatLib.Hardware.Motors
 BobcatLib.Hardware.Motors.SensorHelpers
+BobcatLib.Hardware.Motors.Utility
 BobcatLib.Hardware.Motors.Utility.CTRE
 BobcatLib.Logging
 BobcatLib.Logging.FaultsAndErrors
@@ -13,6 +14,9 @@ BobcatLib.Subsystems.Climbers
 BobcatLib.Subsystems.Climbers.Modules
 BobcatLib.Subsystems.Climbers.Parser
 BobcatLib.Subsystems.Climbers.Utils
+BobcatLib.Subsystems.Elevators
+BobcatLib.Subsystems.Elevators.Modules
+BobcatLib.Subsystems.Elevators.Utility.Parser
 BobcatLib.Subsystems.Intakes
 BobcatLib.Subsystems.Intakes.Modules
 BobcatLib.Subsystems.Intakes.Parser

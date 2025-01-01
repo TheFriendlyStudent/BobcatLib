@@ -63,12 +63,12 @@ public class SwerveModuleReal implements SwerveModuleIO {
   }
 
   public void updateInputs(SwerveModuleIOInputs inputs) {
-    inputs.offset = angleOffset;
-    inputs.absAngle = getCANcoder();
+    inputs.offset = angleOffset.getRotations();
+    inputs.absAngle = getCANcoder().getRotations();
 
     SwerveModuleState state = getState();
     inputs.velocity = state.speedMetersPerSecond;
-    inputs.angle = state.angle;
+    inputs.angle = state.angle.getRotations();
   }
 
   public void configModule() {
@@ -196,6 +196,7 @@ public class SwerveModuleReal implements SwerveModuleIO {
    * @param isOpenLoop
    */
   public void setDesiredState(SwerveModuleState currentState, boolean isOpenLoop) {
+    @SuppressWarnings("deprecation")
     SwerveModuleState optimizedState = SwerveModuleState.optimize(currentState, getState().angle);
     setAngle(optimizedState);
     setSpeed(optimizedState, isOpenLoop);

@@ -8,14 +8,13 @@
 </head>
 
 <body>
-  
   <div class="container-md">
     <div class="card mt-4" id="elevator-card">
-      <div aria-controls="elevator-container" aria-expanded="true" class="card-header" data-bs-target="#elevator-container"
-        data-bs-toggle="collapse">
+      <div aria-controls="elevator-container" aria-expanded="true" class="card-header"
+        data-bs-target="#elevator-container" data-bs-toggle="collapse">
         <div class="row">
           <div class="col-12 col-md-12">
-            <h1 class="d-inline display-6">Elevator</h1>
+            <h1 class="d-inline display-6">Elevator Details</h1>
           </div>
         </div>
       </div>
@@ -24,44 +23,71 @@
           <div class="card-body">
             <form id="elevator-form">
               <div class="form-floating mb-3">
-                <select class="form-select" id="elevator_motor_type-input" name="elevator_motor_type">
+                <input class="form-control" id="elevator_name-input" name="elevator_name" placeholder="0" type="text"
+                  value="0">
+                <label class="form-label" for="elevator_name-input">Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="limits_upperLimit-input" name="limits_upperLimit" placeholder="0"
+                  type="number" value="0">
+                <label class="form-label" for="limits_upperLimit-input">Upper Limit ( Rotations )</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="limits_lowerLimit-input" name="limits_lowerLimit" placeholder="0"
+                  type="number" value="0">
+                <label class="form-label" for="limits_lowerLimit-input">Lower Limit ( Rotations )</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <select class="form-select" id="motor_type-input" name="motor_type">
                   <option selected value="kraken">Kraken</option>
                   <option value="falcon">Falcon</option>
                   <option value="neo">Neo 1.0/1.1</option>
                   <option value="vortex">Vortex</option>
                 </select>
-                <label class="form-label" for="elevator_motor_type-input">Motor Type</label>
+                <label class="form-label" for="mod0_motor_type-input">Motor Type</label>
               </div>
               <div class="form-floating mb-3">
-                <select class="form-select" id="elevator_idle_type-input" name="elevator_idle_type">
+                <select class="form-select" id="mod0_idle_type-input" name="motor_idle_type">
                   <option selected value="Coast">Coast</option>
                   <option value="Brake">Brake</option>
                 </select>
-                <label class="form-label" for="elevator_idle_type-input">Idle Mode</label>
+                <label class="form-label" for="mod0_idle_type-input">Idle Mode</label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control" id="elevator_motorId-input" name="elevator_motorId" placeholder="0" type="number" value="0">
-                <label class="form-label" for="elevator_motorId-input">Motor Id</label>
+                <input class="form-control" id="motor_id-input" name="motor_id" placeholder="0" type="number" value="0">
+                <label class="form-label" for="motor_id-input">Motor ID</label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control" id="elevator_canbus-input" name="elevator_canbus" placeholder="0"
-                  type="text" value="">
-                <label class="form-label" for="elevator_canbus-input">Canbus Name</label>
+                <input class="form-control" id="motor_canbus-input" name="motor_canbus" placeholder="0" type="text"
+                  value="rio">
+                <label class="form-label" for="motor_id-input">Canbus Name</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" id="elevator_inverted-input" name="elevator_inverted"
-                  type="checkbox">
-                <label class="form-check-label" for="elevator_inverted-input">
+                <input class="form-check-input" id="motor_inverted-input" name="motor_inverted" type="checkbox">
+                <label class="form-check-label" for="motor_inverted-input">
                   Inverted
                 </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control" id="elevator_gearRatio-input" name="elevator_gearRatio" placeholder="0" type="number" value="0">
-                <label class="form-label" for="elevator_gearRatio-input">Gear Ratio</label>
+                <input class="form-control" id="elevatorPID_kP-input" name="elevatorPID_kP" placeholder="0"
+                  type="number" value="0">
+                <label class="form-label" for="elevatorPID_kP-input">PID P Component</label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control" id="elevator_upperLimit-input" name="elevator_upperLimit" placeholder="0" type="number" value="0">
-                <label class="form-label" for="elevator_upperLimit-input">Upper Limit (Rotations)</label>
+                <input class="form-control" id="elevatorPID_kI-input" name="elevatorPID_kI" placeholder="0"
+                  type="number" value="0">
+                <label class="form-label" for="elevatorPID_kI-input">PID I Component</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="elevatorPID_kD-input" name="elevatorPID_kD" placeholder="0"
+                  type="number" value="0">
+                <label class="form-label" for="elevatorPID_kD-input">PID D Component</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="elevatorPID_kF-input" name="elevatorPID_kF" placeholder="0"
+                  type="number" value="0">
+                <label class="form-label" for="elevatorPID_kF-input">PID F Component</label>
               </div>
             </form>
           </div>

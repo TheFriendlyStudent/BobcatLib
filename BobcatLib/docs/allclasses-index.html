@@ -309,6 +309,39 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Wrapper class for the EightBitDo controller using WPILib's CommandJoystick.</div>
 </div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorIO.html" title="interface in BobcatLib.Subsystems.Elevators.Modules">ElevatorIO</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Interface representing the Input/Output operations for an Elevator system.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorIO.ElevatorIOInputs.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorIO.ElevatorIOInputs</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Class for storing the inputs related to the elevator.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Elevators/Utility/Parser/ElevatorJson.html" title="class in BobcatLib.Subsystems.Elevators.Utility.Parser">ElevatorJson</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents the JSON structure used for configuring an elevator system.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorModule</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Elevators/Utility/Parser/ElevatorMotorJson.html" title="class in BobcatLib.Subsystems.Elevators.Utility.Parser">ElevatorMotorJson</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents the configuration for an elevator motor, including its type, ID, CAN bus, and
+ inversion state.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Elevators/Utility/Parser/ElevatorPIDJson.html" title="class in BobcatLib.Subsystems.Elevators.Utility.Parser">ElevatorPIDJson</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents the PID configuration for an elevator system.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorReal</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The <code>ElevatorReal</code> class provides a concrete implementation of an elevator mechanism using
+ a motor and software limit switches.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents the elevator subsystem, responsible for controlling and configuring the elevator
+ hardware and logic.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Encoders/EncoderConstants.html" title="class in BobcatLib.Hardware.Encoders">EncoderConstants</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Holds constants related to the configuration of an encoder.</div>
@@ -522,73 +555,76 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A wrapper class for managing the direction of a sensor.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Motors/Utility/CTRE/SoftwareLimitSwitchWrapper.html" title="class in BobcatLib.Hardware.Motors.Utility.CTRE">SoftwareLimitSwitchWrapper</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Motors/Utility/SoftwareLimitWrapper.html" title="class in BobcatLib.Hardware.Motors.Utility">SoftwareLimitWrapper</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">A wrapper class for the SoftwareLimitSwitchConfigs that provides immutable updates for reverse
- limit configuration.</div>
+<div class="block">Wrapper class for software limit switch configurations, supporting both CTRE and REV hardware.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Logging/FaultsAndErrors/SparkMaxFaults.html" title="class in BobcatLib.Logging.FaultsAndErrors">SparkMaxFaults</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="BobcatLib/Hardware/Motors/Utility/SoftwareLimitWrapper.SoftwareLimitType.html" title="enum class in BobcatLib.Hardware.Motors.Utility">SoftwareLimitWrapper.SoftwareLimitType</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
+<div class="block">Enum to define the type of software limit.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Logging/FaultsAndErrors/SparkMaxFaults.html" title="class in BobcatLib.Logging.FaultsAndErrors">SparkMaxFaults</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Handles fault management for SparkMax motor controllers.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="BobcatLib/Logging/FaultsAndErrors/SparkMaxFaults.faults.html" title="enum class in BobcatLib.Logging.FaultsAndErrors">SparkMaxFaults.faults</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="BobcatLib/Logging/FaultsAndErrors/SparkMaxFaults.faults.html" title="enum class in BobcatLib.Logging.FaultsAndErrors">SparkMaxFaults.faults</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
 <div class="block">Enumeration of possible faults that can occur in the SparkMax motor controller.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SteerMotor/SteerWrapper.html" title="interface in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SteerMotor">SteerWrapper</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SteerMotor/SteerWrapper.html" title="interface in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SteerMotor">SteerWrapper</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Steer Wrapper</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/SwerveContainer.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve">SwerveContainer</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/SwerveContainer.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve">SwerveContainer</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class is where the bulk of the robot should be declared.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/SwerveDrive.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve">SwerveDrive</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Parser/SwerveIndicatorJson.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser">SwerveIndicatorJson</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/SwerveDrive.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve">SwerveDrive</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Parser/SwerveJson.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser">SwerveJson</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Parser/SwerveIndicatorJson.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser">SwerveIndicatorJson</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SwerveModule.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module">SwerveModule</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Parser/SwerveJson.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser">SwerveJson</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module">SwerveModuleIO</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SwerveModuleIO.SwerveModuleIOInputs.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module">SwerveModuleIO.SwerveModuleIOInputs</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SwerveModuleReal.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module">SwerveModuleReal</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SwerveModule.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module">SwerveModule</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/interfaces/SysidCompatibleSwerve.html" title="interface in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.interfaces">SysidCompatibleSwerve</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module">SwerveModuleIO</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Logging/FaultsAndErrors/TalonFXFaults.html" title="class in BobcatLib.Logging.FaultsAndErrors">TalonFXFaults</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SwerveModuleIO.SwerveModuleIOInputs.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module">SwerveModuleIO.SwerveModuleIOInputs</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SwerveModuleReal.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module">SwerveModuleReal</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/interfaces/SysidCompatibleSwerve.html" title="interface in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.interfaces">SysidCompatibleSwerve</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Logging/FaultsAndErrors/TalonFXFaults.html" title="class in BobcatLib.Logging.FaultsAndErrors">TalonFXFaults</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Manages fault detection and alerting for TalonFX motor controllers.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="BobcatLib/Logging/FaultsAndErrors/TalonFXFaults.faults.html" title="enum class in BobcatLib.Logging.FaultsAndErrors">TalonFXFaults.faults</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="BobcatLib/Logging/FaultsAndErrors/TalonFXFaults.faults.html" title="enum class in BobcatLib.Logging.FaultsAndErrors">TalonFXFaults.faults</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
 <div class="block">Enumeration of possible faults that can occur in the TalonFX motor controller.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Commands/TeleopSwerve.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands">TeleopSwerve</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Commands/TeleopSwerve.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands">TeleopSwerve</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Command class for teleoperating a swerve drive system using input from suppliers.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Encoders/ThriftyAbsoluteEncoder.html" title="class in BobcatLib.Hardware.Encoders">ThriftyAbsoluteEncoder</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Encoders/ThriftyAbsoluteEncoder.html" title="class in BobcatLib.Hardware.Encoders">ThriftyAbsoluteEncoder</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The ThriftyAbsoluteEncoder class implements the EncoderIO interface and provides methods for
  working with an absolute encoder connected via analog input.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/DriveMotor/VortexDriveMotor.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.DriveMotor">VortexDriveMotor</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Motors/VortexMotor.html" title="class in BobcatLib.Hardware.Motors">VortexMotor</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/DriveMotor/VortexDriveMotor.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.DriveMotor">VortexDriveMotor</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Motors/VortexMotor.html" title="class in BobcatLib.Hardware.Motors">VortexMotor</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The NeoMotor class implements the MotorIO interface and provides an abstraction for controlling a
  Neo v1.1 motor.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SteerMotor/VortexSteerMotor.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SteerMotor">VortexSteerMotor</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/SteerMotor/VortexSteerMotor.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.SteerMotor">VortexSteerMotor</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Controllers/XboxControllerWrapper.html" title="class in BobcatLib.Hardware.Controllers">XboxControllerWrapper</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="BobcatLib/Hardware/Controllers/XboxControllerWrapper.html" title="class in BobcatLib.Hardware.Controllers">XboxControllerWrapper</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A wrapper class for the Xbox controller that implements the <a href="BobcatLib/Hardware/Controllers/ControllerWrapper.html" title="interface in BobcatLib.Hardware.Controllers"><code>ControllerWrapper</code></a> interface.</div>
 </div>
 </div>

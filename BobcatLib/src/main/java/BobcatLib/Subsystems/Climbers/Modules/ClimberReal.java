@@ -2,6 +2,7 @@ package BobcatLib.Subsystems.Climbers.Modules;
 
 import BobcatLib.Hardware.Motors.BaseMotor;
 import BobcatLib.Hardware.Motors.MotorIO;
+import BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper;
 import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.ctre.phoenix6.controls.PositionDutyCycle;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -21,13 +22,16 @@ public class ClimberReal implements ClimberIO {
   /** The request object for position-based control of the climber motor. */
   private PositionDutyCycle holdPosRequest;
 
+  private SoftwareLimitWrapper limits;
+
   /**
    * Constructs a {@code ClimberReal} instance with the specified motor configuration.
    *
    * @param motor The {@link MotorIO} object for configuring the climber motor.
    */
-  public ClimberReal(MotorIO motor) {
-    climberMotor = new BaseMotor(motor);
+  public ClimberReal(MotorIO motor, SoftwareLimitWrapper limits) {
+    this.limits = limits;
+    climberMotor = new BaseMotor(motor, limits);
     request = new DutyCycleOut(0).withEnableFOC(true);
     holdPosRequest = new PositionDutyCycle(0).withEnableFOC(true);
   }
@@ -47,7 +51,7 @@ public class ClimberReal implements ClimberIO {
    * @param inputs The {@link ClimberIOInputs} object containing updated input data.
    */
   public void updateInputs(ClimberIOInputs inputs) {
-    inputs.climberMotorPosition = getPosition();
+    inputs.climberMotorPosition = getPosition().getRotations();
   }
 
   /**

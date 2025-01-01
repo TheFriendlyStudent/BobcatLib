@@ -11,8 +11,8 @@ public interface ClimberIO {
    * <p>This is used for AdvantageKit logging.
    */
   public static class ClimberIOInputs {
-    /** The position of the climber motor represented as a {@link Rotation2d}. */
-    public Rotation2d climberMotorPosition = new Rotation2d();
+    /** The position of the climber motor represented as a double . */
+    public double climberMotorPosition = 0;
   }
 
   /**

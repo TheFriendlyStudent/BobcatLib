@@ -35,7 +35,7 @@ public class ClimberSubsystem extends SubsystemBase {
   public ClimberSubsystem(String name, ClimberIO io) {
     this.name = name;
     this.io = io;
-    holdingPos = inputs.climberMotorPosition.getRotations();
+    holdingPos = inputs.climberMotorPosition;
   }
 
   /**
@@ -50,7 +50,7 @@ public class ClimberSubsystem extends SubsystemBase {
     if (percent == 0) {
       io.holdPos(holdingPos);
     } else {
-      holdingPos = inputs.climberMotorPosition.getRotations();
+      holdingPos = inputs.climberMotorPosition;
     }
   }
 

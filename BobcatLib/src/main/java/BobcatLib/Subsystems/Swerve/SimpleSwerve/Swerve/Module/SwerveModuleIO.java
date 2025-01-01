@@ -1,16 +1,15 @@
 package BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module;
 
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleJson;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 
 public interface SwerveModuleIO {
   public static class SwerveModuleIOInputs {
-    public Rotation2d offset = Rotation2d.fromDegrees(0);
+    public double offset = 0;
     public double velocity = 0.00;
-    public Rotation2d absAngle = Rotation2d.fromDegrees(0);
-    public Rotation2d angle = Rotation2d.fromDegrees(0);
+    public double absAngle = 0;
+    public double angle = 0;
   }
 
   public default void updateInputs(SwerveModuleIOInputs inputs) {}

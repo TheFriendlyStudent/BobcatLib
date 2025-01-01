@@ -91,7 +91,8 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Hardware.Motors.MotorIO)" class="member-name-link">BaseMotor</a><wbr>(<a href="MotorIO.html" title="interface in BobcatLib.Hardware.Motors">MotorIO</a>&nbsp;io)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Hardware.Motors.MotorIO,BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper)" class="member-name-link">BaseMotor</a><wbr>(<a href="MotorIO.html" title="interface in BobcatLib.Hardware.Motors">MotorIO</a>&nbsp;io,
+ <a href="Utility/SoftwareLimitWrapper.html" title="class in BobcatLib.Hardware.Motors.Utility">SoftwareLimitWrapper</a>&nbsp;limits)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Constructs a new BaseMotor instance.</div>
 </div>
@@ -112,7 +113,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#checkForFaults()" class="member-name-link">checkForFaults</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Performs a fault check on the motor.</div>
+<div class="block">Performs a fault check on the motor to detect and handle any issues.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCanId()" class="member-name-link">getCanId</a>()</code></div>
@@ -137,7 +138,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Periodically updates the motor inputs and processes them using the Logger.</div>
+<div class="block">Periodically updates the motor inputs and processes them.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAngle(double)" class="member-name-link">setAngle</a><wbr>(double&nbsp;angleInRotations)</code></div>
@@ -159,7 +160,23 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stopMotor()" class="member-name-link">stopMotor</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Stops the motor and performs a fault check.</div>
+<div class="block">Stops the motor and performs a fault check to ensure no issues are present.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withLimits(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">withLimits</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;lower,
+ <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;upper)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Configures the motor with both lower and upper software limits.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withLowerLimit(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">withLowerLimit</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotations)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Configures the motor with a lower software limit.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withUpperLimit(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">withUpperLimit</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotations)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Configures the motor with an upper software limit.</div>
 </div>
 </div>
 </div>
@@ -179,13 +196,15 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(BobcatLib.Hardware.Motors.MotorIO)">
+<section class="detail" id="&lt;init&gt;(BobcatLib.Hardware.Motors.MotorIO,BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper)">
 <h3>BaseMotor</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">BaseMotor</span><wbr><span class="parameters">(<a href="MotorIO.html" title="interface in BobcatLib.Hardware.Motors">MotorIO</a>&nbsp;io)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">BaseMotor</span><wbr><span class="parameters">(<a href="MotorIO.html" title="interface in BobcatLib.Hardware.Motors">MotorIO</a>&nbsp;io,
+ <a href="Utility/SoftwareLimitWrapper.html" title="class in BobcatLib.Hardware.Motors.Utility">SoftwareLimitWrapper</a>&nbsp;limits)</span></div>
 <div class="block">Constructs a new BaseMotor instance.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>io</code> - The MotorIO implementation to be used for motor control and feedback.</dd>
+<dd><code>limits</code> - A SoftwareLimitWrapper instance to handle motor software limits.</dd>
 </dl>
 </section>
 </li>
@@ -201,7 +220,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
-<div class="block">Periodically updates the motor inputs and processes them using the Logger.</div>
+<div class="block">Periodically updates the motor inputs and processes them. This method should be called
+ frequently to ensure the motor's state is up-to-date.</div>
 </section>
 </li>
 <li>
@@ -211,7 +231,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Retrieves the current position of the motor as a Rotation2d object.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The motor's position.</dd>
+<dd>The motor's position as a Rotation2d instance.</dd>
 </dl>
 </section>
 </li>
@@ -230,7 +250,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="stopMotor()">
 <h3>stopMotor</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">stopMotor</span>()</div>
-<div class="block">Stops the motor and performs a fault check.</div>
+<div class="block">Stops the motor and performs a fault check to ensure no issues are present.</div>
 </section>
 </li>
 <li>
@@ -266,7 +286,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Sets the motor control voltage for SysID mode.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>volts</code> - The control voltage to apply.</dd>
+<dd><code>volts</code> - The control voltage to apply to the motor.</dd>
 </dl>
 </section>
 </li>
@@ -274,7 +294,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="checkForFaults()">
 <h3>checkForFaults</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">checkForFaults</span>()</div>
-<div class="block">Performs a fault check on the motor.</div>
+<div class="block">Performs a fault check on the motor to detect and handle any issues.</div>
 </section>
 </li>
 <li>
@@ -284,7 +304,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Retrieves the MotorIO implementation associated with this BaseMotor.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The MotorIO instance.</dd>
+<dd>The MotorIO instance being used for motor control and feedback.</dd>
 </dl>
 </section>
 </li>
@@ -296,6 +316,47 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>The motor's CAN ID.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="withLimits(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.geometry.Rotation2d)">
+<h3>withLimits</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></span>&nbsp;<span class="element-name">withLimits</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;lower,
+ <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;upper)</span></div>
+<div class="block">Configures the motor with both lower and upper software limits.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>lower</code> - The lower limit as a Rotation2d instance.</dd>
+<dd><code>upper</code> - The upper limit as a Rotation2d instance.</dd>
+<dt>Returns:</dt>
+<dd>The updated BaseMotor instance.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="withUpperLimit(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>withUpperLimit</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></span>&nbsp;<span class="element-name">withUpperLimit</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotations)</span></div>
+<div class="block">Configures the motor with an upper software limit.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>rotations</code> - The upper limit as a Rotation2d instance.</dd>
+<dt>Returns:</dt>
+<dd>The updated BaseMotor instance.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="withLowerLimit(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>withLowerLimit</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></span>&nbsp;<span class="element-name">withLowerLimit</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotations)</span></div>
+<div class="block">Configures the motor with a lower software limit.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>rotations</code> - The lower limit as a Rotation2d instance.</dd>
+<dt>Returns:</dt>
+<dd>The updated BaseMotor instance.</dd>
 </dl>
 </section>
 </li>

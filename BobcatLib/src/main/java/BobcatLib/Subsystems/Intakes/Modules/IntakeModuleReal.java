@@ -4,6 +4,7 @@ import BobcatLib.Hardware.Encoders.BaseEncoder;
 import BobcatLib.Hardware.Encoders.EncoderIO;
 import BobcatLib.Hardware.Motors.BaseMotor;
 import BobcatLib.Hardware.Motors.MotorIO;
+import BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper;
 import BobcatLib.Subsystems.Intakes.Modules.IntakeModuleIO.IntakeIOInputs;
 import BobcatLib.Subsystems.Intakes.Parser.IntakeJson;
 import BobcatLib.Subsystems.Intakes.Utils.IntakeConstants;
@@ -23,6 +24,7 @@ public class IntakeModuleReal {
   private BaseEncoder intakeAbsEncoder;
   private IntakeType intakeType;
   private IntakeConstants configuration;
+  private SoftwareLimitWrapper limits;
 
   /**
    * This implementation should be used when you have a static intake that never moves with a
@@ -30,9 +32,10 @@ public class IntakeModuleReal {
    *
    * @param rollerMotor
    */
-  public IntakeModuleReal(MotorIO rollerMotor, IntakeJson intakeJson) {
+  public IntakeModuleReal(MotorIO rollerMotor, IntakeJson intakeJson, SoftwareLimitWrapper limits) {
     loadConfigurationFromFile(intakeJson);
-    this.rollerMotor = new BaseMotor(rollerMotor);
+    this.limits = limits;
+    this.rollerMotor = new BaseMotor(rollerMotor, limits);
     intakeType = IntakeType.STATIONARY;
   }
 
@@ -45,8 +48,8 @@ public class IntakeModuleReal {
    */
   public IntakeModuleReal(MotorIO rollerMotor, MotorIO pivotMotor, IntakeJson intakeJson) {
     loadConfigurationFromFile(intakeJson);
-    this.rollerMotor = new BaseMotor(rollerMotor);
-    this.pivotMotor = new BaseMotor(pivotMotor);
+    this.rollerMotor = new BaseMotor(rollerMotor, limits);
+    this.pivotMotor = new BaseMotor(pivotMotor, limits);
     intakeType = IntakeType.PIVOTING;
   }
 
@@ -61,8 +64,8 @@ public class IntakeModuleReal {
   public IntakeModuleReal(
       MotorIO rollerMotor, MotorIO pivotMotor, EncoderIO absEncoder, IntakeJson intakeJson) {
     loadConfigurationFromFile(intakeJson);
-    this.rollerMotor = new BaseMotor(rollerMotor);
-    this.pivotMotor = new BaseMotor(pivotMotor);
+    this.rollerMotor = new BaseMotor(rollerMotor, limits);
+    this.pivotMotor = new BaseMotor(pivotMotor, limits);
     this.intakeAbsEncoder = new BaseEncoder(absEncoder);
     intakeType = IntakeType.PIVOTING;
   }
