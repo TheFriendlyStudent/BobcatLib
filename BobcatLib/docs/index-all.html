@@ -270,6 +270,14 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Parser/SwerveJson.html#base" class="member-name-link">base</a> - Variable in class BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser.<a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Swerve/Parser/SwerveJson.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser">SwerveJson</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="BobcatLib/Subsystems/Climbers/Modules/BaseClimber.html" class="type-name-link" title="class in BobcatLib.Subsystems.Climbers.Modules">BaseClimber</a> - Class in <a href="BobcatLib/Subsystems/Climbers/Modules/package-summary.html">BobcatLib.Subsystems.Climbers.Modules</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="BobcatLib/Subsystems/Climbers/Modules/BaseClimber.html#%3Cinit%3E()" class="member-name-link">BaseClimber()</a> - Constructor for class BobcatLib.Subsystems.Climbers.Modules.<a href="BobcatLib/Subsystems/Climbers/Modules/BaseClimber.html" title="class in BobcatLib.Subsystems.Climbers.Modules">BaseClimber</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" class="type-name-link" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a> - Class in <a href="BobcatLib/Subsystems/Elevators/Modules/package-summary.html">BobcatLib.Subsystems.Elevators.Modules</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html#%3Cinit%3E(BobcatLib.Subsystems.Elevators.Modules.ElevatorIO)" class="member-name-link">BaseElevator(ElevatorIO)</a> - Constructor for class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Hardware/Encoders/BaseEncoder.html" class="type-name-link" title="class in BobcatLib.Hardware.Encoders">BaseEncoder</a> - Class in <a href="BobcatLib/Hardware/Encoders/package-summary.html">BobcatLib.Hardware.Encoders</a></dt>
 <dd>
 <div class="block">A base class for interacting with an encoder using the <a href="BobcatLib/Hardware/Encoders/EncoderIO.html" title="interface in BobcatLib.Hardware.Encoders"><code>EncoderIO</code></a> interface.</div>
@@ -1296,10 +1304,6 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/Utility/Parser/ElevatorJson.ElevatorMainJson.html#%3Cinit%3E()" class="member-name-link">ElevatorMainJson()</a> - Constructor for class BobcatLib.Subsystems.Elevators.Utility.Parser.<a href="BobcatLib/Subsystems/Elevators/Utility/Parser/ElevatorJson.ElevatorMainJson.html" title="class in BobcatLib.Subsystems.Elevators.Utility.Parser">ElevatorJson.ElevatorMainJson</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html" class="type-name-link" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorModule</a> - Class in <a href="BobcatLib/Subsystems/Elevators/Modules/package-summary.html">BobcatLib.Subsystems.Elevators.Modules</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html#%3Cinit%3E(BobcatLib.Subsystems.Elevators.Modules.ElevatorIO)" class="member-name-link">ElevatorModule(ElevatorIO)</a> - Constructor for class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorModule</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/Utility/Parser/ElevatorMotorJson.html" class="type-name-link" title="class in BobcatLib.Subsystems.Elevators.Utility.Parser">ElevatorMotorJson</a> - Class in <a href="BobcatLib/Subsystems/Elevators/Utility/Parser/package-summary.html">BobcatLib.Subsystems.Elevators.Utility.Parser</a></dt>
 <dd>
 <div class="block">Represents the configuration for an elevator motor, including its type, ID, CAN bus, and
@@ -1337,7 +1341,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Represents the elevator subsystem, responsible for controlling and configuring the elevator
  hardware and logic.</div>
 </dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html#%3Cinit%3E(java.lang.String,BobcatLib.Subsystems.Elevators.Modules.ElevatorModule)" class="member-name-link">ElevatorSubsystem(String, ElevatorModule)</a> - Constructor for class BobcatLib.Subsystems.Elevators.<a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></dt>
+<dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html#%3Cinit%3E(java.lang.String,BobcatLib.Subsystems.Elevators.Modules.BaseElevator)" class="member-name-link">ElevatorSubsystem(String, BaseElevator)</a> - Constructor for class BobcatLib.Subsystems.Elevators.<a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></dt>
 <dd>
 <div class="block">Constructs a new <code>ElevatorSubsystem</code>.</div>
 </dd>
@@ -3077,7 +3081,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Loads the gyro configuration from a JSON file stored in the robot's deploy directory.</div>
 </dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html#loadConfigurationFromFile()" class="member-name-link">loadConfigurationFromFile()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorModule</a></dt>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html#loadConfigurationFromFile()" class="member-name-link">loadConfigurationFromFile()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a></dt>
 <dd>
 <div class="block">Loads the elevator configuration from a JSON file located in the robot's deploy directory.</div>
 </dd>
@@ -3277,7 +3281,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Moves the elevator to the specified position.</div>
 </dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html#moveElevator(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">moveElevator(Rotation2d)</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorModule</a></dt>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html#moveElevator(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">moveElevator(Rotation2d)</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a></dt>
 <dd>
 <div class="block">Moves the elevator to the specified position.</div>
 </dd>
@@ -3528,7 +3532,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Periodically updates the elevator subsystem inputs.</div>
 </dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html#periodic()" class="member-name-link">periodic()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorModule</a></dt>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html#periodic()" class="member-name-link">periodic()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Intakes/IntakeSubsystem.html#periodic()" class="member-name-link">periodic()</a> - Method in class BobcatLib.Subsystems.Intakes.<a href="BobcatLib/Subsystems/Intakes/IntakeSubsystem.html" title="class in BobcatLib.Subsystems.Intakes">IntakeSubsystem</a></dt>
 <dd>
@@ -4018,13 +4022,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Sets the elevator motor output to a specified percentage.</div>
 </dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html#setPercentOut(double)" class="member-name-link">setPercentOut(double)</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a></dt>
+<dd>
+<div class="block">Sets the elevator motor output to a specified percentage.</div>
+</dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorIO.html#setPercentOut(double)" class="member-name-link">setPercentOut(double)</a> - Method in interface BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorIO.html" title="interface in BobcatLib.Subsystems.Elevators.Modules">ElevatorIO</a></dt>
 <dd>
 <div class="block">Sets the elevator motor output as a percentage of the maximum power.</div>
-</dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html#setPercentOut(double)" class="member-name-link">setPercentOut(double)</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorModule</a></dt>
-<dd>
-<div class="block">Sets the elevator motor output to a specified percentage.</div>
 </dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html#setPercentOut(double)" class="member-name-link">setPercentOut(double)</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorReal</a></dt>
 <dd>
@@ -4326,13 +4330,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Stops the elevator motor immediately.</div>
 </dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html#stop()" class="member-name-link">stop()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a></dt>
+<dd>
+<div class="block">Stops the elevator motor immediately.</div>
+</dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorIO.html#stop()" class="member-name-link">stop()</a> - Method in interface BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorIO.html" title="interface in BobcatLib.Subsystems.Elevators.Modules">ElevatorIO</a></dt>
 <dd>
 <div class="block">Stops the elevator motor by setting its output to zero.</div>
-</dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html#stop()" class="member-name-link">stop()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorModule.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorModule</a></dt>
-<dd>
-<div class="block">Stops the elevator motor immediately.</div>
 </dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html#stop()" class="member-name-link">stop()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorReal</a></dt>
 <dd>

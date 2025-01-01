@@ -1,7 +1,7 @@
 package BobcatLib.Subsystems.Elevators;
 
+import BobcatLib.Subsystems.Elevators.Modules.BaseElevator;
 import BobcatLib.Subsystems.Elevators.Modules.ElevatorIO;
-import BobcatLib.Subsystems.Elevators.Modules.ElevatorModule;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -11,17 +11,17 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  * abstraction.
  */
 public class ElevatorSubsystem extends SubsystemBase {
-  private final ElevatorModule elevatorModule;
+  private final BaseElevator elevatorModule;
   private String name = "";
 
   /**
    * Constructs a new {@code ElevatorSubsystem}.
    *
    * @param name The name of the subsystem, used for identification or debugging.
-   * @param elevatorModule The {@link ElevatorModule} implementation for controlling the elevator
+   * @param elevatorModule The {@link BaseElevator} implementation for controlling the elevator
    *     hardware.
    */
-  public ElevatorSubsystem(String name, ElevatorModule elevatorModule) {
+  public ElevatorSubsystem(String name, BaseElevator elevatorModule) {
     this.name = name;
     this.elevatorModule = elevatorModule;
   }

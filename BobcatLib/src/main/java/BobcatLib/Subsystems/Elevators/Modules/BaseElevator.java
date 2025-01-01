@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.Filesystem;
 import java.io.File;
 import java.io.IOException;
 
-public class ElevatorModule {
+public class BaseElevator {
   private ElevatorIO io;
   private ElevatorIOInputs inputs = new ElevatorIOInputs();
   private ElevatorJson elevatorJson;
 
-  public ElevatorModule(ElevatorIO io) {
+  public BaseElevator(ElevatorIO io) {
     this.io = io;
   }
 

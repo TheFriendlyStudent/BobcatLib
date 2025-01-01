@@ -1,6 +1,7 @@
 package BobcatLib.Subsystems.Climbers.Modules;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.AutoLog;
 
 /** Interface for controlling and monitoring the climber mechanism of a robot. */
 public interface ClimberIO {
@@ -10,6 +11,7 @@ public interface ClimberIO {
    *
    * <p>This is used for AdvantageKit logging.
    */
+  @AutoLog
   public static class ClimberIOInputs {
     /** The position of the climber motor represented as a double . */
     public double climberMotorPosition = 0;

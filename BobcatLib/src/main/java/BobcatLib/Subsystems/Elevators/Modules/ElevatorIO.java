@@ -2,6 +2,7 @@ package BobcatLib.Subsystems.Elevators.Modules;
 
 import BobcatLib.Subsystems.Elevators.Utility.Parser.ElevatorJson;
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.AutoLog;
 
 /**
  * Interface representing the Input/Output operations for an Elevator system. Provides methods for
@@ -13,6 +14,7 @@ public interface ElevatorIO {
    * Class for storing the inputs related to the elevator. Annotated with autologging for logging
    * support.
    */
+  @AutoLog
   public static class ElevatorIOInputs {
     /** The current position of the elevator motor as a double . */
     public double motorPosition = 0;
