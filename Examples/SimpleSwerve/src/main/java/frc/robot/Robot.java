@@ -24,6 +24,7 @@ public class Robot extends TimedRobot {
    * initialization code.
    */
   public Robot() {
+      
     alliance = new Alliance();
     
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our

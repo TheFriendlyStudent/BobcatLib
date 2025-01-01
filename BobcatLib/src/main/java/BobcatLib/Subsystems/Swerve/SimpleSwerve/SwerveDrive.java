@@ -21,6 +21,8 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math.GeometryUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.config.RobotConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.path.PathConstraints;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -202,6 +204,33 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             jsonSwerve.rotationPID.driveKP,
             jsonSwerve.rotationPID.driveKI,
             jsonSwerve.rotationPID.driveKD); // Rotation
+  }
+
+  public SwerveDrive withPathPlanner() {
+    try {
+      RobotConfig config = RobotConfig.fromGUISettings();
+      boolean isRed = team.isRedAlliance();
+      // Configure AutoBuilder
+      AutoBuilder.configure(
+          this::getPose,
+          this::setPose,
+          this::getChassisSpeeds,
+          this::drive,
+          new PPHolonomicDriveController(
+              pidTranslation.asPathPlanner(), pidRotation.asPathPlanner()),
+          config,
+          () -> {
+            // Boolean supplier that controls when the path will be mirrored for the red alliance
+            // This will flip the path being followed to the red side of the field.
+            // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+            return isRed;
+          },
+          this);
+    } catch (Exception e) {
+      DriverStation.reportError(
+          "Failed to load PathPlanner config and configure AutoBuilder", e.getStackTrace());
+    }
+    return this;
   }
 
   public SwerveJson loadConfigurationFromFile() {
