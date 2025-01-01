@@ -1,0 +1,33 @@
+{
+  "drive": {
+    "motor_type": "falcon",
+    "id": 1,
+    "canbus": "CANt_open_file"
+  },
+  "angle": {
+    "motor_type": "falcon",
+    "id": 2,
+    "canbus": "CANt_open_file",
+    "inverted": false
+  },
+  "encoder": {
+    "type": "cancoder",
+    "id": 1,
+    "canbus": "CANt_open_file",
+    "offset": -0.678,
+    "inverted": false
+  },
+  "type": "sds_mk4i",
+  "level": "sds_mk4i_L2",
+  "wheelCircumference": 4.00,
+  "angleCurrentLimit": 35,
+  "angleCurrentThreshold": 60,
+  "angleCurrentThresholdTime": 0.1,
+  "angleEnableCurrentLimit": true,
+  "driveCurrentLimit": 35,
+  "driveCurrentThreshold": 60,
+  "driveCurrentThresholdTime": 0.1,
+  "driveEnableCurrentLimit": true,
+  "openLoopRamp": 0.25,
+  "closedLoopRamp": 0.0
+}
