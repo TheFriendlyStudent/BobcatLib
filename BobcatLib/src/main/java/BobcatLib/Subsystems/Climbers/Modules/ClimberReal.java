@@ -16,12 +16,6 @@ public class ClimberReal implements ClimberIO {
   /** The motor controlling the climber mechanism. */
   private BaseMotor climberMotor;
 
-  /** The request object for percentage-based control of the climber motor. */
-  private DutyCycleOut request;
-
-  /** The request object for position-based control of the climber motor. */
-  private PositionDutyCycle holdPosRequest;
-
   private SoftwareLimitWrapper limits;
 
   /**
@@ -32,8 +26,6 @@ public class ClimberReal implements ClimberIO {
   public ClimberReal(MotorIO motor, SoftwareLimitWrapper limits) {
     this.limits = limits;
     climberMotor = new BaseMotor(motor, limits);
-    request = new DutyCycleOut(0).withEnableFOC(true);
-    holdPosRequest = new PositionDutyCycle(0).withEnableFOC(true);
   }
 
   /**
@@ -63,7 +55,7 @@ public class ClimberReal implements ClimberIO {
    * @param percent The desired motor output percentage (-1.0 to 1.0).
    */
   public void setPercentOut(double percent) {
-    climberMotor.setControl(request.withOutput(percent).Output);
+    climberMotor.setControl(percent);
   }
 
   /**
@@ -72,7 +64,7 @@ public class ClimberReal implements ClimberIO {
    * @param rot The target position in rotations.
    */
   public void holdPos(double rot) {
-    climberMotor.setControl(holdPosRequest.withPosition(rot).Position);
+    climberMotor.setAngle(rot);
   }
 
   /** Stops the climber motor immediately. */
