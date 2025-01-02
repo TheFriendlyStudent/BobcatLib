@@ -24,6 +24,9 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.path.PathConstraints;
+import com.pathplanner.lib.pathfinding.LocalADStar;
+import com.pathplanner.lib.pathfinding.Pathfinding;
+import com.pathplanner.lib.util.PathPlannerLogging;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -49,6 +52,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import org.littletonrobotics.junction.Logger;
 
 public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve, AutomatedSwerve {
   public SwerveModule[] mSwerveMods;
@@ -226,6 +230,14 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             return isRed;
           },
           this);
+      Pathfinding.setPathfinder(new LocalADStar());
+      PathPlannerLogging.setLogActivePathCallback(
+          (activePath) -> {
+            final Pose2d[] trajectory = activePath.toArray(new Pose2d[0]);
+            Logger.recordOutput("Odometry/Trajectory", trajectory);
+          });
+      PathPlannerLogging.setLogTargetPoseCallback(
+          (targetPose) -> Logger.recordOutput("Odometry/TrajectorySetpoint", targetPose));
     } catch (Exception e) {
       DriverStation.reportError(
           "Failed to load PathPlanner config and configure AutoBuilder", e.getStackTrace());
