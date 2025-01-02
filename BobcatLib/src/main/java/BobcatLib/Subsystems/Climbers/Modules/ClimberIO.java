@@ -56,4 +56,11 @@ public interface ClimberIO {
   public default Rotation2d getPosition() {
     return new Rotation2d();
   }
+  /**
+   * Sets the climber to a specified position.
+   *
+   * @param position The target position as a {@link Rotation2d} object.
+   */
+  public default void setPosition(Rotation2d position) {}
 }
+
