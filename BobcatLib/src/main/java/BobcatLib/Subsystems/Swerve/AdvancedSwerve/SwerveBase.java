@@ -5,6 +5,7 @@ import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIO;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIOInputsAutoLogged;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIOPigeon2;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces.AutomatedSwerve;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.PoseEstimation.AdvancedSwervePoseEstimator;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModule;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO;
@@ -38,7 +39,7 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
   private final GyroIO gyroIO;
   private final GyroIOInputsAutoLogged gyroInputs = new GyroIOInputsAutoLogged();
   private final SwerveModule[] modules;
-
+  private final AdvancedSwervePoseEstimator poseEstimator;
   private final double[] swerveModuleStates = new double[8];
   private final double[] desiredSwerveModuleStates = new double[8];
 
@@ -99,6 +100,15 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
 
     this.constants = constants;
     this.gyroIO = gyroIO;
+
+    poseEstimator =
+        new AdvancedSwervePoseEstimator(
+            constants.kinematicsConstants.kinematics,
+            getYaw(),
+            getModulePositions(),
+            new Pose2d(),
+            constants.odometryConstants.trustStdDevs,
+            trustautostdDev);
 
     pathfindingConstraints =
         new PathConstraints(
@@ -246,32 +256,32 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
       }
 
       // determine how much to trust odometry based on acceleration
-      // Logger.recordOutput("Swerve/OdometryState", getOdometryState());
-      // switch (getOdometryState()) {
-      //   case THROWOUT:
-      //     break;
-      //   case DISTRUST:
-      //     poseEstimator.updateWithTime(
-      //         sampleTimestamps[i],
-      //         lastYaw,
-      //         modulePositions,
-      //         constants.odometryConstants.distrustStdDevs);
-      //     break;
-      //   case TRUST:
-      //     poseEstimator.updateWithTime(
-      //         sampleTimestamps[i],
-      //         lastYaw,
-      //         modulePositions,
-      //         constants.odometryConstants.trustStdDevs);
-      //     break;
-      //   default:
-      //     poseEstimator.updateWithTime(
-      //         sampleTimestamps[i],
-      //         lastYaw,
-      //         modulePositions,
-      //         constants.odometryConstants.trustStdDevs);
-      //     break;
-      // }
+      Logger.recordOutput("Swerve/OdometryState", getOdometryState());
+      switch (getOdometryState()) {
+        case THROWOUT:
+          break;
+        case DISTRUST:
+          poseEstimator.updateWithTime(
+              sampleTimestamps[i],
+              lastYaw,
+              modulePositions,
+              constants.odometryConstants.distrustStdDevs);
+          break;
+        case TRUST:
+          poseEstimator.updateWithTime(
+              sampleTimestamps[i],
+              lastYaw,
+              modulePositions,
+              constants.odometryConstants.trustStdDevs);
+          break;
+        default:
+          poseEstimator.updateWithTime(
+              sampleTimestamps[i],
+              lastYaw,
+              modulePositions,
+              constants.odometryConstants.trustStdDevs);
+          break;
+      }
     }
     // TODO try creating a logging method that will be called within season specific class
     // updates desired and current swerve module states
@@ -282,14 +292,12 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
       swerveModuleStates[mod.index * 2] = mod.getState().angle.getDegrees();
     }
 
-    // Logger.recordOutput("Swerve/Pose", getPose());
-    // Logger.recordOutput(
-    //     "Swerve/ChassisSpeeds",
-    //     new Translation2d(
-    //         ChassisSpeeds.fromRobotRelativeSpeeds(getChassisSpeeds(),
-    // getYaw()).vxMetersPerSecond,
-    //         ChassisSpeeds.fromRobotRelativeSpeeds(getChassisSpeeds(),
-    // getYaw()).vyMetersPerSecond));
+    Logger.recordOutput("Swerve/Pose", getPose());
+    Logger.recordOutput(
+        "Swerve/ChassisSpeeds",
+        new Translation2d(
+            ChassisSpeeds.fromRobotRelativeSpeeds(getChassisSpeeds(), getYaw()).vxMetersPerSecond,
+            ChassisSpeeds.fromRobotRelativeSpeeds(getChassisSpeeds(), getYaw()).vyMetersPerSecond));
 
     // stops drivetrain on disable
     if (DriverStation.isDisabled()) {
@@ -328,23 +336,23 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
         lastYaw.plus(
             Rotation2d.fromRadians(getChassisSpeeds().omegaRadiansPerSecond * loopPeriodSecs));
     lastYaw = yaw;
-    // switch (getOdometryState()) {
-    //   case THROWOUT:
-    //     break;
-    //   case DISTRUST:
-    //     poseEstimator.update(
-    //         getYaw(), getModulePositions(), constants.odometryConstants.distrustStdDevs);
-    //     break;
-    //   case TRUST:
-    //     poseEstimator.update(
-    //         getYaw(), getModulePositions(), constants.odometryConstants.trustStdDevs);
-    //     break;
-    //   default:
-    //     poseEstimator.update(
-    //         getYaw(), getModulePositions(), constants.odometryConstants.trustStdDevs);
-    //     break;
-    // }
-    // poseEstimator.update(getYaw(), getModulePositions());
+    switch (getOdometryState()) {
+      case THROWOUT:
+        break;
+      case DISTRUST:
+        poseEstimator.update(
+            getYaw(), getModulePositions(), constants.odometryConstants.distrustStdDevs);
+        break;
+      case TRUST:
+        poseEstimator.update(
+            getYaw(), getModulePositions(), constants.odometryConstants.trustStdDevs);
+        break;
+      default:
+        poseEstimator.update(
+            getYaw(), getModulePositions(), constants.odometryConstants.trustStdDevs);
+        break;
+    }
+    poseEstimator.update(getYaw(), getModulePositions());
   }
 
   /**
@@ -513,19 +521,19 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
    *
    * @return current pose in meters
    */
-  // public Pose2d getPose() {
-  //   // return odometry.getPoseMeters();
-  //   return poseEstimator.getEstimatedPosition();
-  // }
+  public Pose2d getPose() {
+    // return odometry.getPoseMeters();
+    return poseEstimator.getEstimatedPosition();
+  }
 
   /**
    * Resets our odometry to desired pose
    *
    * @param pose pose to set odometry to
    */
-  // public void resetPose(Pose2d pose) {
-  //   poseEstimator.resetPosition(getYaw(), getModulePositions(), pose);
-  // }
+  public void resetPose(Pose2d pose) {
+    poseEstimator.resetPosition(getYaw(), getModulePositions(), pose);
+  }
 
   /** Sets the current gyro yaw to 0 degrees */
   public void zeroGyro() {
@@ -553,16 +561,17 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
     return AutoBuilder.pathfindToPose(pose, pathfindingConstraints);
   }
 
-  // /** does NOT consider alliance color */
-  // public Translation2d getTranslationToPose(Translation2d pose) {
-  //   return pose.minus(getPose().getTranslation());
-  // }
+  /** does NOT consider alliance color */
+  public Translation2d getTranslationToPose(Translation2d pose) {
+    return pose.minus(getPose().getTranslation());
+  }
 
-  // public Translation2d getTranslationToPose(Translation2d bluePose, Translation2d redPose) {
-  //   return BobcatUtil.getAlliance() == Alliance.Blue
-  //       ? bluePose.minus(getPose().getTranslation())
-  //       : redPose.minus(getPose().getTranslation());
-  // }
+  // TODO check for rotational symetry in 2025!!!
+  public Translation2d getTranslationToPose(Translation2d bluePose, Translation2d redPose) {
+    return DSUtil.isBlue()
+        ? bluePose.minus(getPose().getTranslation())
+        : redPose.minus(getPose().getTranslation());
+  }
 
   public boolean aligned(AlignmentCheckType checkType) {
     double tolerance = constants.holoAlignTolerance.getRadians();

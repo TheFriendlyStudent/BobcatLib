@@ -1,6 +1,8 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations;
 
 import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
 
 public class SwerveStdDevs {
 
@@ -12,7 +14,8 @@ public class SwerveStdDevs {
     this.teleStdDevs = teleStdDevs;
   }
 
-  public Matrix[] toMatrix() {
+  @SuppressWarnings("unchecked")
+  public Matrix<N3, N1>[] toMatrix() {
     return new Matrix[] {
       autoStdDevs.trustMatrix(),
       teleStdDevs.trustMatrix(),

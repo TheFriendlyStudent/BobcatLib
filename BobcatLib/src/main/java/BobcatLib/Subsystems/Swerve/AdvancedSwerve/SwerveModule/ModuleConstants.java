@@ -1,4 +1,4 @@
-package BobcatLib.Subsystems.Swerve.AdvancedSwerve;
+package BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 

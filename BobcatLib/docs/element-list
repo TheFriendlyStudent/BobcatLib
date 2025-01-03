@@ -22,6 +22,7 @@ BobcatLib.Subsystems.Swerve.AdvancedSwerve
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces
+BobcatLib.Subsystems.Swerve.AdvancedSwerve.PoseEstimation
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule
 BobcatLib.Subsystems.Swerve.SimpleSwerve

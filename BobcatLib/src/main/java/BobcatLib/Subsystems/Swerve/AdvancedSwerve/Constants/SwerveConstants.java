@@ -1,6 +1,6 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants;
 
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.ModuleConstants;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.ModuleConstants;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
