@@ -1,7 +1,8 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule;
 
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import com.ctre.phoenix6.signals.NeutralModeValue;
+
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;

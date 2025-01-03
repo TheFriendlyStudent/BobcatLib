@@ -5,8 +5,13 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
+
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
+
+import org.littletonrobotics.junction.Logger;
+
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 
 public class TeleopSwerve extends Command {
   private SwerveBase swerve;
@@ -53,8 +58,7 @@ public class TeleopSwerve extends Command {
       BooleanSupplier aimAssistSupplier,
       BooleanSupplier autoAlignSupplier,
       double stickDeadband,
-      double maxChassisSpeedMetersPerSecond,
-      Rotation2d maxChassisAngularVelocity) {
+      SwerveConstants constants) {
 
     this.swerve = swerve;
     addRequirements(swerve);
@@ -68,8 +72,8 @@ public class TeleopSwerve extends Command {
     this.aimAssistSupplier = aimAssistSupplier;
     this.autoAlignSupplier = autoAlignSupplier;
     this.stickDeadband = stickDeadband;
-    maxVelocity = maxChassisSpeedMetersPerSecond;
-    maxAngularVelocity = maxChassisAngularVelocity;
+    maxVelocity = constants.speedLimits.chassisLimits.maxVelocity;
+    maxAngularVelocity = constants.speedLimits.chassisLimits.maxAngularVelocity;
   }
 
   @Override
@@ -94,13 +98,15 @@ public class TeleopSwerve extends Command {
     swerve.setAimAssistTranslation(new Translation2d());
     swerve.setAutoAlignAngle(new Rotation2d());
 
-    if (aimAssistSupplier.getAsBoolean()) {
-      currTranslation = swerve.getPose().getTranslation();
-      translationVal += aimAssistXController.calculate(currTranslation.getX());
-      strafeVal += aimAssistYController.calculate(currTranslation.getY());
-    }
+    // if (aimAssistSupplier.getAsBoolean()) {
+    //   currTranslation = swerve.getPose().getTranslation();
+    //   translationVal += aimAssistXController.calculate(currTranslation.getX());
+    //   strafeVal += aimAssistYController.calculate(currTranslation.getY());
+    // } TODO fix
 
     /* Drive */
+    Logger.recordOutput("Swerve/DesiredTranslation", translationVal);
+    Logger.recordOutput("Swerve/DesiredStrafe", strafeVal);
     swerve.drive(
         new Translation2d(translationVal, strafeVal).times(maxVelocity),
         rotationVal * maxAngularVelocity.getRadians(),

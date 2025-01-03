@@ -1,10 +1,10 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants;
 
-import BobcatLib.Team254.ModuleConstants;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-import com.pathplanner.lib.util.PIDConstants;
-import com.pathplanner.lib.util.ReplanningConfig;
+import com.ctre.phoenix6.signals.SensorDirectionValue;
+
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.ModuleConstants;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -14,7 +14,6 @@ import edu.wpi.first.math.numbers.N3;
 
 public class SwerveConstants {
   public static final String PIDConfigs = null;
-  public ReplanningConfig replanningConfig = new ReplanningConfig();
   public Rotation2d holoAlignTolerance = Rotation2d.fromDegrees(0);
   public int pigeonID = 0;
   public KinematicsConstants kinematicsConstants;
@@ -24,9 +23,13 @@ public class SwerveConstants {
   public SwerveModuleConfigs moduleConfigs;
   public boolean useFOC = true;
   public String canbus = "";
+  public InvertedValue driveInverted = InvertedValue.Clockwise_Positive;
+  public InvertedValue angleInverted = InvertedValue.Clockwise_Positive;
+  public NeutralModeValue angleNeutralMode = NeutralModeValue.Brake;
+  public NeutralModeValue driveNeutralMode = NeutralModeValue.Brake;
+  public SensorDirectionValue cancoderDirection = SensorDirectionValue.CounterClockwise_Positive;
 
   public SwerveConstants(
-      ReplanningConfig replanningConfig,
       Rotation2d holoAlignTolerance,
       KinematicsConstants kinematicsConstants,
       SwerveSpeedLimits speedLimits,
@@ -35,8 +38,17 @@ public class SwerveConstants {
       SwerveModuleConfigs moduleConfigs,
       int pigeonID,
       boolean useFOC,
-      String canbus) {
-    this.replanningConfig = replanningConfig;
+      String canbus,
+      InvertedValue driveInverted,
+      InvertedValue angleInverted,
+      NeutralModeValue angleNeutralMode,
+      NeutralModeValue driveNeutralMode,
+      SensorDirectionValue cancoderDirection) {
+    this.cancoderDirection = cancoderDirection;
+    this.driveInverted = driveInverted;
+    this.angleInverted = angleInverted;
+    this.angleNeutralMode = angleNeutralMode;
+    this.driveNeutralMode = driveNeutralMode;
     this.holoAlignTolerance = holoAlignTolerance;
     this.kinematicsConstants = kinematicsConstants;
     this.speedLimits = speedLimits;
@@ -119,9 +131,6 @@ public class SwerveConstants {
     public double transKP;
     public double transKI;
     public double transKD;
-    public PIDConstants transPidConstants;
-    public PIDConstants rotPidConstants;
-
     public SwervePIDConfig(
         double rotKP, double rotKI, double rotKD, double transKP, double transKI, double transKD) {
       this.rotKP = rotKP;
@@ -130,8 +139,6 @@ public class SwerveConstants {
       this.transKP = transKP;
       this.transKI = transKI;
       this.transKD = transKD;
-      transPidConstants = new PIDConstants(transKP, transKI, transKD);
-      rotPidConstants = new PIDConstants(rotKP, rotKI, rotKD);
     }
   }
 
@@ -142,8 +149,6 @@ public class SwerveConstants {
     public double kS;
     public double kV;
     public double kA;
-    public InvertedValue motorInvert;
-    public NeutralModeValue neutralMode;
     public boolean supplyCurrentLimitEnable;
     public double supplyCurrentLimit;
     public double supplyCurrentThreshold;
@@ -165,8 +170,6 @@ public class SwerveConstants {
         double KS,
         double KV,
         double KA,
-        InvertedValue motorInvert,
-        NeutralModeValue neutralMode,
         boolean supplyCurrentLimitEnable,
         double supplyCurrentLimit,
         double supplyCurrentThreshold,
@@ -182,8 +185,6 @@ public class SwerveConstants {
       this.kS = KS;
       this.kV = KV;
       this.kA = KA;
-      this.motorInvert = motorInvert;
-      this.neutralMode = neutralMode;
       this.supplyCurrentLimitEnable = supplyCurrentLimitEnable;
       this.supplyCurrentLimit = supplyCurrentLimit;
       this.supplyCurrentThreshold = supplyCurrentThreshold;

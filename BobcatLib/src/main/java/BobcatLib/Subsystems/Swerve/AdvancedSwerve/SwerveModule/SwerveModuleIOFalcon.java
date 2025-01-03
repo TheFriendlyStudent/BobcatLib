@@ -1,269 +1,164 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule;
 
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.SwerveMotorConfig;
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.PhoenixOdometryThread;
-import BobcatLib.Team254.ModuleConstants;
-import com.ctre.phoenix6.BaseStatusSignal;
-import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
-import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
-import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-import com.ctre.phoenix6.signals.SensorDirectionValue;
+
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.ModuleConfig;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.util.Units;
-import java.util.Queue;
 
 public class SwerveModuleIOFalcon implements SwerveModuleIO {
-  private final TalonFX driveMotor;
-  private final TalonFX angleMotor;
-  private final CANcoder angleEncoder;
+    private final TalonFX driveMotor;
+    private final TalonFX angleMotor;
+    private final CANcoder angleEncoder;
 
-  private final Rotation2d encoderOffset;
+    private final Rotation2d encoderOffset;
 
-  private final DutyCycleOut driveRequest;
-  private final DutyCycleOut angleRequest;
+    private final DutyCycleOut driveRequest;
+    private final DutyCycleOut angleRequest;
+    private final SwerveConstants constants;
 
-  private final StatusSignal<Double> internalTempDrive;
-  private final StatusSignal<Double> processorTempDrive;
-  private final StatusSignal<Double> internalTempAngle;
-  private final StatusSignal<Double> processorTempAngle;
-  private final StatusSignal<Double> driveAppliedVolts;
+    public SwerveModuleIOFalcon(ModuleConfig module, SwerveConstants constants) {
+        
+        encoderOffset = module.angleOffset;
+        this.constants = constants;
+        angleEncoder = new CANcoder(module.cancoderID, constants.canbus);
+        configAngleEncoder();
+        angleMotor = new TalonFX(module.angleMotorID, constants.canbus);
+        configAngleMotor();
+        driveMotor = new TalonFX(module.driveMotorID, constants.canbus);
+        configDriveMotor();
 
-  private final Queue<Double> timestampQueue;
+        driveRequest = new DutyCycleOut(0.0).withEnableFOC(constants.useFOC);
+        angleRequest = new DutyCycleOut(0.0).withEnableFOC(constants.useFOC);
+    }
 
-  private final Queue<Double> drivePositionQueue;
-  private final StatusSignal<Double> drivePosition;
-  private final StatusSignal<Double> driveVelocity;
-  private final StatusSignal<Double> driveAcceleration;
+    public void updateInputs(SwerveModuleIOInputs inputs) {
+        inputs.drivePositionRot = driveMotor.getPosition().getValueAsDouble() / constants.pidConfigs.driveMotorConfig.gearRatio;
+        inputs.driveVelocityRotPerSec = driveMotor.getVelocity().getValueAsDouble() / constants.pidConfigs.driveMotorConfig.gearRatio;
 
-  private final Queue<Double> anglePositionQueue;
-  private final StatusSignal<Double> angleAbsolutePosition;
-  private String canbus;
-  private VoltageOut sysidControl = new VoltageOut(0);
-  private double driveGearRatio;
-  private double angleGearRatio;
-  public SwerveMotorConfig driveMotorConfig;
-  public SwerveMotorConfig angleMotorConfig;
-  AbsoluteSensorRangeValue cancoderSensorRange;
-  SensorDirectionValue cancoderSensorDirection;
-  private final PhoenixOdometryThread thread;
+        inputs.canCoderPositionRot = Rotation2d.fromRadians(MathUtil.angleModulus(Rotation2d.fromRotations(angleEncoder.getAbsolutePosition().getValueAsDouble()).minus(encoderOffset).getRadians())).getRotations();
+        inputs.rawCanCoderPositionDeg = Rotation2d.fromRotations(angleEncoder.getAbsolutePosition().getValueAsDouble()).getDegrees(); // Used only for shuffleboard to display values to get offsets
+    }
 
-  public SwerveModuleIOFalcon(
-      ModuleConstants moduleConstants,
-      boolean useFOC,
-      SwerveMotorConfig driveMotorConfig,
-      SwerveMotorConfig angleMotorConfig,
-      AbsoluteSensorRangeValue cancoderSensorRange,
-      SensorDirectionValue cancoderSensorDirection,
-      String canbus,
-      PhoenixOdometryThread thread) {
-    this.thread = thread;
-    encoderOffset = moduleConstants.angleOffset;
-    this.cancoderSensorDirection = cancoderSensorDirection;
-    this.cancoderSensorRange = cancoderSensorRange;
-    this.canbus = canbus;
-    driveGearRatio = driveMotorConfig.gearRatio;
-    angleGearRatio = angleMotorConfig.gearRatio;
-    this.driveMotorConfig = driveMotorConfig;
-    this.angleMotorConfig = angleMotorConfig;
+    /**
+     * Sets the percent out of the drive motor
+     * @param percent percent to set it to, from -1.0 to 1.0
+     */
+    public void setDrivePercentOut(double percent) {
+        driveMotor.setControl(driveRequest.withOutput(percent));
+    }
 
-    angleEncoder = new CANcoder(moduleConstants.cancoderID, canbus);
-    configAngleEncoder();
-    angleMotor = new TalonFX(moduleConstants.angleMotorID, canbus);
-    configAngleMotor();
-    driveMotor = new TalonFX(moduleConstants.driveMotorID, canbus);
-    configDriveMotor();
+    /**
+     * Stops the drive motor
+     */
+    public void stopDrive() {
+        driveMotor.stopMotor();
+    }
 
-    driveRequest = new DutyCycleOut(0.0).withEnableFOC(useFOC);
-    angleRequest = new DutyCycleOut(0.0).withEnableFOC(useFOC);
+    /**
+     * Sets the neutral mode of the drive motor
+     * @param mode mode to set it to
+     */
+    public void setDriveNeutralMode(NeutralModeValue mode) {
+        driveMotor.setNeutralMode(mode);
+    }
 
-    timestampQueue = thread.makeTimestampQueue();
+    /**
+     * Sets the percent out of the angle motor
+     * @param percent percent to set it to, from -1.0 to 1.0
+     */
+    public void setAnglePercentOut(double percent) {
+        angleMotor.setControl(angleRequest.withOutput(percent));
+    }
 
-    drivePosition = driveMotor.getPosition();
-    drivePositionQueue = thread.registerSignal(driveMotor, driveMotor.getPosition());
-    driveVelocity = driveMotor.getVelocity();
-    driveAcceleration = driveMotor.getAcceleration();
-    angleAbsolutePosition = angleEncoder.getAbsolutePosition();
-    anglePositionQueue = thread.registerSignal(angleEncoder, angleEncoder.getPosition());
+    /**
+     * Stops the angle motor
+     */
+    public void stopAngle() {
+        angleMotor.stopMotor();
+    }
 
-    internalTempDrive = driveMotor.getDeviceTemp();
-    processorTempDrive = driveMotor.getProcessorTemp();
-    internalTempAngle = angleMotor.getDeviceTemp();
-    processorTempAngle = angleMotor.getProcessorTemp();
-    driveAppliedVolts = driveMotor.getMotorVoltage();
+    /**
+     * Sets the neutral mode of the angle motor
+     * @param mode mode to set it to
+     */
+    public void setAngleNeutralMode(NeutralModeValue mode) {
+        angleMotor.setNeutralMode(mode);
+    }
 
-    BaseStatusSignal.setUpdateFrequencyForAll(
-        50.0, drivePosition, driveVelocity, angleAbsolutePosition, driveAppliedVolts);
-    BaseStatusSignal.setUpdateFrequencyForAll(
-        5, internalTempAngle, internalTempDrive, processorTempAngle, processorTempDrive);
-    driveMotor.optimizeBusUtilization();
-    angleMotor.optimizeBusUtilization();
-  }
+    /**
+     * Applies all configurations to the drive motor
+     */
+    public void configDriveMotor() {
+        TalonFXConfiguration config = new TalonFXConfiguration();
+        driveMotor.getConfigurator().apply(new TalonFXConfiguration());
 
-  public void updateInputs(SwerveModuleIOInputs inputs) {
-    inputs.offset = encoderOffset;
-    BaseStatusSignal.refreshAll(
-        drivePosition,
-        driveVelocity,
-        angleAbsolutePosition,
-        internalTempAngle,
-        internalTempDrive,
-        processorTempAngle,
-        processorTempDrive,
-        driveAcceleration,
-        driveAppliedVolts);
+        config.CurrentLimits.SupplyCurrentLimitEnable = constants.pidConfigs.driveMotorConfig.supplyCurrentLimitEnable;
+        config.CurrentLimits.SupplyCurrentLimit = constants.pidConfigs.driveMotorConfig.supplyCurrentLimit;
+        config.CurrentLimits.SupplyCurrentLowerLimit = constants.pidConfigs.driveMotorConfig.supplyCurrentThreshold;
+        config.CurrentLimits.SupplyCurrentLowerTime = constants.pidConfigs.driveMotorConfig.supplyTimeThreshold;
+        config.CurrentLimits.StatorCurrentLimitEnable = constants.pidConfigs.driveMotorConfig.statorCurrentLimitEnable;
+        config.CurrentLimits.StatorCurrentLimit = constants.pidConfigs.driveMotorConfig.statorCurrentLimit;
 
-    inputs.drivePositionRot = drivePosition.getValueAsDouble() / driveGearRatio;
-    inputs.driveVelocityRotPerSec = driveVelocity.getValueAsDouble() / driveGearRatio;
+        config.OpenLoopRamps.DutyCycleOpenLoopRampPeriod = constants.pidConfigs.driveMotorConfig.openLoopRamp;
+        config.OpenLoopRamps.TorqueOpenLoopRampPeriod = constants.pidConfigs.driveMotorConfig.openLoopRamp;
+        config.OpenLoopRamps.VoltageOpenLoopRampPeriod = constants.pidConfigs.driveMotorConfig.openLoopRamp;
+        config.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = constants.pidConfigs.driveMotorConfig.openLoopRamp;
+        config.ClosedLoopRamps.TorqueClosedLoopRampPeriod = constants.pidConfigs.driveMotorConfig.openLoopRamp;
+        config.ClosedLoopRamps.VoltageClosedLoopRampPeriod = constants.pidConfigs.driveMotorConfig.openLoopRamp;
 
-    inputs.canCoderPositionRot =
-        Rotation2d.fromRadians(
-                MathUtil.angleModulus(
-                    Rotation2d.fromRotations(angleAbsolutePosition.getValueAsDouble())
-                        .minus(encoderOffset)
-                        .getRadians()))
-            .getRotations();
-    inputs.rawCanCoderPositionDeg =
-        Rotation2d.fromRotations(angleAbsolutePosition.getValueAsDouble())
-            .getDegrees(); // Used only for shuffleboard to display values to get offsets
+        config.MotorOutput.Inverted = constants.driveInverted;
+        config.MotorOutput.NeutralMode = constants.angleNeutralMode;
 
-    inputs.odometryTimestamps =
-        timestampQueue.stream().mapToDouble((Double value) -> value).toArray();
-    inputs.odometryDrivePositionsRad =
-        drivePositionQueue.stream()
-            .mapToDouble((Double value) -> Units.rotationsToRadians(value) / driveGearRatio)
-            .toArray();
-    inputs.odometryAnglePositions =
-        anglePositionQueue.stream()
-            // .map((Double value) ->
-            // Rotation2d.fromRadians(MathUtil.angleModulus(Rotation2d.fromRotations(value).minus(encoderOffset).getRadians())))
-            .map((Double value) -> Rotation2d.fromRotations(value))
-            .toArray(Rotation2d[]::new);
+        driveMotor.getConfigurator().apply(config);
 
-    timestampQueue.clear();
-    drivePositionQueue.clear();
-    anglePositionQueue.clear();
+        driveMotor.getConfigurator().setPosition(0);
+    }
 
-    inputs.internalTempAngle = internalTempAngle.getValueAsDouble();
-    inputs.internalTempDrive = internalTempDrive.getValueAsDouble();
-    inputs.processorTempAngle = processorTempAngle.getValueAsDouble();
-    inputs.processorTempDrive = processorTempDrive.getValueAsDouble();
-    inputs.appliedDriveVoltage = driveAppliedVolts.getValueAsDouble();
-  }
+    /**
+     * Applies all configurations to the angle motor
+     */
+    public void configAngleMotor() {
+        TalonFXConfiguration config = new TalonFXConfiguration();
+        angleMotor.getConfigurator().apply(new TalonFXConfiguration());
 
-  /**
-   * Sets the percent out of the drive motor
-   *
-   * @param percent percent to set it to, from -1.0 to 1.0
-   */
-  public void setDrivePercentOut(double percent) {
-    driveMotor.setControl(driveRequest.withOutput(percent));
-  }
+        config.CurrentLimits.SupplyCurrentLimitEnable = constants.pidConfigs.angleMotorConfig.supplyCurrentLimitEnable;
+        config.CurrentLimits.SupplyCurrentLimit = constants.pidConfigs.angleMotorConfig.supplyCurrentLimit;
+        config.CurrentLimits.SupplyCurrentLowerLimit = constants.pidConfigs.angleMotorConfig.supplyCurrentThreshold;
+        config.CurrentLimits.SupplyCurrentLowerTime = constants.pidConfigs.angleMotorConfig.supplyTimeThreshold;
+        config.CurrentLimits.StatorCurrentLimitEnable = constants.pidConfigs.angleMotorConfig.statorCurrentLimitEnable;
+        config.CurrentLimits.StatorCurrentLimit = constants.pidConfigs.angleMotorConfig.statorCurrentLimit;
 
-  /** Stops the drive motor */
-  public void stopDrive() {
-    driveMotor.stopMotor();
-  }
+        config.OpenLoopRamps.DutyCycleOpenLoopRampPeriod = constants.pidConfigs.angleMotorConfig.openLoopRamp;
+        config.OpenLoopRamps.TorqueOpenLoopRampPeriod = constants.pidConfigs.angleMotorConfig.openLoopRamp;
+        config.OpenLoopRamps.VoltageOpenLoopRampPeriod = constants.pidConfigs.angleMotorConfig.openLoopRamp;
+        config.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = constants.pidConfigs.angleMotorConfig.openLoopRamp;
+        config.ClosedLoopRamps.TorqueClosedLoopRampPeriod = constants.pidConfigs.angleMotorConfig.openLoopRamp;
+        config.ClosedLoopRamps.VoltageClosedLoopRampPeriod = constants.pidConfigs.angleMotorConfig.openLoopRamp;
 
-  /**
-   * Sets the neutral mode of the drive motor
-   *
-   * @param mode mode to set it to
-   */
-  public void setDriveNeutralMode(NeutralModeValue mode) {
-    driveMotor.setNeutralMode(mode);
-  }
 
-  /**
-   * Sets the percent out of the angle motor
-   *
-   * @param percent percent to set it to, from -1.0 to 1.0
-   */
-  public void setAnglePercentOut(double percent) {
-    angleMotor.setControl(angleRequest.withOutput(percent));
-  }
+        config.MotorOutput.Inverted = constants.angleInverted;
+        config.MotorOutput.NeutralMode = constants.driveNeutralMode;
 
-  /** Stops the angle motor */
-  public void stopAngle() {
-    angleMotor.stopMotor();
-  }
+        angleMotor.getConfigurator().apply(config);
+    }
 
-  /**
-   * Sets the neutral mode of the angle motor
-   *
-   * @param mode mode to set it to
-   */
-  public void setAngleNeutralMode(NeutralModeValue mode) {
-    angleMotor.setNeutralMode(mode);
-  }
 
-  /** Applies all configurations to the drive motor */
-  public void configDriveMotor() {
-    TalonFXConfiguration config = new TalonFXConfiguration();
-    driveMotor.getConfigurator().apply(new TalonFXConfiguration());
+    /**
+     * Applies all configurations to the angle absolute encoder
+     */
+    public void configAngleEncoder() {
+        CANcoderConfiguration config = new CANcoderConfiguration();
+        angleEncoder.getConfigurator().apply(new CANcoderConfiguration());
 
-    config.CurrentLimits.SupplyCurrentLimitEnable = driveMotorConfig.supplyCurrentLimitEnable;
-    config.CurrentLimits.SupplyCurrentLimit = driveMotorConfig.supplyCurrentLimit;
-    config.CurrentLimits.SupplyCurrentThreshold = driveMotorConfig.supplyCurrentThreshold;
-    config.CurrentLimits.SupplyTimeThreshold = driveMotorConfig.supplyTimeThreshold;
+        config.MagnetSensor.SensorDirection = constants.cancoderDirection;
 
-    config.CurrentLimits.StatorCurrentLimitEnable = driveMotorConfig.statorCurrentLimitEnable;
-    config.CurrentLimits.StatorCurrentLimit = driveMotorConfig.statorCurrentLimit;
-
-    config.OpenLoopRamps.DutyCycleOpenLoopRampPeriod = driveMotorConfig.openLoopRamp;
-    config.OpenLoopRamps.TorqueOpenLoopRampPeriod = driveMotorConfig.openLoopRamp;
-    config.OpenLoopRamps.VoltageOpenLoopRampPeriod = driveMotorConfig.openLoopRamp;
-    config.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = driveMotorConfig.closedLoopRamp;
-    config.ClosedLoopRamps.TorqueClosedLoopRampPeriod = driveMotorConfig.closedLoopRamp;
-    config.ClosedLoopRamps.VoltageClosedLoopRampPeriod = driveMotorConfig.closedLoopRamp;
-
-    config.MotorOutput.Inverted = driveMotorConfig.motorInvert;
-    config.MotorOutput.NeutralMode = driveMotorConfig.neutralMode;
-
-    driveMotor.getConfigurator().apply(config);
-
-    driveMotor.getConfigurator().setPosition(0);
-  }
-
-  /** Applies all configurations to the angle motor */
-  public void configAngleMotor() {
-    TalonFXConfiguration config = new TalonFXConfiguration();
-    angleMotor.getConfigurator().apply(new TalonFXConfiguration());
-
-    config.CurrentLimits.SupplyCurrentLimitEnable = angleMotorConfig.supplyCurrentLimitEnable;
-    config.CurrentLimits.SupplyCurrentThreshold = angleMotorConfig.supplyCurrentThreshold;
-    config.CurrentLimits.SupplyTimeThreshold = angleMotorConfig.supplyTimeThreshold;
-
-    config.CurrentLimits.StatorCurrentLimitEnable = driveMotorConfig.statorCurrentLimitEnable;
-    config.CurrentLimits.StatorCurrentLimit = driveMotorConfig.statorCurrentLimit;
-
-    config.MotorOutput.Inverted = angleMotorConfig.motorInvert;
-    config.MotorOutput.NeutralMode = angleMotorConfig.neutralMode;
-
-    angleMotor.getConfigurator().apply(config);
-  }
-
-  /** Applies all configurations to the angle absolute encoder */
-  public void configAngleEncoder() {
-    CANcoderConfiguration config = new CANcoderConfiguration();
-    angleEncoder.getConfigurator().apply(new CANcoderConfiguration());
-
-    config.MagnetSensor.AbsoluteSensorRange = cancoderSensorRange;
-    config.MagnetSensor.SensorDirection = cancoderSensorDirection;
-
-    angleEncoder.getConfigurator().apply(config);
-  }
-
-  @Override
-  public void runCharachterization(double volts) {
-    sysidControl.withOutput(volts);
-    angleMotor.setPosition(0);
-    driveMotor.setControl(sysidControl);
-  }
+        angleEncoder.getConfigurator().apply(config);
+    }
 }

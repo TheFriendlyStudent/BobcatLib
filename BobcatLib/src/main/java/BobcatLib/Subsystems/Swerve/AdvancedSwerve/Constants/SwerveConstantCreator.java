@@ -1,5 +1,12 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants;
 
+
+import com.ctre.phoenix6.signals.InvertedValue;
+import com.ctre.phoenix6.signals.NeutralModeValue;
+import com.ctre.phoenix6.signals.SensorDirectionValue;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.KinematicsConstants;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.ModuleConfig;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.OdometryConstants;
@@ -9,12 +16,9 @@ import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.Swer
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.SwerveMotorConfig;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.SwervePIDConfig;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.SwerveSpeedLimits;
-import com.ctre.phoenix6.signals.InvertedValue;
-import com.ctre.phoenix6.signals.NeutralModeValue;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Rotation2d;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -26,6 +30,7 @@ public class SwerveConstantCreator {
     JsonNode node;
     // read json file
     node = mapper.readTree(jsonFile);
+
 
     Rotation2d holoAlignTolerance =
         Rotation2d.fromRadians(node.get(JsonElements.holoAlignToleranceRads).asDouble(-1));
@@ -83,12 +88,6 @@ public class SwerveConstantCreator {
                 node.get(JsonElements.angleKS).asDouble(-1),
                 node.get(JsonElements.angleKV).asDouble(-1),
                 node.get(JsonElements.angleKA).asDouble(-1),
-                node.get(JsonElements.angleInverted).asBoolean()
-                    ? InvertedValue.Clockwise_Positive
-                    : InvertedValue.CounterClockwise_Positive,
-                node.get(JsonElements.angleShouldCoast).asBoolean()
-                    ? NeutralModeValue.Coast
-                    : NeutralModeValue.Brake,
                 node.get(JsonElements.angleSupplyCurrentLimitEnable).asBoolean(),
                 node.get(JsonElements.angleSupplyCurrentLimit).asDouble(-1),
                 node.get(JsonElements.angleSupplyCurrentLimitThreshold).asDouble(-1),
@@ -105,12 +104,6 @@ public class SwerveConstantCreator {
                 node.get(JsonElements.driveKS).asDouble(-1),
                 node.get(JsonElements.driveKV).asDouble(-1),
                 node.get(JsonElements.driveKA).asDouble(-1),
-                node.get(JsonElements.driveInverted).asBoolean()
-                    ? InvertedValue.Clockwise_Positive
-                    : InvertedValue.CounterClockwise_Positive,
-                node.get(JsonElements.driveShouldCoast).asBoolean()
-                    ? NeutralModeValue.Coast
-                    : NeutralModeValue.Brake,
                 node.get(JsonElements.driveSupplyCurrentLimitEnable).asBoolean(),
                 node.get(JsonElements.driveSupplyCurrentLimit).asDouble(-1),
                 node.get(JsonElements.driveSupplyCurrentLimitThreshold).asDouble(-1),
@@ -158,7 +151,6 @@ public class SwerveConstantCreator {
                 Rotation2d.fromRadians(node.get(JsonElements.brOffsetRads).asDouble(-1))));
 
     return new SwerveConstants(
-        replanningConfig,
         holoAlignTolerance,
         kinematicsConstants,
         swerveSpeedLimits,
@@ -167,11 +159,20 @@ public class SwerveConstantCreator {
         moduleConfigs,
         node.get(JsonElements.pigeonID).asInt(-1),
         node.get(JsonElements.useFOC).asBoolean(),
-        node.get(JsonElements.canbus).asText());
-  }
+        node.get(JsonElements.canbus).asText(),
+        node.get(JsonElements.angleInverted).asBoolean() ? InvertedValue.Clockwise_Positive : InvertedValue.CounterClockwise_Positive, //TODO this is dumb
+        node.get(JsonElements.angleInverted).asBoolean()? InvertedValue.Clockwise_Positive : InvertedValue.CounterClockwise_Positive,
+        node.get(JsonElements.angleNeutralMode).asBoolean() ? NeutralModeValue.Brake : NeutralModeValue.Coast,
+        node.get(JsonElements.angleNeutralMode).asBoolean() ? NeutralModeValue.Brake : NeutralModeValue.Coast,
+        SensorDirectionValue.CounterClockwise_Positive //TODO this is even dumber
+        );
+    }
+  
 
   public class JsonElements {
-
+    public static final String angleNeutralMode = "angleNeutralMode";
+    public static final String driveNeutralMode = "driveNeutralMode";
+    public static final String cancoderDirection = "cancoderDirection";
     public static final String enableInitialReplanning = "enableInitialReplanning";
     public static final String enableDynamicReplanning = "enableDynamicReplanning";
     public static final String holoAlignToleranceRads = "holoAlignToleranceRads";

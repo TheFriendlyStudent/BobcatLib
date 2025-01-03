@@ -17,6 +17,10 @@ import com.ctre.phoenix6.BaseStatusSignal;
 import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.hardware.ParentDevice;
+
+import edu.wpi.first.units.measure.Angle;
+import edu.wpi.first.wpilibj.RobotController;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,12 +57,13 @@ public final class PhoenixOdometryThread extends Thread {
     }
   }
 
-  public Queue<Double> registerSignal(ParentDevice device, StatusSignal<Double> signal) {
+  public Queue<Double> registerSignal(ParentDevice device, StatusSignal<Angle> signal) {
     Queue<Double> queue = new ArrayDeque<>(100);
     signalsLock.lock();
     SwerveBase.odometryLock.lock();
     try {
-      isCANFD = CANBus.isNetworkFD(device.getNetwork());
+      CANBus bus = new CANBus(device.getNetwork());
+      isCANFD = bus.isNetworkFD();
       BaseStatusSignal[] newSignals = new BaseStatusSignal[signals.length + 1];
       System.arraycopy(signals, 0, newSignals, 0, signals.length);
       newSignals[signals.length] = signal;
@@ -107,7 +112,7 @@ public final class PhoenixOdometryThread extends Thread {
       // Save new data to queues
       SwerveBase.odometryLock.lock();
       try {
-        double timestamp = Logger.getRealTimestamp() / 1e6;
+        double timestamp = RobotController.getFPGATime() / 1e6;
         double totalLatency = 0.0;
         for (BaseStatusSignal signal : signals) {
           totalLatency += signal.getTimestamp().getLatency();
