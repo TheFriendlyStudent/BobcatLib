@@ -1,8 +1,7 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro;
 
-import org.littletonrobotics.junction.AutoLog;
-
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.AutoLog;
 
 public interface GyroIO {
   @AutoLog

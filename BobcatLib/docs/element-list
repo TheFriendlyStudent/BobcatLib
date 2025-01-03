@@ -1,8 +1,9 @@
 BobcatLib.Hardware.Controllers
+BobcatLib.Hardware.Controllers.AidenGamepads
 BobcatLib.Hardware.Controllers.parser
 BobcatLib.Hardware.Encoders
 BobcatLib.Hardware.Gyros
-BobcatLib.Hardware.Gyros.Parser
+BobcatLib.Hardware.Gyros.parser
 BobcatLib.Hardware.LedControllers
 BobcatLib.Hardware.Motors
 BobcatLib.Hardware.Motors.SensorHelpers
@@ -17,6 +18,12 @@ BobcatLib.Subsystems.Intakes
 BobcatLib.Subsystems.Intakes.Modules
 BobcatLib.Subsystems.Intakes.Parser
 BobcatLib.Subsystems.Intakes.Utils
+BobcatLib.Subsystems.Swerve.AdvancedSwerve
+BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants
+BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro
+BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces
+BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations
+BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule
 BobcatLib.Subsystems.Swerve.SimpleSwerve
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.interfaces

@@ -39,20 +39,22 @@ public interface PoseLib {
   }
 
   public default Pose2d updateWithTime(
-    double currentTimeSeconds, Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions, Matrix<N3,N1> deviations) {
-  return new Pose2d();
-}
+      double currentTimeSeconds,
+      Rotation2d gyroAngle,
+      SwerveModulePosition[] wheelPositions,
+      Matrix<N3, N1> deviations) {
+    return new Pose2d();
+  }
 
-public default Pose2d update( Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions) {
-  return new Pose2d();
-}
+  public default Pose2d update(Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions) {
+    return new Pose2d();
+  }
 
-public default Pose2d update(
-    Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions,
-    Matrix<N3, N1> deviations) {
-  return new Pose2d();
-}
+  public default Pose2d update(
+      Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions, Matrix<N3, N1> deviations) {
+    return new Pose2d();
+  }
 
-public default void addVisionMeasurement(Pose2d botPoseMG2, double poseTimestampMG2, Matrix<N3,N1> stdDev) {
-}
+  public default void addVisionMeasurement(
+      Pose2d botPoseMG2, double poseTimestampMG2, Matrix<N3, N1> stdDev) {}
 }

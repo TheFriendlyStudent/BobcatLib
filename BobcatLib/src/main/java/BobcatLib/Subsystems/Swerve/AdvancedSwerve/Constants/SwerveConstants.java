@@ -1,10 +1,9 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants;
 
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.ModuleConstants;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
-
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.ModuleConstants;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -131,6 +130,7 @@ public class SwerveConstants {
     public double transKP;
     public double transKI;
     public double transKD;
+
     public SwervePIDConfig(
         double rotKP, double rotKI, double rotKD, double transKP, double transKI, double transKD) {
       this.rotKP = rotKP;

@@ -1,17 +1,14 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve;
 
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
-
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
-
 import org.littletonrobotics.junction.Logger;
-
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 
 public class TeleopSwerve extends Command {
   private SwerveBase swerve;

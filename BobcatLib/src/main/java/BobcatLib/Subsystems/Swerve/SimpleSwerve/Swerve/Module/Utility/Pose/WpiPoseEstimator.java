@@ -17,7 +17,8 @@ public class WpiPoseEstimator implements PoseLib {
       Rotation2d yaw,
       SwerveModulePosition[] modulePositions,
       Pose2d initPose) {
-    swerveDrivePoseEstimator = new SwerveDrivePoseEstimator(swerveKinematics, yaw, modulePositions, initPose);
+    swerveDrivePoseEstimator =
+        new SwerveDrivePoseEstimator(swerveKinematics, yaw, modulePositions, initPose);
   }
 
   /**
@@ -27,20 +28,18 @@ public class WpiPoseEstimator implements PoseLib {
    */
   public Pose2d getEstimatedPosition() {
     return swerveDrivePoseEstimator.getEstimatedPosition();
-  };
+  }
+  ;
 
   /**
    * Resets the robot's position on the field.
    *
-   * <p>
-   * The gyroscope angle does not need to be reset in the user's robot code. The
-   * library
+   * <p>The gyroscope angle does not need to be reset in the user's robot code. The library
    * automatically takes care of offsetting the gyro angle.
    *
-   * @param gyroAngle       The angle reported by the gyroscope.
-   * @param modulePositions The current distance measurements and rotations of the
-   *                        swerve modules.
-   * @param poseMeters      The position on the field that your robot is at.
+   * @param gyroAngle The angle reported by the gyroscope.
+   * @param modulePositions The current distance measurements and rotations of the swerve modules.
+   * @param poseMeters The position on the field that your robot is at.
    */
   public void resetPosition(
       Rotation2d gyroAngle, SwerveModulePosition[] modulePositions, Pose2d poseMeters) {
@@ -53,22 +52,22 @@ public class WpiPoseEstimator implements PoseLib {
   }
 
   public Pose2d updateWithTime(
-      double currentTimeSeconds, Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions,
+      double currentTimeSeconds,
+      Rotation2d gyroAngle,
+      SwerveModulePosition[] wheelPositions,
       Matrix<N3, N1> deviations) {
     return new Pose2d();
   }
-
 
   public Pose2d update(Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions) {
     return new Pose2d();
   }
 
   public Pose2d update(
-      Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions,
-      Matrix<N3, N1> deviations) {
+      Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions, Matrix<N3, N1> deviations) {
     return new Pose2d();
   }
 
-  public void addVisionMeasurement(Pose2d botPoseMG2, double poseTimestampMG2, Matrix<N3, N1> stdDev) {
-  }
+  public void addVisionMeasurement(
+      Pose2d botPoseMG2, double poseTimestampMG2, Matrix<N3, N1> stdDev) {}
 }

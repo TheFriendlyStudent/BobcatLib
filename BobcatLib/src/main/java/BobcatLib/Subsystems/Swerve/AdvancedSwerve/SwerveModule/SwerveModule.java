@@ -1,8 +1,7 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule;
 
-import com.ctre.phoenix6.signals.NeutralModeValue;
-
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
@@ -97,7 +96,7 @@ public class SwerveModule {
     io.setAnglePercentOut(output);
 
     // Update velocity based on turn error
-    optimizedState.speedMetersPerSecond *= Math.cos(angleController.getPositionError());
+    optimizedState.speedMetersPerSecond *= Math.cos(angleController.getError());
 
     double velocity =
         optimizedState.speedMetersPerSecond / constants.kinematicsConstants.wheelCircumference;
