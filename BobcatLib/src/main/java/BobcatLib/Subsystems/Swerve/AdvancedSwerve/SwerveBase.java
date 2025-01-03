@@ -16,8 +16,8 @@ import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Swerve.Gyro.GyroIOInputsAutoLo
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModule;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIOFalcon;
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Util.DSUtil;
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Util.RotationUtil;
+import BobcatLib.Subsystems.Swerve.Utility.DSUtil;
+import BobcatLib.Subsystems.Swerve.Utility.RotationUtil;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.controller.PIDController;

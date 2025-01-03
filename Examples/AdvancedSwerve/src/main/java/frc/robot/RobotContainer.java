@@ -4,77 +4,63 @@
 
 package frc.robot;
 
-import java.util.function.DoubleSupplier;
+import java.io.File;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
-import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import BobcatLib.Hardware.Controllers.OI;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 
-/**
- * This class is where the bulk of the robot should be declared. Since
- * Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in
- * the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of
- * the robot (including
- * subsystems, commands, and button mappings) should be declared here.
- */
+
 public class RobotContainer {
+
+        /* Joysticks + Gamepad */
+        private final EightBitDo gp = new EightBitDo(0);
+
         /* Subsystems */
-        public final OI s_Controls = new OI(); // Interfaces with popular controllers and input devices
-        public final SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve Library implementation.
-        private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose an Auto!
+        public SwerveBase swerve;
+        public SwerveConstants swerveConstants;
+        // public Vision limelight1;
+        // public Vision[] cameras;
 
-        /**
-         * The container for the robot. Contains subsystems, OI devices, and commands.
-         */
+        /* Commands */
+
+        /* Shuffleboard Inputs */
+        private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Choices");
+
         public RobotContainer() {
-                
-
-                // SmartDashboard.putNumber("SpeedLimit", 1);
-
-                initComand();
-
-                // Auto controls
-                /*
-                 * Auto Chooser
-                 * 
-                 * Names must match what is in PathPlanner
-                 * Please give descriptive names
-                 */
-                autoChooser.addDefaultOption("Do Nothing", Commands.none());
-                // Configure the button bindings
-                configureButtonBindings();
-                configureAutos();
-
-        }
-
-        public void initComand() {
-                DoubleSupplier translation = () -> s_Controls.getTranslationValue();
-                DoubleSupplier strafe = () -> s_Controls.getStrafeValue();
-                if (!Robot.alliance.isBlueAlliance()) {
-                        translation = () -> -s_Controls.getTranslationValue();
-                        strafe = () -> -s_Controls.getStrafeValue();
+                try {
+                        // swerveConstants = SwerveConstantCreator.parseConstants(new File("/src/main/java/frc/robot/Subsystems/Swerve/swerve-config.json"));
+                        swerveConstants = SwerveConstantCreator.parseConstants(new File(
+                                Filesystem.getDeployDirectory().toString()+ "/swerve-config.json"));
+                                System.out.println(new ObjectMapper().readTree(new File(
+                                Filesystem.getDeployDirectory().toString()+ "/swerve-config.json")).get(JsonElements.angleSupplyCurrentLimitEnable).asBoolean());
+                } catch (Exception e) {
+                        e.printStackTrace();
                 }
-                s_Swerve.setDefaultCommand(
-                                new TeleopSwerve(
-                                                s_Swerve,
-                                                translation,
-                                                strafe,
-                                                () -> s_Controls.getRotationValue(),
-                                                () -> s_Controls.robotCentric.getAsBoolean(), s_Controls.controllerJson));
+                switch (Constants.currentMode) {
+                        // Real robot, instantiate hardware IO implementations
+                        case REAL:
+                                swerve = new SwerveBase(swerveConstants,
+                                                new int[] {},
+                                                new SwerveStdDevs(
+                                                        new StandardDeviation(0, 0, 0, 0),
+                                                        new StandardDeviation(0, 0, 0, 0)));
+                        default:
+                                swerve = new SwerveBase(swerveConstants,
+                                                new int[] {},
+                                                new SwerveStdDevs(
+                                                        new StandardDeviation(0, 0, 0, 0),
+                                                        new StandardDeviation(0, 0, 0, 0)));
 
+                }
+                configureBindings();
         }
 
         public boolean autoChooserInitialized() {
@@ -85,6 +71,16 @@ public class RobotContainer {
          * this should only be called once DS and FMS are attached
          */
         public void configureAutos() {
+
+                /*
+                 * Auto Events
+                 * 
+                 * Names must match what is in PathPlanner
+                 * Please give descriptive names
+                 */
+                // NamedCommands.registerCommand("PathfindingCommand", swerve.driveToPose(new
+                // Pose2d()));
+
                 /*
                  * Auto Chooser
                  * 
@@ -92,65 +88,49 @@ public class RobotContainer {
                  * Please give descriptive names
                  */
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
-                s_Swerve.withPathPlanner();
-                autoChooser.addOption("ExampleAuto", new PathPlannerAuto("ExampleAuto"));
+                //autoChooser.addOption("test", new PathPlannerAuto("New Auto"));
         }
 
         /**
-         * Use this method to define your button->command mappings. Buttons can be
-         * created by
-         * instantiating a {@link GenericHID} or one of its subclasses ({@link
-         * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing
-         * it to a {@link
-         * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
+         * IMPORTANT NOTE:
+         * When a gamepad value is needed by a command, don't
+         * pass the gamepad to the command, instead have the
+         * constructor for the command take an argument that
+         * is a supplier of the value that is needed. To supply
+         * the values, use an anonymous/lambda function like this:
+         * 
+         * () -> buttonOrAxisValue
          */
-        private void configureButtonBindings() {
-                Command zeroGyro = Commands.runOnce(s_Swerve::zeroHeading);
-                /* Driver Buttons */
-                s_Controls.zeroGyro.onTrue(zeroGyro);
-                // Cardinal Modes
-                double maxSpeed = s_Swerve.jsonSwerve.chassisSpeedLimits.maxSpeed;
-                Command strafeBack = s_Swerve.driveAsCommand(new Translation2d(-1,0).times(maxSpeed)).repeatedly();
-                Command strafeForward = s_Swerve.driveAsCommand(new Translation2d(1,0).times(maxSpeed)).repeatedly();
-                Command strafeLeft = s_Swerve.driveAsCommand(new Translation2d(0,1).times(maxSpeed)).repeatedly();
-                Command strafeRight = s_Swerve.driveAsCommand(new Translation2d(0,-1).times(maxSpeed)).repeatedly();
-                s_Controls.dpadForwardBtn.whileTrue(strafeForward);
-                s_Controls.dpadBackBtn.whileTrue(strafeBack);
-                s_Controls.dpadRightBtn.whileTrue(strafeRight);
-                s_Controls.dpadLeftBtn.whileTrue(strafeLeft);
+        public void configureBindings() {
+                swerve.setAimAssistTranslation(new Translation2d(0,0)); // (x,y) coordinate aim assist will go to
+                swerve.setAutoAlignAngle(Rotation2d.fromDegrees(0)); // heading autoalign will face 
+
+
+                swerve.setDefaultCommand(
+                                new TeleopSwerve(swerve,
+                                                gp.leftYAxis, // translation (front-back)
+                                                gp.leftXAxis, // strafe (left-right)
+                                                gp.rightXAxis, // rotation
+                                                () -> false, // robot centric
+                                                () -> 0.0, // fine strafe
+                                                () -> 0.0, // fine translation
+                                                gp.a, // Aim assist
+                                                gp.b, //autoalign
+                                                0, //stick deadband [0,1]
+                                                swerveConstants));// max angular velocity 
+
+                // sysid routines
+               // gp.start.onTrue(new InstantCommand(() -> swerve.resetPose(new Pose2d())));
+                gp.select.onTrue(new InstantCommand(() -> swerve.zeroGyro()));
+
         }
 
-        /**
-         * Use this to pass the autonomous command to the main {@link Robot} class.
-         *
-         * @return the command to run in autonomous
-         */
         public Command getAutonomousCommand() {
                 return autoChooser.get();
         }
 
-        /**
-         * Use this to pass the test command to the main {@link Robot} class.
-         * Control pattern is forward, right , backwards, left, rotate in place
-         * clockwise, rotate in place counterclowise, forward while rotating Clockwise,
-         * forward while rotating counter clockwise
-         *
-         * @return the command to run in autonomous
-         */
-        public Command getTestCommand() {
-                Command testSwerveForward = new ControlledSwerve(
-                                s_Swerve, 0.2, 0.0, 0.0, false, s_Controls.controllerJson).withTimeout(3);
-                Command testSwerveRight = new ControlledSwerve(
-                                s_Swerve, 0.0, 0.2, 0.0, false, s_Controls.controllerJson).withTimeout(3);
-                Command testSwerveBackwards = new ControlledSwerve(
-                                s_Swerve, -0.2, 0.0, 0.0, false, s_Controls.controllerJson).withTimeout(3);
-                Command testSwerveLeft = new ControlledSwerve(
-                                s_Swerve, 0.0, -0.2, 0.0, false, s_Controls.controllerJson).withTimeout(3);
-                Command testRIPCW = new ControlledSwerve(s_Swerve, 0.0, 0.0, 0.2, false, s_Controls.controllerJson).withTimeout(3);
-                Command testRIPCCW = new ControlledSwerve(s_Swerve, 0.0, 0.0, -0.2, false, s_Controls.controllerJson).withTimeout(3);
-                Command stopMotorsCmd = new InstantCommand(() -> s_Swerve.stopMotors());
-                Command testCommand = testSwerveForward.andThen(testSwerveRight).andThen(testSwerveBackwards)
-                                .andThen(testSwerveLeft).andThen(testRIPCW).andThen(testRIPCCW).andThen(stopMotorsCmd);
-                return testCommand;
-        }
+        // public Pose3d getArmPoseAScope(){
+        // Rotation2d angle = Rotation2d.fromRotations(rotate.getRawAxis(2));
+        // return new Pose3d(0, -0.16, 0.23, new Rotation3d(angle.getRadians(), 0, 0));
+        // }
 }
