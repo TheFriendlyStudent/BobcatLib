@@ -3,8 +3,8 @@
   <groupId>BobcatLib</groupId>
   <artifactId>BobcatLib-java</artifactId>
   <versioning>
-    <latest>advancedSwerveBeta</latest>
-    <release>advancedSwerveBeta</release>
+    <latest>testSwerve</latest>
+    <release>testSwerve</release>
     <versions>
       <version>test</version>
       <version>2025.0.1</version>
@@ -21,7 +21,8 @@
       <version>test1</version>
       <version>test2</version>
       <version>advancedSwerveBeta</version>
+      <version>testSwerve</version>
     </versions>
-    <lastUpdated>20250104211809</lastUpdated>
+    <lastUpdated>20250104212256</lastUpdated>
   </versioning>
 </metadata>
