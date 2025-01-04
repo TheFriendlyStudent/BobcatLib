@@ -127,17 +127,19 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int%5B%5D,BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs)" class="member-name-link">SwerveBase</a><wbr>(<a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int%5B%5D,BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs,com.pathplanner.lib.config.RobotConfig)" class="member-name-link">SwerveBase</a><wbr>(<a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
  int[]&nbsp;filterTags,
- <a href="StandardDeviations/SwerveStdDevs.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations">SwerveStdDevs</a>&nbsp;standardDeviations)</code></div>
+ <a href="StandardDeviations/SwerveStdDevs.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations">SwerveStdDevs</a>&nbsp;standardDeviations,
+ com.pathplanner.lib.config.RobotConfig&nbsp;config)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int%5B%5D,edu.wpi.first.math.Matrix%5B%5D,double,com.ctre.phoenix6.signals.SensorDirectionValue)" class="member-name-link">SwerveBase</a><wbr>(<a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int%5B%5D,edu.wpi.first.math.Matrix%5B%5D,double,com.ctre.phoenix6.signals.SensorDirectionValue,com.pathplanner.lib.config.RobotConfig)" class="member-name-link">SwerveBase</a><wbr>(<a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
  int[]&nbsp;filterTags,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;[]&nbsp;visionStdDevs,
  double&nbsp;loopPeriodSecs,
- <a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/SensorDirectionValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">SensorDirectionValue</a>&nbsp;cancoderDirection)</code></div>
+ <a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/SensorDirectionValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">SensorDirectionValue</a>&nbsp;cancoderDirection,
+ com.pathplanner.lib.config.RobotConfig&nbsp;config)</code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,double,int%5B%5D,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)" class="member-name-link">SwerveBase</a><wbr>(<a href="Gyro/GyroIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro">GyroIO</a>&nbsp;gyroIO,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,double,int%5B%5D,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,com.pathplanner.lib.config.RobotConfig)" class="member-name-link">SwerveBase</a><wbr>(<a href="Gyro/GyroIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro">GyroIO</a>&nbsp;gyroIO,
  <a href="SwerveModule/SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a>&nbsp;flIO,
  <a href="SwerveModule/SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a>&nbsp;frIO,
  <a href="SwerveModule/SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a>&nbsp;blIO,
@@ -148,7 +150,8 @@ loadScripts(document, 'script');</script>
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;trusttelestdDev,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;regautostdDev,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;regtelestdDev,
- <a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants)</code></div>
+ <a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
+ com.pathplanner.lib.config.RobotConfig&nbsp;config)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Core constructor for the swerve base, dont use this unless you know what you are doing</div>
 </div>
@@ -181,8 +184,8 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#autoAlignAngle()" class="member-name-link">autoAlignAngle</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#drive(edu.wpi.first.math.geometry.Translation2d,double,boolean)" class="member-name-link">drive</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation,
- double&nbsp;rotation,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#drive(edu.wpi.first.math.geometry.Translation2d,edu.wpi.first.math.geometry.Rotation2d,boolean)" class="member-name-link">drive</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation,
+ <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotation,
  boolean&nbsp;fieldRelative)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Makes the swerve drive move</div>
@@ -337,7 +340,7 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,double,int[],edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)">
+<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO,double,int[],edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,com.pathplanner.lib.config.RobotConfig)">
 <h3>SwerveBase</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SwerveBase</span><wbr><span class="parameters">(<a href="Gyro/GyroIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro">GyroIO</a>&nbsp;gyroIO,
  <a href="SwerveModule/SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a>&nbsp;flIO,
@@ -350,7 +353,8 @@ loadScripts(document, 'script');</script>
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;trusttelestdDev,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;regautostdDev,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;regtelestdDev,
- <a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants)</span></div>
+ <a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
+ com.pathplanner.lib.config.RobotConfig&nbsp;config)</span></div>
 <div class="block">Core constructor for the swerve base, dont use this unless you know what you are doing</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -370,11 +374,12 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int[],BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs)">
+<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int[],BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs,com.pathplanner.lib.config.RobotConfig)">
 <h3>SwerveBase</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SwerveBase</span><wbr><span class="parameters">(<a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
  int[]&nbsp;filterTags,
- <a href="StandardDeviations/SwerveStdDevs.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations">SwerveStdDevs</a>&nbsp;standardDeviations)</span></div>
+ <a href="StandardDeviations/SwerveStdDevs.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations">SwerveStdDevs</a>&nbsp;standardDeviations,
+ com.pathplanner.lib.config.RobotConfig&nbsp;config)</span></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>constants</code> - the constants for the swerve base</dd>
@@ -384,13 +389,14 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int[],edu.wpi.first.math.Matrix[],double,com.ctre.phoenix6.signals.SensorDirectionValue)">
+<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int[],edu.wpi.first.math.Matrix[],double,com.ctre.phoenix6.signals.SensorDirectionValue,com.pathplanner.lib.config.RobotConfig)">
 <h3>SwerveBase</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SwerveBase</span><wbr><span class="parameters">(<a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
  int[]&nbsp;filterTags,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;[]&nbsp;visionStdDevs,
  double&nbsp;loopPeriodSecs,
- <a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/SensorDirectionValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">SensorDirectionValue</a>&nbsp;cancoderDirection)</span></div>
+ <a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/SensorDirectionValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">SensorDirectionValue</a>&nbsp;cancoderDirection,
+ com.pathplanner.lib.config.RobotConfig&nbsp;config)</span></div>
 </section>
 </li>
 </ul>
@@ -493,10 +499,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="drive(edu.wpi.first.math.geometry.Translation2d,double,boolean)">
+<section class="detail" id="drive(edu.wpi.first.math.geometry.Translation2d,edu.wpi.first.math.geometry.Rotation2d,boolean)">
 <h3>drive</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drive</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation,
- double&nbsp;rotation,
+ <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotation,
  boolean&nbsp;fieldRelative)</span></div>
 <div class="block">Makes the swerve drive move</div>
 <dl class="notes">
@@ -555,7 +561,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getChassisSpeeds()">
 <h3>getChassisSpeeds</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/ChassisSpeeds.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">ChassisSpeeds</a></span>&nbsp;<span class="element-name">getChassisSpeeds</span>()</div>
-<div class="block">Gets ths current chassis speeds</div>
+<div class="block">Gets ths current chassis speeds
+
+ <p>should be robot relative (?)</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>current chassis speeds</dd>

@@ -111,7 +111,7 @@ public class TeleopSwerve extends Command {
     /* Drive */
     swerve.drive(
         new Translation2d(translationVal, strafeVal).times(maxVelocity),
-        rotationVal * maxAngularVelocity.getRadians(),
+        Rotation2d.fromRadians(rotationVal * maxAngularVelocity.getRadians()),
         !robotCentric.getAsBoolean());
   }
 }

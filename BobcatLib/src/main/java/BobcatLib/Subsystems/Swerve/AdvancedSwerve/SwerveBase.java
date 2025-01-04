@@ -13,6 +13,9 @@ import BobcatLib.Utilities.DSUtil;
 import BobcatLib.Utilities.RotationUtil;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.config.PIDConstants;
+import com.pathplanner.lib.config.RobotConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.path.PathConstraints;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.controller.PIDController;
@@ -94,7 +97,8 @@ public class SwerveBase extends SubsystemBase {
       Matrix<N3, N1> trusttelestdDev,
       Matrix<N3, N1> regautostdDev,
       Matrix<N3, N1> regtelestdDev,
-      SwerveConstants constants) {
+      SwerveConstants constants,
+      RobotConfig config) {
 
     this.constants = constants;
     this.gyroIO = gyroIO;
@@ -131,6 +135,24 @@ public class SwerveBase extends SubsystemBase {
             constants.pidConfigs.teleopConfig.rotKD);
     rotationPID.enableContinuousInput(0, 2 * Math.PI);
 
+    AutoBuilder.configure(
+        this::getPose,
+        this::resetPose,
+        this::getChassisSpeeds,
+        this::drive,
+        new PPHolonomicDriveController(
+            new PIDConstants(
+                constants.pidConfigs.autoConfig.transKP,
+                constants.pidConfigs.autoConfig.transKP,
+                constants.pidConfigs.autoConfig.transKP),
+            new PIDConstants(
+                constants.pidConfigs.autoConfig.rotKP,
+                constants.pidConfigs.autoConfig.rotKP,
+                constants.pidConfigs.autoConfig.rotKP)),
+        config,
+        () -> false, // TODO check for field mirroring!!!!!!!!!
+        this);
+
     // std devs will be actually set later, so we dont need to initialize them to actual values here
   }
 
@@ -145,13 +167,18 @@ public class SwerveBase extends SubsystemBase {
    * @param filterTags the tags to be ignored by the cameras
    * @param standardDeviations vision measurement std devs
    */
-  public SwerveBase(SwerveConstants constants, int[] filterTags, SwerveStdDevs standardDeviations) {
+  public SwerveBase(
+      SwerveConstants constants,
+      int[] filterTags,
+      SwerveStdDevs standardDeviations,
+      RobotConfig config) {
     this(
         constants,
         filterTags,
         standardDeviations.toMatrix(),
         0.02,
-        SensorDirectionValue.CounterClockwise_Positive);
+        SensorDirectionValue.CounterClockwise_Positive,
+        config);
   }
 
   public SwerveBase(
@@ -159,7 +186,8 @@ public class SwerveBase extends SubsystemBase {
       int[] filterTags,
       Matrix<N3, N1>[] visionStdDevs,
       double loopPeriodSecs,
-      SensorDirectionValue cancoderDirection) {
+      SensorDirectionValue cancoderDirection,
+      RobotConfig config) {
     this(
         new GyroIOPigeon2(constants),
         new SwerveModuleIOFalcon(constants.moduleConfigs.frontLeft, constants),
@@ -172,7 +200,8 @@ public class SwerveBase extends SubsystemBase {
         visionStdDevs[1],
         visionStdDevs[2],
         visionStdDevs[3],
-        constants);
+        constants,
+        config);
   }
 
   public void setLastMovingYaw(Rotation2d value) {
@@ -393,15 +422,15 @@ public class SwerveBase extends SubsystemBase {
    * @param rotation desired rotation speed of the swerve drive in radians per second
    * @param fieldRelative whether the values should be field relative or not
    */
-  public void drive(Translation2d translation, double rotation, boolean fieldRelative) {
+  public void drive(Translation2d translation, Rotation2d rotation, boolean fieldRelative) {
 
     ChassisSpeeds desiredSpeeds =
         fieldRelative
             ? ChassisSpeeds.fromFieldRelativeSpeeds(
-                translation.getX(), translation.getY(), rotation, getYaw())
-            : new ChassisSpeeds(translation.getX(), translation.getY(), rotation);
+                translation.getX(), translation.getY(), rotation.getRadians(), getYaw())
+            : new ChassisSpeeds(translation.getX(), translation.getY(), rotation.getRadians());
 
-    if (rotation == 0) {
+    if (rotation.getRadians() == 0) {
       if (rotating) {
         rotating = false;
         lastMovingYaw = getYaw();
@@ -491,6 +520,8 @@ public class SwerveBase extends SubsystemBase {
 
   /**
    * Gets ths current chassis speeds
+   *
+   * <p>should be robot relative (?)
    *
    * @return current chassis speeds
    */
