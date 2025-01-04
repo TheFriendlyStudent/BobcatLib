@@ -4,7 +4,6 @@ import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIO;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIOInputsAutoLogged;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro.GyroIOPigeon2;
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces.AutomatedSwerve;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.PoseEstimation.AdvancedSwervePoseEstimator;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModule;
@@ -34,7 +33,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import org.littletonrobotics.junction.Logger;
 
-public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
+public class SwerveBase extends SubsystemBase {
 
   private final GyroIO gyroIO;
   private final GyroIOInputsAutoLogged gyroInputs = new GyroIOInputsAutoLogged();
@@ -46,7 +45,6 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
   private Rotation2d ppRotationOverride;
 
   private final PIDController rotationPID;
-  private final PIDController autoAlignPID;
   private Rotation2d lastMovingYaw = new Rotation2d();
   private boolean rotating = false;
 
@@ -132,12 +130,6 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
             constants.pidConfigs.teleopConfig.rotKI,
             constants.pidConfigs.teleopConfig.rotKD);
     rotationPID.enableContinuousInput(0, 2 * Math.PI);
-    autoAlignPID =
-        new PIDController(
-            constants.pidConfigs.autoAlignConfig.rotKP,
-            constants.pidConfigs.autoAlignConfig.rotKI,
-            constants.pidConfigs.autoAlignConfig.rotKD);
-    autoAlignPID.enableContinuousInput(0, 2 * Math.PI);
 
     // std devs will be actually set later, so we dont need to initialize them to actual values here
   }
@@ -255,6 +247,9 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
         lastYaw = yaw;
       }
 
+      Logger.recordOutput("Swerve/SwerveModulePositions", modulePositions);
+      Logger.recordOutput("Swerve/Yaw", getYaw());
+
       // determine how much to trust odometry based on acceleration
       Logger.recordOutput("Swerve/OdometryState", getOdometryState());
       switch (getOdometryState()) {
@@ -283,7 +278,6 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
           break;
       }
     }
-    // TODO try creating a logging method that will be called within season specific class
     // updates desired and current swerve module states
     for (SwerveModule mod : modules) {
       desiredSwerveModuleStates[mod.index * 2 + 1] = mod.getDesiredState().speedMetersPerSecond;
@@ -367,7 +361,7 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
       }
       avgAccel += module.getDriveAcceleration() / modules.length;
     }
-    // Logger.recordOutput("Swerve/Odometry/avgAccel", avgAccel);
+    Logger.recordOutput("Swerve/Odometry/avgAccel", avgAccel);
     if (avgAccel > 4) {
       return OdometryState.DISTRUST;
     } else {
@@ -398,14 +392,8 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
    * @param translation desired x and y speeds of the swerve drive in meters per second
    * @param rotation desired rotation speed of the swerve drive in radians per second
    * @param fieldRelative whether the values should be field relative or not
-   * @param autoAlign in radians
    */
-  public void drive(
-      Translation2d translation, double rotation, boolean fieldRelative, boolean autoAlign) {
-    boolean rotationOverriden =
-        Math.abs(rotation)
-            < 0.02; // add a little bit of tolerance for if the stick gets bumped or smth
-    autoAlignAngle = RotationUtil.wrap(autoAlignAngle());
+  public void drive(Translation2d translation, double rotation, boolean fieldRelative) {
 
     ChassisSpeeds desiredSpeeds =
         fieldRelative
@@ -413,22 +401,16 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
                 translation.getX(), translation.getY(), rotation, getYaw())
             : new ChassisSpeeds(translation.getX(), translation.getY(), rotation);
 
-    if (autoAlign && !rotationOverriden) {
-      desiredSpeeds.omegaRadiansPerSecond =
-          autoAlignPID.calculate(getWrappedYaw().getRadians(), autoAlignAngle.getRadians());
-      lastMovingYaw = getYaw();
-    } else {
-      if (rotation == 0) {
-        if (rotating) {
-          rotating = false;
-          lastMovingYaw = getYaw();
-        }
-        desiredSpeeds.omegaRadiansPerSecond =
-            rotationPID.calculate(
-                getWrappedYaw().getRadians(), RotationUtil.wrap(lastMovingYaw).getRadians());
-      } else {
-        rotating = true;
+    if (rotation == 0) {
+      if (rotating) {
+        rotating = false;
+        lastMovingYaw = getYaw();
       }
+      desiredSpeeds.omegaRadiansPerSecond =
+          rotationPID.calculate(
+              getWrappedYaw().getRadians(), RotationUtil.wrap(lastMovingYaw).getRadians());
+    } else {
+      rotating = true;
     }
 
     desiredSpeeds = ChassisSpeeds.discretize(desiredSpeeds, loopPeriodSecs);
@@ -573,26 +555,9 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
         : redPose.minus(getPose().getTranslation());
   }
 
-  public boolean aligned(AlignmentCheckType checkType) {
-    double tolerance = constants.holoAlignTolerance.getRadians();
-    switch (checkType) {
-      case AUTOALIGN:
-        return Math.abs(autoAlignPID.getError()) <= tolerance;
-      case BASE_ROTATION:
-        return Math.abs(rotationPID.getError()) <= tolerance;
-      case PATHPLANNER:
-        if (DSUtil.isBlue()) {
-          return Math.abs(ppRotationOverride.getRadians() - getYaw().getRadians()) <= tolerance;
-        } else {
-          return Math.abs(
-                  ppRotationOverride
-                      .minus(RotationUtil.wrap(getYaw().rotateBy(Rotation2d.fromDegrees(180))))
-                      .getRadians())
-              <= tolerance;
-        }
-      default:
-        return false;
-    }
+  /** Checks if the rotation pid error is within the tolerance specified in the swerve json */
+  public boolean aligned() {
+    return Math.abs(rotationPID.getError()) <= constants.holoAlignTolerance.getRadians();
   }
 
   public boolean aligned(Rotation2d angle) {
@@ -645,25 +610,19 @@ public class SwerveBase extends SubsystemBase implements AutomatedSwerve {
     BASE_ROTATION
   }
 
-  /*aim assist stuff */
-  @Override
   public Rotation2d autoAlignAngle() {
     return autoAlignAngle;
   }
 
-  @Override
   public void setAutoAlignAngle(Rotation2d angle) {
     autoAlignAngle = angle;
   }
 
-  @Override
   public Translation2d aimAssistTranslation() {
     return aimAssistTranslation;
   }
 
-  @Override
   public void setAimAssistTranslation(Translation2d translation) {
     aimAssistTranslation = translation;
   }
-  /*end aim assist stuff*/
 }

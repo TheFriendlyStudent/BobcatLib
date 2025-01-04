@@ -103,15 +103,15 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveBase,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.BooleanSupplier,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.BooleanSupplier,java.util.function.BooleanSupplier,double,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)" class="member-name-link">TeleopSwerve</a><wbr>(<a href="SwerveBase.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve">SwerveBase</a>&nbsp;swerve,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveBase,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.BooleanSupplier,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AimAssist,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AutoAlign,double,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)" class="member-name-link">TeleopSwerve</a><wbr>(<a href="SwerveBase.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve">SwerveBase</a>&nbsp;swerve,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/DoubleSupplier.html" title="class or interface in java.util.function" class="external-link">DoubleSupplier</a>&nbsp;translation,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/DoubleSupplier.html" title="class or interface in java.util.function" class="external-link">DoubleSupplier</a>&nbsp;strafe,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/DoubleSupplier.html" title="class or interface in java.util.function" class="external-link">DoubleSupplier</a>&nbsp;rotation,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/BooleanSupplier.html" title="class or interface in java.util.function" class="external-link">BooleanSupplier</a>&nbsp;robotCentric,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/DoubleSupplier.html" title="class or interface in java.util.function" class="external-link">DoubleSupplier</a>&nbsp;fineStrafe,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/DoubleSupplier.html" title="class or interface in java.util.function" class="external-link">DoubleSupplier</a>&nbsp;fineTrans,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/BooleanSupplier.html" title="class or interface in java.util.function" class="external-link">BooleanSupplier</a>&nbsp;aimAssistSupplier,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/BooleanSupplier.html" title="class or interface in java.util.function" class="external-link">BooleanSupplier</a>&nbsp;autoAlignSupplier,
+ <a href="Assists/AimAssist.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists">AimAssist</a>&nbsp;aimAssist,
+ <a href="Assists/AutoAlign.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists">AutoAlign</a>&nbsp;autoAlign,
  double&nbsp;stickDeadband,
  <a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants)</code></div>
 <div class="col-last even-row-color">
@@ -155,7 +155,7 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveBase,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.BooleanSupplier,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.BooleanSupplier,java.util.function.BooleanSupplier,double,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)">
+<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveBase,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,java.util.function.BooleanSupplier,java.util.function.DoubleSupplier,java.util.function.DoubleSupplier,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AimAssist,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AutoAlign,double,BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)">
 <h3>TeleopSwerve</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">TeleopSwerve</span><wbr><span class="parameters">(<a href="SwerveBase.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve">SwerveBase</a>&nbsp;swerve,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/DoubleSupplier.html" title="class or interface in java.util.function" class="external-link">DoubleSupplier</a>&nbsp;translation,
@@ -164,8 +164,8 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/BooleanSupplier.html" title="class or interface in java.util.function" class="external-link">BooleanSupplier</a>&nbsp;robotCentric,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/DoubleSupplier.html" title="class or interface in java.util.function" class="external-link">DoubleSupplier</a>&nbsp;fineStrafe,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/DoubleSupplier.html" title="class or interface in java.util.function" class="external-link">DoubleSupplier</a>&nbsp;fineTrans,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/BooleanSupplier.html" title="class or interface in java.util.function" class="external-link">BooleanSupplier</a>&nbsp;aimAssistSupplier,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/BooleanSupplier.html" title="class or interface in java.util.function" class="external-link">BooleanSupplier</a>&nbsp;autoAlignSupplier,
+ <a href="Assists/AimAssist.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists">AimAssist</a>&nbsp;aimAssist,
+ <a href="Assists/AutoAlign.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists">AutoAlign</a>&nbsp;autoAlign,
  double&nbsp;stickDeadband,
  <a href="Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants)</span></div>
 <div class="block">creates a command to control your swerve in teleop. Suppliers are methods that you pass in, for
@@ -180,8 +180,6 @@ loadScripts(document, 'script');</script>
      field</dd>
 <dd><code>fineStrafe</code> - [-1,1]</dd>
 <dd><code>fineTrans</code> - [-1,1]</dd>
-<dd><code>aimAssistSupplier</code> - when true, aim assist will be active</dd>
-<dd><code>autoAlignSupplier</code> - when true, autoalign will be active</dd>
 <dd><code>stickDeadband</code> - stick values less than this will be rounded to 0, useful for sticks with
      drift</dd>
 </dl>

@@ -1,8 +1,9 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve;
 
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AimAssist;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AutoAlign;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -18,10 +19,8 @@ public class TeleopSwerve extends Command {
   private DoubleSupplier rotation;
   private BooleanSupplier robotCentric;
   private DoubleSupplier fineTrans;
-  private BooleanSupplier autoAlignSupplier;
-  private BooleanSupplier aimAssistSupplier;
-  private PIDController aimAssistXController = new PIDController(0.2, 0, 0); // TODO tune
-  private PIDController aimAssistYController = new PIDController(0.2, 0, 0);
+  private AutoAlign autoAlign;
+  private AimAssist aimAssist;
   private Translation2d currTranslation = new Translation2d();
   private double stickDeadband;
   private double maxVelocity;
@@ -39,8 +38,6 @@ public class TeleopSwerve extends Command {
    *     field
    * @param fineStrafe [-1,1]
    * @param fineTrans [-1,1]
-   * @param aimAssistSupplier when true, aim assist will be active
-   * @param autoAlignSupplier when true, autoalign will be active
    * @param stickDeadband stick values less than this will be rounded to 0, useful for sticks with
    *     drift
    */
@@ -52,8 +49,8 @@ public class TeleopSwerve extends Command {
       BooleanSupplier robotCentric,
       DoubleSupplier fineStrafe,
       DoubleSupplier fineTrans,
-      BooleanSupplier aimAssistSupplier,
-      BooleanSupplier autoAlignSupplier,
+      AimAssist aimAssist,
+      AutoAlign autoAlign,
       double stickDeadband,
       SwerveConstants constants) {
 
@@ -66,8 +63,8 @@ public class TeleopSwerve extends Command {
     this.robotCentric = robotCentric;
     this.fineStrafe = fineStrafe;
     this.fineTrans = fineTrans;
-    this.aimAssistSupplier = aimAssistSupplier;
-    this.autoAlignSupplier = autoAlignSupplier;
+    this.aimAssist = aimAssist;
+    this.autoAlign = autoAlign;
     this.stickDeadband = stickDeadband;
     maxVelocity = constants.speedLimits.chassisLimits.maxVelocity;
     maxAngularVelocity = constants.speedLimits.chassisLimits.maxAngularVelocity;
@@ -95,19 +92,26 @@ public class TeleopSwerve extends Command {
     swerve.setAimAssistTranslation(new Translation2d());
     swerve.setAutoAlignAngle(new Rotation2d());
 
-    // if (aimAssistSupplier.getAsBoolean()) {
-    //   currTranslation = swerve.getPose().getTranslation();
-    //   translationVal += aimAssistXController.calculate(currTranslation.getX());
-    //   strafeVal += aimAssistYController.calculate(currTranslation.getY());
-    // } TODO fix
+    // if aim assist is active, update translation and strafe values
+    // to nudge robot towards desired pose on top of driver input
+    if (aimAssist.active()) {
+      currTranslation = swerve.getPose().getTranslation();
 
-    /* Drive */
+      translationVal += aimAssist.outputX(currTranslation);
+      strafeVal += aimAssist.outputY(currTranslation);
+
+      Logger.recordOutput("Swerve/Assists/AimAssistOutputX", aimAssist.outputX(currTranslation));
+      Logger.recordOutput("Swerve/Assists/AimAssistOutputY", aimAssist.outputY(currTranslation));
+    }
+    Logger.recordOutput("Swerve/Assists/AimAssistActive", aimAssist.active());
+
     Logger.recordOutput("Swerve/DesiredTranslation", translationVal);
     Logger.recordOutput("Swerve/DesiredStrafe", strafeVal);
+
+    /* Drive */
     swerve.drive(
         new Translation2d(translationVal, strafeVal).times(maxVelocity),
         rotationVal * maxAngularVelocity.getRadians(),
-        !robotCentric.getAsBoolean(),
-        autoAlignSupplier.getAsBoolean());
+        !robotCentric.getAsBoolean());
   }
 }

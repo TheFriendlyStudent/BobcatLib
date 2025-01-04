@@ -78,28 +78,28 @@ public class SwerveModule {
    * @return the optimized swerve module state that it was set to
    */
   public SwerveModuleState setDesiredState(SwerveModuleState state) {
-    SwerveModuleState optimizedState = SwerveModuleState.optimize(state, getAngle());
+    state.optimize(lastAngle);
 
+    // if our desired speed is under 1%, maintain current heading, helps with drift
     Rotation2d angle =
         (Math.abs(desiredState.speedMetersPerSecond)
                 <= (constants.speedLimits.moduleLimits.maxVelocity * 0.01))
             ? lastAngle
-            : optimizedState.angle;
+            : state.angle;
 
     // It is important that we use radians for the PID
     // so we can update the drive speed as shown below
     double output =
         MathUtil.clamp(
-            angleController.calculate(getAngle().getRadians(), optimizedState.angle.getRadians()),
+            angleController.calculate(getAngle().getRadians(), state.angle.getRadians()),
             -1.0,
             1.0);
     io.setAnglePercentOut(output);
 
     // Update velocity based on turn error
-    optimizedState.speedMetersPerSecond *= Math.cos(angleController.getError());
+    state.speedMetersPerSecond *= Math.cos(angleController.getError());
 
-    double velocity =
-        optimizedState.speedMetersPerSecond / constants.kinematicsConstants.wheelCircumference;
+    double velocity = state.speedMetersPerSecond / constants.kinematicsConstants.wheelCircumference;
     double velocityOut =
         MathUtil.clamp(
             driveController.calculate(inputs.driveVelocityRotPerSec, velocity)
@@ -111,9 +111,9 @@ public class SwerveModule {
     }
     io.setDrivePercentOut(velocityOut);
 
-    desiredState = optimizedState;
+    desiredState = state;
     lastAngle = angle;
-    return optimizedState;
+    return state;
   }
 
   /** Stops the drive and angle motors */

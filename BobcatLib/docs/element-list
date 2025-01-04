@@ -19,9 +19,9 @@ BobcatLib.Subsystems.Intakes.Modules
 BobcatLib.Subsystems.Intakes.Parser
 BobcatLib.Subsystems.Intakes.Utils
 BobcatLib.Subsystems.Swerve.AdvancedSwerve
+BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.Gyro
-BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.PoseEstimation
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations
 BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule

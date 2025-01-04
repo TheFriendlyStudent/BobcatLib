@@ -78,12 +78,11 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces">AutomatedSwerve</a></code>, <code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/util/sendable/Sendable.html" title="class or interface in edu.wpi.first.util.sendable" class="external-link">Sendable</a></code>, <code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Subsystem.html" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">Subsystem</a></code></dd>
+<dd><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/util/sendable/Sendable.html" title="class or interface in edu.wpi.first.util.sendable" class="external-link">Sendable</a></code>, <code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Subsystem.html" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">Subsystem</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SwerveBase</span>
-<span class="extends-implements">extends <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/SubsystemBase.html" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">SubsystemBase</a>
-implements <a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces">AutomatedSwerve</a></span></div>
+<span class="extends-implements">extends <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/SubsystemBase.html" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">SubsystemBase</a></span></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -171,8 +170,10 @@ implements <a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatL
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#aimAssistTranslation()" class="member-name-link">aimAssistTranslation</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#aligned(BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveBase.AlignmentCheckType)" class="member-name-link">aligned</a><wbr>(<a href="SwerveBase.AlignmentCheckType.html" title="enum class in BobcatLib.Subsystems.Swerve.AdvancedSwerve">SwerveBase.AlignmentCheckType</a>&nbsp;checkType)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#aligned()" class="member-name-link">aligned</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if the rotation pid error is within the tolerance specified in the swerve json</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#aligned(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">aligned</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -180,10 +181,9 @@ implements <a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatL
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#autoAlignAngle()" class="member-name-link">autoAlignAngle</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#drive(edu.wpi.first.math.geometry.Translation2d,double,boolean,boolean)" class="member-name-link">drive</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#drive(edu.wpi.first.math.geometry.Translation2d,double,boolean)" class="member-name-link">drive</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation,
  double&nbsp;rotation,
- boolean&nbsp;fieldRelative,
- boolean&nbsp;autoAlign)</code></div>
+ boolean&nbsp;fieldRelative)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Makes the swerve drive move</div>
 </div>
@@ -450,10 +450,6 @@ implements <a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatL
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Subsystem.html#periodic()" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">periodic</a></code>&nbsp;in interface&nbsp;<code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Subsystem.html" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">Subsystem</a></code></dd>
-</dl>
 </section>
 </li>
 <li>
@@ -466,10 +462,6 @@ implements <a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatL
 <section class="detail" id="simulationPeriodic()">
 <h3>simulationPeriodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">simulationPeriodic</span>()</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Subsystem.html#simulationPeriodic()" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">simulationPeriodic</a></code>&nbsp;in interface&nbsp;<code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/Subsystem.html" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">Subsystem</a></code></dd>
-</dl>
 </section>
 </li>
 <li>
@@ -501,19 +493,17 @@ implements <a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatL
 </section>
 </li>
 <li>
-<section class="detail" id="drive(edu.wpi.first.math.geometry.Translation2d,double,boolean,boolean)">
+<section class="detail" id="drive(edu.wpi.first.math.geometry.Translation2d,double,boolean)">
 <h3>drive</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drive</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation,
  double&nbsp;rotation,
- boolean&nbsp;fieldRelative,
- boolean&nbsp;autoAlign)</span></div>
+ boolean&nbsp;fieldRelative)</span></div>
 <div class="block">Makes the swerve drive move</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>translation</code> - desired x and y speeds of the swerve drive in meters per second</dd>
 <dd><code>rotation</code> - desired rotation speed of the swerve drive in radians per second</dd>
 <dd><code>fieldRelative</code> - whether the values should be field relative or not</dd>
-<dd><code>autoAlign</code> - in radians</dd>
 </dl>
 </section>
 </li>
@@ -639,9 +629,10 @@ implements <a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatL
 </section>
 </li>
 <li>
-<section class="detail" id="aligned(BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveBase.AlignmentCheckType)">
+<section class="detail" id="aligned()">
 <h3>aligned</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">aligned</span><wbr><span class="parameters">(<a href="SwerveBase.AlignmentCheckType.html" title="enum class in BobcatLib.Subsystems.Swerve.AdvancedSwerve">SwerveBase.AlignmentCheckType</a>&nbsp;checkType)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">aligned</span>()</div>
+<div class="block">Checks if the rotation pid error is within the tolerance specified in the swerve json</div>
 </section>
 </li>
 <li>
@@ -654,44 +645,24 @@ implements <a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatL
 <section class="detail" id="autoAlignAngle()">
 <h3>autoAlignAngle</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></span>&nbsp;<span class="element-name">autoAlignAngle</span>()</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="Interfaces/AutomatedSwerve.html#autoAlignAngle()">autoAlignAngle</a></code>&nbsp;in interface&nbsp;<code><a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces">AutomatedSwerve</a></code></dd>
-<dt>Returns:</dt>
-<dd>the rotation to turn to when rotation assist is active</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setAutoAlignAngle(edu.wpi.first.math.geometry.Rotation2d)">
 <h3>setAutoAlignAngle</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAutoAlignAngle</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle)</span></div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="Interfaces/AutomatedSwerve.html#setAutoAlignAngle(edu.wpi.first.math.geometry.Rotation2d)">setAutoAlignAngle</a></code>&nbsp;in interface&nbsp;<code><a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces">AutomatedSwerve</a></code></dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="aimAssistTranslation()">
 <h3>aimAssistTranslation</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a></span>&nbsp;<span class="element-name">aimAssistTranslation</span>()</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="Interfaces/AutomatedSwerve.html#aimAssistTranslation()">aimAssistTranslation</a></code>&nbsp;in interface&nbsp;<code><a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces">AutomatedSwerve</a></code></dd>
-<dt>Returns:</dt>
-<dd>the translation the aim assist will try to line up with</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setAimAssistTranslation(edu.wpi.first.math.geometry.Translation2d)">
 <h3>setAimAssistTranslation</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAimAssistTranslation</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation)</span></div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="Interfaces/AutomatedSwerve.html#setAimAssistTranslation(edu.wpi.first.math.geometry.Translation2d)">setAimAssistTranslation</a></code>&nbsp;in interface&nbsp;<code><a href="Interfaces/AutomatedSwerve.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Interfaces">AutomatedSwerve</a></code></dd>
-</dl>
 </section>
 </li>
 </ul>
