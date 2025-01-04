@@ -9,14 +9,24 @@ import java.io.File;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pathplanner.lib.config.RobotConfig;
 
+import BobcatLib.Hardware.Controllers.AidenGamepads.EightBitDo;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveBase;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.TeleopSwerve;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AimAssist;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AutoAlign;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstantCreator;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.StandardDeviation;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs;
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-
 
 public class RobotContainer {
 
@@ -26,6 +36,10 @@ public class RobotContainer {
         /* Subsystems */
         public SwerveBase swerve;
         public SwerveConstants swerveConstants;
+        public RobotConfig robotConfig;
+        public AimAssist aimAssist;
+        public AutoAlign autoAlign;
+
         // public Vision limelight1;
         // public Vision[] cameras;
 
@@ -36,30 +50,45 @@ public class RobotContainer {
 
         public RobotContainer() {
                 try {
-                        // swerveConstants = SwerveConstantCreator.parseConstants(new File("/src/main/java/frc/robot/Subsystems/Swerve/swerve-config.json"));
+                        // swerveConstants = SwerveConstantCreator.parseConstants(new
+                        // File("/src/main/java/frc/robot/Subsystems/Swerve/swerve-config.json"));
                         swerveConstants = SwerveConstantCreator.parseConstants(new File(
-                                Filesystem.getDeployDirectory().toString()+ "/swerve-config.json"));
-                                System.out.println(new ObjectMapper().readTree(new File(
-                                Filesystem.getDeployDirectory().toString()+ "/swerve-config.json")).get(JsonElements.angleSupplyCurrentLimitEnable).asBoolean());
+                                        Filesystem.getDeployDirectory().toString() + "/swerve-config.json"));
                 } catch (Exception e) {
                         e.printStackTrace();
                 }
+
+                try {
+                        robotConfig = RobotConfig.fromGUISettings();
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+
                 switch (Constants.currentMode) {
                         // Real robot, instantiate hardware IO implementations
                         case REAL:
-                                swerve = new SwerveBase(swerveConstants,
-                                                new int[] {},
-                                                new SwerveStdDevs(
-                                                        new StandardDeviation(0, 0, 0, 0),
-                                                        new StandardDeviation(0, 0, 0, 0)));
+                                swerve = SwerveBase.createSwerve(
+                                                swerveConstants,
+                                                Constants.filterTags,
+                                                Constants.stdDevs,
+                                                robotConfig);
+                        case SIM:
+                                swerve = SwerveBase.createSimSwerve(
+                                                swerveConstants,
+                                                Constants.filterTags,
+                                                Constants.stdDevs,
+                                                robotConfig);
                         default:
-                                swerve = new SwerveBase(swerveConstants,
+                                swerve = SwerveBase.createSwerve(
+                                                swerveConstants,
                                                 new int[] {},
                                                 new SwerveStdDevs(
-                                                        new StandardDeviation(0, 0, 0, 0),
-                                                        new StandardDeviation(0, 0, 0, 0)));
+                                                                new StandardDeviation(0, 0, 0, 0),
+                                                                new StandardDeviation(0, 0, 0, 0)),
+                                                robotConfig);
 
                 }
+
                 configureBindings();
         }
 
@@ -88,7 +117,7 @@ public class RobotContainer {
                  * Please give descriptive names
                  */
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
-                //autoChooser.addOption("test", new PathPlannerAuto("New Auto"));
+                // autoChooser.addOption("test", new PathPlannerAuto("New Auto"));
         }
 
         /**
@@ -102,9 +131,21 @@ public class RobotContainer {
          * () -> buttonOrAxisValue
          */
         public void configureBindings() {
-                swerve.setAimAssistTranslation(new Translation2d(0,0)); // (x,y) coordinate aim assist will go to
-                swerve.setAutoAlignAngle(Rotation2d.fromDegrees(0)); // heading autoalign will face 
+                swerve.setAimAssistTranslation(new Translation2d(0, 0)); // (x,y) coordinate aim assist will go to
+                swerve.setAutoAlignAngle(Rotation2d.fromDegrees(0)); // heading autoalign will face
 
+                aimAssist = new AimAssist(
+                                () -> new Translation2d(),
+                                gp.b,
+                                0,
+                                0,
+                                0);
+                autoAlign = new AutoAlign(
+                                () -> new Rotation2d(), // make this the desired position
+                                gp.a,
+                                0.1,
+                                0,
+                                0);
 
                 swerve.setDefaultCommand(
                                 new TeleopSwerve(swerve,
@@ -114,13 +155,13 @@ public class RobotContainer {
                                                 () -> false, // robot centric
                                                 () -> 0.0, // fine strafe
                                                 () -> 0.0, // fine translation
-                                                gp.a, // Aim assist
-                                                gp.b, //autoalign
-                                                0, //stick deadband [0,1]
-                                                swerveConstants));// max angular velocity 
+                                                aimAssist, // Aim assist
+                                                autoAlign, // autoalign
+                                                0, // stick deadband [0,1]
+                                                swerveConstants));// max angular velocity
 
                 // sysid routines
-               // gp.start.onTrue(new InstantCommand(() -> swerve.resetPose(new Pose2d())));
+                gp.start.onTrue(new InstantCommand(() -> swerve.resetPose(new Pose2d())));
                 gp.select.onTrue(new InstantCommand(() -> swerve.zeroGyro()));
 
         }
@@ -128,9 +169,4 @@ public class RobotContainer {
         public Command getAutonomousCommand() {
                 return autoChooser.get();
         }
-
-        // public Pose3d getArmPoseAScope(){
-        // Rotation2d angle = Rotation2d.fromRotations(rotate.getRawAxis(2));
-        // return new Pose3d(0, -0.16, 0.23, new Rotation3d(angle.getRadians(), 0, 0));
-        // }
 }

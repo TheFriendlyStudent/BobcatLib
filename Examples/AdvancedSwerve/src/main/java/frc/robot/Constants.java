@@ -2,6 +2,8 @@ package frc.robot;
 
 
 
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.StandardDeviation;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotBase;
 
@@ -24,5 +26,9 @@ public class Constants {
 
     public static final double loopPeriodSecs = 0.02; // 50 hz, default loop period
 
+    public static final int[] filterTags = new int[]{};
+    public static final SwerveStdDevs stdDevs= new SwerveStdDevs(
+        new StandardDeviation(0, 0, 0, 0),
+        new StandardDeviation(0, 0, 0, 0));
 
 }
