@@ -9,9 +9,9 @@ import BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDe
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModule;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIOFalcon;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIOSim;
 import BobcatLib.Utilities.DSUtil;
 import BobcatLib.Utilities.RotationUtil;
-import com.ctre.phoenix6.signals.SensorDirectionValue;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
@@ -167,39 +167,56 @@ public class SwerveBase extends SubsystemBase {
    * @param filterTags the tags to be ignored by the cameras
    * @param standardDeviations vision measurement std devs
    */
-  public SwerveBase(
+  public static SwerveBase createSwerve(
       SwerveConstants constants,
       int[] filterTags,
       SwerveStdDevs standardDeviations,
       RobotConfig config) {
-    this(
-        constants,
-        filterTags,
-        standardDeviations.toMatrix(),
-        0.02,
-        SensorDirectionValue.CounterClockwise_Positive,
-        config);
-  }
-
-  public SwerveBase(
-      SwerveConstants constants,
-      int[] filterTags,
-      Matrix<N3, N1>[] visionStdDevs,
-      double loopPeriodSecs,
-      SensorDirectionValue cancoderDirection,
-      RobotConfig config) {
-    this(
+    return new SwerveBase(
         new GyroIOPigeon2(constants),
         new SwerveModuleIOFalcon(constants.moduleConfigs.frontLeft, constants),
         new SwerveModuleIOFalcon(constants.moduleConfigs.frontRight, constants),
         new SwerveModuleIOFalcon(constants.moduleConfigs.backLeft, constants),
         new SwerveModuleIOFalcon(constants.moduleConfigs.backRight, constants),
-        loopPeriodSecs,
+        0.2,
         filterTags,
-        visionStdDevs[0],
-        visionStdDevs[1],
-        visionStdDevs[2],
-        visionStdDevs[3],
+        standardDeviations.toMatrix()[0],
+        standardDeviations.toMatrix()[1],
+        standardDeviations.toMatrix()[2],
+        standardDeviations.toMatrix()[3],
+        constants,
+        config);
+  }
+
+  public static SwerveBase createSimSwerve(
+      SwerveConstants constants,
+      int[] filterTags,
+      SwerveStdDevs standardDeviations,
+      RobotConfig config) {
+    return new SwerveBase(
+        new GyroIOPigeon2(constants),
+        new SwerveModuleIOSim(
+            0.02,
+            constants.pidConfigs.driveMotorConfig.gearRatio,
+            constants.pidConfigs.angleMotorConfig.gearRatio),
+        new SwerveModuleIOSim(
+            0.02,
+            constants.pidConfigs.driveMotorConfig.gearRatio,
+            constants.pidConfigs.angleMotorConfig.gearRatio),
+        new SwerveModuleIOSim(
+            0.02,
+            constants.pidConfigs.driveMotorConfig.gearRatio,
+            constants.pidConfigs.angleMotorConfig.gearRatio),
+        new SwerveModuleIOSim(
+            0.02,
+            constants.pidConfigs.driveMotorConfig.gearRatio,
+            constants.pidConfigs.angleMotorConfig.gearRatio),
+        0.02,
+        filterTags,
+        standardDeviations.toMatrix()[0],
+        standardDeviations.toMatrix()[1],
+        standardDeviations.toMatrix()[2],
+        standardDeviations.toMatrix()[3],
         constants,
         config);
   }
