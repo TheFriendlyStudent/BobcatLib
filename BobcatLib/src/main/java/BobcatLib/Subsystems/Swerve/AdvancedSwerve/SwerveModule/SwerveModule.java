@@ -56,7 +56,6 @@ public class SwerveModule {
   public void periodic() {
     io.updateInputs(inputs);
     Logger.processInputs("Swerve/Module" + Integer.toString(index), inputs);
-
     // Calculate positions for odometry
     int sampleCount = inputs.odometryTimestamps.length; // All signals are sampled together
     odometryPositions = new SwerveModulePosition[sampleCount];
@@ -78,9 +77,10 @@ public class SwerveModule {
    * @return the optimized swerve module state that it was set to
    */
   public SwerveModuleState setDesiredState(SwerveModuleState state) {
+    // Optimize the angle for the shortest path
     state.optimize(lastAngle);
 
-    // if our desired speed is under 1%, maintain current heading, helps with drift
+    // if our desired speed is under 1%, maintain current heading, helps with jitter
     Rotation2d angle =
         (Math.abs(desiredState.speedMetersPerSecond)
                 <= (constants.speedLimits.moduleLimits.maxVelocity * 0.01))
@@ -95,7 +95,7 @@ public class SwerveModule {
             -1.0,
             1.0);
     io.setAnglePercentOut(output);
-
+    Logger.recordOutput("Swerve/Module" + Integer.toString(index) + "/AngleOutput", output);
     // Update velocity based on turn error
     state.speedMetersPerSecond *= Math.cos(angleController.getError());
 
@@ -110,6 +110,7 @@ public class SwerveModule {
       velocityOut = 0;
     }
     io.setDrivePercentOut(velocityOut);
+    Logger.recordOutput("Swerve/Module" + Integer.toString(index) + "/DriveOutput", velocityOut);
 
     desiredState = state;
     lastAngle = angle;

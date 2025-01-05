@@ -326,20 +326,20 @@ public class SwerveBase extends SubsystemBase {
       }
     }
     // updates desired and current swerve module states
-    SwerveModuleState[] swerveModuleStatesNew = new SwerveModuleState[4];
-    SwerveModuleState[] desiredSwerveModuleStatesNew = new SwerveModuleState[4];
+    // SwerveModuleState[] swerveModuleStatesNew = new SwerveModuleState[4];
+    // SwerveModuleState[] desiredSwerveModuleStatesNew = new SwerveModuleState[4];
     for (SwerveModule mod : modules) {
       desiredSwerveModuleStates[mod.index * 2 + 1] = mod.getDesiredState().speedMetersPerSecond;
       desiredSwerveModuleStates[mod.index * 2] = mod.getDesiredState().angle.getDegrees();
       swerveModuleStates[mod.index * 2 + 1] = mod.getState().speedMetersPerSecond;
       swerveModuleStates[mod.index * 2] = mod.getState().angle.getDegrees();
-      swerveModuleStatesNew[mod.index] = mod.getState();
-      desiredSwerveModuleStatesNew[mod.index] = mod.getDesiredState();
+      // swerveModuleStatesNew[mod.index] = mod.getState();
+      // desiredSwerveModuleStatesNew[mod.index] = mod.getDesiredState();
     }
-    Logger.recordOutput("Swerve/DesiredSwerveModuleStates", desiredSwerveModuleStatesNew);
-    Logger.recordOutput("Swerve/DesiredSwerveModuleStatesLegacy", swerveModuleStates);
-    Logger.recordOutput("Swerve/RealSwerveModuleStates", swerveModuleStatesNew);
-    Logger.recordOutput("Swerve/SwerveModuleStatesLegacy", swerveModuleStates);
+    // Logger.recordOutput("Swerve/DesiredSwerveModuleStates", desiredSwerveModuleStatesNew);
+    // Logger.recordOutput("Swerve/DesiredSwerveModuleStatesLegacy", swerveModuleStates);
+    // Logger.recordOutput("Swerve/RealSwerveModuleStates", swerveModuleStatesNew);
+    // Logger.recordOutput("Swerve/SwerveModuleStatesLegacy", swerveModuleStates);
 
     Logger.recordOutput("Swerve/Pose", getPose());
     Logger.recordOutput(
@@ -478,12 +478,14 @@ public class SwerveBase extends SubsystemBase {
     SwerveModuleState[] swerveModuleStates =
         constants.kinematicsConstants.kinematics.toSwerveModuleStates(desiredSpeeds);
     // SwerveModuleState[] swerveModuleStates = currentSetpoint.moduleStates();
+    Logger.recordOutput("Swerve/DesiredSwerveModuleStates", swerveModuleStates);
     SwerveDriveKinematics.desaturateWheelSpeeds(
         swerveModuleStates, constants.speedLimits.moduleLimits.maxVelocity);
 
     for (SwerveModule mod : modules) {
       mod.setDesiredState(swerveModuleStates[mod.index]);
     }
+    Logger.recordOutput("Swerve/RealSwerveModuleStates", getModuleStates());
   }
 
   /**

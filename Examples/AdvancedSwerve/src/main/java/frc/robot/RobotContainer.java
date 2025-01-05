@@ -6,9 +6,9 @@ package frc.robot;
 
 import java.io.File;
 
+import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pathplanner.lib.config.RobotConfig;
 
 import BobcatLib.Hardware.Controllers.AidenGamepads.EightBitDo;
@@ -49,6 +49,7 @@ public class RobotContainer {
         private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Choices");
 
         public RobotContainer() {
+                
                 try {
                         // swerveConstants = SwerveConstantCreator.parseConstants(new
                         // File("/src/main/java/frc/robot/Subsystems/Swerve/swerve-config.json"));
@@ -91,6 +92,7 @@ public class RobotContainer {
                 }
 
                 configureBindings();
+                Logger.recordOutput("IsSim",Constants.currentMode == Constants.Mode.SIM);
         }
 
         public boolean autoChooserInitialized() {

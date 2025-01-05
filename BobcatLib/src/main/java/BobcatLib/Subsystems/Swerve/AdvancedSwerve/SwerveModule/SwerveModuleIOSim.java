@@ -3,31 +3,32 @@ package BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
-import edu.wpi.first.math.util.Units;
-import edu.wpi.first.wpilibj.simulation.FlywheelSim;
+import edu.wpi.first.wpilibj.simulation.DCMotorSim;
+import org.littletonrobotics.junction.Logger;
 
 public class SwerveModuleIOSim implements SwerveModuleIO {
-  private FlywheelSim driveSim;
-  private FlywheelSim angleSim;
+  private DCMotorSim driveSim;
+  private DCMotorSim angleSim;
+  private static final DCMotor DRIVE_GEARBOX = DCMotor.getKrakenX60Foc(1);
+  private static final DCMotor TURN_GEARBOX = DCMotor.getKrakenX60Foc(1);
 
   private double angleAbsolutePosRot = Math.random();
   private double loopPeriodSecs;
+  private double driveInertia = 0.0001;
+  private double steerInertia = 0.025;
 
   public SwerveModuleIOSim(double loopPeriodSecs, double driveGearRatio, double angleGearRatio) {
 
-    double moi = 0.5 * 0.25 * Units.inchesToMeters(4) * Units.inchesToMeters(4);
-
     // Using flywheels to simulate motors TODO update this
     driveSim =
-        new FlywheelSim(
-            LinearSystemId.createFlywheelSystem(DCMotor.getFalcon500Foc(1), moi, driveGearRatio),
-            DCMotor.getFalcon500Foc(1),
-            new double[] {});
+        new DCMotorSim(
+            LinearSystemId.createDCMotorSystem(DRIVE_GEARBOX, driveInertia, driveGearRatio),
+            DRIVE_GEARBOX);
     angleSim =
-        new FlywheelSim(
-            LinearSystemId.createFlywheelSystem(DCMotor.getFalcon500Foc(1), moi, angleGearRatio),
-            DCMotor.getFalcon500Foc(1),
-            new double[] {});
+        new DCMotorSim(
+            LinearSystemId.createDCMotorSystem(TURN_GEARBOX, steerInertia, driveGearRatio),
+            TURN_GEARBOX);
+
     this.loopPeriodSecs = loopPeriodSecs;
   }
 
@@ -56,6 +57,7 @@ public class SwerveModuleIOSim implements SwerveModuleIO {
   public void setDrivePercentOut(double percent) {
     double volts = MathUtil.clamp(percent * 12, -12.0, 12.0);
     driveSim.setInputVoltage(volts);
+    Logger.recordOutput("Swerve/Debug/DriveVolts", volts);
   }
 
   /** Stops the drive motor */
@@ -69,7 +71,10 @@ public class SwerveModuleIOSim implements SwerveModuleIO {
    * @param percent percent to set it to, from -1.0 to 1.0
    */
   public void setAnglePercentOut(double percent) {
+    Logger.recordOutput("iwannakms", true);
+
     double volts = MathUtil.clamp(percent * 12, -12.0, 12.0);
+    Logger.recordOutput("Swerve/Debug/AngleVolts", volts);
     angleSim.setInputVoltage(volts);
   }
 
