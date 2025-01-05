@@ -103,15 +103,6 @@ public class SwerveBase extends SubsystemBase {
     this.constants = constants;
     this.gyroIO = gyroIO;
 
-    poseEstimator =
-        new AdvancedSwervePoseEstimator(
-            constants.kinematicsConstants.kinematics,
-            getYaw(),
-            getModulePositions(),
-            new Pose2d(),
-            constants.odometryConstants.trustStdDevs,
-            trustautostdDev);
-
     pathfindingConstraints =
         new PathConstraints(
             constants.speedLimits.chassisLimits.maxVelocity,
@@ -126,6 +117,7 @@ public class SwerveBase extends SubsystemBase {
           new SwerveModule(blIO, 2, constants),
           new SwerveModule(brIO, 3, constants)
         };
+
     this.loopPeriodSecs = loopPeriodSecs;
     this.filterTags = filterTags;
     rotationPID =
@@ -134,6 +126,15 @@ public class SwerveBase extends SubsystemBase {
             constants.pidConfigs.teleopConfig.rotKI,
             constants.pidConfigs.teleopConfig.rotKD);
     rotationPID.enableContinuousInput(0, 2 * Math.PI);
+
+    poseEstimator =
+        new AdvancedSwervePoseEstimator(
+            constants.kinematicsConstants.kinematics,
+            getYaw(),
+            getModulePositions(),
+            new Pose2d(),
+            constants.odometryConstants.trustStdDevs,
+            trustautostdDev);
 
     AutoBuilder.configure(
         this::getPose,
