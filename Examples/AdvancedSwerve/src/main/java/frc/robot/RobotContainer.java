@@ -57,6 +57,7 @@ public class RobotContainer {
                 } catch (Exception e) {
                         e.printStackTrace();
                 }
+                System.out.println(swerveConstants.pigeonID);
 
                 try {
                         robotConfig = RobotConfig.fromGUISettings();

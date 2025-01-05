@@ -22,12 +22,12 @@ public class SwerveModuleIOSim implements SwerveModuleIO {
         new FlywheelSim(
             LinearSystemId.createFlywheelSystem(DCMotor.getFalcon500Foc(1), moi, driveGearRatio),
             DCMotor.getFalcon500Foc(1),
-            null);
+            new double[] {});
     angleSim =
         new FlywheelSim(
             LinearSystemId.createFlywheelSystem(DCMotor.getFalcon500Foc(1), moi, driveGearRatio),
             DCMotor.getFalcon500Foc(1),
-            null);
+            new double[] {});
     this.loopPeriodSecs = loopPeriodSecs;
   }
 
