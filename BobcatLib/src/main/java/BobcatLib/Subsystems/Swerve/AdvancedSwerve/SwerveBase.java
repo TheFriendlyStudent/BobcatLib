@@ -332,6 +332,20 @@ public class SwerveBase extends SubsystemBase {
       swerveModuleStates[mod.index * 2 + 1] = mod.getState().speedMetersPerSecond;
       swerveModuleStates[mod.index * 2] = mod.getState().angle.getDegrees();
     }
+    Logger.recordOutput(
+        "Swerve/DesiredSwerveModuleStates",
+        new SwerveModuleState[] {
+          new SwerveModuleState(
+              desiredSwerveModuleStates[0], Rotation2d.fromDegrees(desiredSwerveModuleStates[1])),
+          new SwerveModuleState(
+              desiredSwerveModuleStates[2], Rotation2d.fromDegrees(desiredSwerveModuleStates[3])),
+          new SwerveModuleState(
+              desiredSwerveModuleStates[4], Rotation2d.fromDegrees(desiredSwerveModuleStates[5])),
+          new SwerveModuleState(
+              desiredSwerveModuleStates[6], Rotation2d.fromDegrees(desiredSwerveModuleStates[7]))
+        });
+    Logger.recordOutput("Swerve/DesiredSwerveModuleStatesLegacy", swerveModuleStates);
+    Logger.recordOutput("Swerve/RealSwerveModuleStates", swerveModuleStates);
 
     Logger.recordOutput("Swerve/Pose", getPose());
     Logger.recordOutput(
@@ -461,6 +475,7 @@ public class SwerveBase extends SubsystemBase {
     }
 
     desiredSpeeds = ChassisSpeeds.discretize(desiredSpeeds, loopPeriodSecs);
+    Logger.recordOutput("Swerve/DesiredChassisSpeeds", desiredSpeeds);
 
     // currentSetpoint =
     // setpointGenerator.generateSetpoint(SwerveConstants.moduleLimits,

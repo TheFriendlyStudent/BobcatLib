@@ -38,14 +38,14 @@ public class Robot extends LoggedRobot {
 
   @Override
   public void robotInit() {
-    Pathfinding.setPathfinder(new LocalADStar());
+    Pathfinding.setPathfinder(new LocalADStarAK());
     // Set up data receivers & replay source
     switch (Constants.currentMode) {
       case REAL:
         // Running on a real robot, log to a USB stick ("/U/logs")
         Logger.addDataReceiver(new WPILOGWriter()); 
         Logger.addDataReceiver(new NT4Publisher());
-        new PowerDistribution(1, ModuleType.kRev);
+        
         break;
 
       case SIM:
