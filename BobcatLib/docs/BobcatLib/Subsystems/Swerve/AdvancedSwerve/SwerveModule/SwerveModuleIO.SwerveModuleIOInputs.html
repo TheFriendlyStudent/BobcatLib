@@ -90,13 +90,25 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>double</code></div>
+<div class="col-second even-row-color"><code><a href="#angleAppliedVoltage" class="member-name-link">angleAppliedVoltage</a></code></div>
+<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><code>double</code></div>
+<div class="col-second odd-row-color"><code><a href="#angleCurrentAmps" class="member-name-link">angleCurrentAmps</a></code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-first even-row-color"><code>double</code></div>
 <div class="col-second even-row-color"><code><a href="#appliedDriveVoltage" class="member-name-link">appliedDriveVoltage</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>double</code></div>
-<div class="col-second odd-row-color"><code><a href="#canCoderPositionRot" class="member-name-link">canCoderPositionRot</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#canCoderPositionDeg" class="member-name-link">canCoderPositionDeg</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 <div class="col-first even-row-color"><code>double</code></div>
-<div class="col-second even-row-color"><code><a href="#driveAcceleration" class="member-name-link">driveAcceleration</a></code></div>
+<div class="col-second even-row-color"><code><a href="#canCoderPositionRot" class="member-name-link">canCoderPositionRot</a></code></div>
+<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><code>double</code></div>
+<div class="col-second odd-row-color"><code><a href="#driveAccelerationRadPerSecSquared" class="member-name-link">driveAccelerationRadPerSecSquared</a></code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-first even-row-color"><code>double</code></div>
+<div class="col-second even-row-color"><code><a href="#driveCurrentAmps" class="member-name-link">driveCurrentAmps</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>double</code></div>
 <div class="col-second odd-row-color"><code><a href="#drivePositionRot" class="member-name-link">drivePositionRot</a></code></div>
@@ -129,7 +141,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color"><code><a href="#processorTempDrive" class="member-name-link">processorTempDrive</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>double</code></div>
-<div class="col-second odd-row-color"><code><a href="#rawCanCoderPositionDeg" class="member-name-link">rawCanCoderPositionDeg</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#turnAngularVelocityRadPerSec" class="member-name-link">turnAngularVelocityRadPerSec</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
@@ -184,9 +196,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="driveAcceleration">
-<h3>driveAcceleration</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">driveAcceleration</span></div>
+<section class="detail" id="driveAccelerationRadPerSecSquared">
+<h3>driveAccelerationRadPerSecSquared</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">driveAccelerationRadPerSecSquared</span></div>
 </section>
 </li>
 <li>
@@ -196,9 +208,15 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="rawCanCoderPositionDeg">
-<h3>rawCanCoderPositionDeg</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">rawCanCoderPositionDeg</span></div>
+<section class="detail" id="canCoderPositionDeg">
+<h3>canCoderPositionDeg</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">canCoderPositionDeg</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="turnAngularVelocityRadPerSec">
+<h3>turnAngularVelocityRadPerSec</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">turnAngularVelocityRadPerSec</span></div>
 </section>
 </li>
 <li>
@@ -229,6 +247,24 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="appliedDriveVoltage">
 <h3>appliedDriveVoltage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">appliedDriveVoltage</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="driveCurrentAmps">
+<h3>driveCurrentAmps</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">driveCurrentAmps</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="angleCurrentAmps">
+<h3>angleCurrentAmps</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">angleCurrentAmps</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="angleAppliedVoltage">
+<h3>angleAppliedVoltage</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">angleAppliedVoltage</span></div>
 </section>
 </li>
 <li>

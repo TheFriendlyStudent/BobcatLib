@@ -32,8 +32,6 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import java.util.Optional;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 import org.littletonrobotics.junction.Logger;
 
 public class SwerveBase extends SubsystemBase {
@@ -50,8 +48,6 @@ public class SwerveBase extends SubsystemBase {
   private final PIDController rotationPID;
   private Rotation2d lastMovingYaw = new Rotation2d();
   private boolean rotating = false;
-
-  public static final Lock odometryLock = new ReentrantLock();
 
   private Rotation2d lastYaw = new Rotation2d();
   private double loopPeriodSecs;
@@ -196,22 +192,10 @@ public class SwerveBase extends SubsystemBase {
       RobotConfig config) {
     return new SwerveBase(
         new GyroIOPigeon2(constants),
-        new SwerveModuleIOSim(
-            0.02,
-            constants.pidConfigs.driveMotorConfig.gearRatio,
-            constants.pidConfigs.angleMotorConfig.gearRatio),
-        new SwerveModuleIOSim(
-            0.02,
-            constants.pidConfigs.driveMotorConfig.gearRatio,
-            constants.pidConfigs.angleMotorConfig.gearRatio),
-        new SwerveModuleIOSim(
-            0.02,
-            constants.pidConfigs.driveMotorConfig.gearRatio,
-            constants.pidConfigs.angleMotorConfig.gearRatio),
-        new SwerveModuleIOSim(
-            0.02,
-            constants.pidConfigs.driveMotorConfig.gearRatio,
-            constants.pidConfigs.angleMotorConfig.gearRatio),
+        new SwerveModuleIOSim(constants),
+        new SwerveModuleIOSim(constants),
+        new SwerveModuleIOSim(constants),
+        new SwerveModuleIOSim(constants),
         0.02,
         filterTags,
         standardDeviations.toMatrix()[0],
@@ -264,14 +248,12 @@ public class SwerveBase extends SubsystemBase {
     // Priority IDs should be set in your SEASON SPECIFIC swerve subsystem, NOT in this base
     // subsystem
 
-    odometryLock.lock();
     gyroIO.updateInputs(gyroInputs);
     Logger.processInputs("Swerve/Gyro", gyroInputs);
 
     for (SwerveModule module : modules) {
       module.periodic();
     }
-    odometryLock.unlock();
 
     // Update odometry
     double[] sampleTimestamps = modules[0].getOdometryTimestamps();
@@ -408,7 +390,7 @@ public class SwerveBase extends SubsystemBase {
    * @return the OdometryState representing how much we should trust the odometry based on
    *     acceleration
    */
-  public OdometryState getOdometryState() {
+  public OdometryState getOdometryState() { // TODO drive acceleration is in radians not meters
     double avgAccel = 0;
     for (SwerveModule module : modules) {
       if (module.getDriveAcceleration() > 5) {
@@ -478,13 +460,13 @@ public class SwerveBase extends SubsystemBase {
     SwerveModuleState[] swerveModuleStates =
         constants.kinematicsConstants.kinematics.toSwerveModuleStates(desiredSpeeds);
     // SwerveModuleState[] swerveModuleStates = currentSetpoint.moduleStates();
-    Logger.recordOutput("Swerve/DesiredSwerveModuleStates", swerveModuleStates);
     SwerveDriveKinematics.desaturateWheelSpeeds(
         swerveModuleStates, constants.speedLimits.moduleLimits.maxVelocity);
 
     for (SwerveModule mod : modules) {
       mod.setDesiredState(swerveModuleStates[mod.index]);
     }
+    Logger.recordOutput("Swerve/Debug/DesiredStates", swerveModuleStates);
     Logger.recordOutput("Swerve/RealSwerveModuleStates", getModuleStates());
   }
 

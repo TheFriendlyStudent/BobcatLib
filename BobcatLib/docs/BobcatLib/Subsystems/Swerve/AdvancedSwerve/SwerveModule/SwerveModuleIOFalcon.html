@@ -140,9 +140,9 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <div class="block">Sets the neutral mode of the angle motor</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAnglePercentOut(double)" class="member-name-link">setAnglePercentOut</a><wbr>(double&nbsp;percent)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setAnglePosition</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the percent out of the angle motor</div>
+<div class="block">sets the position of the angle motor</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDriveNeutralMode(com.ctre.phoenix6.signals.NeutralModeValue)" class="member-name-link">setDriveNeutralMode</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/signals/NeutralModeValue.html" title="class or interface in com.ctre.phoenix6.signals" class="external-link">NeutralModeValue</a>&nbsp;mode)</code></div>
@@ -150,9 +150,9 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <div class="block">Sets the neutral mode of the drive motor</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDrivePercentOut(double)" class="member-name-link">setDrivePercentOut</a><wbr>(double&nbsp;percent)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setDriveVelocity</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;velocityRadPerSec)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the percent out of the drive motor</div>
+<div class="block">sets the velocity of the drive motor</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stopAngle()" class="member-name-link">stopAngle</a>()</code></div>
@@ -213,15 +213,15 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 </section>
 </li>
 <li>
-<section class="detail" id="setDrivePercentOut(double)">
-<h3>setDrivePercentOut</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDrivePercentOut</span><wbr><span class="parameters">(double&nbsp;percent)</span></div>
-<div class="block">Sets the percent out of the drive motor</div>
+<section class="detail" id="setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>setDriveVelocity</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDriveVelocity</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;velocityRadPerSec)</span></div>
+<div class="block">sets the velocity of the drive motor</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SwerveModuleIO.html#setDrivePercentOut(double)">setDrivePercentOut</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
+<dd><code><a href="SwerveModuleIO.html#setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)">setDriveVelocity</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>percent</code> - percent to set it to, from -1.0 to 1.0</dd>
+<dd><code>velocityRadPerSec</code> - velocity to set it to</dd>
 </dl>
 </section>
 </li>
@@ -250,15 +250,15 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 </section>
 </li>
 <li>
-<section class="detail" id="setAnglePercentOut(double)">
-<h3>setAnglePercentOut</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAnglePercentOut</span><wbr><span class="parameters">(double&nbsp;percent)</span></div>
-<div class="block">Sets the percent out of the angle motor</div>
+<section class="detail" id="setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>setAnglePosition</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAnglePosition</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle)</span></div>
+<div class="block">sets the position of the angle motor</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SwerveModuleIO.html#setAnglePercentOut(double)">setAnglePercentOut</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
+<dd><code><a href="SwerveModuleIO.html#setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)">setAnglePosition</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>percent</code> - percent to set it to, from -1.0 to 1.0</dd>
+<dd><code>angle</code> - angle to set it to</dd>
 </dl>
 </section>
 </li>

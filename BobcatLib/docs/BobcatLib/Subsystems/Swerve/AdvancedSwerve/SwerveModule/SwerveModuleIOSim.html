@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SwerveModuleIOSim</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></span></div>
+<div class="block">Physics sim implementation of module IO. The sim models are configured using a set of module
+ constants from Phoenix. Simulation is always based on voltage control.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -102,9 +104,7 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(double,double,double)" class="member-name-link">SwerveModuleIOSim</a><wbr>(double&nbsp;loopPeriodSecs,
- double&nbsp;driveGearRatio,
- double&nbsp;angleGearRatio)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)" class="member-name-link">SwerveModuleIOSim</a><wbr>(<a href="../Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -121,24 +121,14 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAnglePercentOut(double)" class="member-name-link">setAnglePercentOut</a><wbr>(double&nbsp;percent)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setAnglePosition</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotation)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the percent out of the angle motor</div>
+<div class="block">Sets the angle position of the angle motor</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDrivePercentOut(double)" class="member-name-link">setDrivePercentOut</a><wbr>(double&nbsp;percent)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setDriveVelocity</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angularVelocity)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the percent out of the drive motor</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stopAngle()" class="member-name-link">stopAngle</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Stops the angle motor</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stopDrive()" class="member-name-link">stopDrive</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Stops the drive motor</div>
+<div class="block">velocity in units/second</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateInputs(BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO.SwerveModuleIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="SwerveModuleIO.SwerveModuleIOInputs.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO.SwerveModuleIOInputs</a>&nbsp;inputs)</code></div>
@@ -151,7 +141,7 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO">Methods inherited from interface&nbsp;BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.<a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></h3>
-<code><a href="SwerveModuleIO.html#runCharachterization(double)">runCharachterization</a>, <a href="SwerveModuleIO.html#setAngleNeutralMode(com.ctre.phoenix6.signals.NeutralModeValue)">setAngleNeutralMode</a>, <a href="SwerveModuleIO.html#setDriveNeutralMode(com.ctre.phoenix6.signals.NeutralModeValue)">setDriveNeutralMode</a></code></div>
+<code><a href="SwerveModuleIO.html#runCharachterization(double)">runCharachterization</a>, <a href="SwerveModuleIO.html#setAngleNeutralMode(com.ctre.phoenix6.signals.NeutralModeValue)">setAngleNeutralMode</a>, <a href="SwerveModuleIO.html#setDriveNeutralMode(com.ctre.phoenix6.signals.NeutralModeValue)">setDriveNeutralMode</a>, <a href="SwerveModuleIO.html#stopAngle()">stopAngle</a>, <a href="SwerveModuleIO.html#stopDrive()">stopDrive</a></code></div>
 </section>
 </li>
 </ul>
@@ -164,11 +154,9 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(double,double,double)">
+<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)">
 <h3>SwerveModuleIOSim</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SwerveModuleIOSim</span><wbr><span class="parameters">(double&nbsp;loopPeriodSecs,
- double&nbsp;driveGearRatio,
- double&nbsp;angleGearRatio)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SwerveModuleIOSim</span><wbr><span class="parameters">(<a href="../Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants)</span></div>
 </section>
 </li>
 </ul>
@@ -190,50 +178,29 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 </section>
 </li>
 <li>
-<section class="detail" id="setDrivePercentOut(double)">
-<h3>setDrivePercentOut</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDrivePercentOut</span><wbr><span class="parameters">(double&nbsp;percent)</span></div>
-<div class="block">Sets the percent out of the drive motor</div>
+<section class="detail" id="setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>setDriveVelocity</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDriveVelocity</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angularVelocity)</span></div>
+<div class="block">velocity in units/second</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SwerveModuleIO.html#setDrivePercentOut(double)">setDrivePercentOut</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
+<dd><code><a href="SwerveModuleIO.html#setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)">setDriveVelocity</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>percent</code> - percent to set it to, from -1.0 to 1.0</dd>
+<dd><code>angularVelocity</code> - velocity to set it to</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="stopDrive()">
-<h3>stopDrive</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">stopDrive</span>()</div>
-<div class="block">Stops the drive motor</div>
+<section class="detail" id="setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>setAnglePosition</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAnglePosition</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotation)</span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="SwerveModuleIO.html#setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)">SwerveModuleIO</a></code></span></div>
+<div class="block">Sets the angle position of the angle motor</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="SwerveModuleIO.html#stopDrive()">stopDrive</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="setAnglePercentOut(double)">
-<h3>setAnglePercentOut</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAnglePercentOut</span><wbr><span class="parameters">(double&nbsp;percent)</span></div>
-<div class="block">Sets the percent out of the angle motor</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="SwerveModuleIO.html#setAnglePercentOut(double)">setAnglePercentOut</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
+<dd><code><a href="SwerveModuleIO.html#setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)">setAnglePosition</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
 <dt>Parameters:</dt>
-<dd><code>percent</code> - percent to set it to, from -1.0 to 1.0</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="stopAngle()">
-<h3>stopAngle</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">stopAngle</span>()</div>
-<div class="block">Stops the angle motor</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="SwerveModuleIO.html#stopAngle()">stopAngle</a></code>&nbsp;in interface&nbsp;<code><a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule">SwerveModuleIO</a></code></dd>
+<dd><code>rotation</code> - angle to set it to</dd>
 </dl>
 </section>
 </li>

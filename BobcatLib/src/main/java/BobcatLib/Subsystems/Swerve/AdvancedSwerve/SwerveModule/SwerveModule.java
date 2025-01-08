@@ -2,7 +2,6 @@ package BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule;
 
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -18,8 +17,6 @@ public class SwerveModule {
 
   private SwerveModuleState desiredState = new SwerveModuleState();
 
-  private Rotation2d lastAngle;
-
   private SwerveModulePosition[] odometryPositions = new SwerveModulePosition[] {};
   private SwerveConstants constants;
 
@@ -31,8 +28,6 @@ public class SwerveModule {
     this.io = io;
     this.index = index;
     this.constants = constants;
-
-    lastAngle = getState().angle;
 
     driveFeedforward =
         new SimpleMotorFeedforward(
@@ -56,6 +51,7 @@ public class SwerveModule {
   public void periodic() {
     io.updateInputs(inputs);
     Logger.processInputs("Swerve/Module" + Integer.toString(index), inputs);
+
     // Calculate positions for odometry
     int sampleCount = inputs.odometryTimestamps.length; // All signals are sampled together
     odometryPositions = new SwerveModulePosition[sampleCount];
@@ -78,43 +74,26 @@ public class SwerveModule {
    */
   public SwerveModuleState setDesiredState(SwerveModuleState state) {
     // Optimize the angle for the shortest path
-    state.optimize(lastAngle);
+    SwerveModuleState optimizedState = state;
+    optimizedState.optimize(getAngle());
+    optimizedState.cosineScale(getAngle());
 
     // if our desired speed is under 1%, maintain current heading, helps with jitter
     Rotation2d angle =
         (Math.abs(desiredState.speedMetersPerSecond)
                 <= (constants.speedLimits.moduleLimits.maxVelocity * 0.01))
-            ? lastAngle
-            : state.angle;
+            ? getAngle()
+            : optimizedState.angle;
 
-    // It is important that we use radians for the PID
-    // so we can update the drive speed as shown below
-    double output =
-        MathUtil.clamp(
-            angleController.calculate(getAngle().getRadians(), state.angle.getRadians()),
-            -1.0,
-            1.0);
-    io.setAnglePercentOut(output);
-    Logger.recordOutput("Swerve/Module" + Integer.toString(index) + "/AngleOutput", output);
-    // Update velocity based on turn error
-    state.speedMetersPerSecond *= Math.cos(angleController.getError());
+    io.setAnglePosition(angle);
 
-    double velocity = state.speedMetersPerSecond / constants.kinematicsConstants.wheelCircumference;
-    double velocityOut =
-        MathUtil.clamp(
-            driveController.calculate(inputs.driveVelocityRotPerSec, velocity)
-                + driveFeedforward.calculate(velocity),
-            -1.0,
-            1.0);
-    if (velocity == 0) {
-      velocityOut = 0;
-    }
-    io.setDrivePercentOut(velocityOut);
-    Logger.recordOutput("Swerve/Module" + Integer.toString(index) + "/DriveOutput", velocityOut);
+    double velocityRotPerSec =
+        optimizedState.speedMetersPerSecond / constants.kinematicsConstants.wheelCircumference;
 
-    desiredState = state;
-    lastAngle = angle;
-    return state;
+    io.setDriveVelocity(Rotation2d.fromRotations(velocityRotPerSec));
+
+    desiredState = optimizedState;
+    return optimizedState;
   }
 
   /** Stops the drive and angle motors */
@@ -201,7 +180,7 @@ public class SwerveModule {
    * @return CANcoder position, in degrees
    */
   public double getRawCanCoder() {
-    return inputs.rawCanCoderPositionDeg;
+    return inputs.canCoderPositionDeg;
   }
 
   /** Returns the module positions received this cycle. */
@@ -215,7 +194,7 @@ public class SwerveModule {
   }
 
   public double getDriveAcceleration() {
-    return inputs.driveAcceleration;
+    return inputs.driveAccelerationRadPerSecSquared;
   }
 
   public void runCharachterization(double volts) {
