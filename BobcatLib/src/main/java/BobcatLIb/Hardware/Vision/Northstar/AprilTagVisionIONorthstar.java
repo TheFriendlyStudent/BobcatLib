@@ -7,8 +7,6 @@
 
 package BobcatLib.Hardware.Vision.Northstar;
 
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.*;
-
 import edu.wpi.first.networktables.DoubleArraySubscriber;
 import edu.wpi.first.networktables.IntegerSubscriber;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -17,8 +15,12 @@ import edu.wpi.first.networktables.StringPublisher;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.*;
+
 import java.util.function.Supplier;
-import BobcatLib.Hardware.Vision.Northstar.AprilTagVisionFieldConstants.AprilTagLayoutType;
+
+import BobcatLib.Hardware.Vision.AprilTagVisionFieldConstants;
+import BobcatLib.Hardware.Vision.AprilTagVisionFieldConstants.AprilTagLayoutType;
 import BobcatLib.Utilities.Team6328.Alert;
 
 public class AprilTagVisionIONorthstar implements AprilTagVisionIO {

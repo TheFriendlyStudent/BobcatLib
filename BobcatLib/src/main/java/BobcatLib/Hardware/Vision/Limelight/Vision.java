@@ -2,27 +2,42 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.lib.BobcatLib.Vision;
+package BobcatLib.Hardware.Vision.Limelight;
 
+import BobcatLib.Hardware.Vision.AprilTagVisionConstants;
+import BobcatLib.Hardware.Vision.AprilTagVisionFieldConstants;
+import BobcatLib.Hardware.Vision.Limelight.VisionIO;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Constants.FieldConstants;
+import BobcatLib.Utilities.Vision.VisionObservation;
+
+import java.util.function.Supplier;
 
 import org.littletonrobotics.junction.Logger;
 
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.FieldConstants;
-import frc.robot.Constants.VisionConstants;
+// import frc.robot.Constants.FieldConstants;
+// import frc.robot.Constants.VisionConstants;
 
 public class Vision extends SubsystemBase {
   /** Creates a new Vision. */
   private final VisionIO io;
   private final VisionIOInputsAutoLogged inputs = new VisionIOInputsAutoLogged();
+  private Supplier<Rotation2d> yaw;
+  private SwerveDrive swerve;
 
   public boolean apriltagPipeline;
+  private double xyStdDev;
+  private double thetaStdDev;
 
-  public Vision(VisionIO io) {
+  public Vision(SwerveDrive swerve, VisionIO io, Supplier<Rotation2d> yaw) {
     this.io = io;
+    this.yaw = yaw;
+    this.swerve = swerve;
 
     io.setLEDS(LEDMode.FORCEOFF);
   }
@@ -31,9 +46,9 @@ public class Vision extends SubsystemBase {
     io.setLEDS(on ? LEDMode.FORCEBLINK : LEDMode.PIPELINECONTROL);
   }
 
-  public void setCamMode(CamMode mode) {
-    io.setCamMode(mode);
-  }
+  // public void setCamMode(CamMode mode) {
+  //   io.setCamMode(mode);
+  // }
 
   public double getTClass() {
     return inputs.tClass;
@@ -57,6 +72,20 @@ public class Vision extends SubsystemBase {
     Logger.processInputs("Limelight" + inputs.name, inputs);
 
     apriltagPipeline = inputs.pipelineID == 0;
+
+    SetRobotOrientation(yaw.get());
+
+    if(inputs.tagCount>=2){
+      xyStdDev=AprilTagVisionConstants.limelightConstants.xySingleTagStdDev;
+      thetaStdDev=AprilTagVisionConstants.limelightConstants.thetaSingleTagStdDev;
+    }else{
+      xyStdDev=AprilTagVisionConstants.limelightConstants.xyMultiTagStdDev;
+      thetaStdDev=AprilTagVisionConstants.limelightConstants.thetaMultiTagStdDev;
+    }
+
+    swerve.addVision(new VisionObservation(getBotPoseMG2(), getPoseTimestampMG2(), VecBuilder.fill(xyStdDev, xyStdDev, thetaStdDev)));
+    
+
   }
 
 
@@ -117,12 +146,12 @@ public class Vision extends SubsystemBase {
     // otherwise we ignore it.
 
     if( 
-        (diff<VisionConstants.rotationTolerance) && 
-        (tagDist<VisionConstants.throwoutDist) &&
+        (diff<AprilTagVisionConstants.limelightConstants.rotationTolerance) && 
+        (tagDist<AprilTagVisionConstants.limelightConstants.throwoutDist) &&
         (botpose.getTranslation().getX() > 0) &&
-        (botpose.getTranslation().getX() < FieldConstants.fieldLength) &&
+        (botpose.getTranslation().getX() < AprilTagVisionFieldConstants.fieldLength) &&
         (botpose.getTranslation().getY() > 0) &&
-        (botpose.getTranslation().getY() < FieldConstants.fieldWidth)) {
+        (botpose.getTranslation().getY() < AprilTagVisionFieldConstants.fieldWidth)) {
           
           return true;
       } else{

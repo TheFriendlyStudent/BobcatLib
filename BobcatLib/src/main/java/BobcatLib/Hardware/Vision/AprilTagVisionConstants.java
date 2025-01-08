@@ -5,7 +5,7 @@
 // license that can be found in the LICENSE file at
 // the root directory of this project.
 
-package BobcatLib.Hardware.Vision.Northstar;
+package BobcatLib.Hardware.Vision;
 
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation3d;
@@ -45,4 +45,16 @@ public class AprilTagVisionConstants {
               "/dev/video0",
               "cam1"
             };
+
+
+  public class limelightConstants{
+    public final static double rotationTolerance = 0;
+    public final static double throwoutDist = 0;
+    public static final double xySingleTagStdDev = 0.005;
+    public static final double thetaSingleTagStdDev = 0.01;
+    public static final double xyMultiTagStdDev = 0.005;
+    public static final double thetaMultiTagStdDev = 0.01;
+
+
+  }
 }

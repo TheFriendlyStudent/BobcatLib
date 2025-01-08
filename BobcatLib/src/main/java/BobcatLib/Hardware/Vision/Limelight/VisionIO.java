@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.lib.BobcatLib.Vision;
+package BobcatLib.Hardware.Vision.Limelight;
 
 import org.littletonrobotics.junction.AutoLog;
 
@@ -28,7 +28,7 @@ public interface VisionIO {
       public double fiducialID = -1;
       public double tClass = -1;
       public String name = "something is very wrong if you're seeing this";
-      public CamMode camMode = CamMode.VISION;
+      // public CamMode camMode = CamMode.VISION;
       public Pose2d botPoseMG2 = new Pose2d();
       public int tagCount = -1;
       public double avgTagDist = -1;

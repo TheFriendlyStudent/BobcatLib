@@ -1,4 +1,4 @@
-package BobcatLib.Utilities.Vision;
+package BobcatLib.Hardware.Vision.Limelight;
 
 import edu.wpi.first.math.Vector;
 import edu.wpi.first.math.numbers.N3;

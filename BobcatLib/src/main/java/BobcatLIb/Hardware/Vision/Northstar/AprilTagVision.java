@@ -18,20 +18,21 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.Timer;
 
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.ambiguityThreshold;
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.cameraPoses;
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.fieldBorderMargin;
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.stdDevFactors;
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.targetLogTimeSecs;
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.thetaStdDevCoefficient;
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.xyStdDevCoefficient;
-import static BobcatLib.Hardware.Vision.Northstar.AprilTagVisionConstants.zMargin;
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.ambiguityThreshold;
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.cameraPoses;
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.fieldBorderMargin;
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.stdDevFactors;
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.targetLogTimeSecs;
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.thetaStdDevCoefficient;
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.xyStdDevCoefficient;
+import static BobcatLib.Hardware.Vision.AprilTagVisionConstants.zMargin;
 
 import java.util.*;
 
-// import frc.robot.Subsystems.Swerve;
-import BobcatLib.Hardware.Vision.Northstar.AprilTagVisionFieldConstants.AprilTagLayoutType;
+import BobcatLib.Hardware.Vision.AprilTagVisionFieldConstants;
+import BobcatLib.Hardware.Vision.AprilTagVisionFieldConstants.AprilTagLayoutType;
 import BobcatLib.Hardware.Vision.Northstar.AprilTagVisionIO.AprilTagVisionIOInputs;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
 
 // import org.littletonrobotics.frc2024.RobotState;
 import org.littletonrobotics.junction.Logger;
@@ -53,9 +54,10 @@ public class AprilTagVision extends SubsystemBase {
   private final Map<Integer, Double> lastTagDetectionTimes = new HashMap<>();
   private Supplier<Rotation2d> yaw;
   public VisionObservation visionPose;
+  public SwerveDrive swerve;
   // private final Swerve swerve;
 
-  public AprilTagVision(Supplier<Rotation2d> yaw, Supplier<AprilTagLayoutType> aprilTagTypeSupplier, AprilTagVisionIO... io) {
+  public AprilTagVision(SwerveDrive swerve, Supplier<Rotation2d> yaw, Supplier<AprilTagLayoutType> aprilTagTypeSupplier, AprilTagVisionIO... io) {
 
     Logger.recordOutput("CamPosNT",               new Pose3d(
                   -1*Units.inchesToMeters(6.5),
@@ -67,6 +69,7 @@ public class AprilTagVision extends SubsystemBase {
     this.aprilTagTypeSupplier = aprilTagTypeSupplier;
     this.io = io;
     this.yaw = yaw;
+    this.swerve=swerve;
     inputs = new AprilTagVisionIOInputs[io.length];
     for (int i = 0; i < io.length; i++) {
       inputs[i] = new AprilTagVisionIOInputs();
@@ -214,8 +217,8 @@ public class AprilTagVision extends SubsystemBase {
         allRobotPoses.add(robotPose);
         allRobotPoses3d.add(robotPose3d);
 
-        // swerve.addVisionNorthStar(new VisionObservation(robotPose, timestamp, VecBuilder.fill(xyStdDev, xyStdDev, thetaStdDev)));
-        visionPose=new VisionObservation(robotPose, timestamp, VecBuilder.fill(xyStdDev, xyStdDev, thetaStdDev));
+        swerve.addVision(new VisionObservation(robotPose, timestamp, VecBuilder.fill(xyStdDev, xyStdDev, thetaStdDev)));
+        // visionPose=new VisionObservation(robotPose, timestamp, VecBuilder.fill(xyStdDev, xyStdDev, thetaStdDev));
 
         // Log data from instance
         Logger.recordOutput(

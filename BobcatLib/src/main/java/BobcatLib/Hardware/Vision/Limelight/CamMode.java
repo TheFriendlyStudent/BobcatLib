@@ -1,4 +1,4 @@
-package BobcatLib.Utilities.Vision;
+package BobcatLib.Hardware.Vision.Limelight;
 
 public enum CamMode {
     VISION, DRIVERCAM
