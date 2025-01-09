@@ -104,11 +104,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#loadConfigurationFromFile()" class="member-name-link">loadConfigurationFromFile</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Loads the elevator configuration from a JSON file located in the robot's deploy directory.</div>
-</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Utility/ElevatorState.html" title="class in BobcatLib.Subsystems.Elevators.Utility">ElevatorState</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getState()" class="member-name-link">getState</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#moveElevator(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">moveElevator</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;position)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
@@ -165,14 +163,6 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="loadConfigurationFromFile()">
-<h3>loadConfigurationFromFile</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadConfigurationFromFile</span>()</div>
-<div class="block">Loads the elevator configuration from a JSON file located in the robot's deploy directory. The
- file should be in the "configs/Elevator" folder and named "elevator.json".</div>
-</section>
-</li>
-<li>
 <section class="detail" id="setPercentOut(double)">
 <h3>setPercentOut</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPercentOut</span><wbr><span class="parameters">(double&nbsp;percent)</span></div>
@@ -193,6 +183,12 @@ loadScripts(document, 'script');</script>
 <dt>Parameters:</dt>
 <dd><code>position</code> - The desired position of the elevator as a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link"><code>Rotation2d</code></a> object.</dd>
 </dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getState()">
+<h3>getState</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../Utility/ElevatorState.html" title="class in BobcatLib.Subsystems.Elevators.Utility">ElevatorState</a></span>&nbsp;<span class="element-name">getState</span>()</div>
 </section>
 </li>
 <li>

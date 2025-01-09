@@ -2,6 +2,7 @@ package BobcatLib.Hardware.Motors;
 
 import BobcatLib.Hardware.Motors.MotorIO.MotorIOInputs;
 import BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper;
+import BobcatLib.Utilities.CANDeviceDetails;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 /**
@@ -24,6 +25,23 @@ public class BaseMotor {
   public BaseMotor(MotorIO io, SoftwareLimitWrapper limits) {
     this.limits = limits;
     this.io = io;
+  }
+
+  public BaseMotor(
+      CANDeviceDetails details, MotorConfigs mc, String motor_type, SoftwareLimitWrapper limits) {
+    this.limits = limits;
+    MotorIO motor;
+    switch (motor_type) {
+      case "kraken":
+        motor = new KrakenMotor(details, details.getBus(), mc);
+        break;
+      case "falcon":
+        motor = new FalconMotor(details, details.getBus(), mc);
+        break;
+      default:
+        motor = new KrakenMotor(details, details.getBus(), mc);
+    }
+    this.io = motor;
   }
 
   /**
@@ -153,5 +171,13 @@ public class BaseMotor {
         new SoftwareLimitWrapper(
             rotations.getRotations(), SoftwareLimitWrapper.SoftwareLimitType.LOWER);
     return this;
+  }
+
+  public Rotation2d getUpperLimit() {
+    return limits.getUpperLimit();
+  }
+
+  public Rotation2d getLowerLimit() {
+    return limits.getLowerLimit();
   }
 }

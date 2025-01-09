@@ -2,8 +2,6 @@ package BobcatLib.Subsystems.Elevators.Modules;
 
 import BobcatLib.Hardware.Motors.BaseMotor;
 import BobcatLib.Hardware.Motors.MotorIO;
-import BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper;
-import BobcatLib.Subsystems.Elevators.Utility.Parser.ElevatorJson;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 /**
@@ -14,17 +12,14 @@ import edu.wpi.first.math.geometry.Rotation2d;
 public class ElevatorReal implements ElevatorIO {
 
   private BaseMotor elevatorMotor;
-  private SoftwareLimitWrapper limitWrapper;
 
   /**
    * Constructs a new {@code ElevatorReal} instance.
    *
    * @param motor The {@link MotorIO} instance used for motor control.
-   * @param limits The {@link SoftwareLimitWrapper} instance defining the elevator's limits.
    */
-  public ElevatorReal(MotorIO motor, SoftwareLimitWrapper limits) {
-    this.limitWrapper = limits;
-    elevatorMotor = new BaseMotor(motor, this.limitWrapper);
+  public ElevatorReal(BaseMotor motor) {
+    this.elevatorMotor = motor;
   }
 
   /**
@@ -32,19 +27,6 @@ public class ElevatorReal implements ElevatorIO {
    * limit configurations.
    */
   public void configClimber() {}
-
-  /**
-   * Loads the elevator configuration from a JSON file.
-   *
-   * @param json The {@link ElevatorJson} instance containing the elevator configuration.
-   */
-  public void loadConfigurationFromFile(ElevatorJson json) {
-    limitWrapper =
-        new SoftwareLimitWrapper(
-            json.limits.lowerLimits,
-            json.limits.upperLimits,
-            SoftwareLimitWrapper.SoftwareLimitType.BOTH);
-  }
 
   /**
    * Sets the motor's output power as a percentage of its maximum power.
@@ -67,7 +49,10 @@ public class ElevatorReal implements ElevatorIO {
    * @param rot The desired position in rotations.
    */
   public void setPosition(double rot) {
-    if (getPosition().getRotations() < limitWrapper.getUpperLimit().getRotations()) {
+    double lowerLimit = elevatorMotor.getLowerLimit().getRotations();
+    double upperLimit = elevatorMotor.getUpperLimit().getRotations();
+    double currentPosInRotations = getPosition().getRotations();
+    if (currentPosInRotations < upperLimit && currentPosInRotations > lowerLimit) {
       elevatorMotor.setAngle(rot);
       return;
     }

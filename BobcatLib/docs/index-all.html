@@ -321,6 +321,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructs a new BaseMotor instance.</div>
 </dd>
+<dt><a href="BobcatLib/Hardware/Motors/BaseMotor.html#%3Cinit%3E(BobcatLib.Utilities.CANDeviceDetails,BobcatLib.Hardware.Motors.MotorConfigs,java.lang.String,BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper)" class="member-name-link">BaseMotor(CANDeviceDetails, MotorConfigs, String, SoftwareLimitWrapper)</a> - Constructor for class BobcatLib.Hardware.Motors.<a href="BobcatLib/Hardware/Motors/BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Constants.FieldConstants.html#blueAmpCenter" class="member-name-link">blueAmpCenter</a> - Static variable in class BobcatLib.Subsystems.Swerve.SimpleSwerve.<a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Constants.FieldConstants.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve">Constants.FieldConstants</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Constants.FieldConstants.html#blueSpeakerPose" class="member-name-link">blueSpeakerPose</a> - Static variable in class BobcatLib.Subsystems.Swerve.SimpleSwerve.<a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Constants.FieldConstants.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve">Constants.FieldConstants</a></dt>
@@ -381,6 +383,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="BobcatLib/Subsystems/Elevators/package-summary.html">BobcatLib.Subsystems.Elevators</a> - package BobcatLib.Subsystems.Elevators</dt>
 <dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/Modules/package-summary.html">BobcatLib.Subsystems.Elevators.Modules</a> - package BobcatLib.Subsystems.Elevators.Modules</dt>
+<dd>&nbsp;</dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Utility/package-summary.html">BobcatLib.Subsystems.Elevators.Utility</a> - package BobcatLib.Subsystems.Elevators.Utility</dt>
 <dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/Utility/Parser/package-summary.html">BobcatLib.Subsystems.Elevators.Utility.Parser</a> - package BobcatLib.Subsystems.Elevators.Utility.Parser</dt>
 <dd>&nbsp;</dd>
@@ -1350,16 +1354,28 @@ loadScripts(document, 'script');</script>
 <div class="block">The <code>ElevatorReal</code> class provides a concrete implementation of an elevator mechanism using
  a motor and software limit switches.</div>
 </dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html#%3Cinit%3E(BobcatLib.Hardware.Motors.MotorIO,BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper)" class="member-name-link">ElevatorReal(MotorIO, SoftwareLimitWrapper)</a> - Constructor for class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorReal</a></dt>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html#%3Cinit%3E(BobcatLib.Hardware.Motors.BaseMotor)" class="member-name-link">ElevatorReal(BaseMotor)</a> - Constructor for class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorReal</a></dt>
 <dd>
 <div class="block">Constructs a new <code>ElevatorReal</code> instance.</div>
+</dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html" class="type-name-link" title="class in BobcatLib.Subsystems.Elevators.Utility">ElevatorState</a> - Class in <a href="BobcatLib/Subsystems/Elevators/Utility/package-summary.html">BobcatLib.Subsystems.Elevators.Utility</a></dt>
+<dd>
+<div class="block">Represents the state of the Elevator system, including its rotations.</div>
+</dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html#%3Cinit%3E()" class="member-name-link">ElevatorState()</a> - Constructor for class BobcatLib.Subsystems.Elevators.Utility.<a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html" title="class in BobcatLib.Subsystems.Elevators.Utility">ElevatorState</a></dt>
+<dd>
+<div class="block">Default constructor that initializes the Elevator state with a zero rotation.</div>
+</dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html#%3Cinit%3E(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">ElevatorState(Rotation2d)</a> - Constructor for class BobcatLib.Subsystems.Elevators.Utility.<a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html" title="class in BobcatLib.Subsystems.Elevators.Utility">ElevatorState</a></dt>
+<dd>
+<div class="block">Constructor that initializes the Elevator state with the provided rotation.</div>
 </dd>
 <dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" class="type-name-link" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a> - Class in <a href="BobcatLib/Subsystems/Elevators/package-summary.html">BobcatLib.Subsystems.Elevators</a></dt>
 <dd>
 <div class="block">Represents the elevator subsystem, responsible for controlling and configuring the elevator
  hardware and logic.</div>
 </dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html#%3Cinit%3E(java.lang.String,BobcatLib.Subsystems.Elevators.Modules.BaseElevator)" class="member-name-link">ElevatorSubsystem(String, BaseElevator)</a> - Constructor for class BobcatLib.Subsystems.Elevators.<a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></dt>
+<dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html#%3Cinit%3E(java.lang.String)" class="member-name-link">ElevatorSubsystem(String)</a> - Constructor for class BobcatLib.Subsystems.Elevators.<a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></dt>
 <dd>
 <div class="block">Constructs a new <code>ElevatorSubsystem</code>.</div>
 </dd>
@@ -1835,6 +1851,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Retrieves the duty cycle ramp period.</div>
 </dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html#getElevatorRotations()" class="member-name-link">getElevatorRotations()</a> - Method in class BobcatLib.Subsystems.Elevators.Utility.<a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html" title="class in BobcatLib.Subsystems.Elevators.Utility">ElevatorState</a></dt>
+<dd>
+<div class="block">Gets the current rotation of the Elevator.</div>
+</dd>
 <dt><a href="BobcatLib/Hardware/Encoders/EncoderIO.EncoderIOInputs.html#getEncoderPosition" class="member-name-link">getEncoderPosition</a> - Variable in class BobcatLib.Hardware.Encoders.<a href="BobcatLib/Hardware/Encoders/EncoderIO.EncoderIOInputs.html" title="class in BobcatLib.Hardware.Encoders">EncoderIO.EncoderIOInputs</a></dt>
 <dd>
 <div class="block">The current position of the encoder as a rotation.</div>
@@ -1935,6 +1955,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Gets the input value after applying slew rate limiting.</div>
 </dd>
+<dt><a href="BobcatLib/Hardware/Motors/BaseMotor.html#getLowerLimit()" class="member-name-link">getLowerLimit()</a> - Method in class BobcatLib.Hardware.Motors.<a href="BobcatLib/Hardware/Motors/BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Hardware/Motors/Utility/SoftwareLimitWrapper.html#getLowerLimit()" class="member-name-link">getLowerLimit()</a> - Method in class BobcatLib.Hardware.Motors.Utility.<a href="BobcatLib/Hardware/Motors/Utility/SoftwareLimitWrapper.html" title="class in BobcatLib.Hardware.Motors.Utility">SoftwareLimitWrapper</a></dt>
 <dd>
 <div class="block">Gets the lower limit as a Rotation2d object.</div>
@@ -2279,6 +2301,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the Slot0Configs associated with this PidControllerWrapper.</div>
 </dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html#getState()" class="member-name-link">getState()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Intakes/Modules/IntakeModuleIO.html#getState()" class="member-name-link">getState()</a> - Method in interface BobcatLib.Subsystems.Intakes.Modules.<a href="BobcatLib/Subsystems/Intakes/Modules/IntakeModuleIO.html" title="interface in BobcatLib.Subsystems.Intakes.Modules">IntakeModuleIO</a></dt>
 <dd>
 <div class="block">Gets the current state of the intake mechanism.</div>
@@ -2334,6 +2358,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Gets Driver Strafe Axis</div>
 </dd>
+<dt><a href="BobcatLib/Utilities/SetPointWrapper.html#getSurroundingPoints(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">getSurroundingPoints(Rotation2d)</a> - Method in class BobcatLib.Utilities.<a href="BobcatLib/Utilities/SetPointWrapper.html" title="class in BobcatLib.Utilities">SetPointWrapper</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/SwerveContainer.html#getTestCommand()" class="member-name-link">getTestCommand()</a> - Method in class BobcatLib.Subsystems.Swerve.SimpleSwerve.<a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/SwerveContainer.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve">SwerveContainer</a></dt>
 <dd>
 <div class="block">Use this to pass the test command to the main class.</div>
@@ -2398,6 +2424,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Gets the type of the device.</div>
 </dd>
+<dt><a href="BobcatLib/Hardware/Motors/BaseMotor.html#getUpperLimit()" class="member-name-link">getUpperLimit()</a> - Method in class BobcatLib.Hardware.Motors.<a href="BobcatLib/Hardware/Motors/BaseMotor.html" title="class in BobcatLib.Hardware.Motors">BaseMotor</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Hardware/Motors/Utility/SoftwareLimitWrapper.html#getUpperLimit()" class="member-name-link">getUpperLimit()</a> - Method in class BobcatLib.Hardware.Motors.Utility.<a href="BobcatLib/Hardware/Motors/Utility/SoftwareLimitWrapper.html" title="class in BobcatLib.Hardware.Motors.Utility">SoftwareLimitWrapper</a></dt>
 <dd>
 <div class="block">Gets the upper limit as a Rotation2d object.</div>
@@ -2654,6 +2682,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Holds the pivot mechanism at a specific position.</div>
 </dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html#holdPosition()" class="member-name-link">holdPosition()</a> - Method in class BobcatLib.Subsystems.Elevators.<a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
@@ -3115,7 +3145,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Loads the gyro configuration from a JSON file stored in the robot's deploy directory.</div>
 </dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html#loadConfigurationFromFile()" class="member-name-link">loadConfigurationFromFile()</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/BaseElevator.html" title="class in BobcatLib.Subsystems.Elevators.Modules">BaseElevator</a></dt>
+<dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html#loadConfigurationFromFile()" class="member-name-link">loadConfigurationFromFile()</a> - Method in class BobcatLib.Subsystems.Elevators.<a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></dt>
 <dd>
 <div class="block">Loads the elevator configuration from a JSON file located in the robot's deploy directory.</div>
 </dd>
@@ -3132,13 +3162,11 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Loads configuration settings for the elevator from a JSON file.</div>
 </dd>
-<dt><a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html#loadConfigurationFromFile(BobcatLib.Subsystems.Elevators.Utility.Parser.ElevatorJson)" class="member-name-link">loadConfigurationFromFile(ElevatorJson)</a> - Method in class BobcatLib.Subsystems.Elevators.Modules.<a href="BobcatLib/Subsystems/Elevators/Modules/ElevatorReal.html" title="class in BobcatLib.Subsystems.Elevators.Modules">ElevatorReal</a></dt>
-<dd>
-<div class="block">Loads the elevator configuration from a JSON file.</div>
-</dd>
 <dt><a href="BobcatLib/Subsystems/Intakes/Modules/IntakeModuleIO.html#loadConfigurationFromFile(BobcatLib.Subsystems.Intakes.Parser.IntakeJson)" class="member-name-link">loadConfigurationFromFile(IntakeJson)</a> - Method in interface BobcatLib.Subsystems.Intakes.Modules.<a href="BobcatLib/Subsystems/Intakes/Modules/IntakeModuleIO.html" title="interface in BobcatLib.Subsystems.Intakes.Modules">IntakeModuleIO</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Intakes/Modules/IntakeModuleReal.html#loadConfigurationFromFile(BobcatLib.Subsystems.Intakes.Parser.IntakeJson)" class="member-name-link">loadConfigurationFromFile(IntakeJson)</a> - Method in class BobcatLib.Subsystems.Intakes.Modules.<a href="BobcatLib/Subsystems/Intakes/Modules/IntakeModuleReal.html" title="class in BobcatLib.Subsystems.Intakes.Modules">IntakeModuleReal</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html#loadMotor(BobcatLib.Hardware.Motors.MotorConfigs,BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper,java.lang.String)" class="member-name-link">loadMotor(MotorConfigs, SoftwareLimitWrapper, String)</a> - Method in class BobcatLib.Subsystems.Elevators.<a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Utility/math/GeometryUtils.html#log(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">log(Pose2d)</a> - Static method in class BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math.<a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Utility/math/GeometryUtils.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math">GeometryUtils</a></dt>
 <dd>&nbsp;</dd>
@@ -3327,6 +3355,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Moves the elevator to the specified position.</div>
 </dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html#moveElevatorToNext()" class="member-name-link">moveElevatorToNext()</a> - Method in class BobcatLib.Subsystems.Elevators.<a href="BobcatLib/Subsystems/Elevators/ElevatorSubsystem.html" title="class in BobcatLib.Subsystems.Elevators">ElevatorSubsystem</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Utility/math/Conversions.html#MPSToRPS(double,double)" class="member-name-link">MPSToRPS(double, double)</a> - Static method in class BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math.<a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/Utility/math/Conversions.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math">Conversions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/SwerveDrive.html#mSwerveMods" class="member-name-link">mSwerveMods</a> - Variable in class BobcatLib.Subsystems.Swerve.SimpleSwerve.<a href="BobcatLib/Subsystems/Swerve/SimpleSwerve/SwerveDrive.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve">SwerveDrive</a></dt>
@@ -4687,6 +4717,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="BobcatLib/Subsystems/Climbers/Utils/ClimberState.html#toString()" class="member-name-link">toString()</a> - Method in class BobcatLib.Subsystems.Climbers.Utils.<a href="BobcatLib/Subsystems/Climbers/Utils/ClimberState.html" title="class in BobcatLib.Subsystems.Climbers.Utils">ClimberState</a></dt>
 <dd>
 <div class="block">Returns a string representation of the ClimberState object.</div>
+</dd>
+<dt><a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html#toString()" class="member-name-link">toString()</a> - Method in class BobcatLib.Subsystems.Elevators.Utility.<a href="BobcatLib/Subsystems/Elevators/Utility/ElevatorState.html" title="class in BobcatLib.Subsystems.Elevators.Utility">ElevatorState</a></dt>
+<dd>
+<div class="block">Returns a string representation of the ElevatorState object.</div>
 </dd>
 <dt><a href="BobcatLib/Subsystems/Intakes/Utils/IntakeConstants.html#toString()" class="member-name-link">toString()</a> - Method in class BobcatLib.Subsystems.Intakes.Utils.<a href="BobcatLib/Subsystems/Intakes/Utils/IntakeConstants.html" title="class in BobcatLib.Subsystems.Intakes.Utils">IntakeConstants</a></dt>
 <dd>
