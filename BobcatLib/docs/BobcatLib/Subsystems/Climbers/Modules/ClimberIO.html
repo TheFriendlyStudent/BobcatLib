@@ -130,13 +130,18 @@ loadScripts(document, 'script');</script>
 <div class="block">Sets the motor output percentage for the climber.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#stop()" class="member-name-link">stop</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#setPosition(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setPosition</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;position)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Stops the climber mechanism by setting motor output to zero.</div>
+<div class="block">Sets the climber to a specified position.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updateInputs(BobcatLib.Subsystems.Climbers.Modules.ClimberIO.ClimberIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="ClimberIO.ClimberIOInputs.html" title="class in BobcatLib.Subsystems.Climbers.Modules">ClimberIO.ClimberIOInputs</a>&nbsp;inputs)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#stop()" class="member-name-link">stop</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Stops the climber mechanism by setting motor output to zero.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updateInputs(BobcatLib.Subsystems.Climbers.Modules.ClimberIO.ClimberIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="ClimberIO.ClimberIOInputs.html" title="class in BobcatLib.Subsystems.Climbers.Modules">ClimberIO.ClimberIOInputs</a>&nbsp;inputs)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
 <div class="block">Updates the input values of the climber for logging or telemetry purposes.</div>
 </div>
 </div>
@@ -210,6 +215,17 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>The current position as a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link"><code>Rotation2d</code></a>.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setPosition(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>setPosition</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPosition</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;position)</span></div>
+<div class="block">Sets the climber to a specified position.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>position</code> - The target position as a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link"><code>Rotation2d</code></a> object.</dd>
 </dl>
 </section>
 </li>

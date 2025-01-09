@@ -63,4 +63,3 @@ public interface ClimberIO {
    */
   public default void setPosition(Rotation2d position) {}
 }
-

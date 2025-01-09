@@ -3,8 +3,6 @@ package BobcatLib.Subsystems.Climbers.Modules;
 import BobcatLib.Hardware.Motors.BaseMotor;
 import BobcatLib.Hardware.Motors.MotorIO;
 import BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper;
-import com.ctre.phoenix6.controls.DutyCycleOut;
-import com.ctre.phoenix6.controls.PositionDutyCycle;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 /**

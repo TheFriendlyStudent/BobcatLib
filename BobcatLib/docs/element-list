@@ -12,8 +12,8 @@ BobcatLib.Logging
 BobcatLib.Logging.FaultsAndErrors
 BobcatLib.Subsystems.Climbers
 BobcatLib.Subsystems.Climbers.Modules
-BobcatLib.Subsystems.Climbers.Parser
 BobcatLib.Subsystems.Climbers.Utils
+BobcatLib.Subsystems.Climbers.Utils.Parser
 BobcatLib.Subsystems.Elevators
 BobcatLib.Subsystems.Elevators.Modules
 BobcatLib.Subsystems.Elevators.Utility.Parser

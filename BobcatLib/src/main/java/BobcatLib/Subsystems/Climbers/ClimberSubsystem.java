@@ -1,17 +1,14 @@
 package BobcatLib.Subsystems.Climbers;
 
 import BobcatLib.Subsystems.Climbers.Modules.BaseClimber;
-import BobcatLib.Subsystems.Climbers.Modules.ClimberIO;
-import BobcatLib.Subsystems.Climbers.Modules.ClimberIO.ClimberIOInputs;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import org.littletonrobotics.junction.Logger;
 
 /**
  * Represents the climber subsystem, responsible for managing the climber's behavior and
  * periodically updating its inputs.
  */
-public class ClimberSubsystem  extends SubsystemBase {
+public class ClimberSubsystem extends SubsystemBase {
   private final BaseClimber climberModule;
   private String name = "";
 
