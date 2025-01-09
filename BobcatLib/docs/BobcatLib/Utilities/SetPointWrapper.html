@@ -77,7 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">SetPointWrapper</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">A wrapper class for managing an immutable, sorted list of set points (doubles) and providing utility methods.</div>
+<div class="block">A wrapper class for managing an immutable, sorted list of set points (doubles) and providing
+ utility methods.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -157,8 +158,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(java.lang.String)">
 <h3>SetPointWrapper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SetPointWrapper</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;points)</span></div>
-<div class="block">Constructs a SetPointWrapper from a comma-separated string of points.
- The points are parsed, sorted, and stored in an immutable list.</div>
+<div class="block">Constructs a SetPointWrapper from a comma-separated string of points. The points are parsed,
+ sorted, and stored in an immutable list.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>points</code> - a comma-separated string of double values.</dd>
@@ -171,8 +172,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(java.util.List)">
 <h3>SetPointWrapper</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SetPointWrapper</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;&nbsp;points)</span></div>
-<div class="block">Constructs a SetPointWrapper from a list of points.
- The list is copied, sorted, and stored in an immutable list.</div>
+<div class="block">Constructs a SetPointWrapper from a list of points. The list is copied, sorted, and stored in
+ an immutable list.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>points</code> - a list of double values.</dd>
@@ -206,8 +207,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="next(int)">
 <h3>next</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">next</span><wbr><span class="parameters">(int&nbsp;index)</span></div>
-<div class="block">Retrieves the next set point relative to the given index.
- If the index is the last one, it returns the same set point.</div>
+<div class="block">Retrieves the next set point relative to the given index. If the index is the last one, it
+ returns the same set point.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>index</code> - the current index.</dd>
@@ -220,8 +221,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="previous(int)">
 <h3>previous</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">previous</span><wbr><span class="parameters">(int&nbsp;index)</span></div>
-<div class="block">Retrieves the previous set point relative to the given index.
- If the index is the first one, it returns the same set point.</div>
+<div class="block">Retrieves the previous set point relative to the given index. If the index is the first one, it
+ returns the same set point.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>index</code> - the current index.</dd>
@@ -234,8 +235,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="findNearestSetPoint(double)">
 <h3>findNearestSetPoint</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">findNearestSetPoint</span><wbr><span class="parameters">(double&nbsp;current)</span></div>
-<div class="block">Finds the nearest set point that is greater than or equal to the given value.
- If no such set point exists, returns the last set point.</div>
+<div class="block">Finds the nearest set point that is greater than or equal to the given value. If no such set
+ point exists, returns the last set point.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>current</code> - the value to compare against the set points.</dd>

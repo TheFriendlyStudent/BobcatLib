@@ -1,7 +1,6 @@
 package BobcatLib.Hardware.Gyros;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
-import com.studica.frc.AHRS;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -88,14 +87,6 @@ public class GyroSim implements GyroIO {
    * @param imu The Pigeon2 IMU instance.
    */
   public void periodic(Pigeon2 imu) {}
-
-  /**
-   * Periodic update method for the AHRS IMU sensor. Currently does nothing but can be extended for
-   * specific periodic updates for AHRS.
-   *
-   * @param imu The AHRS IMU instance.
-   */
-  public void periodic(AHRS imu) {}
 
   /**
    * Periodic update method for the simulated gyro. This method is called periodically to update the
