@@ -28,11 +28,11 @@ public class FalconElevatorMotor  {
 
     /* Gear Ratio and Wrapping Config */
 
-    swerveAngleFXConfig.Feedback.SensorToMechanismRatio = 12;
+    swerveAngleFXConfig.Feedback.SensorToMechanismRatio = 150/7;
     swerveAngleFXConfig.ClosedLoopGeneral.ContinuousWrap = false;
     /* Current Limiting */
     swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimitEnable = false;
-    swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimit =20;
+    swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimit =30;
 
     /* PID Config */
     swerveAngleFXConfig.Slot0.kP = 0.05;
