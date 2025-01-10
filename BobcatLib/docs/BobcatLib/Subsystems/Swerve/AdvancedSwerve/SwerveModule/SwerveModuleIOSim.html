@@ -104,7 +104,8 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)" class="member-name-link">SwerveModuleIOSim</a><wbr>(<a href="../Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int)" class="member-name-link">SwerveModuleIOSim</a><wbr>(<a href="../Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
+ int&nbsp;index)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -121,12 +122,12 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setAnglePosition</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotation)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setAnglePosition</a><wbr>(edu.wpi.first.math.geometry.Rotation2d&nbsp;rotation)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the angle position of the angle motor</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setDriveVelocity</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angularVelocity)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">setDriveVelocity</a><wbr>(edu.wpi.first.math.geometry.Rotation2d&nbsp;angularVelocity)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">velocity in units/second</div>
 </div>
@@ -154,9 +155,10 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants)">
+<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants,int)">
 <h3>SwerveModuleIOSim</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SwerveModuleIOSim</span><wbr><span class="parameters">(<a href="../Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SwerveModuleIOSim</span><wbr><span class="parameters">(<a href="../Constants/SwerveConstants.html" title="class in BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants">SwerveConstants</a>&nbsp;constants,
+ int&nbsp;index)</span></div>
 </section>
 </li>
 </ul>
@@ -180,7 +182,7 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <li>
 <section class="detail" id="setDriveVelocity(edu.wpi.first.math.geometry.Rotation2d)">
 <h3>setDriveVelocity</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDriveVelocity</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angularVelocity)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setDriveVelocity</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Rotation2d&nbsp;angularVelocity)</span></div>
 <div class="block">velocity in units/second</div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -193,7 +195,7 @@ implements <a href="SwerveModuleIO.html" title="interface in BobcatLib.Subsystem
 <li>
 <section class="detail" id="setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)">
 <h3>setAnglePosition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAnglePosition</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotation)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAnglePosition</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Rotation2d&nbsp;rotation)</span></div>
 <div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="SwerveModuleIO.html#setAnglePosition(edu.wpi.first.math.geometry.Rotation2d)">SwerveModuleIO</a></code></span></div>
 <div class="block">Sets the angle position of the angle motor</div>
 <dl class="notes">

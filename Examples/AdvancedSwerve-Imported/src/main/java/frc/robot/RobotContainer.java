@@ -12,6 +12,7 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 import com.pathplanner.lib.config.RobotConfig;
 
 import BobcatLib.Hardware.Controllers.AidenGamepads.EightBitDo;
+import BobcatLib.Hardware.Controllers.AidenGamepads.Logitech;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveBase;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.TeleopSwerve;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Assists.AimAssist;
@@ -32,7 +33,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
 
         /* Joysticks + Gamepad */
-        private final EightBitDo gp = new EightBitDo(0);
+        private final Logitech gp = new Logitech(0);
 
         /* Subsystems */
         public SwerveBase swerve;
@@ -168,7 +169,7 @@ public class RobotContainer {
 
                 // sysid routines
                 gp.start.onTrue(new InstantCommand(() -> swerve.resetPose(new Pose2d())));
-                gp.select.onTrue(new InstantCommand(() -> swerve.zeroGyro()));
+                //gp.select.onTrue(new InstantCommand(() -> swerve.zeroGyro()));
 
         }
 

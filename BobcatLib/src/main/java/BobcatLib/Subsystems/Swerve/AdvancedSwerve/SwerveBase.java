@@ -192,10 +192,10 @@ public class SwerveBase extends SubsystemBase {
       RobotConfig config) {
     return new SwerveBase(
         new GyroIOPigeon2(constants),
-        new SwerveModuleIOSim(constants),
-        new SwerveModuleIOSim(constants),
-        new SwerveModuleIOSim(constants),
-        new SwerveModuleIOSim(constants),
+        new SwerveModuleIOSim(constants, 0),
+        new SwerveModuleIOSim(constants, 1),
+        new SwerveModuleIOSim(constants, 2),
+        new SwerveModuleIOSim(constants, 3),
         0.02,
         filterTags,
         standardDeviations.toMatrix()[0],
@@ -245,9 +245,6 @@ public class SwerveBase extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // Priority IDs should be set in your SEASON SPECIFIC swerve subsystem, NOT in this base
-    // subsystem
-
     gyroIO.updateInputs(gyroInputs);
     Logger.processInputs("Swerve/Gyro", gyroInputs);
 
@@ -464,8 +461,9 @@ public class SwerveBase extends SubsystemBase {
         swerveModuleStates, constants.speedLimits.moduleLimits.maxVelocity);
 
     for (SwerveModule mod : modules) {
-      mod.setDesiredState(swerveModuleStates[mod.index]);
+      mod.runSetpoint(swerveModuleStates[mod.index]);
     }
+
     Logger.recordOutput("Swerve/Debug/DesiredStates", swerveModuleStates);
     Logger.recordOutput("Swerve/RealSwerveModuleStates", getModuleStates());
   }
@@ -486,7 +484,7 @@ public class SwerveBase extends SubsystemBase {
         swerveModuleStates, constants.speedLimits.moduleLimits.maxVelocity);
 
     for (SwerveModule mod : modules) {
-      mod.setDesiredState(swerveModuleStates[mod.index]);
+      mod.runSetpoint(swerveModuleStates[mod.index]);
     }
   }
 
@@ -499,7 +497,7 @@ public class SwerveBase extends SubsystemBase {
     SwerveDriveKinematics.desaturateWheelSpeeds(
         desiredStates, constants.speedLimits.moduleLimits.maxVelocity);
     for (SwerveModule mod : modules) {
-      mod.setDesiredState(desiredStates[mod.index]);
+      mod.runSetpoint(desiredStates[mod.index]);
     }
   }
 

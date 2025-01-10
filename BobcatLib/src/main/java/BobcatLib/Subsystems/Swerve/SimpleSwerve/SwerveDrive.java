@@ -492,7 +492,7 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
     }
     // swerveDrivePoseEstimator.setStateStdDevs(new state std devs here);
     swerveDrivePoseEstimator.updateWithTime(
-        Timer.getFPGATimestamp(), getGyroYaw(), getModulePositions());
+        Timer.getTimestamp(), getGyroYaw(), getModulePositions());
     // swerveDrivePoseEstimator.addVisionMeasurement();
   }
 

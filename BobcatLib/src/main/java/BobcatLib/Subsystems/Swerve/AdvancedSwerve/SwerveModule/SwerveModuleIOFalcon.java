@@ -4,8 +4,8 @@ import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.ModuleConfig;
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import com.ctre.phoenix6.controls.PositionTorqueCurrentFOC;
-import com.ctre.phoenix6.controls.VelocityTorqueCurrentFOC;
+import com.ctre.phoenix6.controls.PositionDutyCycle;
+import com.ctre.phoenix6.controls.VelocityDutyCycle;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
@@ -19,8 +19,8 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
 
   private final Rotation2d encoderOffset;
 
-  private final VelocityTorqueCurrentFOC driveRequest; // TODO should we use torquecurrent
-  private final PositionTorqueCurrentFOC angleRequest;
+  private final VelocityDutyCycle driveRequest; // TODO should we use torquecurrent
+  private final PositionDutyCycle angleRequest;
   private final SwerveConstants constants;
 
   public SwerveModuleIOFalcon(ModuleConfig module, SwerveConstants constants) {
@@ -35,9 +35,9 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
     configDriveMotor();
 
     // Velocity in rot/sec
-    driveRequest = new VelocityTorqueCurrentFOC(0);
+    driveRequest = new VelocityDutyCycle(0);
     // Position in rot
-    angleRequest = new PositionTorqueCurrentFOC(0);
+    angleRequest = new PositionDutyCycle(0);
   }
 
   public void updateInputs(SwerveModuleIOInputs inputs) {

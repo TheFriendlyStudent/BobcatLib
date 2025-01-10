@@ -85,10 +85,10 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">AdvancedPoseEstimator&lt;T&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">This class wraps <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/Odometry.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link"><code>Odometry</code></a> to fuse latency-compensated vision measurements with encoder
+<div class="block">This class wraps <code>Odometry</code> to fuse latency-compensated vision measurements with encoder
  measurements. Robot code should not use this directly- Instead, use the particular type for your
  drivetrain (e.g., lol this reference broke so now you dont get an example). It is intended to be
- a drop-in replacement for <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/Odometry.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link"><code>Odometry</code></a>; in fact, if you never call <a href="#addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d,double)"><code>addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d, double)</code></a> and only call <a href="#update(edu.wpi.first.math.geometry.Rotation2d,T)"><code>update(edu.wpi.first.math.geometry.Rotation2d, T)</code></a>
+ a drop-in replacement for <code>Odometry</code>; in fact, if you never call <a href="#addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d,double)"><code>addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d, double)</code></a> and only call <a href="#update(edu.wpi.first.math.geometry.Rotation2d,T)"><code>update(edu.wpi.first.math.geometry.Rotation2d, T)</code></a>
  then this will behave exactly the same as Odometry.
 
  <p><a href="#update(edu.wpi.first.math.geometry.Rotation2d,T)"><code>update(edu.wpi.first.math.geometry.Rotation2d, T)</code></a> should be called every robot loop.
@@ -106,10 +106,10 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(edu.wpi.first.math.kinematics.Kinematics,edu.wpi.first.math.kinematics.Odometry,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix)" class="member-name-link">AdvancedPoseEstimator</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/Kinematics.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">Kinematics</a>&lt;?,<wbr><a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&gt;&nbsp;kinematics,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/Odometry.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">Odometry</a>&lt;<a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&gt;&nbsp;odometry,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;stateStdDevs,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;visionMeasurementStdDevs)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(edu.wpi.first.math.kinematics.Kinematics,edu.wpi.first.math.kinematics.Odometry,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix)" class="member-name-link">AdvancedPoseEstimator</a><wbr>(edu.wpi.first.math.kinematics.Kinematics&lt;?,<wbr><a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&gt;&nbsp;kinematics,
+ edu.wpi.first.math.kinematics.Odometry&lt;<a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&gt;&nbsp;odometry,
+ edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;stateStdDevs,
+ edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;visionMeasurementStdDevs)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Constructs a PoseEstimator.</div>
 </div>
@@ -128,67 +128,67 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d,double)" class="member-name-link">addVisionMeasurement</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;visionRobotPoseMeters,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d,double)" class="member-name-link">addVisionMeasurement</a><wbr>(edu.wpi.first.math.geometry.Pose2d&nbsp;visionRobotPoseMeters,
  double&nbsp;timestampSeconds)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Adds a vision measurement to the Kalman Filter.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d,double,edu.wpi.first.math.Matrix)" class="member-name-link">addVisionMeasurement</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;visionRobotPoseMeters,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d,double,edu.wpi.first.math.Matrix)" class="member-name-link">addVisionMeasurement</a><wbr>(edu.wpi.first.math.geometry.Pose2d&nbsp;visionRobotPoseMeters,
  double&nbsp;timestampSeconds,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;visionMeasurementStdDevs)</code></div>
+ edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;visionMeasurementStdDevs)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Adds a vision measurement to the Kalman Filter.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>edu.wpi.first.math.geometry.Pose2d</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getEstimatedPosition()" class="member-name-link">getEstimatedPosition</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Gets the estimated robot pose.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetPose(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">resetPose</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;pose)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetPose(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">resetPose</a><wbr>(edu.wpi.first.math.geometry.Pose2d&nbsp;pose)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Resets the robot's pose.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetPosition(edu.wpi.first.math.geometry.Rotation2d,T,edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">resetPosition</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetPosition(edu.wpi.first.math.geometry.Rotation2d,T,edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">resetPosition</a><wbr>(edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
  <a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&nbsp;wheelPositions,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;poseMeters)</code></div>
+ edu.wpi.first.math.geometry.Pose2d&nbsp;poseMeters)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Resets the robot's position on the field.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetRotation(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">resetRotation</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotation)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetRotation(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">resetRotation</a><wbr>(edu.wpi.first.math.geometry.Rotation2d&nbsp;rotation)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Resets the robot's rotation.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetTranslation(edu.wpi.first.math.geometry.Translation2d)" class="member-name-link">resetTranslation</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetTranslation(edu.wpi.first.math.geometry.Translation2d)" class="member-name-link">resetTranslation</a><wbr>(edu.wpi.first.math.geometry.Translation2d&nbsp;translation)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Resets the robot's translation.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&gt;</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;edu.wpi.first.math.geometry.Pose2d&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#sampleAt(double)" class="member-name-link">sampleAt</a><wbr>(double&nbsp;timestampSeconds)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Return the pose at a given timestamp, if the buffer is not empty.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStateMeasurementStdDevs(edu.wpi.first.math.Matrix)" class="member-name-link">setStateMeasurementStdDevs</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;stateStdDevs)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStateMeasurementStdDevs(edu.wpi.first.math.Matrix)" class="member-name-link">setStateMeasurementStdDevs</a><wbr>(edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;stateStdDevs)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setVisionMeasurementStdDevs(edu.wpi.first.math.Matrix)" class="member-name-link">setVisionMeasurementStdDevs</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;visionMeasurementStdDevs)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setVisionMeasurementStdDevs(edu.wpi.first.math.Matrix)" class="member-name-link">setVisionMeasurementStdDevs</a><wbr>(edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;visionMeasurementStdDevs)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the pose estimator's trust of global measurements.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(edu.wpi.first.math.geometry.Rotation2d,T)" class="member-name-link">update</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>edu.wpi.first.math.geometry.Pose2d</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(edu.wpi.first.math.geometry.Rotation2d,T)" class="member-name-link">update</a><wbr>(edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
  <a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&nbsp;wheelPositions)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates the pose estimator with wheel encoder and gyro information.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>edu.wpi.first.math.geometry.Pose2d</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateWithTime(double,edu.wpi.first.math.geometry.Rotation2d,T)" class="member-name-link">updateWithTime</a><wbr>(double&nbsp;currentTimeSeconds,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
+ edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
  <a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&nbsp;wheelPositions)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates the pose estimator with wheel encoder and gyro information.</div>
@@ -213,10 +213,10 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="&lt;init&gt;(edu.wpi.first.math.kinematics.Kinematics,edu.wpi.first.math.kinematics.Odometry,edu.wpi.first.math.Matrix,edu.wpi.first.math.Matrix)">
 <h3>AdvancedPoseEstimator</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AdvancedPoseEstimator</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/Kinematics.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">Kinematics</a>&lt;?,<wbr><a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&gt;&nbsp;kinematics,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/Odometry.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">Odometry</a>&lt;<a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&gt;&nbsp;odometry,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;stateStdDevs,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;visionMeasurementStdDevs)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">AdvancedPoseEstimator</span><wbr><span class="parameters">(edu.wpi.first.math.kinematics.Kinematics&lt;?,<wbr><a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&gt;&nbsp;kinematics,
+ edu.wpi.first.math.kinematics.Odometry&lt;<a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&gt;&nbsp;odometry,
+ edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;stateStdDevs,
+ edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;visionMeasurementStdDevs)</span></div>
 <div class="block">Constructs a PoseEstimator.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -242,13 +242,13 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="setStateMeasurementStdDevs(edu.wpi.first.math.Matrix)">
 <h3>setStateMeasurementStdDevs</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setStateMeasurementStdDevs</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;stateStdDevs)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setStateMeasurementStdDevs</span><wbr><span class="parameters">(edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;stateStdDevs)</span></div>
 </section>
 </li>
 <li>
 <section class="detail" id="setVisionMeasurementStdDevs(edu.wpi.first.math.Matrix)">
 <h3>setVisionMeasurementStdDevs</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setVisionMeasurementStdDevs</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;visionMeasurementStdDevs)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setVisionMeasurementStdDevs</span><wbr><span class="parameters">(edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;visionMeasurementStdDevs)</span></div>
 <div class="block">Sets the pose estimator's trust of global measurements. This might be used to change trust in
  vision measurements after the autonomous period, or to change trust as distance to a vision
  target increases.</div>
@@ -263,9 +263,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="resetPosition(edu.wpi.first.math.geometry.Rotation2d,T,edu.wpi.first.math.geometry.Pose2d)">
 <h3 id="resetPosition(edu.wpi.first.math.geometry.Rotation2d,java.lang.Object,edu.wpi.first.math.geometry.Pose2d)">resetPosition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetPosition</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetPosition</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
  <a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&nbsp;wheelPositions,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;poseMeters)</span></div>
+ edu.wpi.first.math.geometry.Pose2d&nbsp;poseMeters)</span></div>
 <div class="block">Resets the robot's position on the field.
 
  <p>The gyroscope angle does not need to be reset here on the user's robot code. The library
@@ -281,7 +281,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="resetPose(edu.wpi.first.math.geometry.Pose2d)">
 <h3>resetPose</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetPose</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;pose)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetPose</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose2d&nbsp;pose)</span></div>
 <div class="block">Resets the robot's pose.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -292,7 +292,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="resetTranslation(edu.wpi.first.math.geometry.Translation2d)">
 <h3>resetTranslation</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetTranslation</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a>&nbsp;translation)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetTranslation</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Translation2d&nbsp;translation)</span></div>
 <div class="block">Resets the robot's translation.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -303,7 +303,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="resetRotation(edu.wpi.first.math.geometry.Rotation2d)">
 <h3>resetRotation</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetRotation</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;rotation)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetRotation</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Rotation2d&nbsp;rotation)</span></div>
 <div class="block">Resets the robot's rotation.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -314,7 +314,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getEstimatedPosition()">
 <h3>getEstimatedPosition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></span>&nbsp;<span class="element-name">getEstimatedPosition</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose2d</span>&nbsp;<span class="element-name">getEstimatedPosition</span>()</div>
 <div class="block">Gets the estimated robot pose.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -325,7 +325,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="sampleAt(double)">
 <h3>sampleAt</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&gt;</span>&nbsp;<span class="element-name">sampleAt</span><wbr><span class="parameters">(double&nbsp;timestampSeconds)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;edu.wpi.first.math.geometry.Pose2d&gt;</span>&nbsp;<span class="element-name">sampleAt</span><wbr><span class="parameters">(double&nbsp;timestampSeconds)</span></div>
 <div class="block">Return the pose at a given timestamp, if the buffer is not empty.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -338,7 +338,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d,double)">
 <h3>addVisionMeasurement</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addVisionMeasurement</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;visionRobotPoseMeters,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addVisionMeasurement</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose2d&nbsp;visionRobotPoseMeters,
  double&nbsp;timestampSeconds)</span></div>
 <div class="block">Adds a vision measurement to the Kalman Filter. This will correct the odometry pose estimate
  while still accounting for measurement noise.
@@ -354,8 +354,8 @@ loadScripts(document, 'script');</script>
 <dd><code>timestampSeconds</code> - The timestamp of the vision measurement in seconds. Note that if you
      don't use your own time source by calling <a href="#updateWithTime(double,edu.wpi.first.math.geometry.Rotation2d,T)"><code>updateWithTime(double,Rotation2d,Object)</code></a> then you must use a
      timestamp with an epoch since FPGA startup (i.e., the epoch of this timestamp is the same
-     epoch as <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Timer.html#getFPGATimestamp()" title="class or interface in edu.wpi.first.wpilibj" class="external-link"><code>Timer.getFPGATimestamp()</code></a>.) This means that you
-     should use <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Timer.html#getFPGATimestamp()" title="class or interface in edu.wpi.first.wpilibj" class="external-link"><code>Timer.getFPGATimestamp()</code></a> as your time source or
+     epoch as <code>Timer.getFPGATimestamp()</code>.) This means that you
+     should use <code>Timer.getFPGATimestamp()</code> as your time source or
      sync the epochs.</dd>
 </dl>
 </section>
@@ -363,9 +363,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="addVisionMeasurement(edu.wpi.first.math.geometry.Pose2d,double,edu.wpi.first.math.Matrix)">
 <h3>addVisionMeasurement</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addVisionMeasurement</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a>&nbsp;visionRobotPoseMeters,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addVisionMeasurement</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose2d&nbsp;visionRobotPoseMeters,
  double&nbsp;timestampSeconds,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/Matrix.html" title="class or interface in edu.wpi.first.math" class="external-link">Matrix</a>&lt;<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N3.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N3</a>,<wbr><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/numbers/N1.html" title="class or interface in edu.wpi.first.math.numbers" class="external-link">N1</a>&gt;&nbsp;visionMeasurementStdDevs)</span></div>
+ edu.wpi.first.math.Matrix&lt;edu.wpi.first.math.numbers.N3,<wbr>edu.wpi.first.math.numbers.N1&gt;&nbsp;visionMeasurementStdDevs)</span></div>
 <div class="block">Adds a vision measurement to the Kalman Filter. This will correct the odometry pose estimate
  while still accounting for measurement noise.
 
@@ -383,8 +383,8 @@ loadScripts(document, 'script');</script>
 <dd><code>timestampSeconds</code> - The timestamp of the vision measurement in seconds. Note that if you
      don't use your own time source by calling <a href="#updateWithTime(double,edu.wpi.first.math.geometry.Rotation2d,T)"><code>updateWithTime(double, edu.wpi.first.math.geometry.Rotation2d, T)</code></a>, then you must use a
      timestamp with an epoch since FPGA startup (i.e., the epoch of this timestamp is the same
-     epoch as <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Timer.html#getFPGATimestamp()" title="class or interface in edu.wpi.first.wpilibj" class="external-link"><code>Timer.getFPGATimestamp()</code></a>). This means that you
-     should use <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Timer.html#getFPGATimestamp()" title="class or interface in edu.wpi.first.wpilibj" class="external-link"><code>Timer.getFPGATimestamp()</code></a> as your time source in
+     epoch as <code>Timer.getFPGATimestamp()</code>). This means that you
+     should use <code>Timer.getFPGATimestamp()</code> as your time source in
      this case.</dd>
 <dd><code>visionMeasurementStdDevs</code> - Standard deviations of the vision pose measurement (x position
      in meters, y position in meters, and heading in radians). Increase these numbers to trust
@@ -395,7 +395,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="update(edu.wpi.first.math.geometry.Rotation2d,T)">
 <h3 id="update(edu.wpi.first.math.geometry.Rotation2d,java.lang.Object)">update</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose2d</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
  <a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&nbsp;wheelPositions)</span></div>
 <div class="block">Updates the pose estimator with wheel encoder and gyro information. This should be called every
  loop.</div>
@@ -411,8 +411,8 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="updateWithTime(double,edu.wpi.first.math.geometry.Rotation2d,T)">
 <h3 id="updateWithTime(double,edu.wpi.first.math.geometry.Rotation2d,java.lang.Object)">updateWithTime</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></span>&nbsp;<span class="element-name">updateWithTime</span><wbr><span class="parameters">(double&nbsp;currentTimeSeconds,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;gyroAngle,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose2d</span>&nbsp;<span class="element-name">updateWithTime</span><wbr><span class="parameters">(double&nbsp;currentTimeSeconds,
+ edu.wpi.first.math.geometry.Rotation2d&nbsp;gyroAngle,
  <a href="AdvancedPoseEstimator.html" title="type parameter in AdvancedPoseEstimator">T</a>&nbsp;wheelPositions)</span></div>
 <div class="block">Updates the pose estimator with wheel encoder and gyro information. This should be called every
  loop.</div>

@@ -98,10 +98,6 @@ public class Robot extends LoggedRobot {
       currAlliance = DSUtil.getAlliance();
     }
 
-
-    // if(Constants.currentMode != Constants.Mode.REAL){
-    //   Logger.recordOutput("components", new Pose3d[]{m_robotContainer.getArmPoseAScope()});
-    // }
 }
 
   @Override

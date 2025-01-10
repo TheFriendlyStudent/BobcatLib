@@ -22,7 +22,7 @@ public interface SwerveModuleIO {
     public double internalTempAngle = -1.0;
     public double processorTempAngle = -1.0;
     public double appliedDriveVoltage = -1.0;
-    public double driveCurrentAmps = -1.0;
+    public double driveCurrentAmps = -1;
     public double angleCurrentAmps = -1.0;
     public double angleAppliedVoltage = -1.0;
 

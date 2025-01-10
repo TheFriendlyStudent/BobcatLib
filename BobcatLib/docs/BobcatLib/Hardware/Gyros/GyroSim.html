@@ -139,7 +139,7 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <div class="block">Periodic update method for the simulated gyro.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic(com.ctre.phoenix6.hardware.Pigeon2)" class="member-name-link">periodic</a><wbr>(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a>&nbsp;imu)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic(com.ctre.phoenix6.hardware.Pigeon2)" class="member-name-link">periodic</a><wbr>(com.ctre.phoenix6.hardware.Pigeon2&nbsp;imu)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Periodic update method for the Pigeon2 IMU sensor.</div>
 </div>
@@ -213,7 +213,7 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <h3>updateInputs</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros">GyroIO.GyroIOInputs</a>&nbsp;inputs)</span></div>
 <div class="block">Updates the gyro inputs based on the simulated gyro data. The simulated yaw, pitch, and roll
- values are converted to <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link"><code>Rotation2d</code></a> objects and stored in the provided <a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros"><code>GyroIO.GyroIOInputs</code></a>.</div>
+ values are converted to <code>Rotation2d</code> objects and stored in the provided <a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros"><code>GyroIO.GyroIOInputs</code></a>.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="GyroIO.html#updateInputs(BobcatLib.Hardware.Gyros.GyroIO.GyroIOInputs)">updateInputs</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
@@ -264,7 +264,7 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <li>
 <section class="detail" id="periodic(com.ctre.phoenix6.hardware.Pigeon2)">
 <h3>periodic</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span><wbr><span class="parameters">(<a href="https://api.ctr-electronics.com/phoenix6/release/java/com/ctre/phoenix6/hardware/Pigeon2.html" title="class or interface in com.ctre.phoenix6.hardware" class="external-link">Pigeon2</a>&nbsp;imu)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span><wbr><span class="parameters">(com.ctre.phoenix6.hardware.Pigeon2&nbsp;imu)</span></div>
 <div class="block">Periodic update method for the Pigeon2 IMU sensor. Currently does nothing but can be extended
  for specific periodic updates for Pigeon2.</div>
 <dl class="notes">

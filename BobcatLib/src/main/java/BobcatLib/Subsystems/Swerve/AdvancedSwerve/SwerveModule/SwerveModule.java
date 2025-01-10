@@ -2,8 +2,6 @@ package BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule;
 
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
@@ -20,32 +18,10 @@ public class SwerveModule {
   private SwerveModulePosition[] odometryPositions = new SwerveModulePosition[] {};
   private SwerveConstants constants;
 
-  private SimpleMotorFeedforward driveFeedforward;
-  private PIDController driveController;
-  private PIDController angleController;
-
   public SwerveModule(SwerveModuleIO io, int index, SwerveConstants constants) {
     this.io = io;
     this.index = index;
     this.constants = constants;
-
-    driveFeedforward =
-        new SimpleMotorFeedforward(
-            constants.pidConfigs.driveMotorConfig.kS,
-            constants.pidConfigs.driveMotorConfig.kV,
-            constants.pidConfigs.driveMotorConfig.kA);
-    driveController =
-        new PIDController(
-            constants.pidConfigs.driveMotorConfig.kP,
-            constants.pidConfigs.driveMotorConfig.kI,
-            constants.pidConfigs.driveMotorConfig.kD);
-    angleController =
-        new PIDController(
-            constants.pidConfigs.angleMotorConfig.kP,
-            constants.pidConfigs.angleMotorConfig.kI,
-            constants.pidConfigs.angleMotorConfig.kD);
-
-    angleController.enableContinuousInput(0, 2 * Math.PI);
   }
 
   public void periodic() {
@@ -72,28 +48,32 @@ public class SwerveModule {
    * @param state the desired state of the swerve module
    * @return the optimized swerve module state that it was set to
    */
-  public SwerveModuleState setDesiredState(SwerveModuleState state) {
+  public SwerveModuleState runSetpoint(SwerveModuleState state) {
     // Optimize the angle for the shortest path
-    SwerveModuleState optimizedState = state;
-    optimizedState.optimize(getAngle());
-    optimizedState.cosineScale(getAngle());
+    state.optimize(getAngle());
+    state.cosineScale(getAngle());
 
-    // if our desired speed is under 1%, maintain current heading, helps with jitter
+    // if our desired speed is under 1%, maintain current heading, helps with wheel jitter
     Rotation2d angle =
-        (Math.abs(desiredState.speedMetersPerSecond)
+        (Math.abs(state.speedMetersPerSecond)
                 <= (constants.speedLimits.moduleLimits.maxVelocity * 0.01))
             ? getAngle()
-            : optimizedState.angle;
+            : state.angle;
 
     io.setAnglePosition(angle);
+    Logger.recordOutput(
+        "Swerve/Debug/Angle" + Integer.toString(index),
+        angle.getDegrees());
+    io.setDriveVelocity(
+        Rotation2d.fromRotations(
+            state.speedMetersPerSecond
+                / (constants.kinematicsConstants.wheelCircumference * 2 * Math.PI)));
+    Logger.recordOutput(
+        "Swerve/Debug/DriveVelocity" + Integer.toString(index),
+        state.speedMetersPerSecond
+            / (constants.kinematicsConstants.wheelCircumference * 2 * Math.PI));
 
-    double velocityRotPerSec =
-        optimizedState.speedMetersPerSecond / constants.kinematicsConstants.wheelCircumference;
-
-    io.setDriveVelocity(Rotation2d.fromRotations(velocityRotPerSec));
-
-    desiredState = optimizedState;
-    return optimizedState;
+    return state;
   }
 
   /** Stops the drive and angle motors */
@@ -144,6 +124,9 @@ public class SwerveModule {
    * @return velocity, in meter per second
    */
   public double getVelocityMetersPerSec() {
+    Logger.recordOutput(
+        "Swerve/Debug/getmodulestates/getState/getVelocityMetersPerSec" + Integer.toString(index),
+        inputs.driveVelocityRotPerSec * constants.kinematicsConstants.wheelCircumference);
     return inputs.driveVelocityRotPerSec * constants.kinematicsConstants.wheelCircumference;
   }
 
@@ -162,6 +145,9 @@ public class SwerveModule {
    * @return the swerve module state
    */
   public SwerveModuleState getState() {
+    Logger.recordOutput(
+        "Swerve/Debug/getmodulestates/getState" + Integer.toString(index),
+        new SwerveModuleState(getVelocityMetersPerSec(), getAngle()));
     return new SwerveModuleState(getVelocityMetersPerSec(), getAngle());
   }
 

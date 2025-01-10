@@ -1,14 +1,14 @@
 package BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule;
 
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
-import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
-import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
+import org.littletonrobotics.junction.Logger;
 
 /**
  * Physics sim implementation of module IO. The sim models are configured using a set of module
@@ -16,13 +16,7 @@ import edu.wpi.first.wpilibj.simulation.DCMotorSim;
  */
 public class SwerveModuleIOSim implements SwerveModuleIO {
   // TunerConstants doesn't support separate sim constants, so they are declared locally
-  private final double DRIVE_KP;
-  private final double DRIVE_KD;
-  private final double DRIVE_KS;
-  private final double DRIVE_KV_ROT; // Same units as TunerConstants: (volt * secs) / rotation
-  private final double DRIVE_KV;
-  private final double TURN_KP;
-  private final double TURN_KD;
+  private SimpleMotorFeedforward driveFeedforward;
   private final DCMotor DRIVE_GEARBOX = DCMotor.getKrakenX60Foc(1);
   private final DCMotor TURN_GEARBOX = DCMotor.getKrakenX60Foc(1);
 
@@ -40,17 +34,23 @@ public class SwerveModuleIOSim implements SwerveModuleIO {
   private static final double driveMotorGearRatio = 1.0 / 8.16;
   private static final double steerMotorGearRatio = 1.0 / 12.8; // sample values
 
-  public SwerveModuleIOSim(SwerveConstants constants) {
-    DRIVE_KP = constants.pidConfigs.driveMotorConfig.kP;
-    DRIVE_KD = constants.pidConfigs.driveMotorConfig.kD;
-    DRIVE_KS = constants.pidConfigs.driveMotorConfig.kS;
-    DRIVE_KV_ROT =
-        constants.pidConfigs.driveMotorConfig.kV; // TODO sanity check this when tuning 2025
-    DRIVE_KV = 1.0 / Units.rotationsToRadians(1.0 / DRIVE_KV_ROT);
-    TURN_KP = constants.pidConfigs.angleMotorConfig.kP;
-    TURN_KD = constants.pidConfigs.angleMotorConfig.kD;
-    driveController = new PIDController(DRIVE_KP, 0, DRIVE_KD);
-    turnController = new PIDController(TURN_KP, 0, TURN_KD);
+  private String index;
+
+  public SwerveModuleIOSim(SwerveConstants constants, int index) {
+    this.index = Integer.toString(index);
+    driveFeedforward =
+        new SimpleMotorFeedforward(
+            constants.pidConfigs.driveMotorConfig.kS,
+            constants.pidConfigs.driveMotorConfig.kV,
+            constants.pidConfigs.driveMotorConfig.kA);
+
+    driveController =
+        new PIDController(
+            constants.pidConfigs.angleMotorConfig.kP, 0, constants.pidConfigs.angleMotorConfig.kD);
+    turnController =
+        new PIDController(
+            constants.pidConfigs.angleMotorConfig.kP, 0, constants.pidConfigs.angleMotorConfig.kD);
+    turnController.enableContinuousInput(0, 2 * Math.PI);
 
     // Create drive and turn sim models
     driveSim =
@@ -68,42 +68,39 @@ public class SwerveModuleIOSim implements SwerveModuleIO {
 
   @Override
   public void updateInputs(SwerveModuleIOInputs inputs) {
-    // Run closed-loop control
-    driveAppliedVolts =
-        driveFFVolts + driveController.calculate(driveSim.getAngularVelocityRadPerSec());
-
-    turnAppliedVolts = turnController.calculate(turnSim.getAngularPositionRad());
-
-    // Update simulation state
-    driveSim.setInputVoltage(MathUtil.clamp(driveAppliedVolts, -12.0, 12.0));
-    turnSim.setInputVoltage(MathUtil.clamp(turnAppliedVolts, -12.0, 12.0));
-    driveSim.update(0.02);
-    turnSim.update(0.02);
-
     // Update drive inputs
     inputs.drivePositionRot = driveSim.getAngularPositionRotations();
     inputs.driveVelocityRotPerSec = driveSim.getAngularVelocityRPM() / 60.0;
+
+    inputs.driveAccelerationRadPerSecSquared = driveSim.getAngularAccelerationRadPerSecSq();
     inputs.appliedDriveVoltage = driveAppliedVolts;
     inputs.driveCurrentAmps = Math.abs(driveSim.getCurrentDrawAmps());
 
     // Update turn inputs
-    inputs.canCoderPositionDeg = new Rotation2d(turnSim.getAngularPositionRad()).getDegrees();
-    inputs.canCoderPositionRot = new Rotation2d(turnSim.getAngularPositionRad()).getRotations();
+    inputs.canCoderPositionRot = turnSim.getAngularPositionRotations();
+    inputs.canCoderPositionDeg = 69; // turnSim.getAngularPositionRotations() * 360;
     inputs.turnAngularVelocityRadPerSec = turnSim.getAngularVelocityRadPerSec();
     inputs.angleAppliedVoltage = turnAppliedVolts;
     inputs.angleCurrentAmps = Math.abs(turnSim.getCurrentDrawAmps());
 
+    // Update temperature inputs (example values, replace with actual simulation data if available)
+    inputs.internalTempDrive = 40.0; // Example value
+    inputs.processorTempDrive = 45.0; // Example value
+    inputs.internalTempAngle = 35.0; // Example value
+    inputs.processorTempAngle = 38.0; // Example value
+
+    // Update odometry inputs
     inputs.odometryTimestamps = new double[] {Timer.getFPGATimestamp()};
-    inputs.odometryDrivePositionsRad = new double[] {inputs.drivePositionRot * 2 * Math.PI};
     inputs.odometryAnglePositions =
-        new Rotation2d[] {Rotation2d.fromRotations(inputs.canCoderPositionRot)};
+        new Rotation2d[] {Rotation2d.fromDegrees(inputs.canCoderPositionDeg)};
+    inputs.odometryDrivePositionsRad = new double[] {driveSim.getAngularPositionRad()};
   }
 
   /** velocity in units/second */
   @Override
   public void setDriveVelocity(Rotation2d angularVelocity) {
     double velocityRadPerSec = angularVelocity.getRadians();
-    driveFFVolts = DRIVE_KS * Math.signum(velocityRadPerSec) + DRIVE_KV * velocityRadPerSec;
+    driveFFVolts = driveFeedforward.calculate(velocityRadPerSec);
     driveController.setSetpoint(velocityRadPerSec);
   }
 
