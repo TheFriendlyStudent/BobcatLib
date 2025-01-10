@@ -12,6 +12,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
       SmartDashboard.putNumber("Elevator Position", motor.getPosition());
+      SmartDashboard.putNumber("Elevator PID Error", motor.getErrorPosition());
       
     }
   /**

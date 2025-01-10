@@ -66,6 +66,10 @@ public class FalconElevatorMotor  {
     return mAngleMotor.getPosition().getValueAsDouble();
   }
 
+  public double getErrorPosition(){
+    return mAngleMotor.getClosedLoopError().getValueAsDouble();
+  }
+
   /**
    * sets the position of the steer motor given the desired rotations.
    *
