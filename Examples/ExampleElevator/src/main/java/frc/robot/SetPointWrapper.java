@@ -108,17 +108,12 @@ public final class SetPointWrapper {
       }
     }
 
-    // If target is not found, return null
-    if (targetIndex == -1) {
-      return null;
-    }
-
     // Check the previous element
-    double previous = (targetIndex > 0) ? setPoints.get(targetIndex - 1) : Double.NaN;
+    double previous = (targetIndex > 0) ? setPoints.get(targetIndex - 1) : 0;
 
     // Check the next element
     double next =
-        (targetIndex < setPoints.size() - 1) ? setPoints.get(targetIndex + 1) : Double.NaN;
+        (targetIndex < setPoints.size() - 1) ? setPoints.get(targetIndex + 1) : 0;
 
     List<Double> surroundingPoints = new ArrayList<Double>() {};
     surroundingPoints.add(previous);

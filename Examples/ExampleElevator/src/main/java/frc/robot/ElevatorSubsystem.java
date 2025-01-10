@@ -7,6 +7,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class ElevatorSubsystem extends SubsystemBase {
     public FalconElevatorMotor motor = new FalconElevatorMotor(2,"CANt_open_file");
     public SetPointWrapper setPoints = new SetPointWrapper("0,10,20,30,40,50");
+    public double lowerLimit = 0;
+    public double upperLimit = 50;
+    public ElevatorSubsystem(){
+      motor.setPosition(0);
+    }
 
     
     @Override
