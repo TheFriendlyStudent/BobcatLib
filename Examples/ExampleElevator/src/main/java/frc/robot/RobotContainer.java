@@ -18,9 +18,10 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem("Elevator");
   public final OI s_Controls = new OI();
+  public final ElevatorSubsystem elevator;
   public RobotContainer() {
+    elevator = new ElevatorSubsystem("Elevator");
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -32,8 +33,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    Command nextSetPoint = Commands.run(()-> elevatorSubsystem.moveElevatorToNext(),elevatorSubsystem);
-    Command stopCommand = Commands.run(()-> elevatorSubsystem.holdPosition(),elevatorSubsystem);
+    Command nextSetPoint = Commands.run(()-> elevator.moveElevatorToNext(),elevator);
+    Command stopCommand = Commands.run(()-> elevator.holdPosition(),elevator);
     s_Controls.dpadForwardBtn.onTrue(nextSetPoint).onFalse(stopCommand);
   }
 
