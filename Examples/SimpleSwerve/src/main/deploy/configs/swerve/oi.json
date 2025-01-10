@@ -1,6 +1,6 @@
 {
   "driver": {
-    "type": "xbox",
+    "type": "ps4",
     "id": 0,
     "deadband": 0.1
   }
