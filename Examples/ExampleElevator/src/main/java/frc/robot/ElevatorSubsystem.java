@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ElevatorSubsystem extends SubsystemBase {
@@ -8,6 +9,11 @@ public class ElevatorSubsystem extends SubsystemBase {
     public SetPointWrapper setPoints = new SetPointWrapper("0,10,20,30,40,50");
 
     
+    @Override
+    public void periodic() {
+      SmartDashboard.putNumber("Elevator Position", motor.getPosition());
+      
+    }
   /**
    * Sets the elevator motor output to a specified percentage.
    *

@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -33,9 +34,14 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    Command raiseElevator = Commands.run(()-> elevator.moveElevator(new Rotation2d(50*360)),elevator);
+    Command lowerElevator = Commands.run(()-> elevator.moveElevator(new Rotation2d(0)),elevator);
     Command nextSetPoint = Commands.run(()-> elevator.moveElevatorToNext(),elevator);
+    Command holdPosition = Commands.run(()-> elevator.holdPosition());
     Command stopCommand = Commands.run(()-> elevator.holdPosition(),elevator);
     s_Controls.robotCentric.whileTrue(nextSetPoint).onFalse(stopCommand);
+    s_Controls.dpadForwardBtn.whileTrue(raiseElevator).onFalse(holdPosition);
+    s_Controls.dpadBackBtn.whileTrue(lowerElevator).onFalse(holdPosition);
   }
 
   /**
