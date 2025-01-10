@@ -4,13 +4,12 @@
 
 package frc.robot;
 
-import BobcatLib.Hardware.Controllers.OI;
-import BobcatLib.Subsystems.Elevators.ElevatorSubsystem;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.Controllers.OI;
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -18,10 +17,11 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  public final OI s_Controls = new OI();
+  public final OI s_Controls;
   public final ElevatorSubsystem elevator;
   public RobotContainer() {
-    elevator = new ElevatorSubsystem("Elevator");
+    s_Controls = new OI();
+    elevator = new ElevatorSubsystem();
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -35,7 +35,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     Command nextSetPoint = Commands.run(()-> elevator.moveElevatorToNext(),elevator);
     Command stopCommand = Commands.run(()-> elevator.holdPosition(),elevator);
-    s_Controls.dpadForwardBtn.onTrue(nextSetPoint).onFalse(stopCommand);
+    s_Controls.robotCentric.whileTrue(nextSetPoint).onFalse(stopCommand);
   }
 
   /**

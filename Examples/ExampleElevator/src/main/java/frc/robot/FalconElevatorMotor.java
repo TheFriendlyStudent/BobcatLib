@@ -1,8 +1,5 @@
 package frc.robot;
 
-import BobcatLib.Logging.Alert;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.ModuleConstants;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleLimitsJson;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -14,20 +11,10 @@ public class FalconElevatorMotor  {
   private TalonFXConfiguration swerveAngleFXConfig = new TalonFXConfiguration();
   /* angle motor control requests */
   private final PositionVoltage anglePosition = new PositionVoltage(0);
-  /** An {@link Alert} for if the CAN ID is greater than 40. */
-  public static final Alert canIdWarning =
-      new Alert(
-          "JSON",
-          "CAN IDs greater than 40 can cause undefined behaviour, please use a CAN ID below 40!",
-          Alert.AlertType.WARNING);
 
 
   public FalconElevatorMotor(
       int id, String canivorename) {
-    if (id >= 40) {
-      canIdWarning.set(true);
-    }
-
     mAngleMotor = new TalonFX(id, canivorename);
     configAngleMotor();
     mAngleMotor.getConfigurator().apply(swerveAngleFXConfig);
