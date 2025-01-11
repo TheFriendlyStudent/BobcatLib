@@ -8,23 +8,16 @@ import java.util.function.DoubleSupplier;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
-import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
-
 import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
-import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
-import edu.wpi.first.wpilibj2.command.RunCommand;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -61,7 +54,6 @@ public class RobotContainer {
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 // Configure the button bindings
                 configureButtonBindings();
-
         }
 
         public void initComand() {
