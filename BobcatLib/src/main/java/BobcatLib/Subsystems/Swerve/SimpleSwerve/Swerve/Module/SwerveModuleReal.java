@@ -166,11 +166,11 @@ public class SwerveModuleReal implements SwerveModuleIO {
     assignAbsEncoder("cancoder", jsonModule.encoder.id);
 
     /* Angle Motor Config */
-    assignSteerMotor("kraken", jsonModule.angle.id);
+    assignSteerMotor(jsonModule.angle.motor_type, jsonModule.angle.id);
     resetToAbsolute();
 
     /* Drive Motor Config */
-    assignDriveMotor("kraken", jsonModule.drive.id);
+    assignDriveMotor(jsonModule.drive.motor_type, jsonModule.drive.id);
   }
 
   public void assignAbsEncoder(String type, int canId) {
