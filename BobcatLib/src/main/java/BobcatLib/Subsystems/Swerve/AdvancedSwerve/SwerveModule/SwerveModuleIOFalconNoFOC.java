@@ -4,29 +4,30 @@ import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.Constants.SwerveConstants.ModuleConfig;
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import com.ctre.phoenix6.controls.PositionTorqueCurrentFOC;
-import com.ctre.phoenix6.controls.VelocityTorqueCurrentFOC;
+import com.ctre.phoenix6.controls.DutyCycleOut;
+import com.ctre.phoenix6.controls.VelocityDutyCycle;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 
-public class SwerveModuleIOFalcon implements SwerveModuleIO {
+public class SwerveModuleIOFalconNoFOC implements SwerveModuleIO {
   private final TalonFX driveMotor;
   private final TalonFX angleMotor;
   private final CANcoder angleEncoder;
 
   private final Rotation2d encoderOffset;
-  private final VelocityTorqueCurrentFOC driveRequest; // TODO should we use torquecurrent
-  private final PositionTorqueCurrentFOC angleRequest;
-
+  private final VelocityDutyCycle driveRequest;
+  private final DutyCycleOut angleRequest;
+  private final PIDController angleController;
   private final SwerveConstants constants;
   private final int index;
 
-  public SwerveModuleIOFalcon(ModuleConfig module, SwerveConstants constants, int index) {
+  public SwerveModuleIOFalconNoFOC(ModuleConfig module, SwerveConstants constants, int index) {
     this.index = index;
     encoderOffset = module.angleOffset;
     this.constants = constants;
@@ -37,9 +38,14 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
     driveMotor = new TalonFX(module.driveMotorID, constants.canbus);
     configDriveMotor();
 
+    angleController =
+        new PIDController(
+            constants.pidConfigs.angleMotorConfig.kP,
+            constants.pidConfigs.angleMotorConfig.kI,
+            constants.pidConfigs.angleMotorConfig.kD);
     // Velocity in rot/sec
-    driveRequest = new VelocityTorqueCurrentFOC(0);
-    angleRequest = new PositionTorqueCurrentFOC(0);
+    driveRequest = new VelocityDutyCycle(0);
+    angleRequest = new DutyCycleOut(0);
   }
 
   public void updateInputs(SwerveModuleIOInputs inputs) {
@@ -95,7 +101,10 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
    */
   @Override
   public void setAnglePosition(Rotation2d angle) {
-    angleMotor.setControl(angleRequest.withPosition(angle.getRotations()));
+    double output =
+        angleController.calculate(
+            angleEncoder.getAbsolutePosition().getValueAsDouble(), angle.getRotations());
+    angleMotor.setControl(angleRequest.withOutput(output));
   }
 
   /** Stops the angle motor */

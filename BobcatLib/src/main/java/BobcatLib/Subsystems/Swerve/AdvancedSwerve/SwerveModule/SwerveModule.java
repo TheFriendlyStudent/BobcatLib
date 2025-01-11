@@ -61,9 +61,7 @@ public class SwerveModule {
             : state.angle;
 
     io.setAnglePosition(angle);
-    Logger.recordOutput(
-        "Swerve/Debug/Angle" + Integer.toString(index),
-        angle.getDegrees());
+    Logger.recordOutput("Swerve/Debug/Angle" + Integer.toString(index), angle.getDegrees());
     io.setDriveVelocity(
         Rotation2d.fromRotations(
             state.speedMetersPerSecond
@@ -80,6 +78,10 @@ public class SwerveModule {
   public void stop() {
     io.stopAngle();
     io.stopDrive();
+  }
+
+  public void set90() {
+    io.setAnglePosition(Rotation2d.kCCW_90deg);
   }
 
   /**

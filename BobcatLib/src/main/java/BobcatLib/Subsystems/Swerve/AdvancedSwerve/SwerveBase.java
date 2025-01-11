@@ -171,10 +171,10 @@ public class SwerveBase extends SubsystemBase {
       RobotConfig config) {
     return new SwerveBase(
         new GyroIOPigeon2(constants),
-        new SwerveModuleIOFalcon(constants.moduleConfigs.frontLeft, constants),
-        new SwerveModuleIOFalcon(constants.moduleConfigs.frontRight, constants),
-        new SwerveModuleIOFalcon(constants.moduleConfigs.backLeft, constants),
-        new SwerveModuleIOFalcon(constants.moduleConfigs.backRight, constants),
+        new SwerveModuleIOFalcon(constants.moduleConfigs.frontLeft, constants, 0),
+        new SwerveModuleIOFalcon(constants.moduleConfigs.frontRight, constants, 1),
+        new SwerveModuleIOFalcon(constants.moduleConfigs.backLeft, constants, 2),
+        new SwerveModuleIOFalcon(constants.moduleConfigs.backRight, constants, 3),
         0.2,
         filterTags,
         standardDeviations.toMatrix()[0],
@@ -465,7 +465,14 @@ public class SwerveBase extends SubsystemBase {
     }
 
     Logger.recordOutput("Swerve/Debug/DesiredStates", swerveModuleStates);
+
     Logger.recordOutput("Swerve/RealSwerveModuleStates", getModuleStates());
+  }
+
+  public void set90() {
+    for (SwerveModule mod : modules) {
+      mod.set90();
+    }
   }
 
   /**
