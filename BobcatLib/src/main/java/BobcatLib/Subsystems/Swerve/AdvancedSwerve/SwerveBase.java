@@ -8,7 +8,7 @@ import BobcatLib.Subsystems.Swerve.AdvancedSwerve.PoseEstimation.AdvancedSwerveP
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.StandardDeviations.SwerveStdDevs;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModule;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIO;
-import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIOFalconNoFOC;
+import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIOFalcon;
 import BobcatLib.Subsystems.Swerve.AdvancedSwerve.SwerveModule.SwerveModuleIOSim;
 import BobcatLib.Utilities.DSUtil;
 import BobcatLib.Utilities.RotationUtil;
@@ -171,10 +171,10 @@ public class SwerveBase extends SubsystemBase {
       RobotConfig config) {
     return new SwerveBase(
         new GyroIOPigeon2(constants),
-        new SwerveModuleIOFalconNoFOC(constants.moduleConfigs.frontLeft, constants, 0),
-        new SwerveModuleIOFalconNoFOC(constants.moduleConfigs.frontRight, constants, 1),
-        new SwerveModuleIOFalconNoFOC(constants.moduleConfigs.backLeft, constants, 2),
-        new SwerveModuleIOFalconNoFOC(constants.moduleConfigs.backRight, constants, 3),
+        new SwerveModuleIOFalcon(constants.moduleConfigs.frontLeft, constants, 0),
+        new SwerveModuleIOFalcon(constants.moduleConfigs.frontRight, constants, 1),
+        new SwerveModuleIOFalcon(constants.moduleConfigs.backLeft, constants, 2),
+        new SwerveModuleIOFalcon(constants.moduleConfigs.backRight, constants, 3),
         0.2,
         filterTags,
         standardDeviations.toMatrix()[0],

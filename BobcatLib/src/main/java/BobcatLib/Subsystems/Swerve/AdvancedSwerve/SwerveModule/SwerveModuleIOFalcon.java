@@ -6,6 +6,7 @@ import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.PositionTorqueCurrentFOC;
 import com.ctre.phoenix6.controls.VelocityTorqueCurrentFOC;
+import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
@@ -22,6 +23,7 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
   private final Rotation2d encoderOffset;
   private final VelocityTorqueCurrentFOC driveRequest; // TODO should we use torquecurrent
   private final PositionTorqueCurrentFOC angleRequest;
+  private final VelocityVoltage openLoopRequest;
 
   private final SwerveConstants constants;
   private final int index;
@@ -40,6 +42,7 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
     // Velocity in rot/sec
     driveRequest = new VelocityTorqueCurrentFOC(0);
     angleRequest = new PositionTorqueCurrentFOC(0);
+    openLoopRequest = new VelocityVoltage(0);
   }
 
   public void updateInputs(SwerveModuleIOInputs inputs) {
@@ -58,8 +61,8 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
                         .getRadians()))
             .getRotations();
     inputs.canCoderPositionDeg =
-        Rotation2d.fromRotations(angleEncoder.getAbsolutePosition().getValueAsDouble())
-            .getDegrees(); // Used only for shuffleboard to display values to get offsets
+        angleEncoder.getAbsolutePosition().getValueAsDouble()
+            * 360; // Used only for shuffleboard to display values to get offsets
   }
 
   /**
@@ -71,6 +74,9 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
   public void setDriveVelocity(Rotation2d velocityRadPerSec) {
     driveMotor.setControl(driveRequest.withVelocity(velocityRadPerSec.getRotations()));
   }
+
+  /** TODO WIP */
+  public void setVelocityOpenloop() {}
 
   /** Stops the drive motor */
   @Override
@@ -202,10 +208,12 @@ public class SwerveModuleIOFalcon implements SwerveModuleIO {
 
     config.MotorOutput.Inverted = constants.angleInverted;
     config.MotorOutput.NeutralMode = constants.driveNeutralMode;
+    // config.ClosedLoopGeneral.ContinuousWrap = true; TODO should this be here
 
     config.Feedback.FeedbackRemoteSensorID = angleEncoder.getDeviceID();
     config.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder;
-
+    config.Feedback.SensorToMechanismRatio = 1.0;
+    config.Feedback.RotorToSensorRatio = 6.12;
     angleMotor.getConfigurator().apply(config);
   }
 

@@ -63,13 +63,11 @@ public class SwerveModule {
     io.setAnglePosition(angle);
     Logger.recordOutput("Swerve/Debug/Angle" + Integer.toString(index), angle.getDegrees());
     io.setDriveVelocity(
-        Rotation2d.fromRotations(
-            state.speedMetersPerSecond
-                / (constants.kinematicsConstants.wheelCircumference * 2 * Math.PI)));
+        Rotation2d.fromRadians(
+            state.speedMetersPerSecond / (constants.kinematicsConstants.wheelCircumference)));
     Logger.recordOutput(
-        "Swerve/Debug/DriveVelocity" + Integer.toString(index),
-        state.speedMetersPerSecond
-            / (constants.kinematicsConstants.wheelCircumference * 2 * Math.PI));
+        "Swerve/Debug/DriveVelocityRadPerSec" + Integer.toString(index),
+        state.speedMetersPerSecond / (constants.kinematicsConstants.wheelCircumference));
 
     return state;
   }

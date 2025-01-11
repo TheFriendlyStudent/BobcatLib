@@ -103,7 +103,8 @@ public class SwerveModuleIOFalconNoFOC implements SwerveModuleIO {
   public void setAnglePosition(Rotation2d angle) {
     double output =
         angleController.calculate(
-            angleEncoder.getAbsolutePosition().getValueAsDouble(), angle.getRotations());
+            angleEncoder.getAbsolutePosition().getValueAsDouble() * 2 * Math.PI,
+            angle.getRadians());
     angleMotor.setControl(angleRequest.withOutput(output));
   }
 
