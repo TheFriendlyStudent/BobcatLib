@@ -16,7 +16,8 @@
     "offset": 0.015,
     "inverted": false
   },
-  "type": "sds_mk4",
+  "manufacturer":"sds",
+  "type": "mk4",
   "level": "L2",
   "wheelCircumference": 4.00,
   "angleCurrentLimit": 35,

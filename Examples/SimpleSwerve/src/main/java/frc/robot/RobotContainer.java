@@ -31,7 +31,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
         /* Subsystems */
         public final OI s_Controls = new OI(); // Interfaces with popular controllers and input devices
-        public final SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve Library implementation.
+        public final SwerveDrive s_Swerve;
         private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose an Auto!
 
         /**
@@ -39,6 +39,8 @@ public class RobotContainer {
          */
         public RobotContainer() {
                 
+                s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve Library implementation.
+
 
                 // SmartDashboard.putNumber("SpeedLimit", 1);
 
@@ -53,7 +55,10 @@ public class RobotContainer {
                  */
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 // Configure the button bindings
-                configureButtonBindings();
+                configureButtonBindings(); 
+                
+
+
         }
 
         public void initComand() {
