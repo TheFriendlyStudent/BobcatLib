@@ -128,13 +128,22 @@ public class SwerveModuleReal implements SwerveModuleIO {
 
   public void assignSteerMotor(String type, int canId) {
     switch (type) {
-      case "kraken":
+      case "KrakenX60":
         mAngleMotor =
             new KrakenSteerMotor(canId, chosenModule, jsonModule.angle.canbus, swerveLimits);
         break;
-      case "falcon":
+      case "Falcon500":
         mAngleMotor =
             new FalconSteerMotor(canId, chosenModule, jsonModule.angle.canbus, swerveLimits);
+        break;
+      case "Neo550":
+        mAngleMotor = new Neo550SteerMotor(canId, chosenModule, swerveLimits);
+        break;
+      case "Neo":
+        mAngleMotor = new NeoSteerMotor(canId, chosenModule, swerveLimits);
+        break;
+      case "Vortex":
+        mAngleMotor = new VortexSteerMotor(canId, chosenModule, swerveLimits);
         break;
       default:
         mAngleMotor =
@@ -144,13 +153,19 @@ public class SwerveModuleReal implements SwerveModuleIO {
 
   public void assignDriveMotor(String type, int canId) {
     switch (type) {
-      case "kraken":
+      case "KrakenX60":
         mDriveMotor =
             new KrakenDriveMotor(canId, chosenModule, jsonModule.drive.canbus, swerveLimits);
         break;
-      case "falcon":
+      case "Falcon500":
         mDriveMotor =
             new FalconDriveMotor(canId, chosenModule, jsonModule.drive.canbus, swerveLimits);
+        break;
+      case "Neo":
+        mDriveMotor = new NeoDriveMotor(canId, chosenModule, swerveLimits);
+        break;
+      case "Vortex":
+        mDriveMotor = new VortexDriveMotor(canId, chosenModule, swerveLimits);
         break;
       default:
         mDriveMotor =
@@ -301,6 +316,7 @@ public class SwerveModuleReal implements SwerveModuleIO {
   public int getModuleNumber() {
     return moduleNumber;
   }
+
   /** Gets the Desired State of the module */
   public SwerveModuleState getDesiredState() {
     return desiredState;

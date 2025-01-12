@@ -1,11 +1,11 @@
 {
   "drive": {
-    "motor_type": "kraken",
+    "motor_type": "KrakenX60",
     "id": 1,
     "canbus": "CANt_open_file"
   },
   "angle": {
-    "motor_type": "kraken",
+    "motor_type": "KrakenX60",
     "id": 2,
     "canbus": "CANt_open_file",
     "inverted": false
@@ -14,11 +14,11 @@
     "type": "cancoder",
     "id": 1,
     "canbus": "CANt_open_file",
-    "offset": 0.343,
+    "offset": 0.327,
     "inverted": false
   },
   "manufacturer":"sds",
-  "type": "mk4",
+  "type": "mk4i",
   "level": "L2",
   "wheelCircumference": 4.00,
   "angleCurrentLimit": 35,
