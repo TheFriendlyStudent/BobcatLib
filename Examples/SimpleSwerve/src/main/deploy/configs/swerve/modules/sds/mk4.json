@@ -1,8 +1,7 @@
 {
     "Falcon500": {
         "wheelDiameter": 4,
-        "angleGearRatio": 1,
-        "driveGearRatio": 12.8,
+        "angleGearRatio": 12.8,
         "angleKP": 100.0,
         "angleKI": 0.0,
         "angleKD": 0.0,
@@ -12,8 +11,7 @@
     },
     "KrakenX60": {
         "wheelDiameter": 4,
-        "angleGearRatio": 1,
-        "driveGearRatio": 12.8,
+        "angleGearRatio": 12.8,
         "angleKP": 100.0,
         "angleKI": 0.0,
         "angleKD": 0.0,
@@ -23,8 +21,7 @@
     },
     "Neo": {
         "wheelDiameter": 4,
-        "angleGearRatio": 1,
-        "driveGearRatio": 12.8,
+        "angleGearRatio": 12.8,
         "angleKP": 0.1,
         "angleKI": 0.0,
         "angleKD": 0.0,
