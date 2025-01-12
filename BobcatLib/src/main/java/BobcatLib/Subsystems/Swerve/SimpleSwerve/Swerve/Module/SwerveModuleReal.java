@@ -71,86 +71,90 @@ public class SwerveModuleReal implements SwerveModuleIO {
     inputs.angle = state.angle;
   }
 
+  public void configSDSModules(String Manufacturer, String type, String motorType) {}
+
   public void configModule() {
     this.angleOffset = Rotation2d.fromRotations(jsonModule.encoder.offset);
     CotsModuleSwerveConstants cotsModule;
-    switch (jsonModule.type) {
-      case "sds_mk4_L1_Falcon":
+    String module_type =
+        jsonModule.type + "_" + jsonModule.level + "_" + jsonModule.drive.motor_type;
+    switch (module_type) {
+      case "sds_mk4_L1_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.Falcon500(
                 CotsModuleSwerveConstants.SDS.MK4.driveRatios.L1);
         break;
-      case "sds_mk4_L2_Falcon":
+      case "sds_mk4_L2_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.Falcon500(
                 CotsModuleSwerveConstants.SDS.MK4.driveRatios.L2);
         break;
-      case "sds_mk4_L3_Falcon":
+      case "sds_mk4_L3_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.Falcon500(
                 CotsModuleSwerveConstants.SDS.MK4.driveRatios.L3);
         break;
-      case "sds_mk4_L4_Falcon":
+      case "sds_mk4_L4_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.Falcon500(
                 CotsModuleSwerveConstants.SDS.MK4.driveRatios.L4);
         break;
-      case "sds_mk4i_L1_Falcon":
+      case "sds_mk4i_L1_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4i.Falcon500(
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L1);
         break;
-      case "sds_mk4i_L2_Falcon":
+      case "sds_mk4i_L2_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4i.Falcon500(
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L2);
         break;
-      case "sds_mk4i_L3_Falcon":
+      case "sds_mk4i_L3_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4i.Falcon500(
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L3);
         break;
-      case "sds_mk4i_L4_Falcon":
+      case "sds_mk4i_L4_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4i.Falcon500(
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L4);
         break;
-      case "sds_mk4_L1_Kraken":
+      case "sds_mk4_L1_kraken":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.KrakenX60(
                 CotsModuleSwerveConstants.SDS.MK4.driveRatios.L1);
         break;
-      case "sds_mk4_L2_Kraken":
+      case "sds_mk4_L2_kraken":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.KrakenX60(
                 CotsModuleSwerveConstants.SDS.MK4.driveRatios.L2);
         break;
-      case "sds_mk4_L3_Kraken":
+      case "sds_mk4_L3_kraken":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.KrakenX60(
                 CotsModuleSwerveConstants.SDS.MK4.driveRatios.L3);
         break;
-      case "sds_mk4_L4_Kraken":
+      case "sds_mk4_L4_kraken":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.KrakenX60(
                 CotsModuleSwerveConstants.SDS.MK4.driveRatios.L4);
         break;
-      case "sds_mk4i_L1_Kraken":
+      case "sds_mk4i_L1_kraken":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4i.KrakenX60(
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L1);
         break;
-      case "sds_mk4i_L2_Kraken":
+      case "sds_mk4i_L2_kraken":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4i.KrakenX60(
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L2);
         break;
-      case "sds_mk4i_L3_Kraken":
+      case "sds_mk4i_L3_kraken":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4i.KrakenX60(
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L3);
         break;
-      case "sds_mk4i_L4_Kraken":
+      case "sds_mk4i_L4_kraken":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4i.KrakenX60(
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L4);

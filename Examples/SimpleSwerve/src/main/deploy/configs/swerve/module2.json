@@ -17,7 +17,7 @@
     "inverted": false
   },
   "type": "sds_mk4",
-  "level": "sds_mk4_L2_Kraken",
+  "level": "L2",
   "wheelCircumference": 4.00,
   "angleCurrentLimit": 35,
   "angleCurrentThreshold": 60,
