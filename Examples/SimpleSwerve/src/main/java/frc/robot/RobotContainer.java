@@ -53,7 +53,8 @@ public class RobotContainer {
                  */
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 // Configure the button bindings
-                configureButtonBindings();
+                configureButtonBindings();                
+
         }
 
         public void initComand() {

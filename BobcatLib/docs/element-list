@@ -30,4 +30,5 @@ BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math
 BobcatLib.Subsystems.Swerve.Utility
+BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator
 BobcatLib.Utilities
