@@ -3,8 +3,8 @@
   <groupId>BobcatLib</groupId>
   <artifactId>BobcatLib-cpp</artifactId>
   <versioning>
-    <latest>test10</latest>
-    <release>test10</release>
+    <latest>test11</latest>
+    <release>test11</release>
     <versions>
       <version>test</version>
       <version>2025.0.1</version>
@@ -28,7 +28,8 @@
       <version>test8</version>
       <version>test9</version>
       <version>test10</version>
+      <version>test11</version>
     </versions>
-    <lastUpdated>20250112005900</lastUpdated>
+    <lastUpdated>20250112010347</lastUpdated>
   </versioning>
 </metadata>

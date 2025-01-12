@@ -2,7 +2,7 @@ apply plugin: 'maven-publish'
 
 ext.licenseFile = files("$rootDir/LICENSE.txt")
 
-def pubVersion = System.getenv("releaseVersion") ?: "test10"
+def pubVersion = System.getenv("releaseVersion") ?: "test11"
 
 def releasesRepoUrl = "BobcatLib/repos/"
 
