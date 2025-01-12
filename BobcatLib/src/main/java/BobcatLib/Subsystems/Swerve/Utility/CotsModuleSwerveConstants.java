@@ -187,6 +187,7 @@ public class CotsModuleSwerveConstants {
             angleMotorInvert,
             cancoderInvert);
       }
+
       /** Drive Ratio */
       public static final class driveRatios {
         /** WCP SwerveX Standard X1 - 10 Tooth - (7.85 : 1) */
@@ -343,6 +344,7 @@ public class CotsModuleSwerveConstants {
             angleMotorInvert,
             cancoderInvert);
       }
+
       /** Drive Gear Ratio */
       public static final class driveRatios {
         /** WCP SwerveX Flipped X1 - 10 Tooth - (8.10 : 1) */
@@ -499,6 +501,7 @@ public class CotsModuleSwerveConstants {
             angleMotorInvert,
             cancoderInvert);
       }
+
       /** Drive Gear Ratio */
       public static final class driveRatios {
         /** WCP SwerveX2St X1 - 15 Tooth - (6 : 1) */
@@ -655,6 +658,7 @@ public class CotsModuleSwerveConstants {
             angleMotorInvert,
             cancoderInvert);
       }
+
       /** Drive Gear Ratio */
       public static final class driveRatios {
         /** WCP SwerveX2S X1 - 15 Tooth - (6 : 1) */
@@ -811,6 +815,7 @@ public class CotsModuleSwerveConstants {
             angleMotorInvert,
             cancoderInvert);
       }
+
       /** Drive Gear Ratio */
       public static final class driveRatios {
         /** WCP SwerveX2t X1 - 10 Tooth - (7.67 : 1) */
@@ -976,6 +981,173 @@ public class CotsModuleSwerveConstants {
             angleMotorInvert,
             cancoderInvert);
       }
+
+      /** Drive Gear Ratio */
+      public static final class driveRatios {
+        /** WCP SwerveX2t X1 - 10 Tooth - (7.67 : 1) */
+        public static final double X1_10 = (7.67 / 1.0);
+
+        /** WCP SwerveX2t X1 - 11 Tooth - (6.98 : 1) */
+        public static final double X1_11 = (6.98 / 1.0);
+
+        /** WCP SwerveX2t X1 - 12 Tooth - (6.39 : 1) */
+        public static final double X1_12 = (6.39 / 1.0);
+
+        /** WCP SwerveX2t X2 - 10 Tooth - (6.82 : 1) */
+        public static final double X2_10 = (6.82 / 1.0);
+
+        /** WCP SwerveX2t X2 - 11 Tooth - (6.20 : 1) */
+        public static final double X2_11 = (6.20 / 1.0);
+
+        /** WCP SwerveX2t X2 - 12 Tooth - (5.68 : 1) */
+        public static final double X2_12 = (5.68 / 1.0);
+
+        /** WCP SwerveX2t X3 - 10 Tooth - (6.48 : 1) */
+        public static final double X3_10 = (6.48 / 1.0);
+
+        /** WCP SwerveX2t X3 - 11 Tooth - (5.89 : 1) */
+        public static final double X3_11 = (5.89 / 1.0);
+
+        /** WCP SwerveX2t X3 - 12 Tooth - (5.40 : 1) */
+        public static final double X3_12 = (3.71 / 1.0);
+
+        /** WCP SwerveX2t X4 - 10 Tooth - (5.67 : 1) */
+        public static final double X4_10 = (5.67 / 1.0);
+
+        /** WCP SwerveX2t X4 - 11 Tooth - (5.15 : 1) */
+        public static final double X4_11 = (5.15 / 1.0);
+
+        /** WCP SwerveX2t X4 - 12 Tooth - (4.73 : 1) */
+        public static final double X4_12 = (4.73 / 1.0);
+      }
+    }
+
+    /** West Coast Products - SwerveX2i */
+    public static final class SwerveX2i {
+      /**
+       * West Coast Products -SwerveX2i (Falcon 500)
+       *
+       * @param driveGearRatio Drive Gear Ratio
+       * @return COTSSwerveConstants
+       */
+      public static final CotsModuleSwerveConstants Falcon500(double driveGearRatio) {
+        double wheelDiameter = Units.inchesToMeters(3.5);
+
+        /** (12.1) : 1 */
+        double angleGearRatio = (12.1 / 1.0);
+
+        double angleKP = 1.0;
+        double angleKI = 0.0;
+        double angleKD = 0.0;
+
+        InvertedWrapper driveMotorInvert = new InvertedWrapper(false);
+        InvertedWrapper angleMotorInvert = new InvertedWrapper(true);
+        SensorDirectionWrapper cancoderInvert = new SensorDirectionWrapper(false);
+        return new CotsModuleSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            driveMotorInvert,
+            angleMotorInvert,
+            cancoderInvert);
+      }
+
+      /**
+       * West Coast Products - SwerveX2i (Kraken X60)
+       *
+       * @param driveGearRatio Drive Gear Ratio
+       * @return COTSSwerveConstants
+       */
+      public static final CotsModuleSwerveConstants KrakenX60(double driveGearRatio) {
+        double wheelDiameter = Units.inchesToMeters(3.5);
+
+        /** (12.1) : 1 */
+        double angleGearRatio = (12.1 / 1.0);
+
+        double angleKP = 1.0;
+        double angleKI = 0.0;
+        double angleKD = 0.0;
+
+        InvertedWrapper driveMotorInvert = new InvertedWrapper(false);
+        InvertedWrapper angleMotorInvert = new InvertedWrapper(true);
+        SensorDirectionWrapper cancoderInvert = new SensorDirectionWrapper(false);
+        return new CotsModuleSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            driveMotorInvert,
+            angleMotorInvert,
+            cancoderInvert);
+      }
+
+      /**
+       * West Coast Products - SwerveX2 (Neo)
+       *
+       * @param driveGearRatio Drive Gear Ratio
+       * @return COTSSwerveConstants
+       */
+      public static final CotsModuleSwerveConstants Neo(double driveGearRatio) {
+        double wheelDiameter = Units.inchesToMeters(3.5);
+
+        /** (12.1) : 1 */
+        double angleGearRatio = (12.1 / 1.0);
+
+        double angleKP = 0.1;
+        double angleKI = 0.0;
+        double angleKD = 0.0;
+
+        InvertedWrapper driveMotorInvert = new InvertedWrapper(false);
+        InvertedWrapper angleMotorInvert = new InvertedWrapper(true);
+        SensorDirectionWrapper cancoderInvert = new SensorDirectionWrapper(false);
+        return new CotsModuleSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            driveMotorInvert,
+            angleMotorInvert,
+            cancoderInvert);
+      }
+
+      /**
+       * West Coast Products - SwerveX2i (Vortex)
+       *
+       * @param driveGearRatio Drive Gear Ratio
+       * @return COTSSwerveConstants
+       */
+      public static final CotsModuleSwerveConstants Vortex(double driveGearRatio) {
+        double wheelDiameter = Units.inchesToMeters(3.5);
+
+        /** (12.1) : 1 */
+        double angleGearRatio = (12.1 / 1.0);
+
+        double angleKP = 0.1;
+        double angleKI = 0.0;
+        double angleKD = 0.0;
+
+        InvertedWrapper driveMotorInvert = new InvertedWrapper(false);
+        InvertedWrapper angleMotorInvert = new InvertedWrapper(true);
+        SensorDirectionWrapper cancoderInvert = new SensorDirectionWrapper(false);
+        return new CotsModuleSwerveConstants(
+            wheelDiameter,
+            angleGearRatio,
+            driveGearRatio,
+            angleKP,
+            angleKI,
+            angleKD,
+            driveMotorInvert,
+            angleMotorInvert,
+            cancoderInvert);
+      }
+
       /** Drive Gear Ratio */
       public static final class driveRatios {
         /** WCP SwerveX2t X1 - 10 Tooth - (7.67 : 1) */
@@ -1144,6 +1316,7 @@ public class CotsModuleSwerveConstants {
             angleMotorInvert,
             cancoderInvert);
       }
+
       /** Drive Ratios */
       public static final class driveRatios {
         /** SDS MK3 - (8.16 : 1) */
@@ -1278,6 +1451,7 @@ public class CotsModuleSwerveConstants {
             angleMotorInvert,
             cancoderInvert);
       }
+
       /** Drive Ratios */
       public static final class driveRatios {
         /** SDS MK4 - (8.14 : 1) */

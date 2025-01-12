@@ -59,7 +59,12 @@ public class SwerveModuleReal implements SwerveModuleIO {
     rawAbsoluteAngleName = "Module[" + moduleNumber + "] Raw Absolute Encoder";
     rawAngleName = "Module[" + moduleNumber + "] Raw Angle Encoder";
     rawDriveName = "Module[" + moduleNumber + "] Raw Drive Encoder";
-    configModule();
+    try {
+      configModule();
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
   public void updateInputs(SwerveModuleIOInputs inputs) {
@@ -71,14 +76,132 @@ public class SwerveModuleReal implements SwerveModuleIO {
     inputs.angle = state.angle;
   }
 
-  public void configSDSModules(String Manufacturer, String type, String motorType) {}
-
-  public void configModule() {
+  public void configModule() throws Exception {
     this.angleOffset = Rotation2d.fromRotations(jsonModule.encoder.offset);
     CotsModuleSwerveConstants cotsModule;
     String module_type =
         jsonModule.type + "_" + jsonModule.level + "_" + jsonModule.drive.motor_type;
     switch (module_type) {
+      case "wcp_swervex2i_X1_10_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X1_10);
+        break;
+      case "wcp_swervex2i_X1_11_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X1_11);
+        break;
+      case "wcp_swervex2i_X1_12_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X1_12);
+        break;
+      case "wcp_swervex2i_X2_10_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X2_10);
+        break;
+      case "wcp_swervex2i_X2_11_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X2_11);
+        break;
+      case "wcp_swervex2i_X2_12_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X2_12);
+        break;
+      case "wcp_swervex2i_X3_10_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X3_10);
+        break;
+      case "wcp_swervex2i_X3_11_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X3_11);
+        break;
+      case "wcp_swervex2i_X3_12_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X3_12);
+        break;
+      case "wcp_swervex2i_X4_10_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X4_10);
+        break;
+      case "wcp_swervex2i_X4_11_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X4_11);
+        break;
+      case "wcp_swervex2i_X4_12_falcon":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.Falcon500(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X4_12);
+        break;
+      case "wcp_swervex2i_X1_10_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X1_10);
+        break;
+      case "wcp_swervex2i_X1_11_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X1_11);
+        break;
+      case "wcp_swervex2i_X1_12_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X1_12);
+        break;
+      case "wcp_swervex2i_X2_10_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X2_10);
+        break;
+      case "wcp_swervex2i_X2_11_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X2_11);
+        break;
+      case "wcp_swervex2i_X2_12_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X2_12);
+        break;
+      case "wcp_swervex2i_X3_10_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X3_10);
+        break;
+      case "wcp_swervex2i_X3_11_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X3_11);
+        break;
+      case "wcp_swervex2i_X3_12_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X3_12);
+        break;
+      case "wcp_swervex2i_X4_10_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X4_10);
+        break;
+      case "wcp_swervex2i_X4_11_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X4_11);
+        break;
+      case "wcp_swervex2i_X4_12_kraken":
+        cotsModule =
+            CotsModuleSwerveConstants.WCP.SwerveX2i.KrakenX60(
+                CotsModuleSwerveConstants.WCP.SwerveX2i.driveRatios.X4_12);
+        break;
       case "sds_mk4_L1_falcon":
         cotsModule =
             CotsModuleSwerveConstants.SDS.MK4.Falcon500(
@@ -160,9 +283,7 @@ public class SwerveModuleReal implements SwerveModuleIO {
                 CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L4);
         break;
       default:
-        cotsModule =
-            CotsModuleSwerveConstants.SDS.MK4i.KrakenX60(
-                CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L2);
+        throw new Exception("Module Config not found");
     }
     chosenModule = new ModuleConstants(cotsModule, jsonModule);
 
