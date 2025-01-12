@@ -12,12 +12,14 @@ import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
+import BobcatLib.Subsystems.Swerve.Utility.CotsModuleSwerveConstants;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.UnifiedModuleConfigurator.CotsModuleObject;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -31,7 +33,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
         /* Subsystems */
         public final OI s_Controls = new OI(); // Interfaces with popular controllers and input devices
-        public final SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve Library implementation.
+        public final SwerveDrive s_Swerve;
         private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose an Auto!
 
         /**
@@ -39,6 +41,8 @@ public class RobotContainer {
          */
         public RobotContainer() {
                 
+                s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve Library implementation.
+
 
                 // SmartDashboard.putNumber("SpeedLimit", 1);
 
@@ -53,7 +57,9 @@ public class RobotContainer {
                  */
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 // Configure the button bindings
-                configureButtonBindings();                
+                configureButtonBindings(); 
+                
+
 
         }
 

@@ -1,4 +1,4 @@
-package BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator;
+package frc.robot.UnifiedModuleConfigurator;
 
 public class LoadedConfig {
   public class ConfigFileJson {

@@ -1,13 +1,13 @@
-package BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator;
+package frc.robot.UnifiedModuleConfigurator;
 
 import BobcatLib.Hardware.Motors.SensorHelpers.InvertedWrapper;
 import BobcatLib.Hardware.Motors.SensorHelpers.SensorDirectionWrapper;
 import BobcatLib.Subsystems.Swerve.Utility.CotsModuleSwerveConstants;
-import BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator.LoadedConfig.ConfigFileJson;
-import BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator.LoadedConfig.levels;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.wpi.first.wpilibj.Filesystem;
+import frc.robot.UnifiedModuleConfigurator.LoadedConfig.ConfigFileJson;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
