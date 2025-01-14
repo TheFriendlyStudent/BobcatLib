@@ -8,37 +8,39 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * A wrapper class for managing an immutable, sorted list of set points (doubles) and providing
+ * A wrapper class for managing an immutable, sorted list of set points
+ * (doubles) and providing
  * utility methods.
  */
 public final class SetPointWrapper {
   private final List<Double> setPoints;
 
   /**
-   * Constructs a SetPointWrapper from a comma-separated string of points. The points are parsed,
+   * Constructs a SetPointWrapper from a comma-separated string of points. The
+   * points are parsed,
    * sorted, and stored in an immutable list.
    *
    * @param points a comma-separated string of double values.
-   * @throws NumberFormatException if any value in the string cannot be parsed as a double.
+   * @throws NumberFormatException if any value in the string cannot be parsed as
+   *                               a double.
    */
   public SetPointWrapper(String points) {
-    this.setPoints =
-        Collections.unmodifiableList(
-            Arrays.stream(points.split(","))
-                .map(Double::parseDouble)
-                .sorted()
-                .collect(Collectors.toList()));
+    this.setPoints = Collections.unmodifiableList(
+        Arrays.stream(points.split(","))
+            .map(Double::parseDouble)
+            .sorted()
+            .collect(Collectors.toList()));
   }
 
   /**
-   * Constructs a SetPointWrapper from a list of points. The list is copied, sorted, and stored in
+   * Constructs a SetPointWrapper from a list of points. The list is copied,
+   * sorted, and stored in
    * an immutable list.
    *
    * @param points a list of double values.
    */
   public SetPointWrapper(List<Double> points) {
-    this.setPoints =
-        Collections.unmodifiableList(points.stream().sorted().collect(Collectors.toList()));
+    this.setPoints = Collections.unmodifiableList(points.stream().sorted().collect(Collectors.toList()));
   }
 
   /**
@@ -53,39 +55,67 @@ public final class SetPointWrapper {
   }
 
   /**
-   * Retrieves the next set point relative to the given index. If the index is the last one, it
+   * Retrieves the next set point relative to the given index. If the index is the
+   * last one, it
    * returns the same set point.
    *
+   * Has logic to return last if logic index is last position
+   * 
    * @param index the current index.
-   * @return the next set point or the current set point if at the end of the list.
+   * @return the next set point or the current set point if at the end of the
+   *         list.
    */
   public double next(int index) {
-    return setPoints.get(Math.min(index + 1, setPoints.size() - 1));
+    int max = setPoints.size() - 1;
+    if (index == max) {
+      return setPoints.get(max);
+    }
+    return setPoints.get(index + 1);
   }
 
   /**
-   * Retrieves the previous set point relative to the given index. If the index is the first one, it
+   * Retrieves the previous set point relative to the given index. If the index is
+   * the first one, it
    * returns the same set point.
+   * 
+   * Has logic to return first if index is 0
    *
    * @param index the current index.
-   * @return the previous set point or the current set point if at the beginning of the list.
+   * @return the previous set point or the current set point if at the beginning
+   *         of the list.
    */
   public double previous(int index) {
-    return setPoints.get(Math.max(index - 1, 0));
+    if (index == 0) {
+      return setPoints.get(0);
+    }
+    return setPoints.get(index - 1);
   }
 
   /**
-   * Finds the nearest set point that is greater than or equal to the given value. If no such set
+   * Finds the nearest set point that is greater than or equal to the given value.
+   * If no such set
    * point exists, returns the last set point.
    *
    * @param current the value to compare against the set points.
-   * @return the nearest set point that is greater than or equal to the given value.
+   * @return the nearest set point that is greater than or equal to the given
+   *         value.
    */
   public double findNearestSetPoint(double current) {
-    return setPoints.stream()
-        .filter(e -> e >= current)
-        .findFirst()
-        .orElse(setPoints.get(setPoints.size() - 1));
+    if (setPoints == null || setPoints.isEmpty()) {
+      throw new IllegalArgumentException("The list cannot be null or empty.");
+    }
+
+    Double nearest = null;
+    double smallestDifference = Double.MAX_VALUE;
+
+    for (Double number : setPoints) {
+      double difference = Math.abs(number - current);
+      if (difference < smallestDifference) {
+        smallestDifference = difference;
+        nearest = number;
+      }
+    }
+    return nearest;
   }
 
   /**
@@ -97,27 +127,39 @@ public final class SetPointWrapper {
     return setPoints;
   }
 
+  /**
+   * Retrieves the points immediately surrounding the closest set point to the
+   * given rotation.
+   * 
+   * This method determines the closest set point to the specified rotation and
+   * finds the
+   * previous and next points in the list, wrapping around if necessary.
+   *
+   * @param pos The rotation position represented as a {@code Rotation2d} object.
+   * @return A list of two {@code Double} values:
+   *         the previous point and the next point surrounding the closest set
+   *         point.
+   */
   public List<Double> getSurroundingPoints(Rotation2d pos) {
-    int targetIndex = -1;
+    double currentClosestPoint = findNearestSetPoint(pos.getRotations());
 
-    // Find the index of the target in the list
-    for (int i = 0; i < setPoints.size(); i++) {
-      if (setPoints.get(i) == pos.getRotations()) {
-        targetIndex = i;
-        break;
-      }
-    }
-
-    // Check the previous element
-    double previous = (targetIndex > 0) ? setPoints.get(targetIndex - 1) : 0;
-
-    // Check the next element
-    double next =
-        (targetIndex < setPoints.size() - 1) ? setPoints.get(targetIndex + 1) : 0;
-
-    List<Double> surroundingPoints = new ArrayList<Double>() {};
-    surroundingPoints.add(previous);
-    surroundingPoints.add(next);
+    int index = getIndexFromValue(currentClosestPoint);
+    double prevPoint = previous(index);
+    double nextPoint = next(index);
+    List<Double> surroundingPoints = new ArrayList<Double>() {
+    };
+    surroundingPoints.add(prevPoint);
+    surroundingPoints.add(nextPoint);
     return surroundingPoints;
+  }
+
+  /**
+   * Finds the index of a specified value in the list of set points.
+   *
+   * @param value The value to locate in the set points list.
+   * @return The index of the value in the list, or -1 if the value is not found.
+   */
+  public int getIndexFromValue(double value) {
+    return setPoints.indexOf(value);
   }
 }

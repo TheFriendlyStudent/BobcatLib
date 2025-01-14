@@ -45,6 +45,12 @@ public class ElevatorSubsystem extends SubsystemBase {
         Rotation2d.fromRotations(setPoints.getSurroundingPoints(currentPosition).get(1));
     moveElevator(nextPosition);
   }
+  public void moveElevatorToPrevious() {
+    Rotation2d currentPosition = Rotation2d.fromRotations(motor.getPosition());
+    Rotation2d previousPosition =
+        Rotation2d.fromRotations(setPoints.getSurroundingPoints(currentPosition).get(0));
+    moveElevator(previousPosition);
+  }
 
   public void holdPosition() {
     Rotation2d currentPosition = Rotation2d.fromRotations(motor.getPosition());
