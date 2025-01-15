@@ -6,6 +6,7 @@ package frc.robot;
 
 import java.util.function.DoubleSupplier;
 
+import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
 import com.pathplanner.lib.commands.PathPlannerAuto;
@@ -19,6 +20,8 @@ import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.controllers.PPLTVController;
 import com.pathplanner.lib.path.PathPlannerPath;
+import com.pathplanner.lib.pathfinding.LocalADStar;
+import com.pathplanner.lib.pathfinding.Pathfinding;
 import com.pathplanner.lib.trajectory.PathPlannerTrajectory;
 import com.pathplanner.lib.util.PathPlannerLogging;
 
@@ -175,7 +178,14 @@ public class RobotContainer {
                                 () -> false,
                                 s_Swerve // Subsystem for requirements
                 );
-
+                Pathfinding.setPathfinder(new LocalADStar());
+                PathPlannerLogging.setLogActivePathCallback(
+                        (activePath) -> {
+                        final Pose2d[] trajectory = activePath.toArray(new Pose2d[0]);
+                        Logger.recordOutput("Odometry/Trajectory", trajectory);
+                        });
+                PathPlannerLogging.setLogTargetPoseCallback(
+                        (targetPose) -> Logger.recordOutput("Odometry/TrajectorySetpoint", targetPose));
                 // Configure AutoBuilder last
 
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
