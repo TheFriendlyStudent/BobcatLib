@@ -1,11 +1,11 @@
 {
   "drive": {
-    "motor_type": "falcon",
+    "motor_type": "Falcon500",
     "id": 3,
     "canbus": "CANt_open_file"
   },
   "angle": {
-    "motor_type": "falcon",
+    "motor_type": "Falcon500",
     "id": 4,
     "canbus": "CANt_open_file"
   },

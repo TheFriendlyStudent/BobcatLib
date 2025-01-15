@@ -72,7 +72,7 @@ public class RobotContainer {
                 initComand();
 
                 // Register Named Commands
-                NamedCommands.registerCommand("someOtherCommand", new PathPlannerAuto("leaveBase Path"));
+                // NamedCommands.registerCommand("someOtherCommand", new PathPlannerAuto("leaveBase Path"));
 
                 // Auto controls
                 /*
@@ -113,15 +113,7 @@ public class RobotContainer {
         public boolean autoChooserInitialized() {
                 return autoChooser.get() != null;
         }
-
-        private void resetPose() {
-                s_Swerve.setPose(new Pose2d());
-        }
-
-        private void driveRobotRelative() {
-                // s_Swerve.drive
-        }
-
+        
         /**
          * this should only be called once DS and FMS are attached
          */
