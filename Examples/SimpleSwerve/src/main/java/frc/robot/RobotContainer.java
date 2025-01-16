@@ -12,7 +12,6 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.pathfinding.LocalADStar;
@@ -23,6 +22,7 @@ import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.GenericHID;
@@ -119,63 +119,14 @@ public class RobotContainer {
                  * Please give descriptive names
                  */
 
-                // Load the RobotConfig from the GUI settings. You should probably
-                // store this in your Constants file
-                RobotConfig config = null;
-                try {
-                        config = RobotConfig.fromGUISettings();
-                } catch (Exception e) {
-                        // Handle exception as needed
-                        e.printStackTrace();
-                }
-
-                // Logging callback for current robot pose
-                PathPlannerLogging.setLogCurrentPoseCallback((pose) -> {
-                        // Do whatever you want with the pose here
-                        field.setRobotPose(pose);
-                });
-
-                // Logging callback for target robot pose
-                PathPlannerLogging.setLogTargetPoseCallback((pose) -> {
-                        // Do whatever you want with the pose here
-                        field.getObject("target pose").setPose(pose);
-                });
-
-                // Logging callback for the active path, this is sent as a list of poses
-                PathPlannerLogging.setLogActivePathCallback((poses) -> {
-                        // Do whatever you want with the poses here
-                        field.getObject("path").setPoses(poses);
-                });
-
-                AutoBuilder.configure(
-                                s_Swerve::getPose, // Supplier of current robot pose
-                                (pose) -> s_Swerve.setPose(pose), // Consumer for seeding pose against auto
-                                () -> s_Swerve.getChassisSpeeds(), // Supplier of current robot speeds
-                                // Consumer of ChassisSpeeds and feedforwards to drive the robot
-                                (speeds, feedforwards) -> s_Swerve.drive(speeds),
-                                new PPHolonomicDriveController(
-                                                // PID constants for translation
-                                                new PIDConstants(10, 0, 0),
-                                                // PID constants for rotation
-                                                new PIDConstants(7, 0, 0)),
-                                config,
-                                // Assume the path needs to be flipped for Red vs Blue, this is normally the
-                                // case
-                                () -> false,
-                                s_Swerve // Subsystem for requirements
-                );
-                Pathfinding.setPathfinder(new LocalADStar());
-                PathPlannerLogging.setLogActivePathCallback(
-                        (activePath) -> {
-                        final Pose2d[] trajectory = activePath.toArray(new Pose2d[0]);
-                        Logger.recordOutput("Odometry/Trajectory", trajectory);
-                        });
-                PathPlannerLogging.setLogTargetPoseCallback(
-                        (targetPose) -> Logger.recordOutput("Odometry/TrajectorySetpoint", targetPose));
+                // PID constants for translation
+                PIDConstants tranPid = new PIDConstants(10, 0, 0);
+                // PID constants for rotation
+                PIDConstants rotPid = new PIDConstants(7, 0, 0);
+                s_Swerve = s_Swerve.withPathPlanner(field, tranPid, rotPid);
                 // Configure AutoBuilder last
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 autoChooser.addOption("Auto1", new PathPlannerAuto("Auto1"));
-
         }
 
         /**

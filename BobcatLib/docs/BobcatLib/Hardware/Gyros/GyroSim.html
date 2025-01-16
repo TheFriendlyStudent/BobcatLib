@@ -144,28 +144,23 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <div class="block">Periodic update method for the Pigeon2 IMU sensor.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic(com.studica.frc.AHRS)" class="member-name-link">periodic</a><wbr>(com.studica.frc.AHRS&nbsp;imu)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPitch(double)" class="member-name-link">setPitch</a><wbr>(double&nbsp;pitch)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Periodic update method for the AHRS IMU sensor.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPitch(double)" class="member-name-link">setPitch</a><wbr>(double&nbsp;pitch)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the pitch value of the simulated gyro.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setRoll(double)" class="member-name-link">setRoll</a><wbr>(double&nbsp;roll)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setRoll(double)" class="member-name-link">setRoll</a><wbr>(double&nbsp;roll)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the roll value of the simulated gyro.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setYaw(double)" class="member-name-link">setYaw</a><wbr>(double&nbsp;yaw)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setYaw(double)" class="member-name-link">setYaw</a><wbr>(double&nbsp;yaw)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the yaw value of the simulated gyro.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateInputs(BobcatLib.Hardware.Gyros.GyroIO.GyroIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros">GyroIO.GyroIOInputs</a>&nbsp;inputs)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateInputs(BobcatLib.Hardware.Gyros.GyroIO.GyroIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="GyroIO.GyroIOInputs.html" title="class in BobcatLib.Hardware.Gyros">GyroIO.GyroIOInputs</a>&nbsp;inputs)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates the gyro inputs based on the simulated gyro data.</div>
 </div>
 </div>
@@ -272,18 +267,6 @@ implements <a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">G
 <dd><code><a href="GyroIO.html#periodic(com.ctre.phoenix6.hardware.Pigeon2)">periodic</a></code>&nbsp;in interface&nbsp;<code><a href="GyroIO.html" title="interface in BobcatLib.Hardware.Gyros">GyroIO</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>imu</code> - The Pigeon2 IMU instance.</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="periodic(com.studica.frc.AHRS)">
-<h3>periodic</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span><wbr><span class="parameters">(com.studica.frc.AHRS&nbsp;imu)</span></div>
-<div class="block">Periodic update method for the AHRS IMU sensor. Currently does nothing but can be extended for
- specific periodic updates for AHRS.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>imu</code> - The AHRS IMU instance.</dd>
 </dl>
 </section>
 </li>
