@@ -12,17 +12,11 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
-import com.pathplanner.lib.commands.PathfindThenFollowPath;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
-import com.pathplanner.lib.controllers.PPLTVController;
-import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.pathfinding.LocalADStar;
 import com.pathplanner.lib.pathfinding.Pathfinding;
-import com.pathplanner.lib.trajectory.PathPlannerTrajectory;
 import com.pathplanner.lib.util.PathPlannerLogging;
 
 import BobcatLib.Hardware.Controllers.OI;
@@ -31,8 +25,6 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.kinematics.ChassisSpeeds;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
@@ -84,6 +76,8 @@ public class RobotContainer {
                 
                 field = new Field2d();
                 SmartDashboard.putData("Field", field);
+
+
                 // Configure AutoBuilder last
                 configureAutos();
 
@@ -179,9 +173,9 @@ public class RobotContainer {
                 PathPlannerLogging.setLogTargetPoseCallback(
                         (targetPose) -> Logger.recordOutput("Odometry/TrajectorySetpoint", targetPose));
                 // Configure AutoBuilder last
-
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 autoChooser.addOption("Auto1", new PathPlannerAuto("Auto1"));
+
         }
 
         /**
