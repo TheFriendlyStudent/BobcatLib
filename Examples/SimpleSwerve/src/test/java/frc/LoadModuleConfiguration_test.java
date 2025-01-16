@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import BobcatLib.Subsystems.Swerve.Utility.CotsModuleSwerveConstants;
-import BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator.CotsModuleObject;
+import BobcatLib.Subsystems.Swerve.Utility.*;
 
 public class LoadModuleConfiguration_test {
     /**

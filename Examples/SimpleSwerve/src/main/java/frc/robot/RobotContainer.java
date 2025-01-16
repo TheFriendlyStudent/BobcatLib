@@ -44,87 +44,87 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
         /* Subsystems */
         public final OI s_Controls = new OI(); // Interfaces with popular controllers and input devices
-        public final SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve
-                                                                                                   // Library
-                                                                                                   // implementation.
-        private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose
-                                                                                                                  // an
-                                                                                                                  // Auto!
-
-        private final Field2d field;
-
-        /**
-         * The container for the robot. Contains subsystems, OI devices, and commands.
-         */
-        public RobotContainer() {
-
-                // SmartDashboard.putNumber("SpeedLimit", 1);
-
-                initComand();
-
-                // Register Named Commands
-                // NamedCommands.registerCommand("someOtherCommand", new PathPlannerAuto("leaveBase Path"));
-
-                // Auto controls
-                /*
-                 * Auto Chooser
-                 * 
-                 * Names must match what is in PathPlanner
-                 * Please give descriptive names
-                 */
-                
-                field = new Field2d();
-                SmartDashboard.putData("Field", field);
-
-
-                // Configure AutoBuilder last
-                configureAutos();
-
-                // Configure the button bindings
-                configureButtonBindings(); 
-                
-
-
-        }
-
-        public void initComand() {
-                DoubleSupplier translation = () -> s_Controls.getTranslationValue();
-                DoubleSupplier strafe = () -> s_Controls.getStrafeValue();
-                if (!Robot.alliance.isBlueAlliance()) {
-                        translation = () -> -s_Controls.getTranslationValue();
-                        strafe = () -> -s_Controls.getStrafeValue();
-                }
-                s_Swerve.setDefaultCommand(
-                                new TeleopSwerve(
-                                                s_Swerve,
-                                                translation,
-                                                strafe,
-                                                () -> s_Controls.getRotationValue(),
-                                                () -> s_Controls.robotCentric.getAsBoolean(),
-                                                s_Controls.controllerJson));
-
-        }
-
-        public boolean autoChooserInitialized() {
-                return autoChooser.get() != null;
-        }
+        public SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve
+                                                                                                           // Library
+                                                                                                           // implementation.
+                private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose
+                                                                                                                          // an
+                                                                                                                          // Auto!
         
-        /**
-         * this should only be called once DS and FMS are attached
-         */
-        public void configureAutos() {
-                /*
-                 * Auto Chooser
-                 * 
-                 * Names must match what is in PathPlanner
-                 * Please give descriptive names
+                private final Field2d field;
+        
+                /**
+                 * The container for the robot. Contains subsystems, OI devices, and commands.
                  */
-
-                // PID constants for translation
-                PIDConstants tranPid = new PIDConstants(10, 0, 0);
-                // PID constants for rotation
-                PIDConstants rotPid = new PIDConstants(7, 0, 0);
-                s_Swerve = s_Swerve.withPathPlanner(field, tranPid, rotPid);
+                public RobotContainer() {
+        
+                        // SmartDashboard.putNumber("SpeedLimit", 1);
+        
+                        initComand();
+        
+                        // Register Named Commands
+                        // NamedCommands.registerCommand("someOtherCommand", new PathPlannerAuto("leaveBase Path"));
+        
+                        // Auto controls
+                        /*
+                         * Auto Chooser
+                         * 
+                         * Names must match what is in PathPlanner
+                         * Please give descriptive names
+                         */
+                        
+                        field = new Field2d();
+                        SmartDashboard.putData("Field", field);
+        
+        
+                        // Configure AutoBuilder last
+                        configureAutos();
+        
+                        // Configure the button bindings
+                        configureButtonBindings(); 
+                        
+        
+        
+                }
+        
+                public void initComand() {
+                        DoubleSupplier translation = () -> s_Controls.getTranslationValue();
+                        DoubleSupplier strafe = () -> s_Controls.getStrafeValue();
+                        if (!Robot.alliance.isBlueAlliance()) {
+                                translation = () -> -s_Controls.getTranslationValue();
+                                strafe = () -> -s_Controls.getStrafeValue();
+                        }
+                        s_Swerve.setDefaultCommand(
+                                        new TeleopSwerve(
+                                                        s_Swerve,
+                                                        translation,
+                                                        strafe,
+                                                        () -> s_Controls.getRotationValue(),
+                                                        () -> s_Controls.robotCentric.getAsBoolean(),
+                                                        s_Controls.controllerJson));
+        
+                }
+        
+                public boolean autoChooserInitialized() {
+                        return autoChooser.get() != null;
+                }
+                
+                /**
+                 * this should only be called once DS and FMS are attached
+                 */
+                public void configureAutos() {
+                        /*
+                         * Auto Chooser
+                         * 
+                         * Names must match what is in PathPlanner
+                         * Please give descriptive names
+                         */
+        
+                        // PID constants for translation
+                        PIDConstants tranPid = new PIDConstants(10, 0, 0);
+                        // PID constants for rotation
+                        PIDConstants rotPid = new PIDConstants(7, 0, 0);
+                        s_Swerve = s_Swerve.withPathPlanner(field, tranPid, rotPid);
                 // Configure AutoBuilder last
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 autoChooser.addOption("Auto1", new PathPlannerAuto("Auto1"));
