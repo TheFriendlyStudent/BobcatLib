@@ -44,7 +44,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
         /* Subsystems */
         public final OI s_Controls = new OI(); // Interfaces with popular controllers and input devices
-        public SwerveDrive s_Swerve = new SwerveDrive(Robot.isSimulation(), Robot.alliance); // This is the Swerve
+        public SwerveDrive s_Swerve = new SwerveDrive("RobotName",Robot.isSimulation(), Robot.alliance); // This is the Swerve
                                                                                                            // Library
                                                                                                            // implementation.
                 private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose

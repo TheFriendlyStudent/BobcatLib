@@ -30,12 +30,17 @@ public class SwerveContainer {
   private final LoggedDashboardChooser<Command> autoChooser =
       new LoggedDashboardChooser<>("Auto Routine");
   public Alliance alliance;
+  private String robotName;
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public SwerveContainer(boolean isSimulation, DriverStation.Alliance ally) {
+  public SwerveContainer(String robotName, boolean isSimulation, DriverStation.Alliance ally) {
     alliance = new Alliance(ally);
     s_Swerve =
         new SwerveDrive(
-            isSimulation, alliance, SwerveConstants.visionStdDevs, SwerveConstants.stateStdDevs);
+            robotName,
+            isSimulation,
+            alliance,
+            SwerveConstants.visionStdDevs,
+            SwerveConstants.stateStdDevs);
     initComand();
     // Auto controls
     /*
