@@ -55,4 +55,8 @@ public class PIDConstants {
   public PIDConstants(double kP) {
     this(kP, 0, 0);
   }
+
+  public com.pathplanner.lib.config.PIDConstants asPathPlanner() {
+    return new com.pathplanner.lib.config.PIDConstants(kP, kI, kD);
+  }
 }

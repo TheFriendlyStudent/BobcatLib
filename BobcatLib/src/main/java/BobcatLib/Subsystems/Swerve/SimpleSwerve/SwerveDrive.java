@@ -21,7 +21,12 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math.GeometryUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.config.RobotConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import com.pathplanner.lib.path.PathConstraints;
+import com.pathplanner.lib.pathfinding.LocalADStar;
+import com.pathplanner.lib.pathfinding.Pathfinding;
+import com.pathplanner.lib.util.PathPlannerLogging;
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -39,6 +44,7 @@ import edu.wpi.first.units.VoltageUnit;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -47,6 +53,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import org.littletonrobotics.junction.Logger;
 
 public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve, AutomatedSwerve {
   public SwerveModule[] mSwerveMods;
@@ -207,6 +214,74 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             jsonSwerve.rotationPID.driveKP,
             jsonSwerve.rotationPID.driveKI,
             jsonSwerve.rotationPID.driveKD); // Rotation
+  }
+
+  public SwerveDrive withPathPlanner(
+      Field2d field, PIDConstants translationPid, PIDConstants rotationPid) {
+    // Load the RobotConfig from the GUI settings. You should probably
+    // store this in your Constants file
+    RobotConfig config = null;
+    try {
+      config = RobotConfig.fromGUISettings();
+    } catch (Exception e) {
+      // Handle exception as needed
+      e.printStackTrace();
+      try {
+        throw new Exception("Could not configure Robot Config in PathPlanner!");
+      } catch (Exception e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+      }
+      return this;
+    }
+
+    // Logging callback for current robot pose
+    PathPlannerLogging.setLogCurrentPoseCallback(
+        (pose) -> {
+          // Do whatever you want with the pose here
+          field.setRobotPose(pose);
+        });
+
+    // Logging callback for target robot pose
+    PathPlannerLogging.setLogTargetPoseCallback(
+        (pose) -> {
+          // Do whatever you want with the pose here
+          field.getObject("target pose").setPose(pose);
+        });
+
+    // Logging callback for the active path, this is sent as a list of poses
+    PathPlannerLogging.setLogActivePathCallback(
+        (poses) -> {
+          // Do whatever you want with the poses here
+          field.getObject("path").setPoses(poses);
+        });
+
+    AutoBuilder.configure(
+        this::getPose, // Supplier of current robot pose
+        (pose) -> setPose(pose), // Consumer for seeding pose against auto
+        () -> getChassisSpeeds(), // Supplier of current robot speeds
+        // Consumer of ChassisSpeeds and feedforwards to drive the robot
+        (speeds, feedforwards) -> drive(speeds),
+        new PPHolonomicDriveController(
+            // PID constants for translation
+            translationPid.asPathPlanner(),
+            // PID constants for rotation
+            rotationPid.asPathPlanner()),
+        config,
+        // Assume the path needs to be flipped for Red vs Blue, this is normally the
+        // case
+        () -> false,
+        this // Subsystem for requirements
+        );
+    Pathfinding.setPathfinder(new LocalADStar());
+    PathPlannerLogging.setLogActivePathCallback(
+        (activePath) -> {
+          final Pose2d[] trajectory = activePath.toArray(new Pose2d[0]);
+          Logger.recordOutput("Odometry/Trajectory", trajectory);
+        });
+    PathPlannerLogging.setLogTargetPoseCallback(
+        (targetPose) -> Logger.recordOutput("Odometry/TrajectorySetpoint", targetPose));
+    return this;
   }
 
   public SwerveJson loadConfigurationFromFile() {
