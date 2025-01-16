@@ -151,7 +151,7 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             jsonSwerve.rotationPID.driveKD); // Rotation
   }
 
-  public SwerveDrive(String robotName,boolean isSim, Alliance team) {
+  public SwerveDrive(String robotName, boolean isSim, Alliance team) {
     this.team = team;
     this.isSim = isSim;
     this.visionStdDevs = null;
