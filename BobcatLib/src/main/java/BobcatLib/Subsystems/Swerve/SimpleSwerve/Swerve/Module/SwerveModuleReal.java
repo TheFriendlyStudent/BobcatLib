@@ -10,6 +10,7 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleJson;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.parser.ModuleLimitsJson;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math.Conversions;
 import BobcatLib.Subsystems.Swerve.Utility.CotsModuleSwerveConstants;
+import BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator.CotsModuleObject;
 import BobcatLib.Utilities.CANDeviceDetails;
 import BobcatLib.Utilities.CANDeviceDetails.Manufacturer;
 import com.ctre.phoenix6.controls.VoltageOut;
@@ -59,7 +60,12 @@ public class SwerveModuleReal implements SwerveModuleIO {
     rawAbsoluteAngleName = "Module[" + moduleNumber + "] Raw Absolute Encoder";
     rawAngleName = "Module[" + moduleNumber + "] Raw Angle Encoder";
     rawDriveName = "Module[" + moduleNumber + "] Raw Drive Encoder";
-    configModule();
+    try {
+      configModule();
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
   public void updateInputs(SwerveModuleIOInputs inputs) {
@@ -71,46 +77,29 @@ public class SwerveModuleReal implements SwerveModuleIO {
     inputs.angle = state.angle;
   }
 
-  public void configModule() {
+  public void configModule() throws Exception {
     this.angleOffset = Rotation2d.fromRotations(jsonModule.encoder.offset);
-    CotsModuleSwerveConstants cotsModule;
-    switch (jsonModule.type) {
-      case "mk4":
-        cotsModule =
-            CotsModuleSwerveConstants.SDS.MK4.KrakenX60(
-                CotsModuleSwerveConstants.SDS.MK4.driveRatios.L2);
-        break;
-      case "mk4i":
-        cotsModule =
-            CotsModuleSwerveConstants.SDS.MK4i.KrakenX60(
-                CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L2);
-        break;
-      case "mk4n":
-        cotsModule =
-            CotsModuleSwerveConstants.SDS.MK4n.KrakenX60(
-                CotsModuleSwerveConstants.SDS.MK4n.driveRatios.L2);
-        break;
-      case "mk4c":
-        cotsModule =
-            CotsModuleSwerveConstants.SDS.MK4c.KrakenX60(
-                CotsModuleSwerveConstants.SDS.MK4c.driveRatios.L2);
-        break;
-      default:
-        cotsModule =
-            CotsModuleSwerveConstants.SDS.MK4i.KrakenX60(
-                CotsModuleSwerveConstants.SDS.MK4i.driveRatios.L2);
-    }
+
+    CotsModuleSwerveConstants cotsModule =
+        new CotsModuleObject()
+            .withConfiguration(
+                jsonModule.manufacturer,
+                jsonModule.type,
+                jsonModule.drive.motor_type,
+                jsonModule.level)
+            .to();
+
     chosenModule = new ModuleConstants(cotsModule, jsonModule);
 
     /* Angle Encoder Config */
     assignAbsEncoder("cancoder", jsonModule.encoder.id);
 
     /* Angle Motor Config */
-    assignSteerMotor("kraken", jsonModule.angle.id);
+    assignSteerMotor(jsonModule.angle.motor_type, jsonModule.angle.id);
     resetToAbsolute();
 
     /* Drive Motor Config */
-    assignDriveMotor("kraken", jsonModule.drive.id);
+    assignDriveMotor(jsonModule.drive.motor_type, jsonModule.drive.id);
   }
 
   public void assignAbsEncoder(String type, int canId) {
@@ -139,13 +128,22 @@ public class SwerveModuleReal implements SwerveModuleIO {
 
   public void assignSteerMotor(String type, int canId) {
     switch (type) {
-      case "kraken":
+      case "KrakenX60":
         mAngleMotor =
             new KrakenSteerMotor(canId, chosenModule, jsonModule.angle.canbus, swerveLimits);
         break;
-      case "falcon":
+      case "Falcon500":
         mAngleMotor =
             new FalconSteerMotor(canId, chosenModule, jsonModule.angle.canbus, swerveLimits);
+        break;
+      case "Neo550":
+        mAngleMotor = new Neo550SteerMotor(canId, chosenModule, swerveLimits);
+        break;
+      case "Neo":
+        mAngleMotor = new NeoSteerMotor(canId, chosenModule, swerveLimits);
+        break;
+      case "Vortex":
+        mAngleMotor = new VortexSteerMotor(canId, chosenModule, swerveLimits);
         break;
       default:
         mAngleMotor =
@@ -155,13 +153,19 @@ public class SwerveModuleReal implements SwerveModuleIO {
 
   public void assignDriveMotor(String type, int canId) {
     switch (type) {
-      case "kraken":
+      case "KrakenX60":
         mDriveMotor =
             new KrakenDriveMotor(canId, chosenModule, jsonModule.drive.canbus, swerveLimits);
         break;
-      case "falcon":
+      case "Falcon500":
         mDriveMotor =
             new FalconDriveMotor(canId, chosenModule, jsonModule.drive.canbus, swerveLimits);
+        break;
+      case "Neo":
+        mDriveMotor = new NeoDriveMotor(canId, chosenModule, swerveLimits);
+        break;
+      case "Vortex":
+        mDriveMotor = new VortexDriveMotor(canId, chosenModule, swerveLimits);
         break;
       default:
         mDriveMotor =
@@ -312,6 +316,7 @@ public class SwerveModuleReal implements SwerveModuleIO {
   public int getModuleNumber() {
     return moduleNumber;
   }
+
   /** Gets the Desired State of the module */
   public SwerveModuleState getDesiredState() {
     return desiredState;

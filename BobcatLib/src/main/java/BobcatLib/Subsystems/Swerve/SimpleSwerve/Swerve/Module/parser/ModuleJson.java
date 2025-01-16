@@ -5,6 +5,7 @@ public class ModuleJson {
   public ModuleMotorJson angle;
   public ModuleEncoderJson encoder;
   public String type = "";
+  public String manufacturer = "";
   public String level = "";
   public double wheelCircumference = 0.0;
   /** Drive Current Limit */

@@ -112,7 +112,6 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
     /* Setup Modules */
     if (isSim) {
       gyro = new BaseGyro("Swerve-Gyro", new GyroSim());
-
       mSwerveMods = new SwerveModule[] {};
     } else {
       gyro = new BaseGyro("Swerve-Gyro", new Pigeon2Gyro());
@@ -173,11 +172,6 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             new Translation2d(-wheelBase / 2.0, -trackWidth / 2.0));
     /* Setup Modules */
     if (isSim) {
-      gyro = new BaseGyro("Swerve-Gyro", new GyroSim());
-
-      mSwerveMods = new SwerveModule[] {};
-    } else {
-      gyro = new BaseGyro("Swerve-Gyro", new Pigeon2Gyro());
       mSwerveMods =
           new SwerveModule[] {
             new SwerveModule(new SwerveModuleReal(0, jsonSwerve.moduleSpeedLimits), 0),
@@ -185,6 +179,17 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             new SwerveModule(new SwerveModuleReal(2, jsonSwerve.moduleSpeedLimits), 2),
             new SwerveModule(new SwerveModuleReal(3, jsonSwerve.moduleSpeedLimits), 3)
           };
+      gyro = new BaseGyro("Swerve-Gyro", new GyroSim());
+    } else {
+      mSwerveMods =
+          new SwerveModule[] {
+            new SwerveModule(new SwerveModuleReal(0, jsonSwerve.moduleSpeedLimits), 0),
+            new SwerveModule(new SwerveModuleReal(1, jsonSwerve.moduleSpeedLimits), 1),
+            new SwerveModule(new SwerveModuleReal(2, jsonSwerve.moduleSpeedLimits), 2),
+            new SwerveModule(new SwerveModuleReal(3, jsonSwerve.moduleSpeedLimits), 3)
+          };
+
+      gyro = new BaseGyro("Swerve-Gyro", new Pigeon2Gyro());
     }
     Timer.delay(1);
     resetModulesToAbsolute();

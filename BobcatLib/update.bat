@@ -1,11 +1,16 @@
 @echo off
-echo installing roboRIOToolchain
 call gradlew.bat installRoboRIOToolchain
-echo Formatting
 call gradlew.bat :spotlessApply
-echo Building
-call gradlew.bat build
-echo Publish
 call gradlew.bat publish
-echo Copy
-Xcopy /E /y .\\build\\repos\\releases\\BobcatLib .\\BobcatLib\\repos\\BobcatLib
+call gradlew.bat test
+call tests.bat
+echo Current directory: %cd% starting copy of docs
+Xcopy /E /y /i .\\BobcatLib\docs .\\docs\\BobcatLib
+
+
+PushD "Examples/SimpleSwerve"
+echo Current directory: %cd% starting test
+call ./gradlew.bat test
+PushD "../../"
+echo Current directory: %cd% starting to copy results
+Xcopy /E /y /i .\\Examples\\SimpleSwerve\\build\\reports .\\Tests\\SimpleSwerve
