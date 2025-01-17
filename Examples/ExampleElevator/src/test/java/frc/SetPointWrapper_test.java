@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import BobcatLib.Utilities.SetPointWrapper;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 public class SetPointWrapper_test {

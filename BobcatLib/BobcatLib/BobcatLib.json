@@ -1,7 +1,7 @@
 {
   "fileName": "BobcatLib.json",
   "name": "BobcatLib",
-  "version": "2025.2.1",
+  "version": "{2025.2.2}",
   "frcYear": "2025",
   "uuid": "69eb6caf-545f-44e6-b7f7-ccc646b5586e",
   "mavenUrls": [
@@ -12,7 +12,7 @@
     {
       "groupId": "BobcatLib",
       "artifactId": "BobcatLib-java",
-      "version": "2025.2.1"
+      "version": "{2025.2.2}"
     }
   ],
   "requires": [
@@ -36,15 +36,21 @@
     },
     {
       "uuid": "e995de00-2c64-4df5-8831-c1441420ff19",
-      "errorMessage": "Phoenix6 is required!",
-      "offlineFileName": "Phoenix6-frc2025-latest.json",
-      "onlineUrl": "https://maven.ctr-electronics.com/release/com/ctre/phoenix6/latest/Phoenix6-frc2025-latest.json"
+      "errorMessage": "Phoenix5 is required!",
+      "offlineFileName": "Phoenix5-frc2025-latest.json",
+      "onlineUrl": "https://maven.ctr-electronics.com/release/com/ctre/phoenix/Phoenix5-frc2025-latest.json"
     },
     {
       "uuid": "ab676553-b602-441f-a38d-f1296eff6537",
       "errorMessage": "Phoenix5 is required!",
       "offlineFileName": "Phoenix5.json",
-      "onlineUrl": "https://maven.ctr-electronics.com/release/com/ctre/phoenix/Phoenix5-frc2025-latest.json"
+      "onlineUrl": "https://maven.ctr-electronics.com/release/com/ctre/phoenix6/latest/Phoenix6-frc2025-latest.json"
+    },
+    {
+      "uuid": "60b2694b-9e6e-4026-81ee-6f167946f4b0",
+      "errorMessage": "ThriftyLib is required!",
+      "offlineFileName": "ThriftyLib.json",
+      "onlineUrl": "https://docs.home.thethriftybot.com/ThriftyLib.json"
     },
     {
       "uuid": "c39481e8-4a63-4a4c-9df6-48d91e4da37b",
@@ -54,7 +60,7 @@
     },
     {
       "uuid": "1b42324f-17c6-4875-8e77-1c312bc8c786",
-      "errorMessage": "PathPlanner is required!",
+      "errorMessage": "PathPlanner is Required",
       "offlineFileName": "PathplannerLib.json",
       "onlineUrl": "https://3015rangerrobotics.github.io/pathplannerlib/PathplannerLib.json"
     }

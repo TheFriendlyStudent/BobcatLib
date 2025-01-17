@@ -60,7 +60,11 @@ public final class SetPointWrapper {
    * @return the next set point or the current set point if at the end of the list.
    */
   public double next(int index) {
-    return setPoints.get(Math.min(index + 1, setPoints.size() - 1));
+    int max = setPoints.size() - 1;
+    if (index == max) {
+      return setPoints.get(max);
+    }
+    return setPoints.get(index + 1);
   }
 
   /**
@@ -71,7 +75,10 @@ public final class SetPointWrapper {
    * @return the previous set point or the current set point if at the beginning of the list.
    */
   public double previous(int index) {
-    return setPoints.get(Math.max(index - 1, 0));
+    if (index == 0) {
+      return setPoints.get(0);
+    }
+    return setPoints.get(index - 1);
   }
 
   /**
@@ -82,10 +89,21 @@ public final class SetPointWrapper {
    * @return the nearest set point that is greater than or equal to the given value.
    */
   public double findNearestSetPoint(double current) {
-    return setPoints.stream()
-        .filter(e -> e >= current)
-        .findFirst()
-        .orElse(setPoints.get(setPoints.size() - 1));
+    if (setPoints == null || setPoints.isEmpty()) {
+      throw new IllegalArgumentException("The list cannot be null or empty.");
+    }
+
+    Double nearest = null;
+    double smallestDifference = Double.MAX_VALUE;
+
+    for (Double number : setPoints) {
+      double difference = Math.abs(number - current);
+      if (difference < smallestDifference) {
+        smallestDifference = difference;
+        nearest = number;
+      }
+    }
+    return nearest;
   }
 
   /**
@@ -98,31 +116,25 @@ public final class SetPointWrapper {
   }
 
   public List<Double> getSurroundingPoints(Rotation2d pos) {
-    int targetIndex = -1;
+    double currentClosestPoint = findNearestSetPoint(pos.getRotations());
 
-    // Find the index of the target in the list
-    for (int i = 0; i < setPoints.size(); i++) {
-      if (setPoints.get(i) == pos.getRotations()) {
-        targetIndex = i;
-        break;
-      }
-    }
-
-    // If target is not found, return null
-    if (targetIndex == -1) {
-      return null;
-    }
-
-    // Check the previous element
-    double previous = (targetIndex > 0) ? setPoints.get(targetIndex - 1) : Double.NaN;
-
-    // Check the next element
-    double next =
-        (targetIndex < setPoints.size() - 1) ? setPoints.get(targetIndex + 1) : Double.NaN;
-
+    int index = getIndexFromValue(currentClosestPoint);
+    double prevPoint = previous(index);
+    double nextPoint = next(index);
     List<Double> surroundingPoints = new ArrayList<Double>() {};
-    surroundingPoints.add(previous);
-    surroundingPoints.add(next);
+    surroundingPoints.add(prevPoint);
+    surroundingPoints.add(nextPoint);
+
     return surroundingPoints;
+  }
+
+  /**
+   * Finds the index of a specified value in the list of set points.
+   *
+   * @param value The value to locate in the set points list.
+   * @return The index of the value in the list, or -1 if the value is not found.
+   */
+  public int getIndexFromValue(double value) {
+    return setPoints.indexOf(value);
   }
 }
