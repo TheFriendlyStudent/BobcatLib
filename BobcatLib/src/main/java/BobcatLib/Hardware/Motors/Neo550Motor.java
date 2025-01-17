@@ -13,6 +13,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.ClosedLoopConfig.ClosedLoopSlot;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
+import com.revrobotics.spark.config.LimitSwitchConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
@@ -104,6 +105,18 @@ public class Neo550Motor implements MotorIO {
     /* Open and Closed Loop Ramping */
     motorConfig.closedLoopRampRate(cfg.optionalRev.closedLoopRamp);
     motorConfig.openLoopRampRate(cfg.optionalRev.openLoopRamp);
+  }
+
+  /**
+   * Configures the motor with software limit switch settings.
+   *
+   * @param cfgLimits The {@link LimitSwitchConfig} instance containing the desired limit switch
+   *     configurations.
+   * @return The updated {@code Neo550Motor} instance for method chaining.
+   */
+  public Neo550Motor withLimits(LimitSwitchConfig cfgLimits) {
+    motorConfig.apply(cfgLimits);
+    return this;
   }
 
   /**

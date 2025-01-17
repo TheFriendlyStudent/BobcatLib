@@ -1,5 +1,7 @@
 package BobcatLib.Utilities;
 
+import edu.wpi.first.math.geometry.Rotation2d;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -93,5 +95,34 @@ public final class SetPointWrapper {
    */
   public List<Double> getPoints() {
     return setPoints;
+  }
+
+  public List<Double> getSurroundingPoints(Rotation2d pos) {
+    int targetIndex = -1;
+
+    // Find the index of the target in the list
+    for (int i = 0; i < setPoints.size(); i++) {
+      if (setPoints.get(i) == pos.getRotations()) {
+        targetIndex = i;
+        break;
+      }
+    }
+
+    // If target is not found, return null
+    if (targetIndex == -1) {
+      return null;
+    }
+
+    // Check the previous element
+    double previous = (targetIndex > 0) ? setPoints.get(targetIndex - 1) : Double.NaN;
+
+    // Check the next element
+    double next =
+        (targetIndex < setPoints.size() - 1) ? setPoints.get(targetIndex + 1) : Double.NaN;
+
+    List<Double> surroundingPoints = new ArrayList<Double>() {};
+    surroundingPoints.add(previous);
+    surroundingPoints.add(next);
+    return surroundingPoints;
   }
 }

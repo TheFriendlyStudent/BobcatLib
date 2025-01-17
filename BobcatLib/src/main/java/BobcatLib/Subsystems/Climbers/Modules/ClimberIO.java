@@ -1,6 +1,7 @@
 package BobcatLib.Subsystems.Climbers.Modules;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.AutoLog;
 
 /** Interface for controlling and monitoring the climber mechanism of a robot. */
 public interface ClimberIO {
@@ -10,9 +11,10 @@ public interface ClimberIO {
    *
    * <p>This is used for AdvantageKit logging.
    */
+  @AutoLog
   public static class ClimberIOInputs {
-    /** The position of the climber motor represented as a {@link Rotation2d}. */
-    public Rotation2d climberMotorPosition = new Rotation2d();
+    /** The position of the climber motor represented as a double . */
+    public double climberMotorPosition = 0;
   }
 
   /**
@@ -54,4 +56,10 @@ public interface ClimberIO {
   public default Rotation2d getPosition() {
     return new Rotation2d();
   }
+  /**
+   * Sets the climber to a specified position.
+   *
+   * @param position The target position as a {@link Rotation2d} object.
+   */
+  public default void setPosition(Rotation2d position) {}
 }

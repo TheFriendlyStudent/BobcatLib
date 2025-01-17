@@ -13,6 +13,7 @@ import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.ClosedLoopConfig.ClosedLoopSlot;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
+import com.revrobotics.spark.config.LimitSwitchConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
@@ -58,6 +59,18 @@ public class VortexMotor implements MotorIO {
     mMotor.configure(motorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
     encoder.setPosition(0.0);
     faults = new SparkMaxFaults(motorCanId);
+  }
+
+  /**
+   * Configures the motor with software limit switch settings.
+   *
+   * @param cfgLimits The {@link LimitSwitchConfig} instance containing the desired limit switch
+   *     configurations.
+   * @return The updated {@code VortexMotor} instance for method chaining.
+   */
+  public VortexMotor withLimits(LimitSwitchConfig cfgLimits) {
+    motorConfig.apply(cfgLimits);
+    return this;
   }
 
   /**

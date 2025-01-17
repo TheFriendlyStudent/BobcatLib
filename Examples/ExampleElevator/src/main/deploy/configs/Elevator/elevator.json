@@ -1,0 +1,22 @@
+{
+    "elevator": {
+      "name": 0
+    },
+    "limits": {
+      "upperLimit": 0,
+      "lowerLimit": 0
+    },
+    "motor": {
+      "type": "kraken",
+      "idle_type": "Coast",
+      "id": 0,
+      "canbus": "rio",
+      "inverted": false
+    },
+    "elevatorPID": {
+      "kP": 0,
+      "kI": 0,
+      "kD": 0,
+      "kF": 0
+    }
+  }
