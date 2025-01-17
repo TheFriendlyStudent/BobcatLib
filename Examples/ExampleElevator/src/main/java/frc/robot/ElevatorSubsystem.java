@@ -5,10 +5,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ElevatorSubsystem extends SubsystemBase {
-    public FalconElevatorMotor motor = new FalconElevatorMotor(2,"CANt_open_file");
+    public FalconElevatorMotor motor = new FalconElevatorMotor(9,"");
     public SetPointWrapper setPoints = new SetPointWrapper("0,10,20,30,40,50");
     public double lowerLimit = 0;
     public double upperLimit = 50;
+    public double currentSetPoint = 0;
     public ElevatorSubsystem(){
       motor.setPosition(0);
     }
@@ -41,14 +42,22 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   public void moveElevatorToNext() {
     Rotation2d currentPosition = Rotation2d.fromRotations(motor.getPosition());
+    if( currentPosition.getRotations() > currentSetPoint ){
+      holdPosition();
+    }
     Rotation2d nextPosition =
         Rotation2d.fromRotations(setPoints.getSurroundingPoints(currentPosition).get(1));
+    currentSetPoint = nextPosition.getRotations();
     moveElevator(nextPosition);
   }
   public void moveElevatorToPrevious() {
     Rotation2d currentPosition = Rotation2d.fromRotations(motor.getPosition());
+    if( currentPosition.getRotations() < currentSetPoint ){
+      holdPosition();
+    }
     Rotation2d previousPosition =
         Rotation2d.fromRotations(setPoints.getSurroundingPoints(currentPosition).get(0));
+    currentSetPoint = previousPosition.getRotations();
     moveElevator(previousPosition);
   }
 

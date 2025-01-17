@@ -6,16 +6,22 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
-public class FalconElevatorMotor  {
+public class FalconElevatorMotor {
   private TalonFX mAngleMotor;
   private TalonFXConfiguration swerveAngleFXConfig = new TalonFXConfiguration();
   /* angle motor control requests */
   private final PositionVoltage anglePosition = new PositionVoltage(0);
 
-
   public FalconElevatorMotor(
       int id, String canivorename) {
-    mAngleMotor = new TalonFX(id, canivorename);
+    if (canivorename == "") {
+
+      mAngleMotor = new TalonFX(id);
+    } else {
+
+      mAngleMotor = new TalonFX(id, canivorename);
+    }
+
     configAngleMotor();
     mAngleMotor.getConfigurator().apply(swerveAngleFXConfig);
   }
@@ -28,16 +34,17 @@ public class FalconElevatorMotor  {
 
     /* Gear Ratio and Wrapping Config */
 
-    swerveAngleFXConfig.Feedback.SensorToMechanismRatio = 150/7;
+    swerveAngleFXConfig.Feedback.SensorToMechanismRatio = 12; 
     swerveAngleFXConfig.ClosedLoopGeneral.ContinuousWrap = false;
     /* Current Limiting */
-    swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimitEnable = false;
-    swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimit =30;
+    swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+    swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimit = 40;
 
     /* PID Config */
-    swerveAngleFXConfig.Slot0.kP = 0.05;
+    swerveAngleFXConfig.Slot0.kP = 0.125;
     swerveAngleFXConfig.Slot0.kI = 0;
     swerveAngleFXConfig.Slot0.kD = 0;
+
 
     /* Open and Closed Loop Ramping */
     swerveAngleFXConfig.ClosedLoopRamps.withVoltageClosedLoopRampPeriod(0.0);
@@ -53,7 +60,7 @@ public class FalconElevatorMotor  {
     mAngleMotor.setControl(anglePosition.withPosition(rotations));
   }
 
-  public void setControl(double percent){
+  public void setControl(double percent) {
     mAngleMotor.set(percent);
   }
 
@@ -66,7 +73,7 @@ public class FalconElevatorMotor  {
     return mAngleMotor.getPosition().getValueAsDouble();
   }
 
-  public double getErrorPosition(){
+  public double getErrorPosition() {
     return mAngleMotor.getClosedLoopError().getValueAsDouble();
   }
 

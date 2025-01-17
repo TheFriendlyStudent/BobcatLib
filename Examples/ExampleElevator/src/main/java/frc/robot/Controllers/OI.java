@@ -19,14 +19,13 @@ public class OI {
   /** The driver joystick. */
   public final Joystick driver;
 
-  /** Driver Buttons */
-  public final Trigger robotCentric;
+  /** Driver raiseToNext */
+  public final Trigger raiseToNext;
 
-  /** Driver Zero Gyros */
-  public final Trigger zeroGyro;
+  /** Driver lowerToPrev */
+  public final Trigger lowerToPrev;
 
-  /** Spatial Trigger */
-  public final Trigger spatialTrigger;
+  public final Trigger extend;
 
   /* controller configuration */
   public ControllerJson controllerJson;
@@ -36,17 +35,6 @@ public class OI {
    */
   public ControllerWrapper controller;
 
-  /** Trigger for the D-Pad forward button. */
-  public Trigger dpadForwardBtn;
-
-  /** Trigger for the D-Pad backward button. */
-  public Trigger dpadBackBtn;
-
-  /** Trigger for the D-Pad left button. */
-  public Trigger dpadLeftBtn;
-
-  /** Trigger for the D-Pad right button. */
-  public Trigger dpadRightBtn;
 
   /**
    * Constructs the Operator Interface (OI) with the specified driver port and
@@ -61,13 +49,9 @@ public class OI {
     driver = new Joystick(driverPort);
     /* Driver Buttons */
     init(type, driverPort);
-    robotCentric = controller.getLeftBumper();
-    zeroGyro = controller.getRightBumper();
-    spatialTrigger = controller.getLeftTrigger();
-    dpadForwardBtn = controller.getDPadTriggerUp();
-    dpadBackBtn = controller.getDPadTriggerDown();
-    dpadLeftBtn = controller.getDPadTriggerLeft();
-    dpadRightBtn = controller.getDPadTriggerRight();
+    raiseToNext = controller.getAorCross();
+    lowerToPrev = controller.getBorCircle();
+    extend = controller.getYorTriangle();
   }
 
   public void init(String type, int driverPort) {
