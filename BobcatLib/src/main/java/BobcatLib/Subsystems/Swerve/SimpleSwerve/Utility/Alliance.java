@@ -6,7 +6,7 @@ public class Alliance {
   private DriverStation.Alliance alliance;
 
   public Alliance() {
-    this.alliance = DriverStation.getAlliance().get();
+    this.alliance = getNullSafe();
   }
 
   public Alliance(DriverStation.Alliance ally) {
