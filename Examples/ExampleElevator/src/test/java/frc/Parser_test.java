@@ -52,7 +52,8 @@ public class Parser_test {
         try {
             module = new ObjectMapper().readValue(swerveFile, ElevatorModuleJson.class);
         } catch (IOException e) {
-        }
+          e.printStackTrace();
+        }    
         assertNotNull( module );
         assertNotNull(module.elevator);
         assertNotNull(module.elevatorPid);

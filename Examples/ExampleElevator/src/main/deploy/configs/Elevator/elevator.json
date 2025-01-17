@@ -1,6 +1,6 @@
 {
     "elevator": {
-      "name": 0
+      "name": "Elevator"
     },
     "limits": {
       "upperLimit": 0,
@@ -13,7 +13,7 @@
       "canbus": "rio",
       "inverted": false
     },
-    "elevatorPID": {
+    "elevatorPid": {
       "kP": 0,
       "kI": 0,
       "kD": 0,
