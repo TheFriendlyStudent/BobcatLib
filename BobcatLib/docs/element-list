@@ -14,6 +14,10 @@ BobcatLib.Subsystems.Climbers
 BobcatLib.Subsystems.Climbers.Modules
 BobcatLib.Subsystems.Climbers.Utils
 BobcatLib.Subsystems.Climbers.Utils.Parser
+BobcatLib.Subsystems.Elevators
+BobcatLib.Subsystems.Elevators.Modules
+BobcatLib.Subsystems.Elevators.Modules.Motors
+BobcatLib.Subsystems.Elevators.Parser
 BobcatLib.Subsystems.Intakes
 BobcatLib.Subsystems.Intakes.Modules
 BobcatLib.Subsystems.Intakes.Parser

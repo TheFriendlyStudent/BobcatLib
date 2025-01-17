@@ -12,8 +12,7 @@ public class FalconElevatorMotor implements BaseElevatorMotor {
   /* angle motor control requests */
   private final PositionVoltage anglePosition = new PositionVoltage(0);
 
-  public FalconElevatorMotor(
-      int id, String canivorename) {
+  public FalconElevatorMotor(int id, String canivorename) {
     if (canivorename == "") {
 
       mAngleMotor = new TalonFX(id);
@@ -34,7 +33,7 @@ public class FalconElevatorMotor implements BaseElevatorMotor {
 
     /* Gear Ratio and Wrapping Config */
 
-    swerveAngleFXConfig.Feedback.SensorToMechanismRatio = 12; 
+    swerveAngleFXConfig.Feedback.SensorToMechanismRatio = 12;
     swerveAngleFXConfig.ClosedLoopGeneral.ContinuousWrap = false;
     /* Current Limiting */
     swerveAngleFXConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
@@ -44,7 +43,6 @@ public class FalconElevatorMotor implements BaseElevatorMotor {
     swerveAngleFXConfig.Slot0.kP = 0.125;
     swerveAngleFXConfig.Slot0.kI = 0;
     swerveAngleFXConfig.Slot0.kD = 0;
-
 
     /* Open and Closed Loop Ramping */
     swerveAngleFXConfig.ClosedLoopRamps.withVoltageClosedLoopRampPeriod(0.0);

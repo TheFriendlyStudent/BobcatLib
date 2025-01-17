@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import frc.robot.SetPointWrapper;
 
 import org.junit.jupiter.api.Test;
 
