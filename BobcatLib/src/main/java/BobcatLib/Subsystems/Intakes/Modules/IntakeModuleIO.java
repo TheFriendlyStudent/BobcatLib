@@ -3,6 +3,7 @@ package BobcatLib.Subsystems.Intakes.Modules;
 import BobcatLib.Subsystems.Intakes.Parser.IntakeJson;
 import BobcatLib.Subsystems.Intakes.Utils.IntakeState;
 import edu.wpi.first.math.geometry.Rotation2d;
+import org.littletonrobotics.junction.AutoLog;
 
 /**
  * Interface for the Intake Module Input/Output (IO) layer. Defines methods to interact with and
@@ -15,6 +16,7 @@ public interface IntakeModuleIO {
    * Inner class representing the inputs to the intake module. Annotated with @AutoLog for automatic
    * logging.
    */
+  @AutoLog
   public static class IntakeIOInputs {
     // Current pivot angle of the intake mechanism.
     public Rotation2d pivotAngle = new Rotation2d();

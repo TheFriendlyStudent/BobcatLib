@@ -106,8 +106,9 @@ loadScripts(document, 'script');</script>
 <div class="block">This implementation should be used with a pivoting intake where you do not have an absolute
  encoder attached to the pivot angle.</div>
 </div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Hardware.Motors.MotorIO,BobcatLib.Subsystems.Intakes.Parser.IntakeJson)" class="member-name-link">IntakeModuleReal</a><wbr>(<a href="../../../Hardware/Motors/MotorIO.html" title="interface in BobcatLib.Hardware.Motors">MotorIO</a>&nbsp;rollerMotor,
- <a href="../Parser/IntakeJson.html" title="class in BobcatLib.Subsystems.Intakes.Parser">IntakeJson</a>&nbsp;intakeJson)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Hardware.Motors.MotorIO,BobcatLib.Subsystems.Intakes.Parser.IntakeJson,BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper)" class="member-name-link">IntakeModuleReal</a><wbr>(<a href="../../../Hardware/Motors/MotorIO.html" title="interface in BobcatLib.Hardware.Motors">MotorIO</a>&nbsp;rollerMotor,
+ <a href="../Parser/IntakeJson.html" title="class in BobcatLib.Subsystems.Intakes.Parser">IntakeJson</a>&nbsp;intakeJson,
+ <a href="../../../Hardware/Motors/Utility/SoftwareLimitWrapper.html" title="class in BobcatLib.Hardware.Motors.Utility">SoftwareLimitWrapper</a>&nbsp;limits)</code></div>
 <div class="col-last even-row-color">
 <div class="block">This implementation should be used when you have a static intake that never moves with a
  pivoting motor;</div>
@@ -204,10 +205,11 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(BobcatLib.Hardware.Motors.MotorIO,BobcatLib.Subsystems.Intakes.Parser.IntakeJson)">
+<section class="detail" id="&lt;init&gt;(BobcatLib.Hardware.Motors.MotorIO,BobcatLib.Subsystems.Intakes.Parser.IntakeJson,BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper)">
 <h3>IntakeModuleReal</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">IntakeModuleReal</span><wbr><span class="parameters">(<a href="../../../Hardware/Motors/MotorIO.html" title="interface in BobcatLib.Hardware.Motors">MotorIO</a>&nbsp;rollerMotor,
- <a href="../Parser/IntakeJson.html" title="class in BobcatLib.Subsystems.Intakes.Parser">IntakeJson</a>&nbsp;intakeJson)</span></div>
+ <a href="../Parser/IntakeJson.html" title="class in BobcatLib.Subsystems.Intakes.Parser">IntakeJson</a>&nbsp;intakeJson,
+ <a href="../../../Hardware/Motors/Utility/SoftwareLimitWrapper.html" title="class in BobcatLib.Hardware.Motors.Utility">SoftwareLimitWrapper</a>&nbsp;limits)</span></div>
 <div class="block">This implementation should be used when you have a static intake that never moves with a
  pivoting motor;</div>
 <dl class="notes">

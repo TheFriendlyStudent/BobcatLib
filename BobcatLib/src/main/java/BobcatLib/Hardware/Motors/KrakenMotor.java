@@ -6,6 +6,7 @@ import BobcatLib.Hardware.Motors.Utility.CTRE.PidControllerWrapper;
 import BobcatLib.Logging.FaultsAndErrors.TalonFXFaults;
 import BobcatLib.Utilities.CANDeviceDetails;
 import com.ctre.phoenix6.configs.Slot0Configs;
+import com.ctre.phoenix6.configs.SoftwareLimitSwitchConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.ctre.phoenix6.controls.PositionTorqueCurrentFOC;
@@ -94,6 +95,18 @@ public class KrakenMotor implements MotorIO {
     motorConfig.ClosedLoopRamps.withVoltageClosedLoopRampPeriod(
         cfg.optionalCtre.closedLoop.getVoltageRampPeriod());
     mMotor.getConfigurator().apply(motorConfig);
+  }
+  /**
+   * Configures the motor with software limit switch settings.
+   *
+   * @param cfgLimits The {@link SoftwareLimitSwitchConfigs} instance containing the desired
+   *     software limit switch configurations.
+   * @return The updated {@code KrakenMotor} instance for method chaining.
+   */
+  public KrakenMotor withLimits(SoftwareLimitSwitchConfigs cfgLimits) {
+    motorConfig.withSoftwareLimitSwitch(cfgLimits);
+    mMotor.getConfigurator().apply(motorConfig);
+    return this;
   }
 
   /**

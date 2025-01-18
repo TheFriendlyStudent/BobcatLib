@@ -76,7 +76,7 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
   private Alliance team;
   Matrix<N3, N1> visionStdDevs;
   Matrix<N3, N1> stateStdDevs;
-
+  private String robotName;
   /*
    * Swerve Kinematics
    * No need to ever change this unless you are not doing a traditional
@@ -85,11 +85,16 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
   public static SwerveDriveKinematics swerveKinematics;
 
   public SwerveDrive(
-      boolean isSim, Alliance team, Matrix<N3, N1> visionStdDevs, Matrix<N3, N1> stateStdDevs) {
+      String robotName,
+      boolean isSim,
+      Alliance team,
+      Matrix<N3, N1> visionStdDevs,
+      Matrix<N3, N1> stateStdDevs) {
     this.team = team;
     this.isSim = isSim;
     this.visionStdDevs = visionStdDevs;
     this.stateStdDevs = stateStdDevs;
+    this.robotName = robotName;
 
     /* Drivetrain Constants */
     loadConfigurationFromFile();
@@ -146,11 +151,12 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             jsonSwerve.rotationPID.driveKD); // Rotation
   }
 
-  public SwerveDrive(boolean isSim, Alliance team) {
+  public SwerveDrive(String robotName, boolean isSim, Alliance team) {
     this.team = team;
     this.isSim = isSim;
     this.visionStdDevs = null;
     this.stateStdDevs = null;
+    this.robotName = robotName;
 
     /* Drivetrain Constants */
     loadConfigurationFromFile();
@@ -287,7 +293,8 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
   public SwerveJson loadConfigurationFromFile() {
     File deployDirectory = Filesystem.getDeployDirectory();
     assert deployDirectory.exists();
-    File directory = new File(deployDirectory, "configs/swerve");
+    File directory = new File(deployDirectory, "configs/swerve/" + robotName + "/");
+    assert directory.exists();
     assert new File(directory, "swerve.json").exists();
     File swerveFile = new File(directory, "swerve.json");
     assert swerveFile.exists();

@@ -2,8 +2,7 @@ package BobcatLib.Subsystems.Climbers.Modules;
 
 import BobcatLib.Hardware.Motors.BaseMotor;
 import BobcatLib.Hardware.Motors.MotorIO;
-import com.ctre.phoenix6.controls.DutyCycleOut;
-import com.ctre.phoenix6.controls.PositionDutyCycle;
+import BobcatLib.Hardware.Motors.Utility.SoftwareLimitWrapper;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 /**
@@ -15,21 +14,16 @@ public class ClimberReal implements ClimberIO {
   /** The motor controlling the climber mechanism. */
   private BaseMotor climberMotor;
 
-  /** The request object for percentage-based control of the climber motor. */
-  private DutyCycleOut request;
-
-  /** The request object for position-based control of the climber motor. */
-  private PositionDutyCycle holdPosRequest;
+  private SoftwareLimitWrapper limits;
 
   /**
    * Constructs a {@code ClimberReal} instance with the specified motor configuration.
    *
    * @param motor The {@link MotorIO} object for configuring the climber motor.
    */
-  public ClimberReal(MotorIO motor) {
-    climberMotor = new BaseMotor(motor);
-    request = new DutyCycleOut(0).withEnableFOC(true);
-    holdPosRequest = new PositionDutyCycle(0).withEnableFOC(true);
+  public ClimberReal(MotorIO motor, SoftwareLimitWrapper limits) {
+    this.limits = limits;
+    climberMotor = new BaseMotor(motor, limits);
   }
 
   /**
@@ -47,7 +41,7 @@ public class ClimberReal implements ClimberIO {
    * @param inputs The {@link ClimberIOInputs} object containing updated input data.
    */
   public void updateInputs(ClimberIOInputs inputs) {
-    inputs.climberMotorPosition = getPosition();
+    inputs.climberMotorPosition = getPosition().getRotations();
   }
 
   /**
@@ -59,7 +53,7 @@ public class ClimberReal implements ClimberIO {
    * @param percent The desired motor output percentage (-1.0 to 1.0).
    */
   public void setPercentOut(double percent) {
-    climberMotor.setControl(request.withOutput(percent).Output);
+    climberMotor.setControl(percent);
   }
 
   /**
@@ -68,7 +62,7 @@ public class ClimberReal implements ClimberIO {
    * @param rot The target position in rotations.
    */
   public void holdPos(double rot) {
-    climberMotor.setControl(holdPosRequest.withPosition(rot).Position);
+    climberMotor.setAngle(rot);
   }
 
   /** Stops the climber motor immediately. */

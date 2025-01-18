@@ -96,10 +96,10 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,BobcatLib.Subsystems.Climbers.Modules.ClimberIO)" class="member-name-link">ClimberSubsystem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
- <a href="Modules/ClimberIO.html" title="interface in BobcatLib.Subsystems.Climbers.Modules">ClimberIO</a>&nbsp;io)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,BobcatLib.Subsystems.Climbers.Modules.BaseClimber)" class="member-name-link">ClimberSubsystem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+ <a href="Modules/BaseClimber.html" title="class in BobcatLib.Subsystems.Climbers.Modules">BaseClimber</a>&nbsp;climberModule)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Constructs a <code>ClimberSubsystem</code> with the specified name and input-output interface.</div>
+<div class="block">Constructs a new <code>ElevatorSubsystem</code>.</div>
 </div>
 </div>
 </section>
@@ -116,19 +116,24 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#moveClimber(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">moveClimber</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;position)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Periodically updates the climber's inputs and handles its control behavior.</div>
+<div class="block">Moves the elevator to the specified position.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPercentOut(double)" class="member-name-link">setPercentOut</a><wbr>(double&nbsp;percent)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the climber motor's output percentage.</div>
+<div class="block">Periodically updates the elevator subsystem inputs.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stop()" class="member-name-link">stop</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPercentOut(double)" class="member-name-link">setPercentOut</a><wbr>(double&nbsp;percent)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Stops the climber mechanism by setting motor output to zero.</div>
+<div class="block">Sets the elevator motor output to a specified percentage.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stop()" class="member-name-link">stop</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Stops the elevator motor immediately.</div>
 </div>
 </div>
 </div>
@@ -154,15 +159,16 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,BobcatLib.Subsystems.Climbers.Modules.ClimberIO)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,BobcatLib.Subsystems.Climbers.Modules.BaseClimber)">
 <h3>ClimberSubsystem</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ClimberSubsystem</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
- <a href="Modules/ClimberIO.html" title="interface in BobcatLib.Subsystems.Climbers.Modules">ClimberIO</a>&nbsp;io)</span></div>
-<div class="block">Constructs a <code>ClimberSubsystem</code> with the specified name and input-output interface.</div>
+ <a href="Modules/BaseClimber.html" title="class in BobcatLib.Subsystems.Climbers.Modules">BaseClimber</a>&nbsp;climberModule)</span></div>
+<div class="block">Constructs a new <code>ElevatorSubsystem</code>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>name</code> - The name of the climber subsystem.</dd>
-<dd><code>io</code> - The <a href="Modules/ClimberIO.html" title="interface in BobcatLib.Subsystems.Climbers.Modules"><code>ClimberIO</code></a> interface for hardware interaction.</dd>
+<dd><code>name</code> - The name of the subsystem, used for identification or debugging.</dd>
+<dd><code>climberModule</code> - The <a href="Modules/BaseClimber.html" title="class in BobcatLib.Subsystems.Climbers.Modules"><code>BaseClimber</code></a> implementation for controlling the elevator
+     hardware.</dd>
 </dl>
 </section>
 </li>
@@ -178,22 +184,29 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
-<div class="block">Periodically updates the climber's inputs and handles its control behavior.
-
- <p>This method is called regularly by the scheduler to update telemetry and control logic. It
- also uses AdvantageKit's <code>Logger</code> to log the climber's inputs for diagnostics.</div>
+<div class="block">Periodically updates the elevator subsystem inputs. Called once per scheduler run.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="setPercentOut(double)">
 <h3>setPercentOut</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPercentOut</span><wbr><span class="parameters">(double&nbsp;percent)</span></div>
-<div class="block">Sets the climber motor's output percentage.
-
- <p>The output value should be between -1.0 (full reverse) and 1.0 (full forward).</div>
+<div class="block">Sets the elevator motor output to a specified percentage.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>percent</code> - The desired motor output percentage (-1.0 to 1.0).</dd>
+<dd><code>percent</code> - The desired output percentage, where 1.0 represents full forward power and -1.0
+     represents full reverse power.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="moveClimber(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>moveClimber</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveClimber</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;position)</span></div>
+<div class="block">Moves the elevator to the specified position.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>position</code> - The desired position of the elevator as a <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link"><code>Rotation2d</code></a> object.</dd>
 </dl>
 </section>
 </li>
@@ -201,9 +214,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="stop()">
 <h3>stop</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">stop</span>()</div>
-<div class="block">Stops the climber mechanism by setting motor output to zero.
-
- <p>This method also resets the output percentage tracking.</div>
+<div class="block">Stops the elevator motor immediately.</div>
 </section>
 </li>
 </ul>

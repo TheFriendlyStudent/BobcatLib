@@ -186,6 +186,11 @@ implements <a href="MotorIO.html" title="interface in BobcatLib.Hardware.Motors"
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates the inputs for the motor with the latest sensor data.</div>
 </div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="NeoMotor.html" title="class in BobcatLib.Hardware.Motors">NeoMotor</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withLimits(com.revrobotics.spark.config.LimitSwitchConfig)" class="member-name-link">withLimits</a><wbr>(<a href="https://codedocs.revrobotics.com/java/com/revrobotics/spark/config/LimitSwitchConfig.html" title="class or interface in com.revrobotics.spark.config" class="external-link">LimitSwitchConfig</a>&nbsp;cfgLimits)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Configures the motor with software limit switch settings.</div>
+</div>
 </div>
 </div>
 </div>
@@ -229,6 +234,20 @@ implements <a href="MotorIO.html" title="interface in BobcatLib.Hardware.Motors"
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="withLimits(com.revrobotics.spark.config.LimitSwitchConfig)">
+<h3>withLimits</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="NeoMotor.html" title="class in BobcatLib.Hardware.Motors">NeoMotor</a></span>&nbsp;<span class="element-name">withLimits</span><wbr><span class="parameters">(<a href="https://codedocs.revrobotics.com/java/com/revrobotics/spark/config/LimitSwitchConfig.html" title="class or interface in com.revrobotics.spark.config" class="external-link">LimitSwitchConfig</a>&nbsp;cfgLimits)</span></div>
+<div class="block">Configures the motor with software limit switch settings.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>cfgLimits</code> - The <a href="https://codedocs.revrobotics.com/java/com/revrobotics/spark/config/LimitSwitchConfig.html" title="class or interface in com.revrobotics.spark.config" class="external-link"><code>LimitSwitchConfig</code></a> instance containing the desired limit switch
+     configurations.</dd>
+<dt>Returns:</dt>
+<dd>The updated <code>NeoMotor</code> instance for method chaining.</dd>
+</dl>
+</section>
+</li>
 <li>
 <section class="detail" id="configMotor(BobcatLib.Hardware.Motors.MotorConfigs)">
 <h3>configMotor</h3>
