@@ -1,17 +1,10 @@
-package BobcatLib.Subsystems.Vision.Limelight.Utility;
+package BobcatLib.Subsystems.Vision.limelight.Structures;
+
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.extractArrayEntry;
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.toPose3D;
-import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
-import BobcatLib.Subsystems.Vision.Limelight.Components.Pipelines.LimelightPipelineData;
-import BobcatLib.Subsystems.Vision.Limelight.Components.Results.RawDetection;
-import BobcatLib.Subsystems.Vision.Limelight.Components.Results.RawFiducial;
-import BobcatLib.Subsystems.Vision.Limelight.Components.Targets.LimelightTargetData;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.networktables.DoubleArrayEntry;
 import edu.wpi.first.networktables.NetworkTable;
@@ -19,7 +12,14 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.StringArrayEntry;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotBase;
+
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.extractArrayEntry;
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose3D;
+
 import java.util.Optional;
+import BobcatLib.Subsystems.Vision.limelight.Limelight;
+import BobcatLib.Subsystems.Vision.limelight.Results.RawDetection;
+import BobcatLib.Subsystems.Vision.limelight.Results.RawFiducial;
 
 /**
  * Data retrieval class for {@link Limelight}
@@ -42,7 +42,7 @@ public class LimelightData
   /**
    * {@link Limelight} to fetch data for.
    */
-  private LimelightCamera             limelight;
+  private Limelight             limelight;
   /**
    * The limelight.results {@link LimelightResults} JSON data
    */
@@ -89,7 +89,7 @@ public class LimelightData
    *
    * @param camera {@link Limelight} to use.
    */
-  public LimelightData(LimelightCamera camera)
+  public LimelightData(Limelight camera)
   {
     resultsObjectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     limelight = camera;
@@ -105,10 +105,6 @@ public class LimelightData
     pythonScriptDataSet = limelightTable.getDoubleArrayTopic("llrobot").getEntry(new double[0]);
     targetData = new LimelightTargetData(camera);
     pipelineData = new LimelightPipelineData(camera);
-  }
-
-  public LimelightPipelineData getPipelineData(){
-    return pipelineData;
   }
 
   /**

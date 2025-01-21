@@ -1,4 +1,5 @@
-package BobcatLib.Subsystems.Vision.Limelight.Utility;
+package BobcatLib.Subsystems.Vision.limelight.Structures;
+
 
 import static edu.wpi.first.units.Units.Degrees;
 import static edu.wpi.first.units.Units.DegreesPerSecond;
@@ -10,13 +11,8 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
 
 /**
  * Utility classes to convert WPILib data to LimelightLib expected values.
@@ -213,21 +209,4 @@ public class LimelightUtils
   }
 
 
-    /**
-   * Get the {@link NetworkTable} for this limelight.
-   *
-   * @param name  table name 
-   * @return {@link NetworkTable} for this limelight.
-   */
-  public static NetworkTable getNTTable( String name ) {
-    return NetworkTableInstance.getDefault().getTable(sanitizeName(name));
-  }
-
-  public static double getLimelightNTDouble(String tableName, String entryName) {
-    return getLimelightNTTableEntry(tableName, entryName).getDouble(0.0);
-  }
-
-  public static NetworkTableEntry getLimelightNTTableEntry(String tableName, String entryName) {
-    return getNTTable(tableName).getEntry(entryName);
-  }
 }

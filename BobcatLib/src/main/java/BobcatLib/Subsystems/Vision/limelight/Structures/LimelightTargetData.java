@@ -1,26 +1,27 @@
-package BobcatLib.Subsystems.Vision.Limelight.Components.Targets;
+package BobcatLib.Subsystems.Vision.limelight.Structures;
 
-import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
+
+
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.networktables.DoubleArrayEntry;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.toPose2D;
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.toPose3D;
 
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose3D;
 
+import BobcatLib.Subsystems.Vision.limelight.Limelight;
 
 public class LimelightTargetData
 {
 
   /**
-   * {@link NetworkTable} for the {@link LimelightCamera}
+   * {@link NetworkTable} for the {@link Limelight}
    */
   private NetworkTable limelightTable;
   /**
-   * {@link LimelightCamera} to fetch data for.
+   * {@link Limelight} to fetch data for.
    */
-  private LimelightCamera    limelight;
+  private Limelight    limelight;
 
   /**
    * NetworkTable entry for target validity
@@ -84,9 +85,9 @@ public class LimelightTargetData
   /**
    * Construct data for targets.
    *
-   * @param camera {@link LimelightCamera} to use.
+   * @param camera {@link Limelight} to use.
    */
-  public LimelightTargetData(LimelightCamera camera)
+  public LimelightTargetData(Limelight camera)
   {
     limelight = camera;
     limelightTable = limelight.getNTTable();

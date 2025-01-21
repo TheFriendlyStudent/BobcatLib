@@ -1,4 +1,4 @@
-package BobcatLib.Subsystems.Vision.Limelight.Components.Pipelines;
+package BobcatLib.Subsystems.Vision.limelight.Structures.Target.Pipeline;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

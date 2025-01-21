@@ -1,5 +1,4 @@
-package BobcatLib.Subsystems.Vision.Limelight.Utility;
-
+package BobcatLib.Subsystems.Vision.limelight.Structures;
 
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.units.measure.AngularVelocity;

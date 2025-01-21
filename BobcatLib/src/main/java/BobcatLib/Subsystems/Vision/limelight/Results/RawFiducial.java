@@ -1,4 +1,7 @@
-package BobcatLib.Subsystems.Vision.Limelight.Components.Results;
+package BobcatLib.Subsystems.Vision.limelight.Results;
+
+
+import BobcatLib.Subsystems.Vision.limelight.Limelight;
 
 /**
  * Represents a {@link Limelight} Raw Fiducial result from {@link Limelight}'s NetworkTables output.

@@ -1,4 +1,5 @@
-package BobcatLib.Subsystems.Vision.Limelight.Utility;
+package BobcatLib.Subsystems.Vision.limelight.Structures;
+
 
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Translation3d;
@@ -6,13 +7,13 @@ import edu.wpi.first.networktables.DoubleArrayEntry;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.orientation3dToArray;
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.pose3dToArray;
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.translation3dToArray;
+
 import java.util.List;
-
-import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
-
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.orientation3dToArray;
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.pose3dToArray;
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.translation3dToArray;
+import BobcatLib.Subsystems.Vision.limelight.Limelight;
 
 /**
  * Settings class to apply configurable options to the {@link Limelight}
@@ -27,7 +28,7 @@ public class LimelightSettings
   /**
    * {@link Limelight} to fetch data for.
    */
-  private LimelightCamera         limelight;
+  private Limelight         limelight;
   /**
    * LED Mode for the limelight. 0 = Pipeline Control, 1 = Force Off, 2 = Force Blink, 3 = Force On
    */
@@ -45,10 +46,6 @@ public class LimelightSettings
    * corner)
    */
   private NetworkTableEntry streamMode;
-  /**
-   * Cam mode 0 , 1
-   */
-  private NetworkTableEntry camMode;
   /**
    * Crop window for the camera. The crop window in the UI must be completely open. DoubleArray
    * [cropXMin,cropXMax,cropYMin,cropYMax] values between -1 and 1
@@ -81,15 +78,12 @@ public class LimelightSettings
    */
   private DoubleArrayEntry  cameraToRobot;
 
-  private CamMode actualCamMode;
-  private LEDMode actualLedMode;
-
   /**
    * Create a {@link LimelightSettings} object with all configurable features of a {@link Limelight}.
    *
    * @param camera {@link Limelight} to use.
    */
-  public LimelightSettings(LimelightCamera camera)
+  public LimelightSettings(Limelight camera)
   {
     limelight = camera;
     limelightTable = limelight.getNTTable();
@@ -98,15 +92,12 @@ public class LimelightSettings
     pipelineIndex = limelightTable.getEntry("pipeline");
     priorityTagID = limelightTable.getEntry("priorityid");
     streamMode = limelightTable.getEntry("stream");
-    camMode = limelightTable.getEntry("camMode");
     cropWindow = limelightTable.getDoubleArrayTopic("crop").getEntry(new double[0]);
     robotOrientationSet = limelightTable.getDoubleArrayTopic("robot_orientation_set").getEntry(new double[0]);
     downscale = limelightTable.getEntry("fiducial_downscale_set");
     fiducial3DOffset = limelightTable.getDoubleArrayTopic("fiducial_offset_set").getEntry(new double[0]);
     cameraToRobot = limelightTable.getDoubleArrayTopic("camerapose_robotspace_set").getEntry(new double[0]);
     fiducialIDFiltersOverride = limelightTable.getDoubleArrayTopic("fiducial_id_filters_set").getEntry(new double[0]);
-
-
   }
 
   /**
@@ -118,7 +109,6 @@ public class LimelightSettings
   public LimelightSettings withLimelightLEDMode(LEDMode mode)
   {
     ledMode.setNumber(mode.ordinal());
-    actualLedMode = mode;
     return this;
   }
 
@@ -155,19 +145,6 @@ public class LimelightSettings
   public LimelightSettings withStreamMode(StreamMode mode)
   {
     streamMode.setNumber(mode.ordinal());
-    return this;
-  }
-
-    /**
-   * Set the Cam mode based on the {@link CamMode} enum
-   *
-   * @param mode {@link CamMode} to use
-   * @return {@link LimelightSettings} for chaining.
-   */
-  public LimelightSettings withCamMode(CamMode mode)
-  {
-    camMode.setNumber(mode.ordinal());
-    actualCamMode = mode;
     return this;
   }
 
@@ -270,17 +247,6 @@ public class LimelightSettings
   }
 
   /**
-   * Cam Mode for the {@link Limelight}.
-   */
-  public enum CamMode
-  {
-    Vision,DriverCam
-  }
-
-
-
-
-  /**
    * Stream mode for the {@link Limelight}
    */
   public enum StreamMode
@@ -329,14 +295,6 @@ public class LimelightSettings
      * Quadruple downscaling, equivalent to 4
      */
     QuadrupleDownscale
-  }
-
-  public CamMode getCamMode() {
-    return actualCamMode;
-  }
-
-  public LEDMode getLedMode() {
-    return actualLedMode;
   }
 
 }

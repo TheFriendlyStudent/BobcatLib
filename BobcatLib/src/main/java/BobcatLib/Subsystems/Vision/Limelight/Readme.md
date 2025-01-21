@@ -1,1 +1,0 @@
-Inspired Heavily by YALL "Yet Another Limelight Library"

@@ -1,17 +1,16 @@
-package BobcatLib.Subsystems.Vision.Limelight.Components.PoseEstimator;
+package BobcatLib.Subsystems.Vision.limelight.Estimator;
 
-import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
-import BobcatLib.Subsystems.Vision.Limelight.Components.Results.RawFiducial;
-
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.toPose3D;
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.extractArrayEntry;
 
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.networktables.DoubleArrayEntry;
 import edu.wpi.first.networktables.TimestampedDoubleArray;
-import java.util.Optional;
-import BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightResults;
 
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.extractArrayEntry;
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose3D;
+
+import java.util.Optional;
+import BobcatLib.Subsystems.Vision.limelight.Limelight;
+import BobcatLib.Subsystems.Vision.limelight.Results.RawFiducial;
 
 /**
  * Represents a 3D Pose Estimate.
@@ -26,7 +25,7 @@ public class PoseEstimate
   /**
    * {@link Limelight} to use.
    */
-  private final LimelightCamera        limelight;
+  private final Limelight        limelight;
   /**
    * {@link Limelight} Pose Entry name to use.
    */
@@ -79,7 +78,7 @@ public class PoseEstimate
    * @param entryName Pose estimation entry we are interested in.
    * @param megaTag2  Is the data MegaTag2
    */
-  public PoseEstimate(LimelightCamera camera, String entryName, boolean megaTag2)
+  public PoseEstimate(Limelight camera, String entryName, boolean megaTag2)
   {
     this.pose = new Pose3d();
     this.timestampSeconds = 0;

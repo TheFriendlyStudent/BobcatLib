@@ -1,21 +1,20 @@
-package BobcatLib.Subsystems.Vision.Limelight.Utility;
+package BobcatLib.Subsystems.Vision.limelight.Structures;
+
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose2D;
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose3D;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
-import BobcatLib.Subsystems.Vision.Limelight.Components.Pipelines.NeuralClassifier;
-import BobcatLib.Subsystems.Vision.Limelight.Components.Pipelines.NeuralDetector;
-import BobcatLib.Subsystems.Vision.Limelight.Components.Targets.AprilTagFiducial;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.toPose2D;
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.toPose3D;
-
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.wpilibj.DriverStation;
+import BobcatLib.Subsystems.Vision.limelight.Limelight;
+import BobcatLib.Subsystems.Vision.limelight.Structures.Target.AprilTagFiducial;
+import BobcatLib.Subsystems.Vision.limelight.Structures.Target.Barcode;
+import BobcatLib.Subsystems.Vision.limelight.Structures.Target.RetroreflectiveTape;
+import BobcatLib.Subsystems.Vision.limelight.Structures.Target.Pipeline.NeuralClassifier;
+import BobcatLib.Subsystems.Vision.limelight.Structures.Target.Pipeline.NeuralDetector;
 
 /**
  * {@link Limelight} Results object, parsed from a {@link Limelight}'s JSON limelight.results output.
@@ -69,12 +68,16 @@ public class LimelightResults
 
   @JsonProperty("t6c_rs")
   public double[]              camerapose_robotspace;
+  @JsonProperty("Retro")
+  public RetroreflectiveTape[] targets_Retro;
   @JsonProperty("Fiducial")
   public AprilTagFiducial[]    targets_Fiducials;
   @JsonProperty("Classifier")
   public NeuralClassifier[]    targets_Classifier;
   @JsonProperty("Detector")
   public NeuralDetector[]      targets_Detector;
+  @JsonProperty("Barcode")
+  public Barcode[]             targets_Barcode;
 
   public LimelightResults()
   {
@@ -82,9 +85,11 @@ public class LimelightResults
     botpose_wpired = new double[6];
     botpose_wpiblue = new double[6];
     camerapose_robotspace = new double[6];
+    targets_Retro = new RetroreflectiveTape[0];
     targets_Fiducials = new AprilTagFiducial[0];
     targets_Classifier = new NeuralClassifier[0];
     targets_Detector = new NeuralDetector[0];
+    targets_Barcode = new Barcode[0];
 
   }
 

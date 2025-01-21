@@ -1,14 +1,15 @@
-package BobcatLib.Subsystems.Vision.Limelight.Components.PoseEstimator;
+package BobcatLib.Subsystems.Vision.limelight.Estimator;
 
 
-import static BobcatLib.Subsystems.Vision.Limelight.Utility.LimelightUtils.toPose3D;
 
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.networktables.DoubleArrayEntry;
 import edu.wpi.first.wpilibj.DriverStation;
-import java.util.Optional;
 
-import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
+import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose3D;
+
+import java.util.Optional;
+import BobcatLib.Subsystems.Vision.limelight.Limelight;
 
 /**
  * Pose estimator for {@link Limelight}.
@@ -19,7 +20,7 @@ public class LimelightPoseEstimator
   /**
    * {@link Limelight} name to use.
    */
-  private final LimelightCamera        limelight;
+  private final Limelight        limelight;
   /**
    * Use MegaTag2 for the {@link PoseEstimate}.
    */
@@ -36,7 +37,7 @@ public class LimelightPoseEstimator
    * @param camera   {@link Limelight} to use.
    * @param megatag2 MegaTag2 decoding.
    */
-  public LimelightPoseEstimator(LimelightCamera camera, boolean megatag2)
+  public LimelightPoseEstimator(Limelight camera, boolean megatag2)
   {
     limelight = camera;
     this.megatag2 = megatag2;
@@ -145,7 +146,7 @@ public class LimelightPoseEstimator
      * @param camera {@link Limelight} to use.
      * @return Current {@link PoseEstimate}.
      */
-    public Optional<PoseEstimate> get(LimelightCamera camera)
+    public Optional<PoseEstimate> get(Limelight camera)
     {
       if (poseEstimate.isEmpty())
       {

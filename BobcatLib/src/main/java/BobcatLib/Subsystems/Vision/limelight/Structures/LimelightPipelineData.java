@@ -1,8 +1,11 @@
-package BobcatLib.Subsystems.Vision.Limelight.Components.Pipelines;
+package BobcatLib.Subsystems.Vision.limelight.Structures;
 
-import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
+
+
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
+import  BobcatLib.Subsystems.Vision.limelight.Limelight;
+
 
 /**
  * Pipeline data for {@link Limelight}.
@@ -17,7 +20,7 @@ public class LimelightPipelineData
   /**
    * {@link Limelight} to fetch data for.
    */
-  private LimelightCamera         limelight;
+  private Limelight         limelight;
   /**
    * Pipeline processing latency contribution.
    */
@@ -40,7 +43,7 @@ public class LimelightPipelineData
    *
    * @param camera {@link Limelight} to use.
    */
-  public LimelightPipelineData(LimelightCamera camera)
+  public LimelightPipelineData(Limelight camera)
   {
     limelight = camera;
     limelightTable = limelight.getNTTable();
