@@ -31,6 +31,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
+
+
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a
@@ -82,9 +85,6 @@ public class RobotContainer {
         
                         // Configure the button bindings
                         configureButtonBindings(); 
-                        
-        
-                        limelightVision = new  limelight();
                 }
         
                 public void initComand() {
@@ -104,6 +104,12 @@ public class RobotContainer {
                                                         s_Controls.controllerJson));
         
                 }
+
+                public void periodic(){
+                        limelightVision.updatePoseEstimator(s_Swerve.getGyroYaw(),s_Swerve.getModulePositions());
+                        limelightVision.periodic();
+                }
+
         
                 public boolean autoChooserInitialized() {
                         return autoChooser.get() != null;
