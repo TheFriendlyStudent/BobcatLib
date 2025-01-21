@@ -1,18 +1,17 @@
-package BobcatLib.Subsystems.Vision.limelight.Results;
+package BobcatLib.Subsystems.Vision.Limelight.Results;
 
-
-import BobcatLib.Subsystems.Vision.limelight.Limelight;
+import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
 
 /**
- * Represents a {@link Limelight} Raw Neural Detector result from {@link Limelight}'s NetworkTables output.
+ * Represents a {@link LimelightCamera} Raw Neural Detector result from {@link LimelightCamera}'s
+ * NetworkTables output.
  */
-public class RawDetection
-{
+public class RawDetection {
 
-  public int    classId   = 0;
-  public double txnc      = 0;
-  public double tync      = 0;
-  public double ta        = 0;
+  public int classId = 0;
+  public double txnc = 0;
+  public double tync = 0;
+  public double ta = 0;
   public double corner0_X = 0;
   public double corner0_Y = 0;
   public double corner1_X = 0;
@@ -22,13 +21,19 @@ public class RawDetection
   public double corner3_X = 0;
   public double corner3_Y = 0;
 
-
-  public RawDetection(int classId, double txnc, double tync, double ta,
-                      double corner0_X, double corner0_Y,
-                      double corner1_X, double corner1_Y,
-                      double corner2_X, double corner2_Y,
-                      double corner3_X, double corner3_Y)
-  {
+  public RawDetection(
+      int classId,
+      double txnc,
+      double tync,
+      double ta,
+      double corner0_X,
+      double corner0_Y,
+      double corner1_X,
+      double corner1_Y,
+      double corner2_X,
+      double corner2_Y,
+      double corner3_X,
+      double corner3_Y) {
     this.classId = classId;
     this.txnc = txnc;
     this.tync = tync;

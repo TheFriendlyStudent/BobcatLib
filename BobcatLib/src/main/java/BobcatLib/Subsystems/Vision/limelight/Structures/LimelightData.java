@@ -1,6 +1,11 @@
-package BobcatLib.Subsystems.Vision.limelight.Structures;
+package BobcatLib.Subsystems.Vision.Limelight.Structures;
 
+import static BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightUtils.extractArrayEntry;
+import static BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightUtils.toPose3D;
 
+import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
+import BobcatLib.Subsystems.Vision.Limelight.Results.RawDetection;
+import BobcatLib.Subsystems.Vision.Limelight.Results.RawFiducial;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -12,86 +17,50 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.StringArrayEntry;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotBase;
-
-import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.extractArrayEntry;
-import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose3D;
-
 import java.util.Optional;
-import BobcatLib.Subsystems.Vision.limelight.Limelight;
-import BobcatLib.Subsystems.Vision.limelight.Results.RawDetection;
-import BobcatLib.Subsystems.Vision.limelight.Results.RawFiducial;
 
-/**
- * Data retrieval class for {@link Limelight}
- */
-public class LimelightData
-{
+/** Data retrieval class for {@link LimelightCamera} */
+public class LimelightData {
 
-  /**
-   * Target data from limelight.
-   */
-  public  LimelightTargetData   targetData;
-  /**
-   * Pipeline data from limelight.
-   */
-  public  LimelightPipelineData pipelineData;
-  /**
-   * {@link NetworkTable} for the {@link Limelight}
-   */
-  private NetworkTable          limelightTable;
-  /**
-   * {@link Limelight} to fetch data for.
-   */
-  private Limelight             limelight;
-  /**
-   * The limelight.results {@link LimelightResults} JSON data
-   */
-  private NetworkTableEntry     results;
-  /**
-   * Raw AprilTag detection from NetworkTables.
-   */
-  private NetworkTableEntry     rawfiducials;
-  /**
-   * Raw Neural Detector limelight.results from NetworkTables.
-   */
-  private NetworkTableEntry     rawDetections;
-  /**
-   * Neural Clasifier result class name.
-   */
-  private NetworkTableEntry     classifierClass;
-  /**
-   * Primary neural detect result class name.
-   */
-  private NetworkTableEntry     detectorClass;
+  /** Target data from limelight. */
+  public LimelightTargetData targetData;
+  /** Pipeline data from limelight. */
+  public LimelightPipelineData pipelineData;
+  /** {@link NetworkTable} for the {@link LimelightCamera} */
+  private NetworkTable limelightTable;
+  /** {@link LimelightCamera} to fetch data for. */
+  private LimelightCamera limelight;
+  /** The limelight.results {@link LimelightResults} JSON data */
+  private NetworkTableEntry results;
+  /** Raw AprilTag detection from NetworkTables. */
+  private NetworkTableEntry rawfiducials;
+  /** Raw Neural Detector limelight.results from NetworkTables. */
+  private NetworkTableEntry rawDetections;
+  /** Neural Clasifier result class name. */
+  private NetworkTableEntry classifierClass;
+  /** Primary neural detect result class name. */
+  private NetworkTableEntry detectorClass;
   /**
    * {@link Pose3d} object representing the camera's position and orientation relative to the robot.
    */
-  private DoubleArrayEntry      camera2RobotPose3d;
-  /**
-   * Barcodes read by the {@link Limelight}.
-   */
-  private StringArrayEntry      barcodeData;
-  /**
-   * Custom Python script set data for {@link Limelight}.
-   */
-  private DoubleArrayEntry      pythonScriptDataSet;
-  /**
-   * Custom Python script output data for {@link Limelight}.
-   */
-  private DoubleArrayEntry      pythonScriptData;
-  /**
-   * Object mapper for limelight.results JSON.
-   */
-  private ObjectMapper          resultsObjectMapper;
+  private DoubleArrayEntry camera2RobotPose3d;
+  /** Barcodes read by the {@link LimelightCamera}. */
+  private StringArrayEntry barcodeData;
+  /** Custom Python script set data for {@link LimelightCamera}. */
+  private DoubleArrayEntry pythonScriptDataSet;
+  /** Custom Python script output data for {@link LimelightCamera}. */
+  private DoubleArrayEntry pythonScriptData;
+  /** Object mapper for limelight.results JSON. */
+  private ObjectMapper resultsObjectMapper;
 
   /**
    * Construct the {@link LimelightData} class to retrieve read-only data.
    *
-   * @param camera {@link Limelight} to use.
+   * @param camera {@link LimelightCamera} to use.
    */
-  public LimelightData(Limelight camera)
-  {
-    resultsObjectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+  public LimelightData(LimelightCamera camera) {
+    resultsObjectMapper =
+        new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     limelight = camera;
     limelightTable = limelight.getNTTable();
     results = limelightTable.getEntry("json");
@@ -99,7 +68,8 @@ public class LimelightData
     rawDetections = limelightTable.getEntry("rawdetections");
     classifierClass = limelightTable.getEntry("tcclass");
     detectorClass = limelightTable.getEntry("tdclass");
-    camera2RobotPose3d = limelightTable.getDoubleArrayTopic("camerapose_robotspace").getEntry(new double[0]);
+    camera2RobotPose3d =
+        limelightTable.getDoubleArrayTopic("camerapose_robotspace").getEntry(new double[0]);
     barcodeData = limelightTable.getStringArrayTopic("rawbarcodes").getEntry(new String[0]);
     pythonScriptData = limelightTable.getDoubleArrayTopic("llpython").getEntry(new double[0]);
     pythonScriptDataSet = limelightTable.getDoubleArrayTopic("llrobot").getEntry(new double[0]);
@@ -108,42 +78,39 @@ public class LimelightData
   }
 
   /**
-   * Get the output of the custom python script running on the {@link Limelight}.
+   * Get the output of the custom python script running on the {@link LimelightCamera}.
    *
-   * @return Output Double Array of the custom python script running on the {@link Limelight}.
+   * @return Output Double Array of the custom python script running on the {@link LimelightCamera}.
    */
-  public double[] getPythonData()
-  {
+  public double[] getPythonData() {
     return pythonScriptData.get();
   }
 
   /**
-   * Set the input for the custom python script running on the {@link Limelight}
+   * Set the input for the custom python script running on the {@link LimelightCamera}
    *
    * @param outgoingData Double array for custom python script.
    */
-  public void setPythonData(double[] outgoingData)
-  {
+  public void setPythonData(double[] outgoingData) {
     pythonScriptDataSet.set(outgoingData);
   }
 
   /**
-   * Barcode data read by the {@link Limelight}.
+   * Barcode data read by the {@link LimelightCamera}.
    *
    * @return Barcode data as a string.
    */
-  public String[] getBarcodeData()
-  {
+  public String[] getBarcodeData() {
     return barcodeData.get();
   }
 
   /**
    * Gets the camera's 3D pose with respect to the robot's coordinate system.
    *
-   * @return {@link Pose3d} object representing the camera's position and orientation relative to the robot
+   * @return {@link Pose3d} object representing the camera's position and orientation relative to
+   *     the robot
    */
-  public Pose3d getCamera2Robot()
-  {
+  public Pose3d getCamera2Robot() {
     return toPose3D(camera2RobotPose3d.get());
   }
 
@@ -152,8 +119,7 @@ public class LimelightData
    *
    * @return Class name string from classifier pipeline
    */
-  public String getClassifierClass()
-  {
+  public String getClassifierClass() {
     return classifierClass.getString("");
   }
 
@@ -162,31 +128,25 @@ public class LimelightData
    *
    * @return Class name string from detector pipeline
    */
-  public String getDetectorClass()
-  {
+  public String getDetectorClass() {
     return detectorClass.getString("");
   }
-
 
   /**
    * Get {@link LimelightResults} from NetworkTables
    *
    * @return {@link LimelightResults} if it exists.
    */
-  public Optional<LimelightResults> getResults()
-  {
-    try
-    {
-      LimelightResults data = resultsObjectMapper.readValue(results.getString(""), Results.class).results;
+  public Optional<LimelightResults> getResults() {
+    try {
+      LimelightResults data =
+          resultsObjectMapper.readValue(results.getString(""), Results.class).results;
       return Optional.of(data);
 
-    } catch (JsonProcessingException e)
-    {
-      if (RobotBase.isSimulation())
-      {
+    } catch (JsonProcessingException e) {
+      if (RobotBase.isSimulation()) {
         // TODO: Put sim warning here.
-      }
-      else {
+      } else {
         DriverStation.reportError("lljson error: " + e.getMessage(), true);
       }
     }
@@ -198,28 +158,25 @@ public class LimelightData
    *
    * @return Array of RawFiducial objects containing detection details
    */
-  public RawFiducial[] getRawFiducials()
-  {
+  public RawFiducial[] getRawFiducials() {
     var rawFiducialArray = rawfiducials.getDoubleArray(new double[0]);
-    int valsPerEntry     = 7;
-    if (rawFiducialArray.length % valsPerEntry != 0)
-    {
+    int valsPerEntry = 7;
+    if (rawFiducialArray.length % valsPerEntry != 0) {
       return new RawFiducial[0];
     }
 
-    int           numFiducials = rawFiducialArray.length / valsPerEntry;
+    int numFiducials = rawFiducialArray.length / valsPerEntry;
     RawFiducial[] rawFiducials = new RawFiducial[numFiducials];
 
-    for (int i = 0; i < numFiducials; i++)
-    {
-      int    baseIndex    = i * valsPerEntry;
-      int    id           = (int) extractArrayEntry(rawFiducialArray, baseIndex);
-      double txnc         = extractArrayEntry(rawFiducialArray, baseIndex + 1);
-      double tync         = extractArrayEntry(rawFiducialArray, baseIndex + 2);
-      double ta           = extractArrayEntry(rawFiducialArray, baseIndex + 3);
+    for (int i = 0; i < numFiducials; i++) {
+      int baseIndex = i * valsPerEntry;
+      int id = (int) extractArrayEntry(rawFiducialArray, baseIndex);
+      double txnc = extractArrayEntry(rawFiducialArray, baseIndex + 1);
+      double tync = extractArrayEntry(rawFiducialArray, baseIndex + 2);
+      double ta = extractArrayEntry(rawFiducialArray, baseIndex + 3);
       double distToCamera = extractArrayEntry(rawFiducialArray, baseIndex + 4);
-      double distToRobot  = extractArrayEntry(rawFiducialArray, baseIndex + 5);
-      double ambiguity    = extractArrayEntry(rawFiducialArray, baseIndex + 6);
+      double distToRobot = extractArrayEntry(rawFiducialArray, baseIndex + 5);
+      double ambiguity = extractArrayEntry(rawFiducialArray, baseIndex + 6);
 
       rawFiducials[i] = new RawFiducial(id, txnc, tync, ta, distToCamera, distToRobot, ambiguity);
     }
@@ -232,25 +189,22 @@ public class LimelightData
    *
    * @return Array of RawDetection objects containing detection details
    */
-  public RawDetection[] getRawDetections()
-  {
+  public RawDetection[] getRawDetections() {
     var rawDetectionArray = rawDetections.getDoubleArray(new double[0]);
-    int valsPerEntry      = 12;
-    if (rawDetectionArray.length % valsPerEntry != 0)
-    {
+    int valsPerEntry = 12;
+    if (rawDetectionArray.length % valsPerEntry != 0) {
       return new RawDetection[0];
     }
 
-    int            numDetections = rawDetectionArray.length / valsPerEntry;
+    int numDetections = rawDetectionArray.length / valsPerEntry;
     RawDetection[] rawDetections = new RawDetection[numDetections];
 
-    for (int i = 0; i < numDetections; i++)
-    {
-      int    baseIndex = i * valsPerEntry; // Starting index for this detection's data
-      int    classId   = (int) extractArrayEntry(rawDetectionArray, baseIndex);
-      double txnc      = extractArrayEntry(rawDetectionArray, baseIndex + 1);
-      double tync      = extractArrayEntry(rawDetectionArray, baseIndex + 2);
-      double ta        = extractArrayEntry(rawDetectionArray, baseIndex + 3);
+    for (int i = 0; i < numDetections; i++) {
+      int baseIndex = i * valsPerEntry; // Starting index for this detection's data
+      int classId = (int) extractArrayEntry(rawDetectionArray, baseIndex);
+      double txnc = extractArrayEntry(rawDetectionArray, baseIndex + 1);
+      double tync = extractArrayEntry(rawDetectionArray, baseIndex + 2);
+      double ta = extractArrayEntry(rawDetectionArray, baseIndex + 3);
       double corner0_X = extractArrayEntry(rawDetectionArray, baseIndex + 4);
       double corner0_Y = extractArrayEntry(rawDetectionArray, baseIndex + 5);
       double corner1_X = extractArrayEntry(rawDetectionArray, baseIndex + 6);
@@ -260,34 +214,20 @@ public class LimelightData
       double corner3_X = extractArrayEntry(rawDetectionArray, baseIndex + 10);
       double corner3_Y = extractArrayEntry(rawDetectionArray, baseIndex + 11);
 
-      rawDetections[i] = new RawDetection(classId,
-                                          txnc,
-                                          tync,
-                                          ta,
-                                          corner0_X,
-                                          corner0_Y,
-                                          corner1_X,
-                                          corner1_Y,
-                                          corner2_X,
-                                          corner2_Y,
-                                          corner3_X,
-                                          corner3_Y);
+      rawDetections[i] =
+          new RawDetection(
+              classId, txnc, tync, ta, corner0_X, corner0_Y, corner1_X, corner1_Y, corner2_X,
+              corner2_Y, corner3_X, corner3_Y);
     }
 
     return rawDetections;
   }
 
-  /**
-   * Results Wrapper Class for JSON reading
-   */
-  private class Results
-  {
+  /** Results Wrapper Class for JSON reading */
+  private class Results {
 
-    /**
-     * "Results" Object for JSON reading.
-     */
+    /** "Results" Object for JSON reading. */
     @JsonProperty("Results")
     public LimelightResults results;
   }
-
 }

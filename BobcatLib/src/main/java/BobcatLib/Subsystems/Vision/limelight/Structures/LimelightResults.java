@@ -1,26 +1,26 @@
-package BobcatLib.Subsystems.Vision.limelight.Structures;
+package BobcatLib.Subsystems.Vision.Limelight.Structures;
 
-import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose2D;
-import static BobcatLib.Subsystems.Vision.limelight.Structures.LimelightUtils.toPose3D;
+import static BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightUtils.toPose2D;
+import static BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightUtils.toPose3D;
 
+import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
+import BobcatLib.Subsystems.Vision.Limelight.Structures.Target.AprilTagFiducial;
+import BobcatLib.Subsystems.Vision.Limelight.Structures.Target.Barcode;
+import BobcatLib.Subsystems.Vision.Limelight.Structures.Target.Pipeline.NeuralClassifier;
+import BobcatLib.Subsystems.Vision.Limelight.Structures.Target.Pipeline.NeuralDetector;
+import BobcatLib.Subsystems.Vision.Limelight.Structures.Target.RetroreflectiveTape;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.wpilibj.DriverStation;
-import BobcatLib.Subsystems.Vision.limelight.Limelight;
-import BobcatLib.Subsystems.Vision.limelight.Structures.Target.AprilTagFiducial;
-import BobcatLib.Subsystems.Vision.limelight.Structures.Target.Barcode;
-import BobcatLib.Subsystems.Vision.limelight.Structures.Target.RetroreflectiveTape;
-import BobcatLib.Subsystems.Vision.limelight.Structures.Target.Pipeline.NeuralClassifier;
-import BobcatLib.Subsystems.Vision.limelight.Structures.Target.Pipeline.NeuralDetector;
 
 /**
- * {@link Limelight} Results object, parsed from a {@link Limelight}'s JSON limelight.results output.
+ * {@link LimelightCamera} Results object, parsed from a {@link LimelightCamera}'s JSON
+ * limelight.results output.
  */
-public class LimelightResults
-{
+public class LimelightResults {
 
   public String error;
 
@@ -67,20 +67,24 @@ public class LimelightResults
   public double botpose_avgarea;
 
   @JsonProperty("t6c_rs")
-  public double[]              camerapose_robotspace;
+  public double[] camerapose_robotspace;
+
   @JsonProperty("Retro")
   public RetroreflectiveTape[] targets_Retro;
-  @JsonProperty("Fiducial")
-  public AprilTagFiducial[]    targets_Fiducials;
-  @JsonProperty("Classifier")
-  public NeuralClassifier[]    targets_Classifier;
-  @JsonProperty("Detector")
-  public NeuralDetector[]      targets_Detector;
-  @JsonProperty("Barcode")
-  public Barcode[]             targets_Barcode;
 
-  public LimelightResults()
-  {
+  @JsonProperty("Fiducial")
+  public AprilTagFiducial[] targets_Fiducials;
+
+  @JsonProperty("Classifier")
+  public NeuralClassifier[] targets_Classifier;
+
+  @JsonProperty("Detector")
+  public NeuralDetector[] targets_Detector;
+
+  @JsonProperty("Barcode")
+  public Barcode[] targets_Barcode;
+
+  public LimelightResults() {
     botpose = new double[6];
     botpose_wpired = new double[6];
     botpose_wpiblue = new double[6];
@@ -90,40 +94,29 @@ public class LimelightResults
     targets_Classifier = new NeuralClassifier[0];
     targets_Detector = new NeuralDetector[0];
     targets_Barcode = new Barcode[0];
-
   }
 
-  public Pose3d getBotPose3d()
-  {
+  public Pose3d getBotPose3d() {
     return toPose3D(botpose);
   }
 
-  public Pose3d getBotPose3d(DriverStation.Alliance alliance)
-  {
-    if (alliance == DriverStation.Alliance.Red)
-    {
+  public Pose3d getBotPose3d(DriverStation.Alliance alliance) {
+    if (alliance == DriverStation.Alliance.Red) {
       return toPose3D(botpose_wpired);
-    } else
-    {
+    } else {
       return toPose3D(botpose_wpiblue);
     }
   }
 
-  public Pose2d getBotPose2d()
-  {
+  public Pose2d getBotPose2d() {
     return toPose2D(botpose);
   }
 
-  public Pose2d getBotPose2d(DriverStation.Alliance alliance)
-  {
-    if (alliance == DriverStation.Alliance.Red)
-    {
+  public Pose2d getBotPose2d(DriverStation.Alliance alliance) {
+    if (alliance == DriverStation.Alliance.Red) {
       return toPose2D(botpose_wpired);
-    } else
-    {
+    } else {
       return toPose2D(botpose_wpiblue);
     }
   }
-
-
 }

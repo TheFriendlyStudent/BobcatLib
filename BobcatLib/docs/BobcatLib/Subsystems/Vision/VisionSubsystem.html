@@ -84,6 +84,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">VisionSubsystem</span>
 <span class="extends-implements">extends <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/SubsystemBase.html" title="class or interface in edu.wpi.first.wpilibj2.command" class="external-link">SubsystemBase</a></span></div>
+<div class="block">Represents the Intake Subsystem in the robot. It interacts with the intake module to control the
+ intake mechanism, load configurations from a file, and periodically update inputs.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -96,8 +98,8 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>boolean</code></div>
-<div class="col-second even-row-color"><code><a href="#apriltagPipeline" class="member-name-link">apriltagPipeline</a></code></div>
+<div class="col-first even-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color"><code><a href="#name" class="member-name-link">name</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -110,8 +112,10 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(BobcatLib.Subsystems.Vision.Module.VisionIO)" class="member-name-link">VisionSubsystem</a><wbr>(<a href="Module/VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Module">VisionIO</a>&nbsp;io)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String)" class="member-name-link">VisionSubsystem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</code></div>
+<div class="col-last even-row-color">
+<div class="block">Constructor for the VisionSubsystem.</div>
+</div>
 </div>
 </section>
 </li>
@@ -126,43 +130,11 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBotPose()" class="member-name-link">getBotPose</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDistToTag()" class="member-name-link">getDistToTag</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPoseTimestamp()" class="member-name-link">getPoseTimestamp</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTA()" class="member-name-link">getTA</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTClass()" class="member-name-link">getTClass</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTranslationToTag(int)" class="member-name-link">getTranslationToTag</a><wbr>(int&nbsp;tagID)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTV()" class="member-name-link">getTV</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTX()" class="member-name-link">getTX</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setCamMode(BobcatLib.Subsystems.Vision.Utility.CamMode)" class="member-name-link">setCamMode</a><wbr>(<a href="Utility/CamMode.html" title="enum class in BobcatLib.Subsystems.Vision.Utility">CamMode</a>&nbsp;mode)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPipeline(int)" class="member-name-link">setPipeline</a><wbr>(int&nbsp;id)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPriorityID(int,java.lang.String)" class="member-name-link">setPriorityID</a><wbr>(int&nbsp;tagID,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;limelightID)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Periodically updates the input values for the intake subsystem and logs them.</div>
+</div>
 </div>
 </div>
 </div>
@@ -187,9 +159,9 @@ loadScripts(document, 'script');</script>
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="apriltagPipeline">
-<h3>apriltagPipeline</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">apriltagPipeline</span></div>
+<section class="detail" id="name">
+<h3>name</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">name</span></div>
 </section>
 </li>
 </ul>
@@ -201,9 +173,14 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(BobcatLib.Subsystems.Vision.Module.VisionIO)">
+<section class="detail" id="&lt;init&gt;(java.lang.String)">
 <h3>VisionSubsystem</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">VisionSubsystem</span><wbr><span class="parameters">(<a href="Module/VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Module">VisionIO</a>&nbsp;io)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">VisionSubsystem</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</span></div>
+<div class="block">Constructor for the VisionSubsystem.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>name</code> - The name of the Vision subsystem.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -215,76 +192,11 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="setCamMode(BobcatLib.Subsystems.Vision.Utility.CamMode)">
-<h3>setCamMode</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setCamMode</span><wbr><span class="parameters">(<a href="Utility/CamMode.html" title="enum class in BobcatLib.Subsystems.Vision.Utility">CamMode</a>&nbsp;mode)</span></div>
-</section>
-</li>
-<li>
-<section class="detail" id="getTClass()">
-<h3>getTClass</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getTClass</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getTV()">
-<h3>getTV</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">getTV</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="setPipeline(int)">
-<h3>setPipeline</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPipeline</span><wbr><span class="parameters">(int&nbsp;id)</span></div>
-</section>
-</li>
-<li>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getBotPose()">
-<h3>getBotPose</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></span>&nbsp;<span class="element-name">getBotPose</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getDistToTag()">
-<h3>getDistToTag</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getDistToTag</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getPoseTimestamp()">
-<h3>getPoseTimestamp</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getPoseTimestamp</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getTranslationToTag(int)">
-<h3>getTranslationToTag</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Translation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Translation2d</a></span>&nbsp;<span class="element-name">getTranslationToTag</span><wbr><span class="parameters">(int&nbsp;tagID)</span></div>
-</section>
-</li>
-<li>
-<section class="detail" id="getTX()">
-<h3>getTX</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a></span>&nbsp;<span class="element-name">getTX</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="getTA()">
-<h3>getTA</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getTA</span>()</div>
-</section>
-</li>
-<li>
-<section class="detail" id="setPriorityID(int,java.lang.String)">
-<h3>setPriorityID</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPriorityID</span><wbr><span class="parameters">(int&nbsp;tagID,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;limelightID)</span></div>
+<div class="block">Periodically updates the input values for the intake subsystem and logs them. This method is
+ typically called every robot cycle.</div>
 </section>
 </li>
 </ul>

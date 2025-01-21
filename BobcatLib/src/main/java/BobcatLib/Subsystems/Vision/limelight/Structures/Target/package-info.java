@@ -1,4 +1,2 @@
-/**
- * Target data structures mapped to NetworkTables data.
- */
-package BobcatLib.Subsystems.Vision.limelight.Structures.Target;
+/** Target data structures mapped to NetworkTables data. */
+package BobcatLib.Subsystems.Vision.Limelight.Structures.Target;
