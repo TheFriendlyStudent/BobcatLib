@@ -21,7 +21,7 @@ public class VisionSubsystem extends SubsystemBase {
    */
   public VisionSubsystem(String name, VisionIO io) {
     this.name = name;
-    io = io;
+    this.io = io;
   }
 
   public void periodic() {
