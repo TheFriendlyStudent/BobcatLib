@@ -4,25 +4,29 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.DegreesPerSecond;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.DoubleSupplier;
 
-import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
+
 import com.pathplanner.lib.commands.PathPlannerAuto;
-import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.config.RobotConfig;
-import com.pathplanner.lib.controllers.PPHolonomicDriveController;
-import com.pathplanner.lib.pathfinding.LocalADStar;
-import com.pathplanner.lib.pathfinding.Pathfinding;
-import com.pathplanner.lib.util.PathPlannerLogging;
 
 import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
-
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
-import edu.wpi.first.math.geometry.Pose2d;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator;
+import BobcatLib.Subsystems.Vision.VisionSubsystem;
+import BobcatLib.Subsystems.Vision.Components.VisionDetector;
+import BobcatLib.Subsystems.Vision.Components.VisionIO.target;
+import BobcatLib.Subsystems.Vision.Limelight.LimeLightConfig;
+import BobcatLib.Subsystems.Vision.Limelight.Structures.AngularVelocity3d;
+import BobcatLib.Subsystems.Vision.Limelight.Structures.Orientation3d;
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -31,7 +35,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
 
 
 /**
@@ -45,7 +48,7 @@ import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
  */
 public class RobotContainer {
         /* Subsystems */
-        public final Vision limelightVision;
+        public final VisionSubsystem limelightVision;
         public final OI s_Controls = new OI(); // Interfaces with popular controllers and input devices
         public SwerveDrive s_Swerve = new SwerveDrive("RobotName",Robot.isSimulation(), Robot.alliance); // This is the Swerve
                                                                                                            // Library
@@ -85,6 +88,30 @@ public class RobotContainer {
         
                         // Configure the button bindings
                         configureButtonBindings(); 
+
+
+                        // Manually sets up some target types "gross", this should be from a configuration setting / file.
+                        List<target> targets = new ArrayList<target>();
+                        target t = new target();
+                        t.name = "coral";        
+                        targets.add(t);    
+                        t = new target();
+                        t.name = "algae";        
+                        targets.add(t);         
+                        
+                        // Sets up the initial states of the robot orientation
+                        Rotation3d rot3d = new Rotation3d(s_Swerve.getGyroYaw());
+                        Orientation3d orientation = new Orientation3d(rot3d,
+                                                     new AngularVelocity3d(DegreesPerSecond.of(0),
+                                                                           DegreesPerSecond.of(0),
+                                                                           DegreesPerSecond.of(0)));
+                        // Creates an initial limelight configuration to constrain detector by settings  "gross", this should be from a configuration setting / file.
+                        LimeLightConfig ll_cfg = new LimeLightConfig();
+                        ll_cfg.tagAmbiguity = 0.3;
+                        ll_cfg.tagDistanceLimit = 4;
+                        
+                        // Initialize the limelight Vision Subystem !
+                        limelightVision = new VisionSubsystem("Limelight", new VisionDetector("VisionDetector", targets, orientation, (WpiPoseEstimator)s_Swerve.swerveDrivePoseEstimator, ll_cfg));
                 }
         
                 public void initComand() {

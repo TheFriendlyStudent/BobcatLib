@@ -47,12 +47,6 @@
             "onlineUrl": "https://maven.ctr-electronics.com/release/com/ctre/phoenix6/latest/Phoenix6-frc2025-latest.json"
         },
         {
-            "uuid": "60b2694b-9e6e-4026-81ee-6f167946f4b0",
-            "errorMessage": "ThriftyLib is required!",
-            "offlineFileName": "ThriftyLib.json",
-            "onlineUrl": "https://docs.home.thethriftybot.com/ThriftyLib.json"
-        },
-        {
             "uuid": "c39481e8-4a63-4a4c-9df6-48d91e4da37b",
             "errorMessage": "MapleSim is requires for simulation",
             "offlineFileName": "maple-sim.json",
