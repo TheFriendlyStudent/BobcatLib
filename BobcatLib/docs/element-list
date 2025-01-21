@@ -36,4 +36,12 @@ BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math
 BobcatLib.Subsystems.Swerve.Utility
 BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator
+BobcatLib.Subsystems.Vision
+BobcatLib.Subsystems.Vision.Components
+BobcatLib.Subsystems.Vision.Limelight
+BobcatLib.Subsystems.Vision.Limelight.Estimator
+BobcatLib.Subsystems.Vision.Limelight.Results
+BobcatLib.Subsystems.Vision.Limelight.Structures
+BobcatLib.Subsystems.Vision.Limelight.Structures.Target
+BobcatLib.Subsystems.Vision.Limelight.Structures.Target.Pipeline
 BobcatLib.Utilities
