@@ -28,6 +28,7 @@ import com.pathplanner.lib.pathfinding.LocalADStar;
 import com.pathplanner.lib.pathfinding.Pathfinding;
 import com.pathplanner.lib.util.PathPlannerLogging;
 import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -77,6 +78,7 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
   Matrix<N3, N1> visionStdDevs;
   Matrix<N3, N1> stateStdDevs;
   private String robotName;
+  private final PIDController autoAlignPID;
   /*
    * Swerve Kinematics
    * No need to ever change this unless you are not doing a traditional
@@ -149,6 +151,11 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             jsonSwerve.rotationPID.driveKP,
             jsonSwerve.rotationPID.driveKI,
             jsonSwerve.rotationPID.driveKD); // Rotation
+    autoAlignPID =
+        new PIDController(
+            jsonSwerve.autoAlignPID.driveKP,
+            jsonSwerve.autoAlignPID.driveKI,
+            jsonSwerve.autoAlignPID.driveKD);
   }
 
   public SwerveDrive(String robotName, boolean isSim, Alliance team) {
@@ -220,6 +227,12 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
             jsonSwerve.rotationPID.driveKP,
             jsonSwerve.rotationPID.driveKI,
             jsonSwerve.rotationPID.driveKD); // Rotation
+
+    autoAlignPID =
+        new PIDController(
+            jsonSwerve.autoAlignPID.driveKP,
+            jsonSwerve.autoAlignPID.driveKI,
+            jsonSwerve.autoAlignPID.driveKD);
   }
 
   public SwerveDrive withPathPlanner(
@@ -362,6 +375,34 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
       Pose2d currentPose) {
     currentHeading = getHeading();
     currentPose = getPose();
+    if (Constants.SwerveConstants.firstOrderDriving) {
+      drive1stOrder(translation, rotation, fieldRelative, isOpenLoop, currentHeading, currentPose);
+    } else {
+      drive2ndOrder(translation, rotation, fieldRelative, isOpenLoop, currentHeading, currentPose);
+    }
+  }
+
+  /**
+   * drive the swerve with 1st or 2nd order. But with an auto align target rotation.
+   *
+   * @param translation
+   * @param fieldRelative
+   * @param isOpenLoop
+   * @param currentHeading rotation2d of the robots current heading
+   * @param TargetYaw in degrees
+   */
+  public void driveWithAutoAlign(
+      Translation2d translation,
+      boolean fieldRelative,
+      boolean isOpenLoop,
+      Rotation2d currentHeading,
+      Pose2d currentPose,
+      double TargetYaw) {
+    currentHeading = getHeading();
+    currentPose = getPose();
+
+    double rotation = autoAlignPID.calculate(getGyroYaw().getDegrees(), TargetYaw);
+
     if (Constants.SwerveConstants.firstOrderDriving) {
       drive1stOrder(translation, rotation, fieldRelative, isOpenLoop, currentHeading, currentPose);
     } else {

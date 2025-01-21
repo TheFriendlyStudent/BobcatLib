@@ -91,8 +91,11 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Interface</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
-<div class="col-second even-row-color"><code><a href="VisionIO.VisionIOInputs.html" class="type-name-link" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.VisionIOInputs</a></code></div>
+<div class="col-second even-row-color"><code><a href="VisionIO.target.html" class="type-name-link" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.target</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><code>static class&nbsp;</code></div>
+<div class="col-second odd-row-color"><code><a href="VisionIO.VisionIOInputs.html" class="type-name-link" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.VisionIOInputs</a></code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
 </li>
@@ -107,15 +110,25 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="../Limelight/Estimator/PoseEstimate.html" title="class in BobcatLib.Subsystems.Vision.Limelight.Estimator">PoseEstimate</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getResult_PoseEstimate()" class="member-name-link">getResult_PoseEstimate</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="VisionIO.target.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.target</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#findInstanceOf(java.lang.String)" class="member-name-link">findInstanceOf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;objectType)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getResult_Target()" class="member-name-link">getResult_Target</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="../Limelight/Estimator/PoseEstimate.html" title="class in BobcatLib.Subsystems.Vision.Limelight.Estimator">PoseEstimate</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getResult_PoseEstimate()" class="member-name-link">getResult_PoseEstimate</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getResult_Target()" class="member-name-link">getResult_Target</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updatePoseEstimator(BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator)" class="member-name-link">updatePoseEstimator</a><wbr>(<a href="../../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;wpi)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updatePoseEstimator(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition%5B%5D)" class="member-name-link">updatePoseEstimator</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
+ <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;positions)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -146,6 +159,25 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getResult_Target()">
 <h3>getResult_Target</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">getResult_Target</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="updatePoseEstimator(BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator)">
+<h3>updatePoseEstimator</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updatePoseEstimator</span><wbr><span class="parameters">(<a href="../../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;wpi)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="updatePoseEstimator(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition[])">
+<h3>updatePoseEstimator</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updatePoseEstimator</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
+ <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;positions)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="findInstanceOf(java.lang.String)">
+<h3>findInstanceOf</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="VisionIO.target.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.target</a></span>&nbsp;<span class="element-name">findInstanceOf</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;objectType)</span></div>
 </section>
 </li>
 </ul>

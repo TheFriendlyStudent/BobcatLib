@@ -92,7 +92,7 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <h2>Nested Class Summary</h2>
 <div class="inherited-list">
 <h2 id="nested-classes-inherited-from-class-BobcatLib.Subsystems.Vision.Components.VisionIO">Nested classes/interfaces inherited from interface&nbsp;BobcatLib.Subsystems.Vision.Components.<a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a></h2>
-<code><a href="VisionIO.VisionIOInputs.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.VisionIOInputs</a></code></div>
+<code><a href="VisionIO.target.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.target</a>, <a href="VisionIO.VisionIOInputs.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.VisionIOInputs</a></code></div>
 </section>
 </li>
 <!-- =========== FIELD SUMMARY =========== -->
@@ -104,12 +104,21 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>double</code></div>
-<div class="col-second even-row-color"><code><a href="#tagAmbiguity" class="member-name-link">tagAmbiguity</a></code></div>
+<div class="col-first even-row-color"><code>final double</code></div>
+<div class="col-second even-row-color"><code><a href="#horizontalFOV" class="member-name-link">horizontalFOV</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>double</code></div>
-<div class="col-second odd-row-color"><code><a href="#tagDistanceLimit" class="member-name-link">tagDistanceLimit</a></code></div>
+<div class="col-first odd-row-color"><code>final int</code></div>
+<div class="col-second odd-row-color"><code><a href="#horPixles" class="member-name-link">horPixles</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-first even-row-color"><code>final double</code></div>
+<div class="col-second even-row-color"><code><a href="#limelightMountHeight" class="member-name-link">limelightMountHeight</a></code></div>
+<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><code>final int</code></div>
+<div class="col-second odd-row-color"><code><a href="#verPixles" class="member-name-link">verPixles</a></code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-first even-row-color"><code>final double</code></div>
+<div class="col-second even-row-color"><code><a href="#verticalFOV" class="member-name-link">verticalFOV</a></code></div>
+<div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
 </li>
@@ -121,10 +130,11 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,java.util.List,BobcatLib.Subsystems.Vision.Limelight.Structures.Orientation3d,BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator)" class="member-name-link">VisionDetector</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;BobcatLib.Subsystems.Vision.Components.VisionDetector.target&gt;&nbsp;targets,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,java.util.List,BobcatLib.Subsystems.Vision.Limelight.Structures.Orientation3d,BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator,BobcatLib.Subsystems.Vision.Limelight.LimeLightConfig)" class="member-name-link">VisionDetector</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="VisionIO.target.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.target</a>&gt;&nbsp;targets,
  <a href="../Limelight/Structures/Orientation3d.html" title="class in BobcatLib.Subsystems.Vision.Limelight.Structures">Orientation3d</a>&nbsp;orientation,
- <a href="../../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;swerveDrivePoseEstimator)</code></div>
+ <a href="../../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;swerveDrivePoseEstimator,
+ <a href="../Limelight/LimeLightConfig.html" title="class in BobcatLib.Subsystems.Vision.Limelight">LimeLightConfig</a>&nbsp;cfg)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -140,17 +150,26 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>BobcatLib.Subsystems.Vision.Components.VisionDetector.target</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#findInstanceOf(java.lang.String)" class="member-name-link">findInstanceOf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;objectType)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#distanceFromCameraPercentage(double,double,double,boolean)" class="member-name-link">distanceFromCameraPercentage</a><wbr>(double&nbsp;widthPercent,
+ double&nbsp;diameter,
+ double&nbsp;limelightMountHeight,
+ boolean&nbsp;tv)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Limelight/Estimator/PoseEstimate.html" title="class in BobcatLib.Subsystems.Vision.Limelight.Estimator">PoseEstimate</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getResult_PoseEstimate()" class="member-name-link">getResult_PoseEstimate</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="VisionIO.target.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.target</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#findInstanceOf(java.lang.String)" class="member-name-link">findInstanceOf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;objectType)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Limelight/Estimator/PoseEstimate.html" title="class in BobcatLib.Subsystems.Vision.Limelight.Estimator">PoseEstimate</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getResult_PoseEstimate()" class="member-name-link">getResult_PoseEstimate</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Input Tab - Change "Pipeline Type" to "Fiducial Markers" Input Tab - Use the highest available
  resolution for 3D tracking, or use 640x480 for pure 2D tracking.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getResult_Target()" class="member-name-link">getResult_Target</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getResult_Target()" class="member-name-link">getResult_Target</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pixlesToPercent(double)" class="member-name-link">pixlesToPercent</a><wbr>(double&nbsp;pixels)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
@@ -183,15 +202,65 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="tagDistanceLimit">
-<h3>tagDistanceLimit</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">tagDistanceLimit</span></div>
+<section class="detail" id="verticalFOV">
+<h3>verticalFOV</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">verticalFOV</span></div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../../../constant-values.html#BobcatLib.Subsystems.Vision.Components.VisionDetector.verticalFOV">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="tagAmbiguity">
-<h3>tagAmbiguity</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">tagAmbiguity</span></div>
+<section class="detail" id="horizontalFOV">
+<h3>horizontalFOV</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">horizontalFOV</span></div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../../../constant-values.html#BobcatLib.Subsystems.Vision.Components.VisionDetector.horizontalFOV">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="limelightMountHeight">
+<h3>limelightMountHeight</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">limelightMountHeight</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="horPixles">
+<h3>horPixles</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">horPixles</span></div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../../../constant-values.html#BobcatLib.Subsystems.Vision.Components.VisionDetector.horPixles">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="verPixles">
+<h3>verPixles</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">verPixles</span></div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../../../constant-values.html#BobcatLib.Subsystems.Vision.Components.VisionDetector.verPixles">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -203,12 +272,13 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,java.util.List,BobcatLib.Subsystems.Vision.Limelight.Structures.Orientation3d,BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,java.util.List,BobcatLib.Subsystems.Vision.Limelight.Structures.Orientation3d,BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator,BobcatLib.Subsystems.Vision.Limelight.LimeLightConfig)">
 <h3>VisionDetector</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">VisionDetector</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;BobcatLib.Subsystems.Vision.Components.VisionDetector.target&gt;&nbsp;targets,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="VisionIO.target.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.target</a>&gt;&nbsp;targets,
  <a href="../Limelight/Structures/Orientation3d.html" title="class in BobcatLib.Subsystems.Vision.Limelight.Structures">Orientation3d</a>&nbsp;orientation,
- <a href="../../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;swerveDrivePoseEstimator)</span></div>
+ <a href="../../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;swerveDrivePoseEstimator,
+ <a href="../Limelight/LimeLightConfig.html" title="class in BobcatLib.Subsystems.Vision.Limelight">LimeLightConfig</a>&nbsp;cfg)</span></div>
 </section>
 </li>
 </ul>
@@ -238,13 +308,21 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <li>
 <section class="detail" id="findInstanceOf(java.lang.String)">
 <h3>findInstanceOf</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">BobcatLib.Subsystems.Vision.Components.VisionDetector.target</span>&nbsp;<span class="element-name">findInstanceOf</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;objectType)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="VisionIO.target.html" title="class in BobcatLib.Subsystems.Vision.Components">VisionIO.target</a></span>&nbsp;<span class="element-name">findInstanceOf</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;objectType)</span></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="VisionIO.html#findInstanceOf(java.lang.String)">findInstanceOf</a></code>&nbsp;in interface&nbsp;<code><a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="updatePoseEstimator(BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator)">
 <h3>updatePoseEstimator</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updatePoseEstimator</span><wbr><span class="parameters">(<a href="../../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;wpi)</span></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="VisionIO.html#updatePoseEstimator(BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator)">updatePoseEstimator</a></code>&nbsp;in interface&nbsp;<code><a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
@@ -252,6 +330,10 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <h3>updatePoseEstimator</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updatePoseEstimator</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
  <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;positions)</span></div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="VisionIO.html#updatePoseEstimator(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition%5B%5D)">updatePoseEstimator</a></code>&nbsp;in interface&nbsp;<code><a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a></code></dd>
+</dl>
 </section>
 </li>
 <li>
@@ -286,6 +368,28 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <dt>Specified by:</dt>
 <dd><code><a href="VisionIO.html#getResult_Target()">getResult_Target</a></code>&nbsp;in interface&nbsp;<code><a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a></code></dd>
 </dl>
+</section>
+</li>
+<li>
+<section class="detail" id="distanceFromCameraPercentage(double,double,double,boolean)">
+<h3>distanceFromCameraPercentage</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">distanceFromCameraPercentage</span><wbr><span class="parameters">(double&nbsp;widthPercent,
+ double&nbsp;diameter,
+ double&nbsp;limelightMountHeight,
+ boolean&nbsp;tv)</span></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>widthPercent</code> - [0,1], percentage of the vertical width of the image that the note is
+     taking up</dd>
+<dt>Returns:</dt>
+<dd>distance in meters</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="pixlesToPercent(double)">
+<h3>pixlesToPercent</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">pixlesToPercent</span><wbr><span class="parameters">(double&nbsp;pixels)</span></div>
 </section>
 </li>
 </ul>

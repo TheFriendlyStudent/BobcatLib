@@ -98,9 +98,12 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color"><code><a href="#name" class="member-name-link">name</a></code></div>
+<div class="col-first even-row-color"><code><a href="Components/VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a></code></div>
+<div class="col-second even-row-color"><code><a href="#io" class="member-name-link">io</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#name" class="member-name-link">name</a></code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
 </li>
@@ -112,7 +115,8 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String)" class="member-name-link">VisionSubsystem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,BobcatLib.Subsystems.Vision.Components.VisionIO)" class="member-name-link">VisionSubsystem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+ <a href="Components/VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a>&nbsp;io)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Constructor for the VisionSubsystem.</div>
 </div>
@@ -130,11 +134,22 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTargetPose()" class="member-name-link">getTargetPose</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#TargetDetected()" class="member-name-link">TargetDetected</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updatePoseEstimator(BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator)" class="member-name-link">updatePoseEstimator</a><wbr>(<a href="../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;wpi)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#periodic()" class="member-name-link">periodic</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Periodically updates the input values for the intake subsystem and logs them.</div>
-</div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updatePoseEstimator(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition%5B%5D)" class="member-name-link">updatePoseEstimator</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
+ <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;positions)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -159,6 +174,12 @@ loadScripts(document, 'script');</script>
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="io">
+<h3>io</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Components/VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a></span>&nbsp;<span class="element-name">io</span></div>
+</section>
+</li>
+<li>
 <section class="detail" id="name">
 <h3>name</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">name</span></div>
@@ -173,9 +194,10 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,BobcatLib.Subsystems.Vision.Components.VisionIO)">
 <h3>VisionSubsystem</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">VisionSubsystem</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">VisionSubsystem</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+ <a href="Components/VisionIO.html" title="interface in BobcatLib.Subsystems.Vision.Components">VisionIO</a>&nbsp;io)</span></div>
 <div class="block">Constructor for the VisionSubsystem.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -195,8 +217,31 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="periodic()">
 <h3>periodic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">periodic</span>()</div>
-<div class="block">Periodically updates the input values for the intake subsystem and logs them. This method is
- typically called every robot cycle.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="updatePoseEstimator(BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator)">
+<h3>updatePoseEstimator</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updatePoseEstimator</span><wbr><span class="parameters">(<a href="../Swerve/SimpleSwerve/Swerve/Module/Utility/Pose/WpiPoseEstimator.html" title="class in BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose">WpiPoseEstimator</a>&nbsp;wpi)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="updatePoseEstimator(edu.wpi.first.math.geometry.Rotation2d,edu.wpi.first.math.kinematics.SwerveModulePosition[])">
+<h3>updatePoseEstimator</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updatePoseEstimator</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
+ <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModulePosition.html" title="class or interface in edu.wpi.first.math.kinematics" class="external-link">SwerveModulePosition</a>[]&nbsp;positions)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="TargetDetected()">
+<h3>TargetDetected</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">TargetDetected</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getTargetPose()">
+<h3>getTargetPose</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Pose2d</a></span>&nbsp;<span class="element-name">getTargetPose</span>()</div>
 </section>
 </li>
 </ul>

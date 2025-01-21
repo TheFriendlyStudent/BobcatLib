@@ -7,6 +7,7 @@ public class SwerveJson {
   public ModuleLimitsJson moduleSpeedLimits = new ModuleLimitsJson();
   public chassisLimitsJson chassisSpeedLimits = new chassisLimitsJson();
   public drivePIDJson rotationPID = new drivePIDJson();
+  public drivePIDJson autoAlignPID = new drivePIDJson();
   public drivePIDJson translationPID = new drivePIDJson();
   public SwerveIndicatorJson indicator = new SwerveIndicatorJson();
   public driveCharacteristicsJson driveCharacteristics = new driveCharacteristicsJson();
