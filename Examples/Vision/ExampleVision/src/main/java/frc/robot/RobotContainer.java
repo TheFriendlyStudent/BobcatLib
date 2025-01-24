@@ -4,40 +4,20 @@
 
 package frc.robot;
 
-import static edu.wpi.first.units.Units.DegreesPerSecond;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.DoubleSupplier;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
-import com.pathplanner.lib.commands.PathPlannerAuto;
-
 import BobcatLib.Hardware.Controllers.OI;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Containers.SwerveWithVision;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
 import BobcatLib.Subsystems.Swerve.Utility.LoadablePathPlannerAuto;
-import BobcatLib.Subsystems.Vision.VisionSubsystem;
 import BobcatLib.Subsystems.Vision.Components.VisionIO.target;
 import BobcatLib.Subsystems.Vision.Limelight.LimeLightConfig;
-import BobcatLib.Subsystems.Vision.Limelight.Structures.AngularVelocity3d;
-import BobcatLib.Subsystems.Vision.Limelight.Structures.Orientation3d;
-import edu.wpi.first.epilogue.Logged;
-import edu.wpi.first.math.geometry.Rotation3d;
-import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.Field2d;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
