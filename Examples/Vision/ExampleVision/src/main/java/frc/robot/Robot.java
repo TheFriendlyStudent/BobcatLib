@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pathplanner.lib.commands.PathPlannerAuto;
-import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.trajectory.PathPlannerTrajectory;
 
 import BobcatLib.Hardware.Controllers.OI;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
+import BobcatLib.Subsystems.Swerve.Utility.LoadablePathPlannerAuto;
+import BobcatLib.Subsystems.Vision.Components.VisionIO.target;
+import BobcatLib.Subsystems.Vision.Limelight.LimeLightConfig;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -48,15 +51,24 @@ public class Robot extends TimedRobot {
 
     String robotName = "RobotName";
     boolean isSim = false;
-    PIDConstants tranPidPathPlanner = new PIDConstants(kDefaultPeriod, kDefaultPeriod, kDefaultPeriod);
-    PIDConstants rotPidPathPlanner = new PIDConstants(kDefaultPeriod, kDefaultPeriod, kDefaultPeriod);
-    m_robotContainer = new RobotContainer(driver_controller,
-        loadableAutos,
-        robotName,
-        isSim,
-        alliance,
-        tranPidPathPlanner,
-        rotPidPathPlanner);
+    PIDConstants tranPidPathPlanner = new PIDConstants(10, kDefaultPeriod, kDefaultPeriod);
+    PIDConstants rotPidPathPlanner = new PIDConstants(5, kDefaultPeriod, kDefaultPeriod);
+    String VisionName = "LimelightVision";
+
+    List<target> targets = new ArrayList<target>();
+    target algae = new target();
+    algae.name = "algae";
+    targets.add( algae);
+    target coral = new target();
+    algae.name = "coral";
+    targets.add( coral);
+    LimeLightConfig ll_cfg = new LimeLightConfig();
+    ll_cfg.tagAmbiguity = 0.3;
+    ll_cfg.tagDistanceLimit = 4;
+    m_robotContainer = new RobotContainer(driver_controller, loadableAutos, robotName,
+    isSim, alliance, tranPidPathPlanner,
+    rotPidPathPlanner, VisionName, targets,
+    ll_cfg);
 
   }
 
@@ -88,7 +100,8 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    String name = "Base";
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand(name);
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {

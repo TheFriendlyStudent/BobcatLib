@@ -18,11 +18,12 @@ import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Containers.SwerveWithVision;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose.WpiPoseEstimator;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
+import BobcatLib.Subsystems.Swerve.Utility.LoadablePathPlannerAuto;
 import BobcatLib.Subsystems.Vision.VisionSubsystem;
-import BobcatLib.Subsystems.Vision.Components.VisionDetector;
 import BobcatLib.Subsystems.Vision.Components.VisionIO.target;
 import BobcatLib.Subsystems.Vision.Limelight.LimeLightConfig;
 import BobcatLib.Subsystems.Vision.Limelight.Structures.AngularVelocity3d;
@@ -54,8 +55,7 @@ public class RobotContainer extends SwerveWithVision{
         /**
          * The container for the robot. Contains subsystems, OI devices, and commands.
          */
-        public RobotContainer(
-                        OI driver_controller,
+        public RobotContainer(OI driver_controller,
                         List<LoadablePathPlannerAuto> autos,
                         String robotName,
                         boolean isSim,
@@ -65,16 +65,10 @@ public class RobotContainer extends SwerveWithVision{
                         String VisionName,
                         List<target> targets,
                         LimeLightConfig ll_cfg) {
-                super(
-                                driver_controller,
-                                autos,
-                                robotName,
-                                isSim,
-                                alliance,
-                                tranPidPathPlanner,
-                                rotPidPathPlanner);
-        }
 
+                super(driver_controller, autos, robotName, isSim, alliance, tranPidPathPlanner, rotPidPathPlanner,
+                                VisionName, targets, ll_cfg);
+        }
 
         /**
          * Use this method to define your button->command mappings. Buttons can be
@@ -84,7 +78,8 @@ public class RobotContainer extends SwerveWithVision{
          * it to a {@link
          * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
          */
-        private void configureButtonBindings() {
+        @Override
+        public void configureButtonBindings() {
                 super.configureButtonBindings();
         }
 
@@ -93,11 +88,12 @@ public class RobotContainer extends SwerveWithVision{
          *
          * @return the command to run in autonomous
          */
-        public Command getAutonomousCommand() {
+        @Override
+        public Command getAutonomousCommand(String name) {
                 // This method loads the auto when it is called, however, it is recommended
                 // to first load your paths/autos when code starts, then return the
                 // pre-loaded auto/path
-                return super.getAutonomousCommand();
+                return super.getAutonomousCommand(name);
         }
 
         /**
@@ -108,6 +104,7 @@ public class RobotContainer extends SwerveWithVision{
          *
          * @return the command to run in autonomous
          */
+        @Override
         public Command getTestCommand() {
                 return super.getTestCommand();
         }

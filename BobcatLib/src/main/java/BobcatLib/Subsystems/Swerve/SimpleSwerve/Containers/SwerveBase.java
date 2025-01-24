@@ -113,7 +113,7 @@ public class SwerveBase {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {
+  public void configureButtonBindings() {
     Command zeroGyro = Commands.runOnce(s_Swerve::zeroHeading);
     /* Driver Buttons */
     s_Controls.zeroGyro.onTrue(zeroGyro);
