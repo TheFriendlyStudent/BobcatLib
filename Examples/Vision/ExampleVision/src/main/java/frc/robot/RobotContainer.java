@@ -36,7 +36,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 
-
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a
@@ -50,114 +49,111 @@ public class RobotContainer {
         /* Subsystems */
         public final VisionSubsystem limelightVision;
         public final OI s_Controls = new OI(); // Interfaces with popular controllers and input devices
-        public SwerveDrive s_Swerve = new SwerveDrive("RobotName",Robot.isSimulation(), Robot.alliance); // This is the Swerve
-                                                                                                           // Library
-                                                                                                           // implementation.
-                private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose
-                                                                                                                          // an
-                                                                                                                          // Auto!
-        
-                private final Field2d field;
-        
-                /**
-                 * The container for the robot. Contains subsystems, OI devices, and commands.
+        public SwerveDrive s_Swerve = new SwerveDrive("RobotName", Robot.isSimulation(), Robot.alliance); // This is the Swerve Library implementation.
+        private final LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose an Auto!
+
+        private final Field2d field;
+
+        /**
+         * The container for the robot. Contains subsystems, OI devices, and commands.
+         */
+        public RobotContainer() {
+
+                // SmartDashboard.putNumber("SpeedLimit", 1);
+
+                initComand();
+
+                // Register Named Commands
+                // NamedCommands.registerCommand("someOtherCommand", new
+                // PathPlannerAuto("leaveBase Path"));
+
+                // Auto controls
+                /*
+                 * Auto Chooser
+                 * 
+                 * Names must match what is in PathPlanner
+                 * Please give descriptive names
                  */
-                public RobotContainer() {
-        
-                        // SmartDashboard.putNumber("SpeedLimit", 1);
-        
-                        initComand();
-        
-                        // Register Named Commands
-                        // NamedCommands.registerCommand("someOtherCommand", new PathPlannerAuto("leaveBase Path"));
-        
-                        // Auto controls
-                        /*
-                         * Auto Chooser
-                         * 
-                         * Names must match what is in PathPlanner
-                         * Please give descriptive names
-                         */
-                        
-                        field = new Field2d();
-                        SmartDashboard.putData("Field", field);
-        
-        
-                        // Configure AutoBuilder last
-                        configureAutos();
-        
-                        // Configure the button bindings
-                        configureButtonBindings(); 
 
+                field = new Field2d();
+                SmartDashboard.putData("Field", field);
 
-                        // Manually sets up some target types "gross", this should be from a configuration setting / file.
-                        List<target> targets = new ArrayList<target>();
-                        target t = new target();
-                        t.name = "coral";        
-                        targets.add(t);    
-                        t = new target();
-                        t.name = "algae";        
-                        targets.add(t);         
-                        
-                        // Sets up the initial states of the robot orientation
-                        Rotation3d rot3d = new Rotation3d(s_Swerve.getGyroYaw());
-                        Orientation3d orientation = new Orientation3d(rot3d,
-                                                     new AngularVelocity3d(DegreesPerSecond.of(0),
-                                                                           DegreesPerSecond.of(0),
-                                                                           DegreesPerSecond.of(0)));
-                        // Creates an initial limelight configuration to constrain detector by settings  "gross", this should be from a configuration setting / file.
-                        LimeLightConfig ll_cfg = new LimeLightConfig();
-                        ll_cfg.tagAmbiguity = 0.3;
-                        ll_cfg.tagDistanceLimit = 4;
-                        
-                        // Initialize the limelight Vision Subystem !
-                        limelightVision = new VisionSubsystem("Limelight", new VisionDetector("VisionDetector", targets, orientation, (WpiPoseEstimator)s_Swerve.swerveDrivePoseEstimator, ll_cfg));
-                }
-        
-                public void initComand() {
-                        DoubleSupplier translation = () -> s_Controls.getTranslationValue();
-                        DoubleSupplier strafe = () -> s_Controls.getStrafeValue();
-                        if (!Robot.alliance.isBlueAlliance()) {
-                                translation = () -> -s_Controls.getTranslationValue();
-                                strafe = () -> -s_Controls.getStrafeValue();
-                        }
-                        s_Swerve.setDefaultCommand(
-                                        new TeleopSwerve(
-                                                        s_Swerve,
-                                                        translation,
-                                                        strafe,
-                                                        () -> s_Controls.getRotationValue(),
-                                                        () -> s_Controls.robotCentric.getAsBoolean(),
-                                                        s_Controls.controllerJson));
-        
-                }
+                // Configure AutoBuilder last
+                configureAutos();
 
-                public void periodic(){
-                        limelightVision.updatePoseEstimator(s_Swerve.getGyroYaw(),s_Swerve.getModulePositions());
-                        limelightVision.periodic();
-                }
+                // Configure the button bindings
+                configureButtonBindings();
 
-        
-                public boolean autoChooserInitialized() {
-                        return autoChooser.get() != null;
+                // Manually sets up some target types "gross", this should be from a
+                // configuration setting / file.
+                List<target> targets = new ArrayList<target>();
+                target t = new target();
+                t.name = "coral";
+                targets.add(t);
+                t = new target();
+                t.name = "algae";
+                targets.add(t);
+
+                // Sets up the initial states of the robot orientation
+                Rotation3d rot3d = new Rotation3d(s_Swerve.getGyroYaw());
+                Orientation3d orientation = new Orientation3d(rot3d,
+                                new AngularVelocity3d(DegreesPerSecond.of(0),
+                                                DegreesPerSecond.of(0),
+                                                DegreesPerSecond.of(0)));
+                // Creates an initial limelight configuration to constrain detector by settings
+                // "gross", this should be from a configuration setting / file.
+                LimeLightConfig ll_cfg = new LimeLightConfig();
+                ll_cfg.tagAmbiguity = 0.3;
+                ll_cfg.tagDistanceLimit = 4;
+
+                // Initialize the limelight Vision Subystem !
+                limelightVision = new VisionSubsystem("Limelight", new VisionDetector("VisionDetector", targets,
+                                orientation, (WpiPoseEstimator) s_Swerve.swerveDrivePoseEstimator, ll_cfg));
+        }
+
+        public void initComand() {
+                DoubleSupplier translation = () -> s_Controls.getTranslationValue();
+                DoubleSupplier strafe = () -> s_Controls.getStrafeValue();
+                if (!Robot.alliance.isBlueAlliance()) {
+                        translation = () -> -s_Controls.getTranslationValue();
+                        strafe = () -> -s_Controls.getStrafeValue();
                 }
-                
-                /**
-                 * this should only be called once DS and FMS are attached
+                s_Swerve.setDefaultCommand(
+                                new TeleopSwerve(
+                                                s_Swerve,
+                                                translation,
+                                                strafe,
+                                                () -> s_Controls.getRotationValue(),
+                                                () -> s_Controls.robotCentric.getAsBoolean(),
+                                                s_Controls.controllerJson));
+
+        }
+
+        public void periodic() {
+                limelightVision.updatePoseEstimator(s_Swerve.getGyroYaw(), s_Swerve.getModulePositions());
+                limelightVision.periodic();
+        }
+
+        public boolean autoChooserInitialized() {
+                return autoChooser.get() != null;
+        }
+
+        /**
+         * this should only be called once DS and FMS are attached
+         */
+        public void configureAutos() {
+                /*
+                 * Auto Chooser
+                 * 
+                 * Names must match what is in PathPlanner
+                 * Please give descriptive names
                  */
-                public void configureAutos() {
-                        /*
-                         * Auto Chooser
-                         * 
-                         * Names must match what is in PathPlanner
-                         * Please give descriptive names
-                         */
-        
-                        // PID constants for translation
-                        PIDConstants tranPid = new PIDConstants(10, 0, 0);
-                        // PID constants for rotation
-                        PIDConstants rotPid = new PIDConstants(7, 0, 0);
-                        s_Swerve = s_Swerve.withPathPlanner(field, tranPid, rotPid);
+
+                // PID constants for translation
+                PIDConstants tranPid = new PIDConstants(10, 0, 0);
+                // PID constants for rotation
+                PIDConstants rotPid = new PIDConstants(7, 0, 0);
+                s_Swerve = s_Swerve.withPathPlanner(field, tranPid, rotPid);
                 // Configure AutoBuilder last
                 autoChooser.addDefaultOption("Do Nothing", Commands.none());
                 autoChooser.addOption("Auto1", new PathPlannerAuto("Auto1"));

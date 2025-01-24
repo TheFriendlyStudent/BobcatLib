@@ -29,12 +29,6 @@
             "onlineUrl": "https://software-metadata.revrobotics.com/REVLib-2025.json"
         },
         {
-            "uuid": "151ecca8-670b-4026-8160-cdd2679ef2bd",
-            "errorMessage": "ReduxLib is required!",
-            "offlineFileName": "ReduxLib_2025.json",
-            "onlineUrl": "https://frcsdk.reduxrobotics.com/ReduxLib_2025.json"
-        },
-        {
             "uuid": "e995de00-2c64-4df5-8831-c1441420ff19",
             "errorMessage": "Phoenix6 is required!",
             "offlineFileName": "Phoenix6-frc2025-beta-latest.json",

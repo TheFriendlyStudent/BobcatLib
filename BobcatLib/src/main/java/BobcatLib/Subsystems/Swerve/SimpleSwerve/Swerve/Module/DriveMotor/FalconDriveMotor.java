@@ -56,7 +56,12 @@ public class FalconDriveMotor implements DriveWrapper {
     driveFeedForward = new SimpleMotorFeedforward(driveKS, driveKV, driveKA);
 
     /* Drive Motor Config */
-    mDriveMotor = new TalonFX(id, canivorename);
+    if (canivorename == "") {
+      mDriveMotor = new TalonFX(id);
+    } else {
+      mDriveMotor = new TalonFX(id, canivorename);
+    }
+
     configDriveMotor();
     mDriveMotor.getConfigurator().apply(swerveDriveFXConfig);
     mDriveMotor.getConfigurator().setPosition(0.0);

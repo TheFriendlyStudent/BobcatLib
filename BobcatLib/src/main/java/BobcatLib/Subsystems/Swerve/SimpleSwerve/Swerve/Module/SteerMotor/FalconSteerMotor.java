@@ -30,7 +30,12 @@ public class FalconSteerMotor implements SteerWrapper {
     this.chosenModule = chosenModule;
     this.limits = limits;
 
-    mAngleMotor = new TalonFX(id, canivorename);
+    if (canivorename == "") {
+      mAngleMotor = new TalonFX(id);
+    } else {
+      mAngleMotor = new TalonFX(id, canivorename);
+    }
+
     configAngleMotor();
     mAngleMotor.getConfigurator().apply(swerveAngleFXConfig);
   }

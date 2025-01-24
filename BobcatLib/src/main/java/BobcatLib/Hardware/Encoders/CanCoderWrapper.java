@@ -60,7 +60,12 @@ public class CanCoderWrapper implements EncoderIO {
     configAbsEncoder();
 
     /* Angle Encoder Config */
-    encoder = new CANcoder(id, canivorename);
+    /* Drive Motor Config */
+    if (canivorename == "") {
+      encoder = new CANcoder(id);
+    } else {
+      encoder = new CANcoder(id, canivorename);
+    }
     encoder.getConfigurator().apply(swerveCANcoderConfig);
 
     faults = new CanCoderFaults(encoder, id);
