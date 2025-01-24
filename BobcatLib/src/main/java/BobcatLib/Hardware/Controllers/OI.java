@@ -101,7 +101,7 @@ public class OI {
     try {
       controllerJson = new ObjectMapper().readValue(moduleFile, ControllerJson.class);
     } catch (IOException e) {
-
+      e.printStackTrace();
     }
     return controllerJson;
   }

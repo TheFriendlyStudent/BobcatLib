@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * and button triggers for a PS4 controller.
  */
 public class PS4ControllerWrapper extends CommandPS4Controller implements ControllerWrapper {
-  /** Axis index for forward/backward translation. */
-  public final int translationAxis = PS4Controller.Axis.kLeftY.value;
+  /** Axis index for forward/backward LeftY. */
+  public final int LeftYAxis = PS4Controller.Axis.kLeftY.value;
 
   /** Axis index for side-to-side strafing. */
-  public final int strafeAxis = PS4Controller.Axis.kLeftX.value;
+  public final int LeftXAxis = PS4Controller.Axis.kLeftX.value;
 
   /** Axis index for rotation. */
   public final int rotationAxis = PS4Controller.Axis.kRightX.value;
@@ -29,12 +29,12 @@ public class PS4ControllerWrapper extends CommandPS4Controller implements Contro
   }
 
   /**
-   * Gets the axis value for translation (forward/backward) control.
+   * Gets the axis value for LeftY (forward/backward) control.
    *
-   * @return the axis value for translation control.
+   * @return the axis value for LeftY control.
    */
-  public double getTranslationAxis() {
-    return super.getRawAxis(translationAxis);
+  public double getLeftYAxis() {
+    return super.getRawAxis(LeftYAxis);
   }
 
   /**
@@ -42,8 +42,8 @@ public class PS4ControllerWrapper extends CommandPS4Controller implements Contro
    *
    * @return the axis value for strafing control.
    */
-  public double getStrafeAxis() {
-    return super.getRawAxis(strafeAxis);
+  public double getLeftXAxis() {
+    return super.getRawAxis(LeftXAxis);
   }
 
   /**

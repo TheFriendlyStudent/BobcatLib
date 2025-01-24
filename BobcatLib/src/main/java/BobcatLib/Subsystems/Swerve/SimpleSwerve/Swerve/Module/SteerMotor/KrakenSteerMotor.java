@@ -30,7 +30,7 @@ public class KrakenSteerMotor implements SteerWrapper {
     this.chosenModule = chosenModule;
     this.limits = limits;
 
-    if (canivorename == "") {
+    if (canivorename == "" || canivorename == "rio") {
       mAngleMotor = new TalonFX(id);
     } else {
       mAngleMotor = new TalonFX(id, canivorename);

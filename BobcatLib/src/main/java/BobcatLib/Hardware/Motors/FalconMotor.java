@@ -56,7 +56,11 @@ public class FalconMotor implements MotorIO {
     double motorKV = 0.00;
     double motorKA = 0.00;
     motorFeedFordward = new SimpleMotorFeedforward(motorKS, motorKV, motorKA);
-    mMotor = new TalonFX(id, busName);
+    if (busname == "" || busname == "rio") {
+      mMotor = new TalonFX(id);
+    } else {
+      mMotor = new TalonFX(id, busName);
+    }
     configMotor(config);
     faults = new TalonFXFaults(mMotor, motorCanId);
   }

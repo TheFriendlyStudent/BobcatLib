@@ -1,19 +1,21 @@
-package BobcatLib.Subsystems.Swerve.SimpleSwerve;
+package BobcatLib.Subsystems.Swerve.SimpleSwerve.Containers;
 
 import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.ControlledSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands.TeleopSwerve;
-import BobcatLib.Subsystems.Swerve.SimpleSwerve.Constants.SwerveConstants;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.SwerveDrive;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
-import com.pathplanner.lib.auto.NamedCommands;
-import edu.wpi.first.math.geometry.Pose2d;
+import BobcatLib.Subsystems.Swerve.Utility.LoadablePathPlannerAuto;
 import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import java.util.List;
 import java.util.function.DoubleSupplier;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
@@ -23,41 +25,51 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
  * methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-public class SwerveContainer {
+public class SwerveBase {
   /* Subsystems */
-  public final OI s_Controls = new OI();
-  public final SwerveDrive s_Swerve;
-  private final LoggedDashboardChooser<Command> autoChooser =
-      new LoggedDashboardChooser<>("Auto Routine");
-  public Alliance alliance;
-  private String robotName;
+  public final OI s_Controls; // Interfaces with popular controllers and input devices
+  public SwerveDrive s_Swerve; // This is the
+  // Swerve
+  // Library
+  // implementation.
+  private LoggedDashboardChooser<Command> autoChooser; // Choose
+  // an
+  // Auto!
+  private final List<LoadablePathPlannerAuto> autos;
+  private final Field2d field;
+  private final Alliance alliance;
+  private final PIDConstants tranPidPathPlanner, rotPidPathPlanner;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public SwerveContainer(String robotName, boolean isSimulation, DriverStation.Alliance ally) {
-    alliance = new Alliance(ally);
-    s_Swerve =
-        new SwerveDrive(
-            robotName,
-            isSimulation,
-            alliance,
-            SwerveConstants.visionStdDevs,
-            SwerveConstants.stateStdDevs);
+  public SwerveBase(
+      OI driver_controller,
+      List<LoadablePathPlannerAuto> autos,
+      String robotName,
+      boolean isSim,
+      Alliance alliance,
+      PIDConstants tranPidPathPlanner,
+      PIDConstants rotPidPathPlanner) {
+    this.s_Controls = driver_controller;
+    this.autos = autos;
+    this.alliance = alliance;
+    this.tranPidPathPlanner = tranPidPathPlanner;
+    this.rotPidPathPlanner = rotPidPathPlanner;
+    s_Swerve = new SwerveDrive(robotName, isSim, alliance);
+
     initComand();
-    // Auto controls
-    /*
-     * Auto Chooser
-     *
-     * Names must match what is in PathPlanner
-     * Please give descriptive names
-     */
-    autoChooser.addDefaultOption("Do Nothing", Commands.none());
-    // autoChooser.addOption("name", new PathPlannerAuto("nameinpathplanner"));
+
+    field = new Field2d();
+    SmartDashboard.putData("Field", field);
+
+    // Configure AutoBuilder last
+    configureAutos();
+
     // Configure the button bindings
     configureButtonBindings();
   }
 
   public void initComand() {
-    DoubleSupplier translation =
-        () -> s_Controls.getTranslationValue(); // TODO change if 2025 field isn't mirrored
+    DoubleSupplier translation = () -> s_Controls.getTranslationValue();
     DoubleSupplier strafe = () -> s_Controls.getStrafeValue();
     if (!alliance.isBlueAlliance()) {
       translation = () -> -s_Controls.getTranslationValue();
@@ -79,22 +91,20 @@ public class SwerveContainer {
 
   /** this should only be called once DS and FMS are attached */
   public void configureAutos() {
-
-    /*
-     * Auto Events
-     *
-     * Names must match what is in PathPlanner
-     * Please give descriptive names
-     */
-    NamedCommands.registerCommand("PathfindingCommand", s_Swerve.driveToPose(new Pose2d()));
-
-    /*
-     * Auto Chooser
-     *
-     * Names must match what is in PathPlanner
-     * Please give descriptive names
-     */
-    autoChooser.addDefaultOption("Do Nothing", Commands.none());
+    // PID constants for translation
+    PIDConstants tranPid = tranPidPathPlanner;
+    // PID constants for rotation
+    PIDConstants rotPid = rotPidPathPlanner;
+    // Sets Up PathPlanner with Swerve
+    s_Swerve = s_Swerve.withPathPlanner(field, tranPid, rotPid);
+    // Configure AutoBuilder last
+    for (LoadablePathPlannerAuto auto : autos) {
+      if (auto.isDefault()) {
+        autoChooser.addDefaultOption(auto.getName(), auto.getCommand());
+      } else {
+        autoChooser.addOption(auto.getName(), auto.getCommand());
+      }
+    }
   }
 
   /**
@@ -124,18 +134,23 @@ public class SwerveContainer {
   }
 
   /**
-   * Use this to pass the autonomous command to the main class.
+   * Use this to pass the autonomous command.
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    return autoChooser.get();
+  public Command getAutonomousCommand(String name) {
+    // This method loads the auto when it is called, however, it is recommended
+    // to first load your paths/autos when code starts, then return the
+    // pre-loaded auto/path
+    LoadablePathPlannerAuto t =
+        autos.stream().filter(target -> target.getName() == name).findFirst().orElse(null);
+    return t.getCommand();
   }
 
   /**
-   * Use this to pass the test command to the main class. Control pattern is forward, right ,
-   * backwards, left, rotate in place clockwise, rotate in place counterclowise, forward while
-   * rotating Clockwise, forward while rotating counter clockwise
+   * Use this to pass the test command. Control pattern is forward, right , backwards, left, rotate
+   * in place clockwise, rotate in place counterclowise, forward while rotating Clockwise, forward
+   * while rotating counter clockwise
    *
    * @return the command to run in autonomous
    */

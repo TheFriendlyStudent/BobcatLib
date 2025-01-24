@@ -24,6 +24,7 @@ BobcatLib.Subsystems.Intakes.Parser
 BobcatLib.Subsystems.Intakes.Utils
 BobcatLib.Subsystems.Swerve.SimpleSwerve
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Commands
+BobcatLib.Subsystems.Swerve.SimpleSwerve.Containers
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.interfaces
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.DriveMotor

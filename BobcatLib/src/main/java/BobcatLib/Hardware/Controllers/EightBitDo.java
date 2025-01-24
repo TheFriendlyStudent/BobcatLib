@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class EightBitDo implements ControllerWrapper {
   private CommandJoystick ebdJoystick;
 
-  /** Axis index for forward/backward translation. */
-  public final int translationAxis = 0;
+  /** Axis index for forward/backward LeftY. */
+  public final int LeftYAxis = 0;
 
   /** Axis index for side-to-side strafing. */
-  public final int strafeAxis = 1;
+  public final int LeftXAxis = 1;
 
   /** Axis index for rotation. */
   public final int rotationAxis = 4;
@@ -29,12 +29,12 @@ public class EightBitDo implements ControllerWrapper {
   }
 
   /**
-   * Gets the axis value for translation (forward/backward) control.
+   * Gets the axis value for LeftY (forward/backward) control.
    *
-   * @return the axis value for translation control.
+   * @return the axis value for LeftY control.
    */
-  public double getTranslationAxis() {
-    return ebdJoystick.getRawAxis(translationAxis);
+  public double getLeftYAxis() {
+    return ebdJoystick.getRawAxis(LeftYAxis);
   }
 
   /**
@@ -42,8 +42,8 @@ public class EightBitDo implements ControllerWrapper {
    *
    * @return the axis value for strafing control.
    */
-  public double getStrafeAxis() {
-    return ebdJoystick.getRawAxis(strafeAxis);
+  public double getLeftXAxis() {
+    return ebdJoystick.getRawAxis(LeftXAxis);
   }
 
   /**

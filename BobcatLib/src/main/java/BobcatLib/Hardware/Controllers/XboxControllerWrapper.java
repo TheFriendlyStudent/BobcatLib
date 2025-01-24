@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * controller.
  */
 public class XboxControllerWrapper extends CommandXboxController implements ControllerWrapper {
-  /** Axis index for forward/backward translation. */
-  public final int translationAxis = XboxController.Axis.kLeftY.value;
+  /** Axis index for forward/backward LeftY. */
+  public final int LeftYAxis = XboxController.Axis.kLeftY.value;
 
   /** Axis index for side-to-side strafing. */
-  public final int strafeAxis = XboxController.Axis.kLeftX.value;
+  public final int LeftXAxis = XboxController.Axis.kLeftX.value;
 
   /** Axis index for rotation control. */
   public final int rotationAxis = XboxController.Axis.kRightX.value;
@@ -30,12 +30,12 @@ public class XboxControllerWrapper extends CommandXboxController implements Cont
   }
 
   /**
-   * Gets the axis value for translation (forward/backward) control.
+   * Gets the axis value for LeftY (forward/backward) control.
    *
-   * @return the axis value for translation control.
+   * @return the axis value for LeftY control.
    */
-  public double getTranslationAxis() {
-    return super.getRawAxis(translationAxis);
+  public double getLeftYAxis() {
+    return super.getRawAxis(LeftYAxis);
   }
 
   /**
@@ -43,8 +43,8 @@ public class XboxControllerWrapper extends CommandXboxController implements Cont
    *
    * @return the axis value for strafing control.
    */
-  public double getStrafeAxis() {
-    return super.getRawAxis(strafeAxis);
+  public double getLeftXAxis() {
+    return super.getRawAxis(LeftXAxis);
   }
 
   /**

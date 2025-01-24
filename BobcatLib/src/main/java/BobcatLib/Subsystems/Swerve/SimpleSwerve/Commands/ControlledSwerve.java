@@ -78,7 +78,7 @@ public class ControlledSwerve extends Command {
         new Translation2d(translation.getDeadband(), strafe.getDeadband()).times(maxSpeed),
         rotation.getDeadband() * maxAngularVelocity,
         !robotCentricSup, // Whether field-centric mode is active
-        true, // Always apply safety mechanisms
+        true,
         s_Swerve.getHeading(),
         s_Swerve.getPose());
   }

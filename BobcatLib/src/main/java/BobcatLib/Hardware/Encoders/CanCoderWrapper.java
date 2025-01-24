@@ -60,8 +60,7 @@ public class CanCoderWrapper implements EncoderIO {
     configAbsEncoder();
 
     /* Angle Encoder Config */
-    /* Drive Motor Config */
-    if (canivorename == "") {
+    if (canivorename == "" || canivorename == "rio") {
       encoder = new CANcoder(id);
     } else {
       encoder = new CANcoder(id, canivorename);

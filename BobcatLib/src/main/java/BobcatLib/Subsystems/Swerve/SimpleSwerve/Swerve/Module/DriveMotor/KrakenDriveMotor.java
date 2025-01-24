@@ -43,8 +43,7 @@ public class KrakenDriveMotor implements DriveWrapper {
     double driveKA = 0.0;
     driveFeedForward = new SimpleMotorFeedforward(driveKS, driveKV, driveKA);
     /* Drive Motor Config */
-    /* Drive Motor Config */
-    if (canivorename == "") {
+    if (canivorename == "" || canivorename == "rio") {
       mDriveMotor = new TalonFX(id);
     } else {
       mDriveMotor = new TalonFX(id, canivorename);
