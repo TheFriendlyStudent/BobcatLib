@@ -1,6 +1,7 @@
 package BobcatLib.Hardware.Sensors.SpatialSensor;
 
-import edu.wpi.first.math.geometry.Rotation2d;
+import BobcatLib.Hardware.Sensors.SpatialSensor.Components.RangeSensor;
+import java.util.HashMap;
 import org.littletonrobotics.junction.Logger;
 
 public class Spatial {
@@ -13,8 +14,12 @@ public class Spatial {
     this.io = io;
   }
 
-  public void periodic(Rotation2d angle) {
-    io.updateInputs(inputs, angle, isEnabled);
+  public void periodic() {
+    io.updateInputs(inputs, isEnabled);
     Logger.processInputs("Spatial", inputs);
+  }
+
+  public HashMap<String, RangeSensor[]> getSpatialSensors() {
+    return io.getRangeSensors();
   }
 }

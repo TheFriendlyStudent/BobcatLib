@@ -2,7 +2,6 @@ package BobcatLib.Hardware.Sensors.SpatialSensor;
 
 import BobcatLib.Hardware.Sensors.SpatialSensor.Components.RangeSensor;
 import BobcatLib.Hardware.Sensors.SpatialSensor.Utility.DistanceMode;
-import edu.wpi.first.math.geometry.Rotation2d;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,11 +19,7 @@ public class SpatialTOF implements SpatialIO {
    *
    * @param inputs The inputs to update.
    */
-  public void updateInputs(SpatialIOInputs inputs, Rotation2d angle, boolean isEnabled) {
-    if (!isEnabled) {
-      return;
-    }
-    remap(angle);
+  public void updateInputs(SpatialIOInputs inputs) {
     HashMap<String, Double> distances = detectObjects();
     inputs.front_left_distance = distances.get("left");
     inputs.front_right_distance = distances.get("right");
@@ -35,12 +30,6 @@ public class SpatialTOF implements SpatialIO {
     mRangeSensors.put("left", new RangeSensor[] {});
     mRangeSensors.put("right", new RangeSensor[] {});
   }
-
-  /**
-   * Need to remap so that you can continue tracking when chassis rotates. this means that it will
-   * map away from the driversation as ahead ( always ) and move around the sensors in the map.
-   */
-  public void remap(Rotation2d angle) {}
 
   /**
    * Find the object distances on all sides.
@@ -91,5 +80,9 @@ public class SpatialTOF implements SpatialIO {
    */
   private double calculateAverage(List<Double> sensorDistances) {
     return sensorDistances.stream().mapToDouble(d -> d).average().orElse(0.0);
+  }
+
+  public HashMap<String, RangeSensor[]> getRangeSensors() {
+    return mRangeSensors;
   }
 }

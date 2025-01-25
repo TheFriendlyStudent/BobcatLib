@@ -109,11 +109,13 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs,edu.wpi.first.math.geometry.Rotation2d,boolean)" class="member-name-link">updateInputs</a><wbr>(<a href="SpatialIO.SpatialIOInputs.html" title="class in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO.SpatialIOInputs</a>&nbsp;inputs,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Components/RangeSensor.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor.Components">RangeSensor</a>[]&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getRangeSensors()" class="member-name-link">getRangeSensors</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs,boolean)" class="member-name-link">updateInputs</a><wbr>(<a href="SpatialIO.SpatialIOInputs.html" title="class in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO.SpatialIOInputs</a>&nbsp;inputs,
  boolean&nbsp;isEnabled)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
 <div class="block">Updates the gyro inputs based on external sources.</div>
 </div>
 </div>
@@ -131,16 +133,21 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs,edu.wpi.first.math.geometry.Rotation2d,boolean)">
+<section class="detail" id="updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs,boolean)">
 <h3>updateInputs</h3>
 <div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="SpatialIO.SpatialIOInputs.html" title="class in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO.SpatialIOInputs</a>&nbsp;inputs,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
  boolean&nbsp;isEnabled)</span></div>
 <div class="block">Updates the gyro inputs based on external sources.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>inputs</code> - The inputs to update.</dd>
 </dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getRangeSensors()">
+<h3>getRangeSensors</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Components/RangeSensor.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor.Components">RangeSensor</a>[]&gt;</span>&nbsp;<span class="element-name">getRangeSensors</span>()</div>
 </section>
 </li>
 </ul>

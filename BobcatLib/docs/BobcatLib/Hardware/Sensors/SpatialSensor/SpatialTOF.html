@@ -151,18 +151,14 @@ implements <a href="SpatialIO.html" title="interface in BobcatLib.Hardware.Senso
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Find the object distances on all sides.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#remap(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">remap</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Need to remap so that you can continue tracking when chassis rotates.</div>
-</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Components/RangeSensor.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor.Components">RangeSensor</a>[]&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRangeSensors()" class="member-name-link">getRangeSensors</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setCustomRangingMode(BobcatLib.Hardware.Sensors.SpatialSensor.Components.RangeSensor)" class="member-name-link">setCustomRangingMode</a><wbr>(<a href="Components/RangeSensor.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor.Components">RangeSensor</a>&nbsp;sensor)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs,edu.wpi.first.math.geometry.Rotation2d,boolean)" class="member-name-link">updateInputs</a><wbr>(<a href="SpatialIO.SpatialIOInputs.html" title="class in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO.SpatialIOInputs</a>&nbsp;inputs,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
- boolean&nbsp;isEnabled)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs)" class="member-name-link">updateInputs</a><wbr>(<a href="SpatialIO.SpatialIOInputs.html" title="class in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO.SpatialIOInputs</a>&nbsp;inputs)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates the gyro inputs based on external sources.</div>
 </div>
@@ -172,6 +168,9 @@ implements <a href="SpatialIO.html" title="interface in BobcatLib.Hardware.Senso
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
+<div class="inherited-list">
+<h3 id="methods-inherited-from-class-BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO">Methods inherited from interface&nbsp;BobcatLib.Hardware.Sensors.SpatialSensor.<a href="SpatialIO.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO</a></h3>
+<code><a href="SpatialIO.html#updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs,boolean)">updateInputs</a></code></div>
 </section>
 </li>
 </ul>
@@ -213,15 +212,11 @@ implements <a href="SpatialIO.html" title="interface in BobcatLib.Hardware.Senso
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs,edu.wpi.first.math.geometry.Rotation2d,boolean)">
+<section class="detail" id="updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs)">
 <h3>updateInputs</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="SpatialIO.SpatialIOInputs.html" title="class in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO.SpatialIOInputs</a>&nbsp;inputs,
- <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle,
- boolean&nbsp;isEnabled)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateInputs</span><wbr><span class="parameters">(<a href="SpatialIO.SpatialIOInputs.html" title="class in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO.SpatialIOInputs</a>&nbsp;inputs)</span></div>
 <div class="block">Updates the gyro inputs based on external sources.</div>
 <dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="SpatialIO.html#updateInputs(BobcatLib.Hardware.Sensors.SpatialSensor.SpatialIO.SpatialIOInputs,edu.wpi.first.math.geometry.Rotation2d,boolean)">updateInputs</a></code>&nbsp;in interface&nbsp;<code><a href="SpatialIO.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>inputs</code> - The inputs to update.</dd>
 </dl>
@@ -232,14 +227,6 @@ implements <a href="SpatialIO.html" title="interface in BobcatLib.Hardware.Senso
 <h3>configAllSensors</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">configAllSensors</span>()</div>
 <div class="block">Configure all Sensors</div>
-</section>
-</li>
-<li>
-<section class="detail" id="remap(edu.wpi.first.math.geometry.Rotation2d)">
-<h3>remap</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">remap</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle)</span></div>
-<div class="block">Need to remap so that you can continue tracking when chassis rotates. this means that it will
- map away from the driversation as ahead ( always ) and move around the sensors in the map.</div>
 </section>
 </li>
 <li>
@@ -270,6 +257,16 @@ implements <a href="SpatialIO.html" title="interface in BobcatLib.Hardware.Senso
 <section class="detail" id="setCustomRangingMode(BobcatLib.Hardware.Sensors.SpatialSensor.Components.RangeSensor)">
 <h3>setCustomRangingMode</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setCustomRangingMode</span><wbr><span class="parameters">(<a href="Components/RangeSensor.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor.Components">RangeSensor</a>&nbsp;sensor)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="getRangeSensors()">
+<h3>getRangeSensors</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Components/RangeSensor.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor.Components">RangeSensor</a>[]&gt;</span>&nbsp;<span class="element-name">getRangeSensors</span>()</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="SpatialIO.html#getRangeSensors()">getRangeSensors</a></code>&nbsp;in interface&nbsp;<code><a href="SpatialIO.html" title="interface in BobcatLib.Hardware.Sensors.SpatialSensor">SpatialIO</a></code></dd>
+</dl>
 </section>
 </li>
 </ul>

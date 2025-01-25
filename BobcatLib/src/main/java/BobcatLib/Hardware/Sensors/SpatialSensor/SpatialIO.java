@@ -1,6 +1,7 @@
 package BobcatLib.Hardware.Sensors.SpatialSensor;
 
-import edu.wpi.first.math.geometry.Rotation2d;
+import BobcatLib.Hardware.Sensors.SpatialSensor.Components.RangeSensor;
+import java.util.HashMap;
 import org.littletonrobotics.junction.AutoLog;
 
 public interface SpatialIO {
@@ -16,5 +17,10 @@ public interface SpatialIO {
    *
    * @param inputs The inputs to update.
    */
-  public default void updateInputs(SpatialIOInputs inputs, Rotation2d angle, boolean isEnabled) {}
+  public default void updateInputs(SpatialIOInputs inputs, boolean isEnabled) {}
+
+  public default HashMap<String, RangeSensor[]> getRangeSensors() {
+    return null;
+  }
+  ;
 }
