@@ -47,15 +47,17 @@ public class SwerveModuleReal implements SwerveModuleIO {
   private SwerveModuleState desiredState = new SwerveModuleState();
   public ModuleConstants chosenModule;
   public ModuleLimitsJson swerveLimits;
+  public String robotName;
 
   /**
    * initializes a swerve module with the index and the constants as configured.
    *
    * @param moduleNumber
    */
-  public SwerveModuleReal(int moduleNumber, ModuleLimitsJson limits) {
+  public SwerveModuleReal(int moduleNumber, ModuleLimitsJson limits, String robotName) {
     this.moduleNumber = moduleNumber;
     this.swerveLimits = limits;
+    this.robotName = robotName;
     loadConfigurationFromFile();
     rawAbsoluteAngleName = "Module[" + moduleNumber + "] Raw Absolute Encoder";
     rawAngleName = "Module[" + moduleNumber + "] Raw Angle Encoder";
@@ -177,7 +179,7 @@ public class SwerveModuleReal implements SwerveModuleIO {
     String name = "module" + moduleNumber + ".json";
     File deployDirectory = Filesystem.getDeployDirectory();
     assert deployDirectory.exists();
-    File directory = new File(deployDirectory, "configs/swerve");
+    File directory = new File(deployDirectory, "configs/swerve/" + robotName + "/");
     assert new File(directory, name).exists();
     File moduleFile = new File(directory, name);
     assert moduleFile.exists();
