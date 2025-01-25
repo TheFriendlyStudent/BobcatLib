@@ -70,18 +70,18 @@ public class SwerveBase {
   }
 
   public void initComand() {
-    DoubleSupplier translation = () -> s_Controls.getTranslationValue();
-    DoubleSupplier strafe = () -> s_Controls.getStrafeValue();
+    DoubleSupplier translation = () -> s_Controls.getLeftYValue();
+    DoubleSupplier strafe = () -> s_Controls.getLeftXValue();
     if (!alliance.isBlueAlliance()) {
-      translation = () -> -s_Controls.getTranslationValue();
-      strafe = () -> -s_Controls.getStrafeValue();
+      translation = () -> -s_Controls.getLeftYValue();
+      strafe = () -> -s_Controls.getLeftXValue();
     }
     s_Swerve.setDefaultCommand(
         new TeleopSwerve(
             s_Swerve,
             translation,
             strafe,
-            () -> s_Controls.getRotationValue(),
+            () -> s_Controls.getRightXValue(),
             () -> s_Controls.robotCentric.getAsBoolean(),
             s_Controls.controllerJson));
   }

@@ -6,11 +6,11 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public interface ControllerWrapper {
 
   /**
-   * Gets the axis value for translation (forward/backward) control.
+   * Gets the axis value for LeftY (forward/backward) control.
    *
-   * @return The axis value for translation control.
+   * @return The axis value for LeftY control.
    */
-  public default double getTranslationAxis() {
+  public default double getLeftYAxis() {
     return 0;
   }
 
@@ -19,16 +19,16 @@ public interface ControllerWrapper {
    *
    * @return The axis value for strafing control.
    */
-  public default double getStrafeAxis() {
+  public default double getLeftXAxis() {
     return 0;
   }
 
   /**
-   * Gets the axis value for rotation control.
+   * Gets the axis value for RightX control.
    *
-   * @return The axis value for rotation control.
+   * @return The axis value for RightX control.
    */
-  public default double getRotationAxis() {
+  public default double getRightXAxis() {
     return 0;
   }
   /**

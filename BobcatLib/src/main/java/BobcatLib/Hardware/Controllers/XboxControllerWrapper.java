@@ -16,8 +16,8 @@ public class XboxControllerWrapper extends CommandXboxController implements Cont
   /** Axis index for side-to-side strafing. */
   public final int LeftXAxis = XboxController.Axis.kLeftX.value;
 
-  /** Axis index for rotation control. */
-  public final int rotationAxis = XboxController.Axis.kRightX.value;
+  /** Axis index for RightX control. */
+  public final int RightXAxis = XboxController.Axis.kRightX.value;
 
   /**
    * Constructs an Xbox controller wrapper for the specified port. The wrapper includes access to
@@ -48,12 +48,12 @@ public class XboxControllerWrapper extends CommandXboxController implements Cont
   }
 
   /**
-   * Gets the axis value for rotation control.
+   * Gets the axis value for RightX control.
    *
-   * @return the axis value for rotation control.
+   * @return the axis value for RightX control.
    */
-  public double getRotationAxis() {
-    return super.getRawAxis(rotationAxis);
+  public double getRightXAxis() {
+    return super.getRawAxis(RightXAxis);
   }
 
   /**

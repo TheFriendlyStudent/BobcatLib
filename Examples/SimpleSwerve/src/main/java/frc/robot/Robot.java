@@ -42,8 +42,6 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     List<LoadablePathPlannerAuto> loadableAutos = new ArrayList<LoadablePathPlannerAuto>();
     loadableAutos.add(new LoadablePathPlannerAuto("Do Nothing", Commands.none(), true));
-    loadableAutos.add(new LoadablePathPlannerAuto("Base", new PathPlannerAuto("Base"), false));
-    loadableAutos.add(new LoadablePathPlannerAuto("Auto1", new PathPlannerAuto("Auto1"), false));
 
     String robotName = "RobotName";
     boolean isSim = false;
@@ -53,6 +51,10 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer(driver_controller, loadableAutos, robotName,
     isSim, alliance, tranPidPathPlanner,
     rotPidPathPlanner);
+
+    loadableAutos.add(new LoadablePathPlannerAuto("Base", new PathPlannerAuto("Base"), false));
+    loadableAutos.add(new LoadablePathPlannerAuto("Auto1", new PathPlannerAuto("Auto1"), false));
+    m_robotContainer.updateLoadedPaths(loadableAutos);
 
   }
 

@@ -133,6 +133,16 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
 <div class="block">Get Left Trigger</div>
 </div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default double</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getLeftXAxis()" class="member-name-link">getLeftXAxis</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Gets the axis value for strafing (side-to-side) control.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default double</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getLeftYAxis()" class="member-name-link">getLeftYAxis</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
+<div class="block">Gets the axis value for LeftY (forward/backward) control.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getRightBumper()" class="member-name-link">getRightBumper</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
@@ -144,19 +154,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Get Right Trigger</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getRotationAxis()" class="member-name-link">getRotationAxis</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getRightXAxis()" class="member-name-link">getRightXAxis</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Gets the axis value for rotation control.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default double</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getStrafeAxis()" class="member-name-link">getStrafeAxis</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Gets the axis value for strafing (side-to-side) control.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getTranslationAxis()" class="member-name-link">getTranslationAxis</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5">
-<div class="block">Gets the axis value for translation (forward/backward) control.</div>
+<div class="block">Gets the axis value for RightX control.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code>default <a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html" title="class or interface in edu.wpi.first.wpilibj2.command.button" class="external-link">Trigger</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab5"><code><a href="#getXorSquare()" class="member-name-link">getXorSquare</a>()</code></div>
@@ -183,20 +183,20 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="getTranslationAxis()">
-<h3>getTranslationAxis</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getTranslationAxis</span>()</div>
-<div class="block">Gets the axis value for translation (forward/backward) control.</div>
+<section class="detail" id="getLeftYAxis()">
+<h3>getLeftYAxis</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getLeftYAxis</span>()</div>
+<div class="block">Gets the axis value for LeftY (forward/backward) control.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The axis value for translation control.</dd>
+<dd>The axis value for LeftY control.</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="getStrafeAxis()">
-<h3>getStrafeAxis</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getStrafeAxis</span>()</div>
+<section class="detail" id="getLeftXAxis()">
+<h3>getLeftXAxis</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getLeftXAxis</span>()</div>
 <div class="block">Gets the axis value for strafing (side-to-side) control.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -205,13 +205,13 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="getRotationAxis()">
-<h3>getRotationAxis</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getRotationAxis</span>()</div>
-<div class="block">Gets the axis value for rotation control.</div>
+<section class="detail" id="getRightXAxis()">
+<h3>getRightXAxis</h3>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getRightXAxis</span>()</div>
+<div class="block">Gets the axis value for RightX control.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The axis value for rotation control.</dd>
+<dd>The axis value for RightX control.</dd>
 </dl>
 </section>
 </li>

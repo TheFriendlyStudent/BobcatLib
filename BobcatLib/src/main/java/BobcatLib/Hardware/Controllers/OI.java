@@ -107,29 +107,29 @@ public class OI {
   }
 
   /**
-   * Gets Driver Translation Axis
+   * Gets Driver LeftY Axis
    *
    * @return double
    */
-  public double getTranslationValue() {
-    return driver_controller.getTranslationAxis();
+  public double getLeftYValue() {
+    return driver_controller.getLeftYAxis();
   }
 
   /**
-   * Gets Driver Strafe Axis
+   * Gets Driver LeftX Axis
    *
    * @return double
    */
-  public double getStrafeValue() {
-    return driver_controller.getStrafeAxis();
+  public double getLeftXValue() {
+    return driver_controller.getLeftXAxis();
   }
 
   /**
-   * Gets Driver Rotation Axis
+   * Gets Driver RightX Axis
    *
    * @return double
    */
-  public double getRotationValue() {
-    return driver_controller.getRotationAxis();
+  public double getRightXValue() {
+    return driver_controller.getRightXAxis();
   }
 }
