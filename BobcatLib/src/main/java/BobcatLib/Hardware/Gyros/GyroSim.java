@@ -26,6 +26,8 @@ public class GyroSim implements GyroIO {
   /** Roll angle of the robot. */
   private double rollAngle;
 
+  private double accel;
+
   /** Initializes the GyroSim with a timer and sets up the initial angles. */
   public GyroSim() {
     timer = new Timer();
@@ -51,6 +53,7 @@ public class GyroSim implements GyroIO {
     inputs.yawPosition = Rotation2d.fromDegrees(getYaw());
     inputs.rollPosition = Rotation2d.fromDegrees(getRoll());
     inputs.pitchPosition = Rotation2d.fromDegrees(getPitch());
+    inputs.accel = getAccel();
   }
 
   /**
@@ -119,6 +122,10 @@ public class GyroSim implements GyroIO {
    */
   private double getRoll() {
     return rollAngle;
+  }
+
+  private double getAccel() {
+    return accel;
   }
 
   /**

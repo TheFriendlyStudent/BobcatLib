@@ -27,6 +27,8 @@ public interface GyroIO {
     /** The current roll position of the gyro. */
     public Rotation2d rollPosition = new Rotation2d();
 
+    public double accel = 0;
+
     /** Indicates if the gyro has a fault. */
     public boolean faulted = false;
   }

@@ -18,6 +18,7 @@ import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser.drivePIDJson;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.interfaces.AutomatedSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.interfaces.SysidCompatibleSwerve;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
+import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.StandardDeviations.OdometryStates;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math.GeometryUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -85,6 +86,11 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
    * rectangular/square 4 module swerve
    */
   public static SwerveDriveKinematics swerveKinematics;
+
+  public Matrix<N3, N1> trustautostdDev;
+  public Matrix<N3, N1> trusttelestdDev;
+  public Matrix<N3, N1> regautostdDev;
+  public Matrix<N3, N1> regtelestdDev;
 
   public SwerveDrive(
       String robotName,
@@ -589,10 +595,28 @@ public class SwerveDrive extends SubsystemBase implements SysidCompatibleSwerve,
     for (SwerveModule mod : mSwerveMods) {
       mod.periodic();
     }
+
     // swerveDrivePoseEstimator.setStateStdDevs(new state std devs here);
-    swerveDrivePoseEstimator.updateWithTime(
-        Timer.getFPGATimestamp(), getGyroYaw(), getModulePositions());
+    handleOdometry();
     // swerveDrivePoseEstimator.addVisionMeasurement();
+  }
+
+  public void handleOdometry() {
+    OdometryStates state;
+    // determine how much to trust odometry based on acceleratio
+    if (gyro.getAccel() > 5) {
+      state = OdometryStates.THROWOUT;
+      swerveDrivePoseEstimator.updateWithTime(
+          Timer.getFPGATimestamp(), getGyroYaw(), getModulePositions());
+    } else if (gyro.getAccel() > 4) {
+      state = OdometryStates.DISTRUST;
+      swerveDrivePoseEstimator.updateWithTimeAndDevs(
+          Timer.getFPGATimestamp(), getGyroYaw(), getModulePositions());
+    } else {
+      state = OdometryStates.TRUST;
+      swerveDrivePoseEstimator.updateWithTimeAndDevs(
+          Timer.getFPGATimestamp(), getGyroYaw(), getModulePositions());
+    }
   }
 
   /** Checks if in sim. */

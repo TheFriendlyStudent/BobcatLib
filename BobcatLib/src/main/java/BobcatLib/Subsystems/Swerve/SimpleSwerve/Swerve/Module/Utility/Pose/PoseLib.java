@@ -34,4 +34,9 @@ public interface PoseLib {
       double currentTimeSeconds, Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions) {
     return new Pose2d();
   }
+
+  public default Pose2d updateWithTimeAndDevs(
+      double currentTimeSeconds, Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions) {
+    return new Pose2d();
+  }
 }

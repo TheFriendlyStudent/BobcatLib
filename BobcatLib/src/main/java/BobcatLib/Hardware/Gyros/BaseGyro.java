@@ -101,4 +101,8 @@ public class BaseGyro {
   public double getTimeDiff() {
     return io.getTimeDiff();
   }
+
+  public double getAccel() {
+    return inputs.accel;
+  }
 }

@@ -38,6 +38,7 @@ BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.Pose
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Parser
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility
 BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.math
+BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.StandardDeviations
 BobcatLib.Subsystems.Swerve.Utility
 BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator
 BobcatLib.Subsystems.Vision

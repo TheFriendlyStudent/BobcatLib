@@ -10,7 +10,8 @@ public class SpatialTOF implements SpatialIO {
   /** Sensors as identified by "field centric" side. */
   public HashMap<String, RangeSensor[]> mRangeSensors;
 
-  public SpatialTOF() {
+  public SpatialTOF(HashMap<String, RangeSensor[]> sensors) {
+    mRangeSensors = sensors;
     configAllSensors();
   }
 

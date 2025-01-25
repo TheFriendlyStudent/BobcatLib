@@ -45,6 +45,6 @@ public class WpiPoseEstimator implements PoseLib {
 
   public Pose2d updateWithTime(
       double currentTimeSeconds, Rotation2d gyroAngle, SwerveModulePosition[] wheelPositions) {
-    return new Pose2d();
+    return swerveDrivePoseEstimator.updateWithTime(currentTimeSeconds, gyroAngle, wheelPositions);
   }
 }
