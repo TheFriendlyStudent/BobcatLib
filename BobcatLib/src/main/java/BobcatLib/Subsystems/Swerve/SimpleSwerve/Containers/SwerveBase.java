@@ -98,6 +98,10 @@ public class SwerveBase {
     // Sets Up PathPlanner with Swerve
     s_Swerve = s_Swerve.withPathPlanner(field, tranPid, rotPid);
     // Configure AutoBuilder last
+    updateLoadedPaths(autos);
+  }
+
+  public void updateLoadedPaths(List<LoadablePathPlannerAuto> loadedAutos) {
     for (LoadablePathPlannerAuto auto : autos) {
       if (auto.isDefault()) {
         autoChooser.addDefaultOption(auto.getName(), auto.getCommand());

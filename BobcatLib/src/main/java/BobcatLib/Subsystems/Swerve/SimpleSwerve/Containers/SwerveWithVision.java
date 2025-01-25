@@ -64,4 +64,8 @@ public class SwerveWithVision extends SwerveBase {
     limelightVision.updatePoseEstimator(s_Swerve.getGyroYaw(), s_Swerve.getModulePositions());
     limelightVision.periodic();
   }
+
+  public void updateLoadedPaths(List<LoadablePathPlannerAuto> autos) {
+    super.updateLoadedPaths(autos);
+  }
 }

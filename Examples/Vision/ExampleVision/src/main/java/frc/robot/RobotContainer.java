@@ -88,4 +88,8 @@ public class RobotContainer extends SwerveWithVision{
         public Command getTestCommand() {
                 return super.getTestCommand();
         }
+
+        public void updatePaths(List<LoadablePathPlannerAuto> autos){
+                
+        }
 }

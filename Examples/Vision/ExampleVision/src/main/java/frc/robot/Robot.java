@@ -46,10 +46,8 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     List<LoadablePathPlannerAuto> loadableAutos = new ArrayList<LoadablePathPlannerAuto>();
     loadableAutos.add(new LoadablePathPlannerAuto("Do Nothing", Commands.none(), true));
-    loadableAutos.add(new LoadablePathPlannerAuto("Base", new PathPlannerAuto("Base"), false));
-    loadableAutos.add(new LoadablePathPlannerAuto("Auto1", new PathPlannerAuto("Auto1"), false));
 
-    String robotName = "RobotName";
+    String robotName = "2024-Robot";
     boolean isSim = false;
     PIDConstants tranPidPathPlanner = new PIDConstants(10, kDefaultPeriod, kDefaultPeriod);
     PIDConstants rotPidPathPlanner = new PIDConstants(5, kDefaultPeriod, kDefaultPeriod);
@@ -70,6 +68,11 @@ public class Robot extends TimedRobot {
     rotPidPathPlanner, VisionName, targets,
     ll_cfg);
 
+    
+    loadableAutos.add(new LoadablePathPlannerAuto("Base", new PathPlannerAuto("Base"), false));
+    loadableAutos.add(new LoadablePathPlannerAuto("Auto1", new PathPlannerAuto("Auto1"), false));
+
+    m_robotContainer.updatePaths(loadableAutos);
   }
 
   /**
