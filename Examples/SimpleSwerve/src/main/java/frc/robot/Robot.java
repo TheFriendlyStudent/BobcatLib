@@ -7,12 +7,19 @@ package frc.robot;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.config.RobotConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
 import BobcatLib.Hardware.Controllers.OI;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Swerve.Module.Utility.PIDConstants;
 import BobcatLib.Subsystems.Swerve.SimpleSwerve.Utility.Alliance;
 import BobcatLib.Subsystems.Swerve.Utility.LoadablePathPlannerAuto;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -24,7 +31,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  private OI driver_controller = new OI();
+  private OI driver_controller = new OI("2025_Robot");
   public static Alliance alliance;
 
   private final RobotContainer m_robotContainer;
@@ -37,15 +44,19 @@ public class Robot extends TimedRobot {
       
     alliance = new Alliance();
     
+    
+
+    
+
     // Instantiate our RobotContainer. This will perform all our button bindings,
     // and put our
     // autonomous chooser on the dashboard.
     List<LoadablePathPlannerAuto> loadableAutos = new ArrayList<LoadablePathPlannerAuto>();
-    loadableAutos.add(new LoadablePathPlannerAuto("Do Nothing", Commands.none(), true));
-    loadableAutos.add(new LoadablePathPlannerAuto("Base", new PathPlannerAuto("Base"), false));
-    loadableAutos.add(new LoadablePathPlannerAuto("Auto1", new PathPlannerAuto("Auto1"), false));
+    // loadableAutos.add(new LoadablePathPlannerAuto("Do Nothing", Commands.none(), true));
+    // loadableAutos.add(new LoadablePathPlannerAuto("Base", new PathPlannerAuto("Base"), false));
+    // loadableAutos.add(new LoadablePathPlannerAuto("Auto1", new PathPlannerAuto("Auto1"), false));
 
-    String robotName = "RobotName";
+    String robotName = "2025_Robot";
     boolean isSim = false;
     PIDConstants tranPidPathPlanner = new PIDConstants(10, kDefaultPeriod, kDefaultPeriod);
     PIDConstants rotPidPathPlanner = new PIDConstants(5, kDefaultPeriod, kDefaultPeriod);
@@ -94,7 +105,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-
+    m_robotContainer.s_Swerve.drive(new Translation2d(1,0),1,true,true,new Rotation2d(),new Pose2d());
   }
 
   @Override
