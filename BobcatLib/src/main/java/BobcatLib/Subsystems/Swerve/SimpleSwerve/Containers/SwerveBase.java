@@ -54,6 +54,7 @@ public class SwerveBase {
     this.alliance = alliance;
     this.tranPidPathPlanner = tranPidPathPlanner;
     this.rotPidPathPlanner = rotPidPathPlanner;
+    autoChooser = new LoggedDashboardChooser<>("Auto Routine"); // Choose an Auto!
     s_Swerve = new SwerveDrive(robotName, isSim, alliance);
 
     initComand();

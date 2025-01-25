@@ -90,6 +90,6 @@ public class RobotContainer extends SwerveWithVision{
         }
 
         public void updatePaths(List<LoadablePathPlannerAuto> autos){
-                
+                super.updateLoadedPaths(autos);
         }
 }
