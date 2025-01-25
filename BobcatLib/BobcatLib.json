@@ -63,7 +63,14 @@
       "errorMessage": "PathPlanner is Required",
       "offlineFileName": "PathplannerLib.json",
       "onlineUrl": "https://3015rangerrobotics.github.io/pathplannerlib/PathplannerLib.json"
+    },
+    {
+      "uuid": "14b8ad04-24df-11ea-978f-2e728ce88125",
+      "errorMessage": "Playing With Fusion is Required",
+      "offlineFileName": "playingwithfusion2025.json",
+      "onlineUrl": "https://www.playingwithfusion.com/frc/playingwithfusion2025.json"
     }
+    
   ],
   "jniDependencies": [],
   "cppDependencies": []

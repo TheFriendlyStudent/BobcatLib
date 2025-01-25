@@ -8,6 +8,9 @@ BobcatLib.Hardware.Motors
 BobcatLib.Hardware.Motors.SensorHelpers
 BobcatLib.Hardware.Motors.Utility
 BobcatLib.Hardware.Motors.Utility.CTRE
+BobcatLib.Hardware.Sensors.SpatialSensor
+BobcatLib.Hardware.Sensors.SpatialSensor.Components
+BobcatLib.Hardware.Sensors.SpatialSensor.Utility
 BobcatLib.Logging
 BobcatLib.Logging.FaultsAndErrors
 BobcatLib.Subsystems.Climbers
