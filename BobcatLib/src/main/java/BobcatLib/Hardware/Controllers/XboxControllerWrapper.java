@@ -19,6 +19,9 @@ public class XboxControllerWrapper extends CommandXboxController implements Cont
   /** Axis index for RightX control. */
   public final int RightXAxis = XboxController.Axis.kRightX.value;
 
+  /** Axis index for RightY control. */
+  public final int RightYAxis = XboxController.Axis.kRightY.value;
+
   /**
    * Constructs an Xbox controller wrapper for the specified port. The wrapper includes access to
    * left and right joysticks, POV controls, and button mappings (Y, B, A, X).
@@ -54,6 +57,15 @@ public class XboxControllerWrapper extends CommandXboxController implements Cont
    */
   public double getRightXAxis() {
     return super.getRawAxis(RightXAxis);
+  }
+
+  /**
+   * Gets the axis value for RightY control.
+   *
+   * @return the axis value for RightY control.
+   */
+  public double getRightYAxis() {
+    return super.getRawAxis(RightYAxis);
   }
 
   /**

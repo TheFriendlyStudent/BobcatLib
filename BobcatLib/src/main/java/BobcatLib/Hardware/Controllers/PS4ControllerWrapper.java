@@ -16,8 +16,8 @@ public class PS4ControllerWrapper extends CommandPS4Controller implements Contro
   /** Axis index for side-to-side strafing. */
   public final int LeftXAxis = PS4Controller.Axis.kLeftX.value;
 
-  /** Axis index for rotation. */
-  public final int rotationAxis = PS4Controller.Axis.kRightX.value;
+  /** Axis index for RightX. */
+  public final int RightXAxis = PS4Controller.Axis.kRightX.value;
 
   /**
    * Constructs a PS4 controller wrapper for the specified port.
@@ -47,12 +47,12 @@ public class PS4ControllerWrapper extends CommandPS4Controller implements Contro
   }
 
   /**
-   * Gets the axis value for rotation control.
+   * Gets the axis value for RightX control.
    *
-   * @return the axis value for rotation control.
+   * @return the axis value for RightX control.
    */
-  public double getRotationAxis() {
-    return super.getRawAxis(rotationAxis);
+  public double getRightXAxis() {
+    return super.getRawAxis(RightXAxis);
   }
 
   /**

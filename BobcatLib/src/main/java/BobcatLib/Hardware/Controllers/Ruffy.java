@@ -12,14 +12,14 @@ public class Ruffy implements ControllerWrapper {
   /** The underlying joystick object for the Ruffy controller. */
   CommandJoystick ruffyJoystick;
 
-  /** Axis index for forward/backward translation. */
-  public final int translationAxis = 0;
+  /** Axis index for forward/backward LeftY. */
+  public final int LeftYAxis = 0;
 
   /** Axis index for side-to-side strafing. */
   public final int strafeAxis = 1;
 
-  /** Axis index for rotation control. */
-  public final int rotationAxis = 2;
+  /** Axis index for RightX control. */
+  public final int RightXAxis = 2;
 
   /**
    * Constructs a Ruffy joystick controller wrapper for the specified port.
@@ -31,12 +31,12 @@ public class Ruffy implements ControllerWrapper {
   }
 
   /**
-   * Gets the axis value for translation (forward/backward) control.
+   * Gets the axis value for LeftY (forward/backward) control.
    *
-   * @return the axis value for translation control.
+   * @return the axis value for LeftY control.
    */
-  public double getTranslationAxis() {
-    return ruffyJoystick.getRawAxis(translationAxis);
+  public double getLeftYAxis() {
+    return ruffyJoystick.getRawAxis(LeftYAxis);
   }
 
   /**
@@ -49,12 +49,12 @@ public class Ruffy implements ControllerWrapper {
   }
 
   /**
-   * Gets the axis value for rotation control.
+   * Gets the axis value for RightX control.
    *
-   * @return the axis value for rotation control.
+   * @return the axis value for RightX control.
    */
-  public double getRotationAxis() {
-    return ruffyJoystick.getRawAxis(rotationAxis);
+  public double getRightXAxis() {
+    return ruffyJoystick.getRawAxis(RightXAxis);
   }
 
   /**

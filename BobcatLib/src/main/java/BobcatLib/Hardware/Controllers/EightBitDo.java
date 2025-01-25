@@ -16,8 +16,8 @@ public class EightBitDo implements ControllerWrapper {
   /** Axis index for side-to-side strafing. */
   public final int LeftXAxis = 1;
 
-  /** Axis index for rotation. */
-  public final int rotationAxis = 4;
+  /** Axis index for RightX. */
+  public final int RightXAxis = 4;
 
   /**
    * Constructs an EightBitDo controller wrapper with mappings for joystick axes and buttons.
@@ -47,12 +47,12 @@ public class EightBitDo implements ControllerWrapper {
   }
 
   /**
-   * Gets the axis value for rotation control.
+   * Gets the axis value for RightX control.
    *
-   * @return the axis value for rotation control.
+   * @return the axis value for RightX control.
    */
-  public double getRotationAxis() {
-    return ebdJoystick.getRawAxis(rotationAxis);
+  public double getRightXAxis() {
+    return ebdJoystick.getRawAxis(RightXAxis);
   }
 
   /**

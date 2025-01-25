@@ -32,6 +32,15 @@ public interface ControllerWrapper {
     return 0;
   }
   /**
+   * Gets the axis value for RightY control.
+   *
+   * @return The axis value for RightY control.
+   */
+  public default double getRightYAxis() {
+    return 0;
+  }
+
+  /**
    * Get Left Trigger
    *
    * @return Trigger
