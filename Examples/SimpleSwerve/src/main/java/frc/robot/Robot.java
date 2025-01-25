@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  private OI driver_controller = new OI();
+  private OI driver_controller;
   public static Alliance alliance;
 
   private final RobotContainer m_robotContainer;
@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
     boolean isSim = false;
     PIDConstants tranPidPathPlanner = new PIDConstants(10, kDefaultPeriod, kDefaultPeriod);
     PIDConstants rotPidPathPlanner = new PIDConstants(5, kDefaultPeriod, kDefaultPeriod);
-    
+    driver_controller = new OI(robotName);
     m_robotContainer = new RobotContainer(driver_controller, loadableAutos, robotName,
     isSim, alliance, tranPidPathPlanner,
     rotPidPathPlanner);

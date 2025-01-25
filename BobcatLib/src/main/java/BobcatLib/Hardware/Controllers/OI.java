@@ -43,11 +43,13 @@ public class OI {
   /** Trigger for the D-Pad right button. */
   public Trigger dpadRightBtn;
 
+  private String robotName;
   /**
    * Constructs the Operator Interface (OI) with the specified driver port and configuration.
    * Initializes controller inputs and button mappings.
    */
-  public OI() {
+  public OI(String robotName) {
+    this.robotName = robotName;
     loadConfigurationFromFile();
     int driverPort = controllerJson.driver.id;
     String type = controllerJson.driver.type;
@@ -93,7 +95,7 @@ public class OI {
     String name = "oi.json";
     File deployDirectory = Filesystem.getDeployDirectory();
     assert deployDirectory.exists();
-    File directory = new File(deployDirectory, "configs/swerve");
+    File directory = new File(deployDirectory, "configs/swerve/" + robotName + "/");
     assert new File(directory, name).exists();
     File moduleFile = new File(directory, name);
     assert moduleFile.exists();
