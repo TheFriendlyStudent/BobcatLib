@@ -1,7 +1,0 @@
-{
-  "driver": {
-    "type": "xbox",
-    "id": 0,
-    "deadband": 0.1
-  }
-}
