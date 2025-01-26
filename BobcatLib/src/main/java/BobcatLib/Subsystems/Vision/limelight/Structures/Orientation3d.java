@@ -3,7 +3,7 @@ package BobcatLib.Subsystems.Vision.Limelight.Structures;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.units.measure.AngularVelocity;
 
-/** Orientation3d of the robot for the LimelightCamera */
+/** Orientation3d of the robot for the camera */
 public class Orientation3d {
 
   /** Current orientation of the robot. */

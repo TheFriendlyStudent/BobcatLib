@@ -43,6 +43,8 @@ BobcatLib.Subsystems.Swerve.Utility
 BobcatLib.Subsystems.Swerve.Utility.UnifiedModuleConfigurator
 BobcatLib.Subsystems.Vision
 BobcatLib.Subsystems.Vision.Components
+BobcatLib.Subsystems.Vision.Components.Utility.apriltag
+BobcatLib.Subsystems.Vision.Components.Utility.apriltag.JNI
 BobcatLib.Subsystems.Vision.Limelight
 BobcatLib.Subsystems.Vision.Limelight.Estimator
 BobcatLib.Subsystems.Vision.Limelight.Results

@@ -10,6 +10,9 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -32,9 +35,9 @@ public class LimelightUtils {
   /**
    * Get the URL for the limelight.
    *
-   * @param tableName tablename
-   * @param request URI to request from
-   * @return {@link URL} to request
+   * @param tableName table name
+   * @param request URI to request from request
+   * @return {@link URL} to request for the camera .
    */
   public static URL getLimelightURLString(String tableName, String request) {
     String urlString = "http://" + sanitizeName(tableName) + ".local:5807/" + request;
@@ -124,11 +127,11 @@ public class LimelightUtils {
   public static double[] orientation3dToArray(Orientation3d orientation) {
     return new double[] {
       orientation.orientation.getMeasureZ().in(Degrees),
-          orientation.angularVelocity.yaw.in(DegreesPerSecond),
+      orientation.angularVelocity.yaw.in(DegreesPerSecond),
       orientation.orientation.getMeasureY().in(Degrees),
-          orientation.angularVelocity.pitch.in(DegreesPerSecond),
+      orientation.angularVelocity.pitch.in(DegreesPerSecond),
       orientation.orientation.getMeasureX().in(Degrees),
-          orientation.angularVelocity.roll.in(DegreesPerSecond)
+      orientation.angularVelocity.roll.in(DegreesPerSecond)
     };
   }
 
@@ -192,5 +195,29 @@ public class LimelightUtils {
       return 0;
     }
     return inData[position];
+  }
+
+  public static void Flush() {
+    NetworkTableInstance.getDefault().flush();
+  }
+
+  public static void setLimelightNTDouble(String tableName, String entryName, double val) {
+    getLimelightNTTableEntry(tableName, entryName).setDouble(val);
+  }
+
+  public static void setLimelightNTDoubleArray(String tableName, String entryName, double[] val) {
+    getLimelightNTTableEntry(tableName, entryName).setDoubleArray(val);
+  }
+
+  public static double[] getLimelightNTDoubleArray(String tableName, String entryName) {
+    return getLimelightNTTableEntry(tableName, entryName).getDoubleArray(new double[0]);
+  }
+
+  public static NetworkTableEntry getLimelightNTTableEntry(String tableName, String entryName) {
+    return getLimelightNTTable(tableName).getEntry(entryName);
+  }
+
+  public static NetworkTable getLimelightNTTable(String tableName) {
+    return NetworkTableInstance.getDefault().getTable(sanitizeName(tableName));
   }
 }

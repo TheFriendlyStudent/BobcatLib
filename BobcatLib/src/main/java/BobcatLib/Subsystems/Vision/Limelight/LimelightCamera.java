@@ -1,6 +1,8 @@
 package BobcatLib.Subsystems.Vision.Limelight;
 
 import static BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightUtils.getLimelightURLString;
+import static edu.wpi.first.units.Units.Milliseconds;
+import static edu.wpi.first.units.Units.Seconds;
 
 import BobcatLib.Subsystems.Vision.Limelight.Estimator.LimelightPoseEstimator;
 import BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightData;
@@ -8,11 +10,14 @@ import BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightResults;
 import BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightSettings;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.Alert;
+import edu.wpi.first.wpilibj.Alert.AlertType;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 /** Limelight Camera class. */
 public class LimelightCamera {
@@ -33,6 +38,48 @@ public class LimelightCamera {
     limelightName = name;
     limelightData = new LimelightData(this);
     settings = new LimelightSettings(this);
+  }
+
+  /**
+   * Verify limelight name exists as a table in NT.
+   *
+   * <p>This check is expected to be run once during robot construction and is not intended to be
+   * checked in the iterative loop.
+   *
+   * <p>Use check "yourLimelightObject.getData().targetData.getTargetStatus())"" for the validity of
+   * an iteration for 2d targeting.
+   *
+   * <p>For valid 3d pose check "yourLimelightPoseEstimatorObject.getPoseEstimate().get().hasData"
+   *
+   * @param limelightName Limelight Name to check for table existence.
+   * @return true if an NT table exists with requested LL name.
+   *     <p>false and issues a WPILib Error Alert if requested LL doesn't appear as an NT table.
+   */
+  @SuppressWarnings("resource")
+  public static boolean isAvailable(String limelightName) {
+    // LL sends key "getpipe" if it's on so check that
+    // put in a delay if needed to help assure NT has latched onto the LL if it is transmitting
+    for (int i = 1; i <= 15; i++) {
+      if (NetworkTableInstance.getDefault().getTable(limelightName).containsKey("getpipe")) {
+        return true;
+      }
+      // System.out.println("waiting " + i + " of 15 seconds for limelight to attach");
+      try {
+        Thread.sleep((long) Seconds.of(1).in(Milliseconds));
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+    String errMsg =
+        "Your limelight name \""
+            + limelightName
+            + "\" is invalid.  doesn't exist on the network (no getpipe key).\n"
+            + "These may be available:"
+            + NetworkTableInstance.getDefault().getTable("/").getSubTables().stream()
+                .filter(ntName -> ((String) (ntName)).startsWith("limelight"))
+                .collect(Collectors.joining("\n"));
+    new Alert(errMsg, AlertType.kError).set(true);
+    return false;
   }
 
   /**

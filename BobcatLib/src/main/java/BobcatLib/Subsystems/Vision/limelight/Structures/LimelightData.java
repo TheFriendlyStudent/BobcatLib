@@ -6,8 +6,6 @@ import static BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightUtils.to
 import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
 import BobcatLib.Subsystems.Vision.Limelight.Results.RawDetection;
 import BobcatLib.Subsystems.Vision.Limelight.Results.RawFiducial;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.wpi.first.math.geometry.Pose3d;
@@ -16,7 +14,6 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.StringArrayEntry;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.RobotBase;
 import java.util.Optional;
 
 /** Data retrieval class for {@link LimelightCamera} */
@@ -27,31 +24,34 @@ public class LimelightData {
   /** Pipeline data from limelight. */
   public LimelightPipelineData pipelineData;
   /** {@link NetworkTable} for the {@link LimelightCamera} */
-  private NetworkTable limelightTable;
+  protected NetworkTable limelightTable;
   /** {@link LimelightCamera} to fetch data for. */
   private LimelightCamera limelight;
   /** The limelight.results {@link LimelightResults} JSON data */
-  private NetworkTableEntry results;
+  protected NetworkTableEntry results;
   /** Raw AprilTag detection from NetworkTables. */
-  private NetworkTableEntry rawfiducials;
+  protected NetworkTableEntry rawfiducials;
   /** Raw Neural Detector limelight.results from NetworkTables. */
-  private NetworkTableEntry rawDetections;
+  protected NetworkTableEntry rawDetections;
   /** Neural Clasifier result class name. */
-  private NetworkTableEntry classifierClass;
+  protected NetworkTableEntry classifierClass;
   /** Primary neural detect result class name. */
-  private NetworkTableEntry detectorClass;
+  protected NetworkTableEntry detectorClass;
   /**
    * {@link Pose3d} object representing the camera's position and orientation relative to the robot.
    */
-  private DoubleArrayEntry camera2RobotPose3d;
+  protected DoubleArrayEntry camera2RobotPose3d;
   /** Barcodes read by the {@link LimelightCamera}. */
-  private StringArrayEntry barcodeData;
+  protected StringArrayEntry barcodeData;
   /** Custom Python script set data for {@link LimelightCamera}. */
-  private DoubleArrayEntry pythonScriptDataSet;
+  protected DoubleArrayEntry pythonScriptDataSet;
   /** Custom Python script output data for {@link LimelightCamera}. */
-  private DoubleArrayEntry pythonScriptData;
+  protected DoubleArrayEntry pythonScriptData;
   /** Object mapper for limelight.results JSON. */
-  private ObjectMapper resultsObjectMapper;
+  protected ObjectMapper resultsObjectMapper;
+
+  /** Limelight IMU Data {@link LimelightImuData} */
+  public LimelightImuData imuData;
 
   /**
    * Construct the {@link LimelightData} class to retrieve read-only data.
@@ -75,6 +75,7 @@ public class LimelightData {
     pythonScriptDataSet = limelightTable.getDoubleArrayTopic("llrobot").getEntry(new double[0]);
     targetData = new LimelightTargetData(camera);
     pipelineData = new LimelightPipelineData(camera);
+    imuData = new LimelightImuData(camera);
   }
 
   /**
@@ -133,22 +134,26 @@ public class LimelightData {
   }
 
   /**
-   * Get {@link LimelightResults} from NetworkTables
+   * Get {@link LimelightResults} from NetworkTables.
+   *
+   * <p>Exists only if LL GUI option "Output &amp; Crosshair - Send JSON over NT?" is Yes
    *
    * @return {@link LimelightResults} if it exists.
    */
   public Optional<LimelightResults> getResults() {
     try {
-      LimelightResults data =
-          resultsObjectMapper.readValue(results.getString(""), Results.class).results;
-      return Optional.of(data);
-
-    } catch (JsonProcessingException e) {
-      if (RobotBase.isSimulation()) {
-        // TODO: Put sim warning here.
-      } else {
-        DriverStation.reportError("lljson error: " + e.getMessage(), true);
+      var JSONresult = results.getString("");
+      if (JSONresult.length() <= 0) {
+        return Optional.empty();
       }
+      LimelightResults data =
+          resultsObjectMapper.readValue(
+              JSONresult, LimelightResults.class); // don't use wrapper class
+      return Optional.of(data);
+    } catch (Exception e) // catch all the errors - multiple kinds are possible
+    {
+      System.out.println("lljson error: " + e.getMessage());
+      DriverStation.reportError("lljson error: " + e.getMessage(), true);
     }
     return Optional.empty();
   }
@@ -223,11 +228,25 @@ public class LimelightData {
     return rawDetections;
   }
 
-  /** Results Wrapper Class for JSON reading */
-  private class Results {
+  // Example of a JSON deserializer wrapper class that can be customized.
+  // Customization not needed for the current impelmentation of this YALL.
+  // /**
+  //  * ResultsWrapper Class for JSON reading.
+  //  */
+  // private static class ResultsWrapper
+  // {
 
-    /** "Results" Object for JSON reading. */
-    @JsonProperty("Results")
-    public LimelightResults results;
-  }
+  //   /**
+  //    * "ResultsWrapper" Object for JSON reading.
+  //    */
+  //   @JsonProperty("resultsWrapper")
+  //   public LimelightResults resultsWrapper;
+
+  //   @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
+
+  //   public ResultsWrapper(LimelightResults resultsWrapper)
+  //   {
+  //     this.resultsWrapper = resultsWrapper;
+  //   }
+  // }
 }

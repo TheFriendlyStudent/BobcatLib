@@ -6,6 +6,7 @@ import BobcatLib.Subsystems.Vision.Limelight.Estimator.PoseEstimate;
 import BobcatLib.Subsystems.Vision.Limelight.LimeLightConfig;
 import BobcatLib.Subsystems.Vision.Limelight.LimelightCamera;
 import BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightSettings.LEDMode;
+import BobcatLib.Subsystems.Vision.Limelight.Structures.LimelightUtils;
 import BobcatLib.Subsystems.Vision.Limelight.Structures.Orientation3d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -129,5 +130,102 @@ public class VisionPoseDetector implements VisionIO {
 
   public double pixlesToPercent(double pixels) {
     return pixels / horPixles;
+  }
+
+  public void resetGyroLL4(Rotation2d angle) {
+    SetIMUMode(limelight.limelightName, 1);
+    SetRobotOrientation(limelight.limelightName, angle.getDegrees(), 0, 0, 0, 0, 0);
+    SetIMUMode(limelight.limelightName, 2);
+  }
+
+  /**
+   * Configures the IMU mode for MegaTag2 Localization
+   *
+   * @param limelightName Name/identifier of the Limelight
+   * @param mode IMU mode.
+   */
+  public void SetIMUMode(String limelightName, int mode) {
+    LimelightUtils.setLimelightNTDouble(limelightName, "imumode_set", mode);
+  }
+
+  /**
+   * Sets robot orientation values used by MegaTag2 localization algorithm.
+   *
+   * @param limelightName Name/identifier of the Limelight
+   * @param yaw Robot yaw in degrees. 0 = robot facing red alliance wall in FRC
+   * @param yawRate (Unnecessary) Angular velocity of robot yaw in degrees per second
+   * @param pitch (Unnecessary) Robot pitch in degrees
+   * @param pitchRate (Unnecessary) Angular velocity of robot pitch in degrees per second
+   * @param roll (Unnecessary) Robot roll in degrees
+   * @param rollRate (Unnecessary) Angular velocity of robot roll in degrees per second
+   */
+  public void SetRobotOrientation(
+      String limelightName,
+      double yaw,
+      double yawRate,
+      double pitch,
+      double pitchRate,
+      double roll,
+      double rollRate) {
+    SetRobotOrientation_INTERNAL(
+        limelightName, yaw, yawRate, pitch, pitchRate, roll, rollRate, true);
+  }
+
+  /**
+   * Sets robot orientation values used by MegaTag2 localization algorithm.
+   *
+   * @param limelightName Name/identifier of the Limelight
+   * @param yaw Robot yaw in degrees. 0 = robot facing red alliance wall in FRC
+   * @param yawRate (Unnecessary) Angular velocity of robot yaw in degrees per second
+   * @param pitch (Unnecessary) Robot pitch in degrees
+   * @param pitchRate (Unnecessary) Angular velocity of robot pitch in degrees per second
+   * @param roll (Unnecessary) Robot roll in degrees
+   * @param rollRate (Unnecessary) Angular velocity of robot roll in degrees per second
+   */
+  public void SetRobotOrientation_NoFlush(
+      String limelightName,
+      double yaw,
+      double yawRate,
+      double pitch,
+      double pitchRate,
+      double roll,
+      double rollRate) {
+    SetRobotOrientation_INTERNAL(
+        limelightName, yaw, yawRate, pitch, pitchRate, roll, rollRate, false);
+  }
+
+  /**
+   * Sets robot orientation values used by MegaTag2 localization algorithm.
+   *
+   * @param limelightName Name/identifier of the Limelight
+   * @param yaw Robot yaw in degrees. 0 = robot facing red alliance wall in FRC
+   * @param yawRate (Unnecessary) Angular velocity of robot yaw in degrees per second
+   * @param pitch (Unnecessary) Robot pitch in degrees
+   * @param pitchRate (Unnecessary) Angular velocity of robot pitch in degrees per second
+   * @param roll (Unnecessary) Robot roll in degrees
+   * @param rollRate (Unnecessary) Angular velocity of robot roll in degrees per second
+   * @param flush Flush robot orientation
+   */
+  private void SetRobotOrientation_INTERNAL(
+      String limelightName,
+      double yaw,
+      double yawRate,
+      double pitch,
+      double pitchRate,
+      double roll,
+      double rollRate,
+      boolean flush) {
+
+    double[] entries = new double[6];
+    entries[0] = yaw;
+    entries[1] = yawRate;
+    entries[2] = pitch;
+    entries[3] = pitchRate;
+    entries[4] = roll;
+    entries[5] = rollRate;
+    LimelightUtils.setLimelightNTDoubleArray(limelightName, "robot_orientation_set", entries);
+    if (flush) {
+      LimelightUtils.Flush();
+    }
   }
 }

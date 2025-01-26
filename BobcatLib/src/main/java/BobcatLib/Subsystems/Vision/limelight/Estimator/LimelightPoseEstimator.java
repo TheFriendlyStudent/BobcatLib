@@ -43,6 +43,9 @@ public class LimelightPoseEstimator {
   /**
    * Get the {@link PoseEstimate} corresponding with your alliance color.
    *
+   * <p>Alliance comes from DriverStation. If simulation, then the sim GUI must not be in
+   * "disconnected" mode.
+   *
    * @return {@link Optional} of {@link PoseEstimate} of your given alliance.
    */
   public Optional<PoseEstimate> getAlliancePoseEstimate() {

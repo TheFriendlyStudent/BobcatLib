@@ -169,6 +169,37 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pixlesToPercent(double)" class="member-name-link">pixlesToPercent</a><wbr>(double&nbsp;pixels)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetGyroLL4(edu.wpi.first.math.geometry.Rotation2d)" class="member-name-link">resetGyroLL4</a><wbr>(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#SetIMUMode(java.lang.String,int)" class="member-name-link">SetIMUMode</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;limelightName,
+ int&nbsp;mode)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Configures the IMU mode for MegaTag2 Localization</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#SetRobotOrientation(java.lang.String,double,double,double,double,double,double)" class="member-name-link">SetRobotOrientation</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;limelightName,
+ double&nbsp;yaw,
+ double&nbsp;yawRate,
+ double&nbsp;pitch,
+ double&nbsp;pitchRate,
+ double&nbsp;roll,
+ double&nbsp;rollRate)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets robot orientation values used by MegaTag2 localization algorithm.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#SetRobotOrientation_NoFlush(java.lang.String,double,double,double,double,double,double)" class="member-name-link">SetRobotOrientation_NoFlush</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;limelightName,
+ double&nbsp;yaw,
+ double&nbsp;yawRate,
+ double&nbsp;pitch,
+ double&nbsp;pitchRate,
+ double&nbsp;roll,
+ double&nbsp;rollRate)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets robot orientation values used by MegaTag2 localization algorithm.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
@@ -380,6 +411,71 @@ implements <a href="VisionIO.html" title="interface in BobcatLib.Subsystems.Visi
 <section class="detail" id="pixlesToPercent(double)">
 <h3>pixlesToPercent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">pixlesToPercent</span><wbr><span class="parameters">(double&nbsp;pixels)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="resetGyroLL4(edu.wpi.first.math.geometry.Rotation2d)">
+<h3>resetGyroLL4</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetGyroLL4</span><wbr><span class="parameters">(<a href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Rotation2d.html" title="class or interface in edu.wpi.first.math.geometry" class="external-link">Rotation2d</a>&nbsp;angle)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="SetIMUMode(java.lang.String,int)">
+<h3>SetIMUMode</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">SetIMUMode</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;limelightName,
+ int&nbsp;mode)</span></div>
+<div class="block">Configures the IMU mode for MegaTag2 Localization</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>limelightName</code> - Name/identifier of the Limelight</dd>
+<dd><code>mode</code> - IMU mode.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="SetRobotOrientation(java.lang.String,double,double,double,double,double,double)">
+<h3>SetRobotOrientation</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">SetRobotOrientation</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;limelightName,
+ double&nbsp;yaw,
+ double&nbsp;yawRate,
+ double&nbsp;pitch,
+ double&nbsp;pitchRate,
+ double&nbsp;roll,
+ double&nbsp;rollRate)</span></div>
+<div class="block">Sets robot orientation values used by MegaTag2 localization algorithm.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>limelightName</code> - Name/identifier of the Limelight</dd>
+<dd><code>yaw</code> - Robot yaw in degrees. 0 = robot facing red alliance wall in FRC</dd>
+<dd><code>yawRate</code> - (Unnecessary) Angular velocity of robot yaw in degrees per second</dd>
+<dd><code>pitch</code> - (Unnecessary) Robot pitch in degrees</dd>
+<dd><code>pitchRate</code> - (Unnecessary) Angular velocity of robot pitch in degrees per second</dd>
+<dd><code>roll</code> - (Unnecessary) Robot roll in degrees</dd>
+<dd><code>rollRate</code> - (Unnecessary) Angular velocity of robot roll in degrees per second</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="SetRobotOrientation_NoFlush(java.lang.String,double,double,double,double,double,double)">
+<h3>SetRobotOrientation_NoFlush</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">SetRobotOrientation_NoFlush</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;limelightName,
+ double&nbsp;yaw,
+ double&nbsp;yawRate,
+ double&nbsp;pitch,
+ double&nbsp;pitchRate,
+ double&nbsp;roll,
+ double&nbsp;rollRate)</span></div>
+<div class="block">Sets robot orientation values used by MegaTag2 localization algorithm.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>limelightName</code> - Name/identifier of the Limelight</dd>
+<dd><code>yaw</code> - Robot yaw in degrees. 0 = robot facing red alliance wall in FRC</dd>
+<dd><code>yawRate</code> - (Unnecessary) Angular velocity of robot yaw in degrees per second</dd>
+<dd><code>pitch</code> - (Unnecessary) Robot pitch in degrees</dd>
+<dd><code>pitchRate</code> - (Unnecessary) Angular velocity of robot pitch in degrees per second</dd>
+<dd><code>roll</code> - (Unnecessary) Robot roll in degrees</dd>
+<dd><code>rollRate</code> - (Unnecessary) Angular velocity of robot roll in degrees per second</dd>
+</dl>
 </section>
 </li>
 </ul>
