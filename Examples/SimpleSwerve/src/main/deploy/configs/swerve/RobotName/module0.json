@@ -2,18 +2,18 @@
   "drive": {
     "motor_type": "KrakenX60",
     "id": 1,
-    "canbus": "CANt_open_file"
+    "canbus": "rio"
   },
   "angle": {
     "motor_type": "KrakenX60",
     "id": 2,
-    "canbus": "CANt_open_file",
+    "canbus": "rio",
     "inverted": false
   },
   "encoder": {
     "type": "cancoder",
     "id": 1,
-    "canbus": "CANt_open_file",
+    "canbus": "rio",
     "offset": 0.327,
     "inverted": false
   },
