@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
     // loadableAutos.add(new LoadablePathPlannerAuto("Base", new PathPlannerAuto("Base"), false));
     // loadableAutos.add(new LoadablePathPlannerAuto("Auto1", new PathPlannerAuto("Auto1"), false));
 
-    String robotName = "2025_Robot";
+    String robotName = "2023_Robot";
     boolean isSim = false;
     PIDConstants tranPidPathPlanner = new PIDConstants(10, kDefaultPeriod, kDefaultPeriod);
     PIDConstants rotPidPathPlanner = new PIDConstants(5, kDefaultPeriod, kDefaultPeriod);
